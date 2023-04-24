@@ -1,88 +1,102 @@
 ---
 layout: post
-title: Introducing Hydejack 9
+title: 자기소개서
 image: 
   path: /assets/img/blog/jeremy-bishop@0,5x.jpg
-description: >
-  Version 9 is the most complete version of Hydejack yet.
-  Modernized design, big headlines, and big new features.
 sitemap: false
 ---
 
-Version 9 is the most complete version of Hydejack yet.
+제가 가진 가장 큰 강점은 책임감입니다. 제가 맡은 일에 대해서는 언제나 최선을 다하고, 그 일이 완료되도록 노력합니다. 고등학교때는 영자 신문 동아리를 운영하며 많은 책임을 맡았습니다. 그 과정에서 학생들의 신뢰를 얻기 위해 끊임없이 노력했고, 월마다 4명이상의 부원의 에세이를 발행하는 결과를 이끌어 냈습니다. 이러한 경험으로부터 책임감과 성실함을 더욱 키울 수 있었습니다. 또한, 도전정신을 가지고 있습니다. 새로운 것에 도전하고, 어려운 문제를 해결하는 것이 저에게는 자극적인 요소입니다. 예를 들어, 저는 언어 모델링 분야에서 자연어 처리 프로젝트를 수행하면서 새로운 기술을 학습하고 적용해보았습니다. 이 과정에서 여러 가지 문제를 마주하면서도 그것을 해결하기 위해 끊임없이 노력하고, 성공적으로 프로젝트를 마무리하였습니다. 저는 개발자로서 새로운 것을 배우고, 도전하며, 끊임없이 성장하고 싶습니다. 감사합니다.
 {:.lead}
 
-[Modernized](#linking-in-style) [design](#whats-in-the-cards), [big headlines](#ready-for-the-big-screen), big new features: [Built-In Search](#built-in-search), [Sticky Table of Contents](#sticky-table-of-contents), and [Auto-Hiding Navbar](#auto-hiding-navbar). That [and more](#and-much-more) is Hydejack 9.
 
 - Table of Contents
 {:toc .large-only}
 
-## Linking in Style
+## 인적 사항
+이름 : 김윤영
 
-Ever since the introduction of Dark Mode, link styles have been a bit of an issue. Specifically, finding an accent color that worked on both light and dark backgrounds was the problem. With Hydejack 9, the [link style](#linking-in-style) has been revamped so that legibility is no longer tied to the choice of accent_color, giving you much more freedom in creating a unique design flavor for your site.
+나이 : 24세
+
+성별 : 여성
+
+직업 : 대학생
+
+이메일 : yunryy320@gmail.com
+
+github : https://github.com/yunrry
  
-## Ready for the Big Screen
+## 학력
 
-The theme on which Hydejack is based was designed for a different era of the web. Hydejack has inherited many of its limitations, but over time I've made adjustments, such as centering the content column for better reading ergonomics. 
+대학
 
-With version 9, Hydejack takes full advantage of large displays. Whether it's design indulgences such as oversized headlines, or quality of life improvements such as a floating table of contents, Hydejack now finds use for all that extra screen real estate[^1]. 
+제주대학교 소프트웨어학부 컴퓨터공학전공 - 재학
+
+고등
+
+서귀여자고등학교 - 졸업
+
+중등
+
+효돈중학교 - 졸업
+
+초등
+
+효돈초등학교 - 졸업
  
-## What's in the Cards?
+## 진로
 
-Hydejack 9 now lets you use content cards for both projects and posts. 
-The cards have been redesigned with a new hover style and drop shadows and they retain their unique transition-to-next-page animations, which now also work on the `blog` layout. The new `grid` layout lets you do that.
-
-Good images are key to making the most out of content cards. For that reason, a [chapter on images](../../docs/basics.md#adding-images) has been added to the documentation.
+진로
+IT기업 개발자
+서비스개발 창업
+대학병원 전산직
+메타버스 디자인
  
-## Built-In Search
+## 활동
 
-Hydejack now has Built-In Search. It even works offline. I've been prototyping many approaches and eventually settled on a fully client-side, off-the-main thread solution that perfectly fits the use case of personal sites and shows surprisingly good results[^2]. 
-
-The new search UI is custom made for Hydejack and shows beautiful previews of your posts and pages, right on top of your regular content.
-
-Together with the Auto-Hiding Navbar, your entire content library is now only a couple of keystrokes away.
+소프트웨어학부 2023 학생회 학술차장
+WISET, J-Leaders 활동단
+LEADME 개발 동아리
+자격증준비 및 전공 공부
+커피전문점 아르바이트
+아두이노 멘토링
  
-## Auto-Hiding Navbar
+## 개발 및 데이터 분석 경험
 
-A navbar that's there when you need it, and disappears when you don't. Simple as that.
+JAVA미니게임 프로그래밍
+개인 홈페이지 제작
  
-## Sticky Table of Contents
+## 사용 가능 언어
 
-Already a staple on so many sites on the web, this pattern is now also available in Hydejack. 
-What's unique about it is that it simply picks up the table of contents already created by kramdown's `{:toc}` tag and transparently upgrades it to a fully dynamic version.
+JavaScript
+C/C++/C#
+python
+JAVA
  
-## …and much more
+## 앞으로의 목표
 
-Other noteworthy changes include:
-- Support for Jekyll 4
-- Choice between MathJax and KaTeX for math rendering
-- Use of `jekyll-include-cache` for drastically improved page building speeds
-- New variables configuration file — adjust content width, sidebar width, font size, etc...
-- ...and the option to disable grouping projects by year.
+해외 인턴경험
+협업 프로젝트 완성
+서비스 개발 배포
 
 Read the the [CHANGELOG](../../CHANGELOG.md){:.heading.flip-title} for the full scope of features and improvements made in Hydejack 9.
 Maybe just glance at it to confirm that it is indeed a pretty long list.
  
-## Even More to Come
-
-New features for 9.1 are already lined up. Code block headers and code line highlights for even better technical blogging, as well as download buttons on the resume page for PDF, vCard, and Resume JSON are just around the corner.
- 
-## Get It Now
-The Free Version of Hydejack is now availabe on [RubyGems](https://rubygems.org/gems/jekyll-theme-hydejack)
-and for the first time also on [GitHub Packages](https://github.com/hydecorp/hydejack/packages). 
-The source code is available on [GitHub](https://github.com/hydecorp/hydejack) as always.
-
-The PRO Version is scheduled to release on July 7th on Gumroad. Pre-Orders are open now:
-
-<div class="gumroad-product-embed" data-gumroad-product-id="nuOluY"><a href="https://gumroad.com/l/nuOluY">Loading…</a></div>
+## fork
 
 
+- 스톡 사진, 웹 템플릿, CSS 프레임워크, UI 라이브러리, 도구 등에서 엄선된 디자인 및 UI 리소스 목록
 
-[^1]: If you are a fan of the old two-column layout, or don't like modern design tropes such as mega headlines, Hydejack lets you revert these changes on a case-by-case basis via configuration options.
+링크 :https://github.com/yunrry/design-resources-for-developers
 
-[^2]:
-      Search was mainly tested for English and German. Please let me know about issues in other languages. 
-      While I've tried to find a multi-language solution, most showed drastically worse  results for the English base case.
-      If you're technically inclined, you can adopt the code located in `_includes/js/search-worker.js` to your needs.
+앱/웹 디자인시 유용하게 사용할 수 있을 것 같아서 포크함.
+
+- 인공 지능(AI)에 대한 다양한 과정 및 리소스에 대한 선별된 링크 모음
+
+링크 : https://github.com/yunrry/courses
+
+AI기능이 포함된 서비스를 개발할 계획이 있어 포크함.
+
+
 
 
