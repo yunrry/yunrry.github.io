@@ -74,6 +74,12 @@
 <loc>http://localhost:4000/assets/contents/algorithm/hashmap-hashset/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/assets/contents/algorithm/leetcode-26/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/algorithm/leetcode-88/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/contents/algorithm/stack-queue_deque/</loc>
 </url>
 </urlset>
