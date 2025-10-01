@@ -9,25 +9,24 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>내 블로그</title>
-<meta name="description" content="블로그 설명">
+<!-- begin _includes/seo.html --><title>첫 번째 게시글 - 내 블로그</title>
+<meta name="description" content="안녕하세요! 첫 번째 게시글입니다.">
 
 
   <meta name="author" content="본인 이름">
   
+  <meta property="article:author" content="본인 이름">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="내 블로그">
-<meta property="og:title" content="내 블로그">
-<meta property="og:url" content="http://localhost:4000/">
+<meta property="og:title" content="첫 번째 게시글">
+<meta property="og:url" content="http://localhost:4000/%EB%B8%94%EB%A1%9C%EA%B7%B8/first-post/">
 
 
-  <meta property="og:description" content="블로그 설명">
-
-
-
+  <meta property="og:description" content="안녕하세요! 첫 번째 게시글입니다.">
 
 
 
@@ -35,9 +34,14 @@
 
 
 
+  <meta property="article:published_time" content="2025-10-01T00:00:00+09:00">
 
 
-<link rel="canonical" href="http://localhost:4000/">
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/%EB%B8%94%EB%A1%9C%EA%B7%B8/first-post/">
 
 
 
@@ -88,7 +92,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -243,34 +247,18 @@
 
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title"></h1>
-    
-    
-
-
-<h3 class="archive__subtitle">Recent Posts</h3>
-
-
-
-
-<div class="entries-list">
-  
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="첫 번째 게시글">
+    <meta itemprop="description" content="안녕하세요! 첫 번째 게시글입니다.">
+    <meta itemprop="datePublished" content="2025-10-01T00:00:00+09:00">
     
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="/%EB%B8%94%EB%A1%9C%EA%B7%B8/first-post/" rel="permalink">첫 번째 게시글
-</a>
-      
-    </h2>
-    
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">첫 번째 게시글
+</h1>
+          
 
   <p class="page__meta">
     
@@ -291,20 +279,69 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">안녕하세요! 첫 번째 게시글입니다.
+        </header>
+      
 
-</p>
+      <section class="page__content" itemprop="text">
+        
+        <p>안녕하세요! 첫 번째 게시글입니다.</p>
+
+<h2 id="소제목">소제목</h2>
+
+<p>Markdown으로 쉽게 글을 작성할 수 있습니다.</p>
+
+<ul>
+  <li>리스트도 가능</li>
+  <li>이미지 삽입도 가능
+```python
+print(“Hello, World!”)</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2025-10-01T00:00:00+09:00">October 1, 2025</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%B2%AB+%EB%B2%88%EC%A7%B8+%EA%B2%8C%EC%8B%9C%EA%B8%80%20http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B8%2594%25EB%25A1%259C%25EA%25B7%25B8%2Ffirst-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B8%2594%25EB%25A1%259C%25EA%25B7%25B8%2Ffirst-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B8%2594%25EB%25A1%259C%25EA%25B7%25B8%2Ffirst-post%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+    </div>
+
+    
   </article>
-</div>
 
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+            
+      </div>
+    </div>
   
 </div>
 
-
-
-
-  </div>
-</div>
     </div>
 
     

@@ -16,13 +16,13 @@ title: "내 블로그"
 subtitle: "부제목"
 name: "본인 이름"
 description: "블로그 설명"
-url: "https://username.github.io"
-repository: "username/username.github.io"
+url: "https://yunrry.github.io"
+repository: "yunrry/yunrry.github.io"
 
 # 작성자 정보
 author:
   name: "본인 이름"
-  avatar: "/assets/images/avatar.jpg"
+  avatar: "/assets/images/mandu.jpeg"
   bio: "간단한 소개"
   location: "Seoul, Korea"
   links:
@@ -31,7 +31,7 @@ author:
       url: "mailto:your-email@example.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/username"
+      url: "https://github.com/yunrry"
 
 # 기본 설정
 permalink: /:categories/:title/
