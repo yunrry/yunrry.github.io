@@ -39,7 +39,7 @@ sidebar:
 
 ### 배열
 - <a href="https://leetcode.com/problems/two-sum/" target="_blank">LeetCode 1: Two Sum</a>
-- <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" target="_blank">LeetCode 26: Remove Duplicates from Sorted Array</a>
+- <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" target="_blank">LeetCode 26: Remove Duplicates from Sorted Array</a> <a data-content="/assets/contents/algorithm/leetcode-26.md"target="_blank">풀이</a>
 - <a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank">LeetCode 88: Merge Sorted Array</a>
 - <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank">LeetCode 121: Best Time to Buy and Sell Stock</a>
 
