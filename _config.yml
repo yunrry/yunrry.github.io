@@ -63,8 +63,33 @@ defaults:
       sidebar:
         nav: "categories"
 
+  - scope:
+      path: "contents"
+    values:
+      layout: null
+
 include:
   - _pages
+  - _algorithm
+  - _cs
+  - _dev
+  - _language
+  - contents
+
 
 head_scripts:
   - /assets/js/custom.js
+
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Liquid 설정 - 중요!
+liquid:
+  error_mode: warn
+  strict_filters: false
+  strict_variables: false

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/%EA%B0%9C%EB%B0%9C/first-post/</loc>
+<loc>http://localhost:4000/dev/first-post/</loc>
 <lastmod>2025-10-01T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -9,6 +9,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/categories/algorithm/baekjoon/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/algorithm/basic/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/categories/algorithm/leetcode/</loc>
@@ -60,5 +63,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/algorithm/array-string/</loc>
 </url>
 </urlset>

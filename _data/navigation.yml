@@ -22,6 +22,8 @@ categories:
       
       - title: "🧮 Algorithm"
         url: /categories/algorithm/
+      - title: "  • basic"
+        url: /categories/algorithm/basic/
       - title: "  • 백준"
         url: /categories/algorithm/baekjoon/
       - title: "  • 프로그래머스"

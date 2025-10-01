@@ -20,6 +20,7 @@
           '/categories/language/java/'
         ],
         '/categories/algorithm/': [
+          '/categories/algorithm/basic/',
           '/categories/algorithm/baekjoon/',
           '/categories/algorithm/programmers/',
           '/categories/algorithm/leetcode/'

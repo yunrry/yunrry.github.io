@@ -1271,25 +1271,127 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
   .page__hero-caption a { color: #000 !important; }
   /* Hide the following elements on print ========================================================================== */
   .masthead, .toc, .page__share, .page__related, .pagination, .ads, .page__footer, .page__comments-form, .author__avatar, .author__content, .author__urls-wrapper, .nav__list, .sidebar, .adsbygoogle { display: none !important; height: 1px !important; } }
-.nav__sub-title { padding-top: 24px !important; margin-bottom: 12px !important; padding-bottom: 8px !important; border-bottom: 2px solid #f0f0f0 !important; font-size: 0.9em !important; }
+.highlight table td { padding: 5px; }
+
+.highlight table pre { margin: 0; }
+
+.highlight, .highlight .w { color: #383838; }
+
+.highlight .err { color: #181818; background-color: #ab4642; }
+
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs { color: #585858; }
+
+.highlight .cp { color: #f7ca88; }
+
+.highlight .nt { color: #f7ca88; }
+
+.highlight .o, .highlight .ow { color: #d8d8d8; }
+
+.highlight .p, .highlight .pi { color: #d8d8d8; }
+
+.highlight .gi { color: #a1b56c; }
+
+.highlight .gd { color: #ab4642; }
+
+.highlight .gh { color: #7cafc2; background-color: #181818; font-weight: bold; }
+
+.highlight .ge { font-style: italic; }
+
+.highlight .ges { font-weight: bold; font-style: italic; }
+
+.highlight .gs { font-weight: bold; }
+
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv { color: #ba8baf; }
+
+.highlight .kc { color: #dc9656; }
+
+.highlight .kt { color: #dc9656; }
+
+.highlight .kd { color: #dc9656; }
+
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 { color: #a1b56c; }
+
+.highlight .sa { color: #ba8baf; }
+
+.highlight .sr { color: #86c1b9; }
+
+.highlight .si { color: #a16946; }
+
+.highlight .se { color: #a16946; }
+
+.highlight .nn { color: #f7ca88; }
+
+.highlight .nc { color: #f7ca88; }
+
+.highlight .no { color: #f7ca88; }
+
+.highlight .na { color: #7cafc2; }
+
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx { color: #a1b56c; }
+
+.highlight .ss { color: #a1b56c; }
+
+/* 전체 폰트 크기 축소 */
+body { font-size: 18px !important; }
+
+.page__content { font-size: 0.9em !important; }
+
+/* 헤딩 크기 축소 */
+h1 { font-size: 1.8em !important; }
+
+h2 { font-size: 1.5em !important; }
+
+h3 { font-size: 1.2em !important; }
+
+h4 { font-size: 1.1em !important; }
+
+/* 코드 블록 */
+pre, code { font-size: 0.85em !important; }
+
+/* 리스트 */
+ul, ol { font-size: 0.9em !important; }
+
+/* 테이블 */
+table { font-size: 0.85em !important; }
+
+.site-title { font-size: 1.6em !important; }
+
+.nav__sub-title { padding-top: 24px !important; margin-bottom: 12px !important; padding-bottom: 8px !important; border-bottom: 2px solid #f0f0f0 !important; font-size: 1.5em !important; }
 
 /* 카테고리 간격 */
 .sidebar .nav__list .nav__items li { margin-bottom: 16px !important; }
 
 /* Menu 제목 */
-.sidebar .nav__list .nav__items .nav__title { margin-bottom: 12px !important; font-size: 0.9em !important; border-bottom: 2px solid #f0f0f0 !important; padding-bottom: 8px !important; }
+.sidebar .nav__list .nav__items .nav__title { margin-bottom: 12px !important; font-size: 1.8em !important; border-bottom: 2px solid #f0f0f0 !important; padding-bottom: 8px !important; }
 
 /* 상위 카테고리 (정확한 URL) */
-.sidebar .nav__list .nav__items li a[href="/categories/dev/"], .sidebar .nav__list .nav__items li a[href="/categories/language/"], .sidebar .nav__list .nav__items li a[href="/categories/algorithm/"], .sidebar .nav__list .nav__items li a[href="/categories/cs/"] { font-weight: 600 !important; font-size: 0.9em !important; color: #333 !important; }
+.sidebar .nav__list .nav__items li a[href="/categories/dev/"], .sidebar .nav__list .nav__items li a[href="/categories/language/"], .sidebar .nav__list .nav__items li a[href="/categories/algorithm/"], .sidebar .nav__list .nav__items li a[href="/categories/cs/"], .sidebar .nav__list .nav__items li a[href="/categories/"] { font-weight: 600 !important; font-size: 1.8em !important; color: #333 !important; }
 
 /* 화살표 애니메이션 */
 .toggle-arrow { display: inline-block; transition: transform 0.3s ease; }
 
 /* 하위 카테고리 */
-.sidebar .nav__list .nav__items li a[href*="/dev/frontend"], .sidebar .nav__list .nav__items li a[href*="/dev/backend"], .sidebar .nav__list .nav__items li a[href*="/dev/devops"], .sidebar .nav__list .nav__items li a[href*="/language/python"], .sidebar .nav__list .nav__items li a[href*="/language/javascript"], .sidebar .nav__list .nav__items li a[href*="/language/java"], .sidebar .nav__list .nav__items li a[href*="/algorithm/baekjoon"], .sidebar .nav__list .nav__items li a[href*="/algorithm/programmers"], .sidebar .nav__list .nav__items li a[href*="/algorithm/leetcode"], .sidebar .nav__list .nav__items li a[href*="/cs/datastructure"], .sidebar .nav__list .nav__items li a[href*="/cs/network"], .sidebar .nav__list .nav__items li a[href*="/cs/os"], .sidebar .nav__list .nav__items li a[href*="/cs/database"] { font-size: 0.8em !important; color: #666 !important; font-weight: 400 !important; padding-left: 5px !important; }
+.sidebar .nav__list .nav__items li a[href*="/dev/frontend"], .sidebar .nav__list .nav__items li a[href*="/dev/backend"], .sidebar .nav__list .nav__items li a[href*="/dev/devops"], .sidebar .nav__list .nav__items li a[href*="/language/python"], .sidebar .nav__list .nav__items li a[href*="/language/javascript"], .sidebar .nav__list .nav__items li a[href*="/language/java"], .sidebar .nav__list .nav__items li a[href*="/algorithm/basic"], .sidebar .nav__list .nav__items li a[href*="/algorithm/baekjoon"], .sidebar .nav__list .nav__items li a[href*="/algorithm/programmers"], .sidebar .nav__list .nav__items li a[href*="/algorithm/leetcode"], .sidebar .nav__list .nav__items li a[href*="/cs/datastructure"], .sidebar .nav__list .nav__items li a[href*="/cs/network"], .sidebar .nav__list .nav__items li a[href*="/cs/os"], .sidebar .nav__list .nav__items li a[href*="/cs/database"] { font-size: 1.8em !important; color: #666 !important; font-weight: 400 !important; padding-left: 5px !important; }
 
 /* 호버 효과 */
 .sidebar .nav__list .nav__items a:hover { color: #0066cc !important; transition: all 0.2s ease !important; }
 
 /* 하위 카테고리 호버 시 들여쓰기 */
 .sidebar .nav__list .nav__items li a[href*="/dev/"]:not([href="/categories/dev/"]):hover, .sidebar .nav__list .nav__items li a[href*="/language/"]:not([href="/categories/language/"]):hover, .sidebar .nav__list .nav__items li a[href*="/algorithm/"]:not([href="/categories/algorithm/"]):hover, .sidebar .nav__list .nav__items li a[href*="/cs/"]:not([href="/categories/cs/"]):hover { padding-left: 10px !important; }
+
+/* ======================================== Syntax Highlighting 커스터마이징 ======================================== */
+/* 코드 블록 전체 스타일 */
+.highlight { margin: 1.5em 0; padding: 0; background-color: #f8f8f8; border: 1px solid #e1e4e8; border-radius: 6px; overflow: hidden; }
+.highlight pre { margin: 0; padding: 1em; overflow-x: auto; background-color: transparent; }
+.highlight pre code { display: block; line-height: 1.6; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 0.9em; background-color: transparent; border: none; padding: 0; }
+
+/* 인라인 코드 */
+p code, li code, td code { background-color: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 0.9em; color: #e74c3c; border: 1px solid #e1e4e8; }
+
+/* 코드 블록 내 인라인 코드는 스타일 제거 */
+.highlight code { background-color: transparent !important; padding: 0 !important; border: none !important; color: inherit !important; }
+
+/* 다크모드 지원 (선택사항) */
+@media (prefers-color-scheme: dark) { .highlight { background-color: #1e1e1e; border-color: #333; }
+  .highlight pre code { color: #d4d4d4; }
+  p code, li code, td code { background-color: #2d2d2d; border-color: #444; color: #ff6b6b; } }

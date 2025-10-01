@@ -1,0 +1,349 @@
+---
+layout: single
+---
+
+<div id="normal-content">
+  {{ content }}
+</div>
+
+<div id="split-content" style="display: none;">
+  <div class="split-container">
+    <div class="split-left">
+      <div class="split-header">
+        <button id="close-split" class="close-button">← 돌아가기</button>
+      </div>
+      <div class="left-content">
+        {{ content }}
+      </div>
+    </div>
+    
+    <div class="split-right">
+      <div class="content-display"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.split-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  min-height: 70vh;
+}
+
+.split-left {
+  flex: 0 0 45%;
+  padding-right: 20px;
+  border-right: 2px solid #e0e0e0;
+}
+
+.split-right {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.split-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.close-button {
+  background: #9bd6bd;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.close-button:hover {
+  background: #88bca7;
+}
+
+.content-display h1 {
+  font-size: 2em;
+  border-bottom: 3px solid #333;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.content-display h2 {
+  font-size: 1.6em;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-left: 4px solid #5f6764;
+  padding-left: 12px;
+}
+
+/* Rouge Syntax Highlighting 스타일 우선 적용 */
+.content-display .highlight {
+  margin: 20px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border-left: 4px solid #9bd6bd;
+}
+
+.content-display .highlight pre {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+.content-display .highlight code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
+}
+
+/* 일반 코드 블록 (fallback) */
+.content-display pre:not(.highlight) {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+  border-left: 4px solid #9bd6bd;
+  margin: 20px 0;
+}
+
+/* 인라인 코드 */
+.content-display p code,
+.content-display li code,
+.content-display td code {
+  background: #f0f0f0;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+  color: #e74c3c;
+  border: 1px solid #e1e4e8;
+}
+
+/* 코드 블록 내 인라인 코드는 스타일 제거 */
+.content-display .highlight code,
+.content-display pre code {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  color: inherit !important;
+}
+
+a[data-content] {
+  color: #565c59;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a[data-content]:hover {
+  text-decoration: underline;
+}
+
+.content-display pre,
+.content-display .highlight,
+.content-display pre[class*="language-"] {
+  box-shadow: none !important;
+}
+
+.split-right {
+  flex: 1;
+  padding-left: 20px;
+  position: relative;
+}
+
+.content-display {
+  display: flex;
+  gap: 30px;
+}
+
+.main-content {
+  flex: 1;
+  max-width: calc(100% - 250px);
+}
+
+.toc {
+  position: sticky;
+  top: 150px;
+  width: 220px;
+  border-radius: 6px;
+  padding: 15px;
+  align-self: flex-start;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.toc h4 {
+  margin: 0 0 10px 0;
+  color: #9bd6bd;
+  font-size: 0.9em;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc li {
+  margin: 8px 0;
+}
+
+.toc a {
+  color: #7c7d7d;
+  text-decoration: none;
+  font-size: 0.85em;
+}
+
+.toc a:hover {
+  color: #9bd6bd;
+}
+
+.toc-h3 {
+  padding-left: 15px;
+  font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+  .content-display {
+    flex-direction: column-reverse;
+  }
+  
+  .main-content {
+    max-width: 100%;
+  }
+  
+  .toc {
+    position: static;
+    width: 100%;
+  }
+}
+
+</style>
+
+<!-- Highlight.js CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css">
+
+<!-- Prism CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+
+<!-- Marked.js -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Prism.js Core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" data-manual></script>
+
+<!-- Prism 언어 컴포넌트 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+
+<script>
+// Marked만 사용 (Highlight.js 제거)
+function initSplitView() {
+  // Marked 체크
+  if (typeof marked === 'undefined') {
+    console.log('Marked 대기 중...');
+    setTimeout(initSplitView, 100);
+    return;
+  }
+  
+  console.log('Marked 로드 완료!');
+  
+  // DOM 요소 찾기
+  const normalContent = document.getElementById('normal-content');
+  const splitContent = document.getElementById('split-content');
+  const closeButton = document.getElementById('close-split');
+  const contentDisplay = document.querySelector('.content-display');
+  
+  if (!normalContent || !splitContent || !closeButton || !contentDisplay) {
+    console.error('DOM 요소를 찾을 수 없습니다!');
+    return;
+  }
+
+  function generateTOC(html) {
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html;
+  
+  const headings = tempDiv.querySelectorAll('h2, h3');
+  if (headings.length === 0) return `<div class="main-content">${html}</div>`;
+  
+  let toc = '<div class="toc"><h4>outline</h4><ul>';
+  
+  headings.forEach((heading, index) => {
+    const id = 'heading-' + index;
+    heading.id = id;
+    
+    const level = heading.tagName === 'H2' ? 'toc-h2' : 'toc-h3';
+    toc += `<li class="${level}"><a href="#${id}">${heading.textContent}</a></li>`;
+  });
+  
+  toc += '</ul></div>';
+  
+  return `<div class="main-content">${tempDiv.innerHTML}</div>${toc}`;
+}
+  
+  // Marked.js 설정 (Highlight 없이)
+  marked.setOptions({
+    breaks: true,
+    gfm: true
+  });
+  
+  // 컨텐츠 링크 설정
+  function setupContentLinks() {
+    document.querySelectorAll('a[data-content]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        normalContent.style.display = 'none';
+        splitContent.style.display = 'block';
+        loadContent(this.getAttribute('data-content'));
+      });
+    });
+  }
+  
+  // 컨텐츠 로드
+  function loadContent(path) {
+  contentDisplay.innerHTML = '<p>로딩 중...</p>';
+  
+  fetch(path)
+    .then(r => {
+      if (!r.ok) throw new Error('파일 없음');
+      return r.text();
+    })
+    .then(md => {
+      // Front matter 제거
+      let content = md.replace(/^---[\s\S]*?---\n/, '');
+      
+      // Liquid raw 태그 제거
+      const rawStart = String.fromCharCode(123, 37) + ' raw ' + String.fromCharCode(37, 125);
+      const rawEnd = String.fromCharCode(123, 37) + ' endraw ' + String.fromCharCode(37, 125);
+      content = content.replace(new RegExp(rawStart, 'g'), '').replace(new RegExp(rawEnd, 'g'), '');
+      
+      // Marked로 변환 + TOC 생성
+      let html = marked.parse(content);
+      html = generateTOC(html);
+      contentDisplay.innerHTML = html;
+      
+      // Prism 적용
+      Prism.highlightAllUnder(contentDisplay);
+    })
+    .catch(e => {
+      contentDisplay.innerHTML = `<p style="color: #e74c3c;">❌ ${e.message}</p>`;
+    });
+}
+  // 닫기 버튼
+  closeButton.addEventListener('click', function() {
+    splitContent.style.display = 'none';
+    normalContent.style.display = 'block';
+  });
+  
+  // 초기화
+  setupContentLinks();
+  
+  console.log('스크립트 초기화 완료');
+}
+
+// 초기 실행
+initSplitView();
+</script>

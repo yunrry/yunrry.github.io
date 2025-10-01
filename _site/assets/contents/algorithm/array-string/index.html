@@ -1,0 +1,843 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>배열과 문자열 조작 완벽 가이드 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="배열과 문자열 조작 완벽 가이드">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/array-string/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/array-string/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="배열과-문자열-조작-완벽-가이드">배열과 문자열 조작 완벽 가이드</h1>
+
+<h2 id="-배열의-기본-연산">📦 배열의 기본 연산</h2>
+
+<h3 id="1-배열-선언-및-초기화">1. 배열 선언 및 초기화</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1차원 배열</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5</span><span class="o">];</span>                    <span class="c1">// 크기 5, 기본값 0</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">arr2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>              <span class="c1">// 선언과 동시에 초기화</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">arr3</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>     <span class="c1">// 명시적 초기화</span>
+
+<span class="c1">// 2차원 배열</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">matrix</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][</span><span class="mi">4</span><span class="o">];</span>             <span class="c1">// 3x4 배열</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">matrix2</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">},</span>
+    <span class="o">{</span><span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">},</span>
+    <span class="o">{</span><span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">}</span>
+<span class="o">};</span>
+
+<span class="c1">// 가변 배열 (Jagged Array)</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">jagged</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][];</span>
+<span class="n">jagged</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+<span class="n">jagged</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">4</span><span class="o">];</span>
+<span class="n">jagged</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-arrays-클래스-주요-메서드">2. Arrays 클래스 주요 메서드</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">9</span><span class="o">};</span>
+
+<span class="c1">// 정렬</span>
+<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>                           <span class="c1">// [1, 2, 5, 8, 9]</span>
+<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>                     <span class="c1">// 부분 정렬 [0, 3)</span>
+
+<span class="c1">// 역순 정렬 (Wrapper 클래스 필요)</span>
+<span class="nc">Integer</span><span class="o">[]</span> <span class="n">arr2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">9</span><span class="o">};</span>
+<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr2</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
+
+<span class="c1">// 이진 탐색 (정렬된 배열에서만 사용)</span>
+<span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">binarySearch</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>    <span class="c1">// 2 반환</span>
+
+<span class="c1">// 배열 채우기</span>
+<span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>                        <span class="c1">// 모든 요소를 0으로</span>
+<span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>                 <span class="c1">// [1, 4) 구간을 -1로</span>
+
+<span class="c1">// 배열 복사</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">copy1</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>           <span class="c1">// 전체 복사</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">copy2</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOfRange</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>            <span class="c1">// [1, 4) 구간 복사</span>
+
+<span class="c1">// 배열 비교</span>
+<span class="kt">boolean</span> <span class="n">isEqual</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">copy1</span><span class="o">);</span>            <span class="c1">// true</span>
+
+<span class="c1">// 배열을 문자열로</span>
+<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>                      <span class="c1">// "[1, 2, 5, 8, 9]"</span>
+
+<span class="c1">// 2차원 배열 출력</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">matrix</span> <span class="o">=</span> <span class="o">{{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">},</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">}};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">deepToString</span><span class="o">(</span><span class="n">matrix</span><span class="o">));</span>        <span class="c1">// "[[1, 2], [3, 4]]"</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-배열-순회-방법">3. 배열 순회 방법</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+
+<span class="c1">// 방법 1: 기본 for문</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+<span class="o">}</span>
+
+<span class="c1">// 방법 2: 향상된 for문 (for-each)</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// 방법 3: Stream (Java 8+)</span>
+<span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">).</span><span class="na">forEach</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+
+<span class="c1">// 역순 순회</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="4-2차원-배열-순회">4. 2차원 배열 순회</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[][]</span> <span class="n">matrix</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">},</span>
+    <span class="o">{</span><span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">},</span>
+    <span class="o">{</span><span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">}</span>
+<span class="o">};</span>
+
+<span class="c1">// 기본 순회</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">matrix</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// 향상된 for문</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">row</span> <span class="o">:</span> <span class="n">matrix</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">row</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// 대각선 순회</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">matrix</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>      <span class="c1">// 주 대각선</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="5-배열-변환">5. 배열 변환</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 배열 → List</span>
+<span class="nc">Integer</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">arr</span><span class="o">));</span>  <span class="c1">// 수정 가능한 리스트</span>
+
+<span class="c1">// List → 배열</span>
+<span class="nc">Integer</span><span class="o">[]</span> <span class="n">arr2</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="nc">Integer</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+
+<span class="c1">// primitive 배열 → List (Stream 사용)</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">primitiveArr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list3</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">primitiveArr</span><span class="o">)</span>
+                            <span class="o">.</span><span class="na">boxed</span><span class="o">()</span>
+                            <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+
+<span class="c1">// List → primitive 배열</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">primitiveArr2</span> <span class="o">=</span> <span class="n">list3</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+                           <span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">intValue</span><span class="o">)</span>
+                           <span class="o">.</span><span class="na">toArray</span><span class="o">();</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="6-자주-사용하는-배열-패턴">6. 자주 사용하는 배열 패턴</h3>
+
+<h4 id="최댓값최솟값-찾기">최댓값/최솟값 찾기</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">9</span><span class="o">};</span>
+
+<span class="c1">// 방법 1: 반복문</span>
+<span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+<span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">min</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// 방법 2: Stream</span>
+<span class="kt">int</span> <span class="n">max2</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">).</span><span class="na">max</span><span class="o">().</span><span class="na">getAsInt</span><span class="o">();</span>
+<span class="kt">int</span> <span class="n">min2</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">).</span><span class="na">min</span><span class="o">().</span><span class="na">getAsInt</span><span class="o">();</span>
+</code></pre></div></div>
+
+<h4 id="배열-회전">배열 회전</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 왼쪽으로 k칸 회전</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">rotateLeft</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">%</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="n">reverse</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">reverse</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">k</span><span class="o">,</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">reverse</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">reverse</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">start</span><span class="o">];</span>
+        <span class="n">arr</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">end</span><span class="o">];</span>
+        <span class="n">arr</span><span class="o">[</span><span class="n">end</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+        <span class="n">start</span><span class="o">++;</span>
+        <span class="n">end</span><span class="o">--;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="부분-배열-합">부분 배열 합</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 누적 합 (Prefix Sum)</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">prefixSum</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+
+<span class="c1">// [i, j] 구간 합 = prefixSum[j+1] - prefixSum[i]</span>
+<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="o">-</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>  <span class="c1">// arr[1]~arr[3]의 합</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-문자열-조작">📝 문자열 조작</h2>
+
+<h3 id="1-string-기본-메서드">1. String 기본 메서드</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"Hello World"</span><span class="o">;</span>
+
+<span class="c1">// 길이</span>
+<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>                     <span class="c1">// 11</span>
+
+<span class="c1">// 문자 접근</span>
+<span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>                    <span class="c1">// 'H'</span>
+
+<span class="c1">// 부분 문자열</span>
+<span class="nc">String</span> <span class="n">sub1</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>          <span class="c1">// "Hello"</span>
+<span class="nc">String</span> <span class="n">sub2</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">6</span><span class="o">);</span>             <span class="c1">// "World"</span>
+
+<span class="c1">// 검색</span>
+<span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="s">"World"</span><span class="o">);</span>           <span class="c1">// 6</span>
+<span class="kt">int</span> <span class="n">lastIndex</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">lastIndexOf</span><span class="o">(</span><span class="sc">'o'</span><span class="o">);</span>       <span class="c1">// 7</span>
+<span class="kt">boolean</span> <span class="n">contains</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"llo"</span><span class="o">);</span>     <span class="c1">// true</span>
+
+<span class="c1">// 비교</span>
+<span class="kt">boolean</span> <span class="n">equals</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">);</span> <span class="c1">// true</span>
+<span class="kt">boolean</span> <span class="n">equalsIgnore</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">"hello world"</span><span class="o">);</span>  <span class="c1">// true</span>
+<span class="kt">int</span> <span class="n">compare</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span>       <span class="c1">// 양수</span>
+
+<span class="c1">// 변환</span>
+<span class="nc">String</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">();</span>           <span class="c1">// "HELLO WORLD"</span>
+<span class="nc">String</span> <span class="n">lower</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">();</span>           <span class="c1">// "hello world"</span>
+<span class="nc">String</span> <span class="n">trim</span> <span class="o">=</span> <span class="s">"  hello  "</span><span class="o">.</span><span class="na">trim</span><span class="o">();</span>           <span class="c1">// "hello"</span>
+<span class="nc">String</span> <span class="n">replace</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"World"</span><span class="o">,</span> <span class="s">"Java"</span><span class="o">);</span>  <span class="c1">// "Hello Java"</span>
+
+<span class="c1">// 분리</span>
+<span class="nc">String</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>            <span class="c1">// ["Hello", "World"]</span>
+<span class="nc">String</span><span class="o">[]</span> <span class="n">chars</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>             <span class="c1">// ["H", "e", "l", "l", "o", ...]</span>
+
+<span class="c1">// 문자열 → 문자 배열</span>
+<span class="kt">char</span><span class="o">[]</span> <span class="n">charArray</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-stringbuilder-완벽-가이드">2. StringBuilder 완벽 가이드</h3>
+
+<h4 id="왜-stringbuilder를-사용하는가">왜 StringBuilder를 사용하는가?</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ String 연결 (비효율적 - O(n²))</span>
+<span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">i</span><span class="o">;</span>  <span class="c1">// 매번 새로운 String 객체 생성</span>
+<span class="o">}</span>
+
+<span class="c1">// ✅ StringBuilder 사용 (효율적 - O(n))</span>
+<span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  <span class="c1">// 내부 버퍼에 추가만</span>
+<span class="o">}</span>
+<span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p><strong>핵심</strong>: String은 불변(immutable)이므로 연결할 때마다 새 객체 생성!</p>
+
+<hr />
+
+<h4 id="stringbuilder-주요-메서드">StringBuilder 주요 메서드</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+
+<span class="c1">// 추가 (append)</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span>                         <span class="c1">// "Hello"</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">" "</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"World"</span><span class="o">);</span>             <span class="c1">// "Hello World" (체이닝)</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="mi">123</span><span class="o">);</span>                             <span class="c1">// "Hello World123"</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>                            <span class="c1">// "Hello World123true"</span>
+
+<span class="c1">// 삽입 (insert)</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="s">","</span><span class="o">);</span>                          <span class="c1">// "Hello, World123true"</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="s">"&gt;&gt; "</span><span class="o">);</span>                        <span class="c1">// "&gt;&gt; Hello, World123true"</span>
+
+<span class="c1">// 삭제 (delete)</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>                            <span class="c1">// "Hello, World123true"</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">deleteCharAt</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>                         <span class="c1">// "Hello World123true"</span>
+
+<span class="c1">// 교체 (replace)</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="mi">11</span><span class="o">,</span> <span class="s">"Java"</span><span class="o">);</span>                  <span class="c1">// "Hello Java123true"</span>
+
+<span class="c1">// 역순 (reverse)</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">reverse</span><span class="o">();</span>                               <span class="c1">// "eurt321avaJ olleH"</span>
+
+<span class="c1">// 길이 관련</span>
+<span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>                   <span class="c1">// 현재 길이</span>
+<span class="kt">int</span> <span class="n">capacity</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">capacity</span><span class="o">();</span>               <span class="c1">// 현재 용량</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">setLength</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>                            <span class="c1">// 길이를 5로 축소</span>
+
+<span class="c1">// 문자 접근 및 수정</span>
+<span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>                     <span class="c1">// 'e'</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">setCharAt</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="sc">'E'</span><span class="o">);</span>                       <span class="c1">// "Eurt321avaJ olleH"</span>
+
+<span class="c1">// String 변환</span>
+<span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="stringbuilder-초기화">StringBuilder 초기화</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 방법 1: 기본 생성자 (용량 16)</span>
+<span class="nc">StringBuilder</span> <span class="n">sb1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+
+<span class="c1">// 방법 2: 초기 용량 지정</span>
+<span class="nc">StringBuilder</span> <span class="n">sb2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+
+<span class="c1">// 방법 3: 문자열로 초기화</span>
+<span class="nc">StringBuilder</span> <span class="n">sb3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">(</span><span class="s">"Hello"</span><span class="o">);</span>
+
+<span class="c1">// 방법 4: 다른 CharSequence로 초기화</span>
+<span class="nc">StringBuilder</span> <span class="n">sb4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">(</span><span class="n">sb3</span><span class="o">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="실전-활용-예제">실전 활용 예제</h4>
+
+<p><strong>예제 1: 배열을 문자열로 변환</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+
+<span class="c1">// 방법 1: StringBuilder</span>
+<span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"["</span><span class="o">);</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">", "</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"]"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>  <span class="c1">// "[1, 2, 3, 4, 5]"</span>
+
+<span class="c1">// 방법 2: String.join (Java 8+)</span>
+<span class="nc">String</span> <span class="n">result2</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">arr</span><span class="o">)</span>
+                       <span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="nl">String:</span><span class="o">:</span><span class="n">valueOf</span><span class="o">)</span>
+                       <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">joining</span><span class="o">(</span><span class="s">", "</span><span class="o">,</span> <span class="s">"["</span><span class="o">,</span> <span class="s">"]"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p><strong>예제 2: 문자열 뒤집기</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"Hello World"</span><span class="o">;</span>
+
+<span class="c1">// 방법 1: StringBuilder.reverse()</span>
+<span class="nc">String</span> <span class="n">reversed</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">(</span><span class="n">str</span><span class="o">).</span><span class="na">reverse</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+
+<span class="c1">// 방법 2: 직접 구현</span>
+<span class="kt">char</span><span class="o">[]</span> <span class="n">chars</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">chars</span><span class="o">.</span><span class="na">length</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="kt">char</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">chars</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="n">chars</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">chars</span><span class="o">[</span><span class="n">chars</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="o">];</span>
+    <span class="n">chars</span><span class="o">[</span><span class="n">chars</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nc">String</span> <span class="n">reversed2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">chars</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><strong>예제 3: 팰린드롬 체크</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isPalindrome</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 알파벳과 숫자만 추출 후 소문자 변환</span>
+    <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">isLetterOrDigit</span><span class="o">(</span><span class="n">c</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">(</span><span class="n">c</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="nc">String</span> <span class="n">cleaned</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="nc">String</span> <span class="n">reversed</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">reverse</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+    
+    <span class="k">return</span> <span class="n">cleaned</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">reversed</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>예제 4: 문자열 압축 (Run-Length Encoding)</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">String</span> <span class="nf">compress</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">s</span><span class="o">;</span>
+    
+    <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">count</span><span class="o">++;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">));</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 마지막 문자 처리</span>
+    <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">));</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">?</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">:</span> <span class="n">s</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// "aaabbcccc" → "a3b2c4"</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-string-vs-stringbuilder-vs-stringbuffer">3. String vs StringBuilder vs StringBuffer</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>특성</th>
+      <th>String</th>
+      <th>StringBuilder</th>
+      <th>StringBuffer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>가변성</strong></td>
+      <td>불변</td>
+      <td>가변</td>
+      <td>가변</td>
+    </tr>
+    <tr>
+      <td><strong>Thread-Safe</strong></td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td><strong>성능</strong></td>
+      <td>느림</td>
+      <td>빠름</td>
+      <td>중간</td>
+    </tr>
+    <tr>
+      <td><strong>사용 시점</strong></td>
+      <td>변경 없음</td>
+      <td>단일 스레드</td>
+      <td>멀티 스레드</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>코딩테스트에서는 StringBuilder 사용!</strong></p>
+
+<hr />
+
+<h3 id="4-문자열-처리-자주-사용하는-패턴">4. 문자열 처리 자주 사용하는 패턴</h3>
+
+<h4 id="문자-빈도수-세기">문자 빈도수 세기</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"hello world"</span><span class="o">;</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">freq</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">26</span><span class="o">];</span>  <span class="c1">// 알파벳 소문자</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="sc">'a'</span> <span class="o">&amp;&amp;</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">freq</span><span class="o">[</span><span class="n">c</span> <span class="o">-</span> <span class="sc">'a'</span><span class="o">]++;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// HashMap 사용</span>
+<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="아나그램-체크">아나그램 체크</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isAnagram</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="nc">String</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">!=</span> <span class="n">t</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">26</span><span class="o">];</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">count</span><span class="o">[</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">-</span> <span class="sc">'a'</span><span class="o">]++;</span>
+        <span class="n">count</span><span class="o">[</span><span class="n">t</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">-</span> <span class="sc">'a'</span><span class="o">]--;</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">c</span> <span class="o">:</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="부분-문자열-찾기-kmp-알고리즘-간단-버전">부분 문자열 찾기 (KMP 알고리즘 간단 버전)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">strStr</span><span class="o">(</span><span class="nc">String</span> <span class="n">haystack</span><span class="o">,</span> <span class="nc">String</span> <span class="n">needle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">needle</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="c1">// indexOf() 사용</span>
+    <span class="k">return</span> <span class="n">haystack</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">needle</span><span class="o">);</span>
+    
+    <span class="c1">// 직접 구현</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">haystack</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="n">needle</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">haystack</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">needle</span><span class="o">.</span><span class="na">length</span><span class="o">()).</span><span class="na">equals</span><span class="o">(</span><span class="n">needle</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">i</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-성능-비교">🎯 성능 비교</h2>
+
+<h3 id="string-연결-성능-테스트">String 연결 성능 테스트</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. String + 연산자 (가장 느림)</span>
+<span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+<span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s">"a"</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"String +: "</span> <span class="o">+</span> <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+
+<span class="c1">// 2. StringBuilder (가장 빠름)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+<span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"StringBuilder: "</span> <span class="o">+</span> <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+
+<span class="c1">// 3. StringBuffer (중간)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+<span class="nc">StringBuffer</span> <span class="n">sbf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">sbf</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sbf</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"StringBuffer: "</span> <span class="o">+</span> <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><strong>결과 예시</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>String +: 1234ms
+StringBuilder: 2ms
+StringBuffer: 3ms
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-코딩테스트-꿀팁">💡 코딩테스트 꿀팁</h2>
+
+<h3 id="1-입력-처리">1. 입력 처리</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="c1">// Scanner (느림)</span>
+<span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+
+<span class="c1">// BufferedReader (빠름) ⭐ 추천</span>
+<span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+<span class="nc">String</span><span class="o">[]</span> <span class="n">input</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="2-출력-처리">2. 출력 처리</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// System.out.println (느림)</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// StringBuilder (빠름) ⭐ 추천</span>
+<span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">sb</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="3-자주-쓰는-변환">3. 자주 쓰는 변환</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// String → int</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">"123"</span><span class="o">);</span>
+
+<span class="c1">// int → String</span>
+<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">123</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="mi">123</span><span class="o">);</span>
+
+<span class="c1">// char → int</span>
+<span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'5'</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">digit</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="sc">'0'</span><span class="o">;</span>  <span class="c1">// 5</span>
+
+<span class="c1">// int → char</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="n">num</span> <span class="o">+</span> <span class="sc">'0'</span><span class="o">);</span>  <span class="c1">// '5'</span>
+
+<span class="c1">// String → char[]</span>
+<span class="kt">char</span><span class="o">[]</span> <span class="n">chars</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+
+<span class="c1">// char[] → String</span>
+<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">chars</span><span class="o">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-연습-문제">📚 연습 문제</h2>
+
+<h3 id="배열">배열</h3>
+<ul>
+  <li>LeetCode 1: Two Sum</li>
+  <li>LeetCode 26: Remove Duplicates from Sorted Array</li>
+  <li>LeetCode 88: Merge Sorted Array</li>
+  <li>LeetCode 121: Best Time to Buy and Sell Stock</li>
+</ul>
+
+<h3 id="문자열">문자열</h3>
+<ul>
+  <li>LeetCode 125: Valid Palindrome</li>
+  <li>LeetCode 242: Valid Anagram</li>
+  <li>LeetCode 344: Reverse String</li>
+  <li>LeetCode 387: First Unique Character in a String</li>
+</ul>
+
+<h3 id="stringbuilder-활용">StringBuilder 활용</h3>
+<ul>
+  <li>LeetCode 443: String Compression</li>
+  <li>LeetCode 151: Reverse Words in a String</li>
+  <li>백준 10953: A+B - 6</li>
+  <li>백준 11720: 숫자의 합</li>
+</ul>
+
+<hr />
+
+<h2 id="-핵심-정리">🔑 핵심 정리</h2>
+
+<h3 id="배열-1">배열</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Arrays.sort()</code>, <code class="language-plaintext highlighter-rouge">Arrays.binarySearch()</code> 자주 사용</li>
+  <li>2차원 배열은 <code class="language-plaintext highlighter-rouge">matrix[row][col]</code> 순서 주의</li>
+  <li>List ↔ Array 변환 패턴 숙지</li>
+</ul>
+
+<h3 id="문자열-1">문자열</h3>
+<ul>
+  <li>String은 불변 → 변경 많으면 StringBuilder</li>
+  <li><code class="language-plaintext highlighter-rouge">charAt()</code>, <code class="language-plaintext highlighter-rouge">substring()</code>, <code class="language-plaintext highlighter-rouge">split()</code> 자주 사용</li>
+  <li>문자 빈도수는 <code class="language-plaintext highlighter-rouge">int[26]</code> 또는 <code class="language-plaintext highlighter-rouge">HashMap</code> 활용</li>
+</ul>
+
+<h3 id="stringbuilder">StringBuilder</h3>
+<ul>
+  <li>문자열 연결이 많을 때 필수</li>
+  <li><code class="language-plaintext highlighter-rouge">append()</code>, <code class="language-plaintext highlighter-rouge">reverse()</code>, <code class="language-plaintext highlighter-rouge">toString()</code> 핵심</li>
+  <li>코딩테스트 출력 최적화에 활용</li>
+</ul>
+
+<hr />
+
+<p>#Java #알고리즘 #코딩테스트 #배열 #문자열 #StringBuilder #Arrays #String #자료구조 #입출력최적화 #BufferedReader #성능최적화 #LeetCode #백준</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

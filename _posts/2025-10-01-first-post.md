@@ -4,7 +4,7 @@ title: "첫 번째 게시글"
 date: 2025-10-01
 tags: [시작]
 categories: 
-  - 개발
+  - Dev
 sidebar:
   nav: "categories"  
 ---

@@ -3,13 +3,48 @@
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
+@import "syntax";
+
+/* 전체 폰트 크기 축소 */
+body {
+    font-size: 18px !important;
+  }
+  
+  .page__content {
+    font-size: 0.9em !important;
+  }
+  
+  /* 헤딩 크기 축소 */
+  h1 { font-size: 1.8em !important; }
+  h2 { font-size: 1.5em !important; }
+  h3 { font-size: 1.2em !important; }
+  h4 { font-size: 1.1em !important; }
+  
+  /* 코드 블록 */
+  pre, code {
+    font-size: 0.85em !important;
+  }
+  
+  /* 리스트 */
+  ul, ol {
+    font-size: 0.9em !important;
+  }
+  
+  /* 테이블 */
+  table {
+    font-size: 0.85em !important;
+  }
+
+.site-title {
+    font-size: 1.6em !important;
+}  
 
 .nav__sub-title {
   padding-top: 24px !important;
   margin-bottom: 12px !important;
   padding-bottom: 8px !important;
   border-bottom: 2px solid #f0f0f0 !important;
-  font-size: 0.9em !important;
+  font-size: 1.5em !important;
 }
 
 /* 카테고리 간격 */
@@ -20,7 +55,7 @@
   /* Menu 제목 */
   .sidebar .nav__list .nav__items .nav__title {
     margin-bottom: 12px !important;
-    font-size: 0.9em !important;
+    font-size: 1.8em !important;
     border-bottom: 2px solid #f0f0f0 !important;
     padding-bottom: 8px !important;
   }
@@ -29,9 +64,10 @@
   .sidebar .nav__list .nav__items li a[href="/categories/dev/"],
   .sidebar .nav__list .nav__items li a[href="/categories/language/"],
   .sidebar .nav__list .nav__items li a[href="/categories/algorithm/"],
-  .sidebar .nav__list .nav__items li a[href="/categories/cs/"] {
+  .sidebar .nav__list .nav__items li a[href="/categories/cs/"],
+  .sidebar .nav__list .nav__items li a[href="/categories/"] {
     font-weight: 600 !important;
-    font-size: 0.9em !important;
+    font-size: 1.8em !important;
     color: #333 !important;
   }
   
@@ -48,6 +84,7 @@
   .sidebar .nav__list .nav__items li a[href*="/language/python"],
   .sidebar .nav__list .nav__items li a[href*="/language/javascript"],
   .sidebar .nav__list .nav__items li a[href*="/language/java"],
+  .sidebar .nav__list .nav__items li a[href*="/algorithm/basic"],
   .sidebar .nav__list .nav__items li a[href*="/algorithm/baekjoon"],
   .sidebar .nav__list .nav__items li a[href*="/algorithm/programmers"],
   .sidebar .nav__list .nav__items li a[href*="/algorithm/leetcode"],
@@ -55,7 +92,7 @@
   .sidebar .nav__list .nav__items li a[href*="/cs/network"],
   .sidebar .nav__list .nav__items li a[href*="/cs/os"],
   .sidebar .nav__list .nav__items li a[href*="/cs/database"] {
-    font-size: 0.8em !important;
+    font-size: 1.8em !important;
     color: #666 !important;
     font-weight: 400 !important;
     padding-left: 5px !important;
@@ -73,4 +110,77 @@
   .sidebar .nav__list .nav__items li a[href*="/algorithm/"]:not([href="/categories/algorithm/"]):hover,
   .sidebar .nav__list .nav__items li a[href*="/cs/"]:not([href="/categories/cs/"]):hover {
     padding-left: 10px !important;
+  }
+
+
+/* ========================================
+   Syntax Highlighting 커스터마이징
+   ======================================== */
+
+/* 코드 블록 전체 스타일 */
+.highlight {
+    margin: 1.5em 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    overflow: hidden;
+    
+    pre {
+      margin: 0;
+      padding: 1em;
+      overflow-x: auto;
+      background-color: transparent;
+      
+      code {
+        display: block;
+        line-height: 1.6;
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        font-size: 0.9em;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+      }
+    }
+  }
+  
+  /* 인라인 코드 */
+  p code,
+  li code,
+  td code {
+    background-color: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9em;
+    color: #e74c3c;
+    border: 1px solid #e1e4e8;
+  }
+  
+  /* 코드 블록 내 인라인 코드는 스타일 제거 */
+  .highlight code {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    color: inherit !important;
+  }
+  
+  /* 다크모드 지원 (선택사항) */
+  @media (prefers-color-scheme: dark) {
+    .highlight {
+      background-color: #1e1e1e;
+      border-color: #333;
+      
+      pre code {
+        color: #d4d4d4;
+      }
+    }
+    
+    p code,
+    li code,
+    td code {
+      background-color: #2d2d2d;
+      border-color: #444;
+      color: #ff6b6b;
+    }
   }
