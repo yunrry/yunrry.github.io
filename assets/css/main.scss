@@ -113,6 +113,100 @@ body {
   }
 
 
+  /* Previous/Next 네비게이션 - 반응형 */
+  .page__inner-wrap nav.pagination,
+  .layout--single nav.pagination,
+  body nav.pagination {
+    position: fixed !important;
+    bottom: 200px !important;
+    left: 36% !important;
+    // transform: translateX(-90%) !important;
+    display: flex !important;
+    gap: 100px !important;
+    z-index: 1000 !important;
+    margin: 0 !important;
+    float: none !important;
+    clear: none !important;
+    width: auto !important;
+  }
+  .pagination--pager {
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    font-size: 0.8em;
+    color: #9bd6bd;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pagination--pager:hover {
+    color: #88bca7;
+    transform: scale(1.0);
+  }
+  
+  .pagination--pager::before {
+    font-size: 0.8em;
+  }
+  
+  .pagination--pager:first-child::before {
+    content: "←";
+  }
+  
+  .pagination--pager:last-child::before {
+    content: "→";
+  }
+  
+  .pagination--pager span {
+    display: none;
+  }
+  
+  /* 반응형 */
+@media (max-width: 1200px) {
+    .page__inner-wrap nav.pagination,
+    .layout--single nav.pagination,
+    body nav.pagination {
+      gap: 400px !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .page__inner-wrap nav.pagination,
+    .layout--single nav.pagination,
+    body nav.pagination {
+      gap: 250px !important;
+      bottom: 100px !important;
+    }
+    
+    .pagination--pager {
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .page__inner-wrap nav.pagination,
+    .layout--single nav.pagination,
+    body nav.pagination {
+      gap: 150px !important;
+      bottom: 80px !important;
+    }
+    
+    .pagination--pager {
+      font-size: 0.9em;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  .page__footer {
+    padding-top: 20px;
+    margin-top: 50px;
+  }
+
 /* ========================================
    Syntax Highlighting 커스터마이징
    ======================================== */

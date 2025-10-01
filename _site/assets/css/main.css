@@ -1379,6 +1379,29 @@ table { font-size: 0.85em !important; }
 /* 하위 카테고리 호버 시 들여쓰기 */
 .sidebar .nav__list .nav__items li a[href*="/dev/"]:not([href="/categories/dev/"]):hover, .sidebar .nav__list .nav__items li a[href*="/language/"]:not([href="/categories/language/"]):hover, .sidebar .nav__list .nav__items li a[href*="/algorithm/"]:not([href="/categories/algorithm/"]):hover, .sidebar .nav__list .nav__items li a[href*="/cs/"]:not([href="/categories/cs/"]):hover { padding-left: 10px !important; }
 
+/* Previous/Next 네비게이션 - 반응형 */
+.page__inner-wrap nav.pagination, .layout--single nav.pagination, body nav.pagination { position: fixed !important; bottom: 200px !important; left: 36% !important; display: flex !important; gap: 100px !important; z-index: 1000 !important; margin: 0 !important; float: none !important; clear: none !important; width: auto !important; }
+
+.pagination--pager { width: 50px; height: 50px; background: none; border: none; font-size: 0.8em; color: #9bd6bd; cursor: pointer; transition: all 0.3s; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+
+.pagination--pager:hover { color: #88bca7; transform: scale(1); }
+
+.pagination--pager::before { font-size: 0.8em; }
+
+.pagination--pager:first-child::before { content: "←"; }
+
+.pagination--pager:last-child::before { content: "→"; }
+
+.pagination--pager span { display: none; }
+
+/* 반응형 */
+@media (max-width: 1200px) { .page__inner-wrap nav.pagination, .layout--single nav.pagination, body nav.pagination { gap: 400px !important; } }
+@media (max-width: 768px) { .page__inner-wrap nav.pagination, .layout--single nav.pagination, body nav.pagination { gap: 250px !important; bottom: 100px !important; }
+  .pagination--pager { font-size: 1em; } }
+@media (max-width: 480px) { .page__inner-wrap nav.pagination, .layout--single nav.pagination, body nav.pagination { gap: 150px !important; bottom: 80px !important; }
+  .pagination--pager { font-size: 0.9em; width: 40px; height: 40px; } }
+.page__footer { padding-top: 20px; margin-top: 50px; }
+
 /* ======================================== Syntax Highlighting 커스터마이징 ======================================== */
 /* 코드 블록 전체 스타일 */
 .highlight { margin: 1.5em 0; padding: 0; background-color: #f8f8f8; border: 1px solid #e1e4e8; border-radius: 6px; overflow: hidden; }
