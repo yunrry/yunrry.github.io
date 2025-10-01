@@ -1,0 +1,1143 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Stack, Queue, Deque - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="Stack, Queue, Deque">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/stack-queue_deque/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/stack-queue_deque/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="stack-queue-deque">Stack, Queue, Deque</h1>
+
+<p>Stack, Queue, Deque는 데이터의 삽입과 삭제 순서가 정해진 <strong>선형 자료구조</strong>입니다. 각각의 특성을 이해하고 적절히 활용하는 것이 중요합니다.</p>
+
+<hr />
+
+<h2 id="-stack-스택">📦 Stack (스택)</h2>
+
+<h3 id="lifo-last-in-first-out-구조">LIFO (Last In First Out) 구조</h3>
+
+<p><strong>나중에 들어간 것이 먼저 나온다</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>삽입(push):          제거(pop):
+     ↓                  ↑
+  [  C  ] ← top      [  C  ] ← top
+  [  B  ]            [  B  ]
+  [  A  ]            [  A  ]
+  -------            -------
+</code></pre></div></div>
+
+<p><strong>실생활 예시:</strong></p>
+<ul>
+  <li>접시 쌓기</li>
+  <li>브라우저 뒤로가기</li>
+  <li>Ctrl+Z (실행 취소)</li>
+</ul>
+
+<hr />
+
+<h3 id="java에서-stack-구현">Java에서 Stack 구현</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Stack</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StackExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="c1">// 삽입 (push) - O(1)</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">);</span>  <span class="c1">// [1, 2, 3]</span>
+        
+        <span class="c1">// 조회 (peek) - 제거하지 않고 맨 위 확인 - O(1)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">peek</span><span class="o">());</span>  <span class="c1">// 3</span>
+        
+        <span class="c1">// 제거 (pop) - O(1)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">());</span>   <span class="c1">// 3</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">());</span>   <span class="c1">// 2</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">);</span>         <span class="c1">// [1]</span>
+        
+        <span class="c1">// 비어있는지 확인</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">());</span>  <span class="c1">// false</span>
+        
+        <span class="c1">// 크기</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>     <span class="c1">// 1</span>
+        
+        <span class="c1">// 요소 검색 (1-based index, top부터)</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">search</span><span class="o">(</span><span class="mi">20</span><span class="o">));</span> <span class="c1">// 1 (top)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">search</span><span class="o">(</span><span class="mi">10</span><span class="o">));</span> <span class="c1">// 2</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">search</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>  <span class="c1">// 3</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="stack-주요-메서드">Stack 주요 메서드</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>메서드</th>
+      <th>설명</th>
+      <th>시간복잡도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">push(E item)</code></td>
+      <td>요소 삽입</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pop()</code></td>
+      <td>맨 위 요소 제거 및 반환</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">peek()</code></td>
+      <td>맨 위 요소 조회 (제거 X)</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>비어있는지 확인</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">search(Object o)</code></td>
+      <td>요소 위치 검색 (1-based)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>크기 반환</td>
+      <td>O(1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="️-stack-사용-시-주의사항">⚠️ Stack 사용 시 주의사항</h3>
+
+<p><strong>Java의 Stack 클래스는 레거시!</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 권장하지 않음 (Vector 기반, 동기화 오버헤드)</span>
+<span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// ✅ 권장: Deque 인터페이스 사용</span>
+<span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+<span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+<span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+<span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p><strong>이유:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Stack</code>은 <code class="language-plaintext highlighter-rouge">Vector</code>를 상속받아 불필요한 동기화 오버헤드</li>
+  <li><code class="language-plaintext highlighter-rouge">Deque</code>가 더 일관된 API 제공</li>
+  <li>성능도 <code class="language-plaintext highlighter-rouge">ArrayDeque</code>가 더 좋음</li>
+</ul>
+
+<hr />
+
+<h3 id="stack-실전-활용">Stack 실전 활용</h3>
+
+<h4 id="1-괄호-검증-valid-parentheses">1. 괄호 검증 (Valid Parentheses)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isValidParentheses</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'('</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'{'</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'['</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            
+            <span class="kt">char</span> <span class="n">top</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">')'</span> <span class="o">&amp;&amp;</span> <span class="n">top</span> <span class="o">!=</span> <span class="sc">'('</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'}'</span> <span class="o">&amp;&amp;</span> <span class="n">top</span> <span class="o">!=</span> <span class="sc">'{'</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">']'</span> <span class="o">&amp;&amp;</span> <span class="n">top</span> <span class="o">!=</span> <span class="sc">'['</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isValidParentheses</span><span class="o">(</span><span class="s">"()[]{}"</span><span class="o">));</span>    <span class="c1">// true</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isValidParentheses</span><span class="o">(</span><span class="s">"([)]"</span><span class="o">));</span>      <span class="c1">// false</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isValidParentheses</span><span class="o">(</span><span class="s">"{[]}"</span><span class="o">));</span>      <span class="c1">// true</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-후위-표기법-계산-postfix-evaluation">2. 후위 표기법 계산 (Postfix Evaluation)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">evalRPN</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">tokens</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">token</span> <span class="o">:</span> <span class="n">tokens</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">token</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"+"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">()</span> <span class="o">+</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">token</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"-"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">token</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"*"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">()</span> <span class="o">*</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">token</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">token</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트: ["2", "1", "+", "3", "*"] → (2 + 1) * 3 = 9</span>
+<span class="nc">String</span><span class="o">[]</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">{</span><span class="s">"2"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">,</span> <span class="s">"+"</span><span class="o">,</span> <span class="s">"3"</span><span class="o">,</span> <span class="s">"*"</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">evalRPN</span><span class="o">(</span><span class="n">tokens</span><span class="o">));</span>  <span class="c1">// 9</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="3-일일-온도-daily-temperatures">3. 일일 온도 (Daily Temperatures)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">dailyTemperatures</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">temperatures</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">temperatures</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>  <span class="c1">// 인덱스 저장</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="c1">// 현재 온도가 스택의 온도보다 높으면</span>
+        <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> 
+               <span class="n">temperatures</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temperatures</span><span class="o">[</span><span class="n">stack</span><span class="o">.</span><span class="na">peek</span><span class="o">()])</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="n">answer</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">idx</span><span class="o">;</span>  <span class="c1">// 날짜 차이</span>
+        <span class="o">}</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">temps</span> <span class="o">=</span> <span class="o">{</span><span class="mi">73</span><span class="o">,</span> <span class="mi">74</span><span class="o">,</span> <span class="mi">75</span><span class="o">,</span> <span class="mi">71</span><span class="o">,</span> <span class="mi">69</span><span class="o">,</span> <span class="mi">72</span><span class="o">,</span> <span class="mi">76</span><span class="o">,</span> <span class="mi">73</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">dailyTemperatures</span><span class="o">(</span><span class="n">temps</span><span class="o">);</span>
+<span class="c1">// [1, 1, 4, 2, 1, 1, 0, 0]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-queue-큐">🎯 Queue (큐)</h2>
+
+<h3 id="fifo-first-in-first-out-구조">FIFO (First In First Out) 구조</h3>
+
+<p><strong>먼저 들어간 것이 먼저 나온다</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>삽입(offer):                제거(poll):
+                ↓                        ↑
+  front → [A][B][C] ← rear    front → [A][B][C] ← rear
+</code></pre></div></div>
+
+<p><strong>실생활 예시:</strong></p>
+<ul>
+  <li>줄서기 (대기열)</li>
+  <li>프린터 출력 대기</li>
+  <li>BFS 알고리즘</li>
+</ul>
+
+<hr />
+
+<h3 id="java에서-queue-구현">Java에서 Queue 구현</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QueueExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// LinkedList로 구현</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="c1">// 삽입 (offer) - O(1)</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">queue</span><span class="o">);</span>  <span class="c1">// [1, 2, 3]</span>
+        
+        <span class="c1">// 조회 (peek) - 제거하지 않고 맨 앞 확인 - O(1)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">queue</span><span class="o">.</span><span class="na">peek</span><span class="o">());</span>  <span class="c1">// 1</span>
+        
+        <span class="c1">// 제거 (poll) - O(1)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">());</span>  <span class="c1">// 1</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">());</span>  <span class="c1">// 2</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">queue</span><span class="o">);</span>         <span class="c1">// [3]</span>
+        
+        <span class="c1">// 비어있는지 확인</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">());</span>  <span class="c1">// false</span>
+        
+        <span class="c1">// 크기</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">queue</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>     <span class="c1">// 1</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="queue-주요-메서드">Queue 주요 메서드</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>메서드</th>
+      <th>설명</th>
+      <th>예외 발생</th>
+      <th>시간복잡도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>offer(E e)</strong></td>
+      <td>요소 삽입</td>
+      <td>false 반환</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><strong>add(E e)</strong></td>
+      <td>요소 삽입</td>
+      <td>예외 발생</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><strong>poll()</strong></td>
+      <td>맨 앞 요소 제거 및 반환</td>
+      <td>null 반환</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><strong>remove()</strong></td>
+      <td>맨 앞 요소 제거 및 반환</td>
+      <td>예외 발생</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><strong>peek()</strong></td>
+      <td>맨 앞 요소 조회</td>
+      <td>null 반환</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><strong>element()</strong></td>
+      <td>맨 앞 요소 조회</td>
+      <td>예외 발생</td>
+      <td>O(1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>권장:</strong> 예외 대신 null을 반환하는 <code class="language-plaintext highlighter-rouge">offer()</code>, <code class="language-plaintext highlighter-rouge">poll()</code>, <code class="language-plaintext highlighter-rouge">peek()</code> 사용</p>
+
+<hr />
+
+<h3 id="queue-구현체-선택">Queue 구현체 선택</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. LinkedList - 일반적인 Queue</span>
+<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// 2. ArrayDeque - 더 빠름 (추천!)</span>
+<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// 3. PriorityQueue - 우선순위 큐</span>
+<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="queue-실전-활용">Queue 실전 활용</h3>
+
+<h4 id="1-bfs-너비-우선-탐색">1. BFS (너비 우선 탐색)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">bfs</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">graph</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+    
+    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+    <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">node</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">neighbor</span> <span class="o">:</span> <span class="n">graph</span><span class="o">[</span><span class="n">node</span><span class="o">])</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">neighbor</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">neighbor</span><span class="o">);</span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">neighbor</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-최근-요청-횟수-sliding-window">2. 최근 요청 횟수 (Sliding Window)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">RecentCounter</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">RecentCounter</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">ping</span><span class="o">(</span><span class="kt">int</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
+        
+        <span class="c1">// 3000ms 이전 요청은 제거</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">queue</span><span class="o">.</span><span class="na">peek</span><span class="o">()</span> <span class="o">&lt;</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">3000</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">queue</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 사용</span>
+<span class="nc">RecentCounter</span> <span class="n">counter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RecentCounter</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">counter</span><span class="o">.</span><span class="na">ping</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>     <span class="c1">// 1</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">counter</span><span class="o">.</span><span class="na">ping</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>   <span class="c1">// 2</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">counter</span><span class="o">.</span><span class="na">ping</span><span class="o">(</span><span class="mi">3001</span><span class="o">));</span>  <span class="c1">// 3</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">counter</span><span class="o">.</span><span class="na">ping</span><span class="o">(</span><span class="mi">3002</span><span class="o">));</span>  <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="3-큐를-이용한-스택-구현">3. 큐를 이용한 스택 구현</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MyStack</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">MyStack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+        
+        <span class="c1">// 새로 추가한 요소를 맨 앞으로</span>
+        <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">pop</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">top</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">queue</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">empty</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-deque-덱-double-ended-queue">🔄 Deque (덱, Double-Ended Queue)</h2>
+
+<h3 id="양쪽-끝에서-삽입삭제-가능">양쪽 끝에서 삽입/삭제 가능</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        addFirst()              addLast()
+             ↓                      ↓
+  front → [A][B][C][D] ← rear
+             ↑                      ↑
+        removeFirst()          removeLast()
+</code></pre></div></div>
+
+<p><strong>특징:</strong></p>
+<ul>
+  <li>Stack + Queue 기능 모두 가능</li>
+  <li>양쪽에서 O(1) 삽입/삭제</li>
+</ul>
+
+<hr />
+
+<h3 id="java에서-deque-구현">Java에서 Deque 구현</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DequeExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="c1">// 앞에 추가</span>
+        <span class="n">deque</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">deque</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">deque</span><span class="o">);</span>  <span class="c1">// [2, 1]</span>
+        
+        <span class="c1">// 뒤에 추가</span>
+        <span class="n">deque</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        <span class="n">deque</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">deque</span><span class="o">);</span>  <span class="c1">// [2, 1, 3, 4]</span>
+        
+        <span class="c1">// 앞에서 제거</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">deque</span><span class="o">.</span><span class="na">removeFirst</span><span class="o">());</span>  <span class="c1">// 2</span>
+        
+        <span class="c1">// 뒤에서 제거</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">deque</span><span class="o">.</span><span class="na">removeLast</span><span class="o">());</span>   <span class="c1">// 4</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">deque</span><span class="o">);</span>  <span class="c1">// [1, 3]</span>
+        
+        <span class="c1">// 조회</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">deque</span><span class="o">.</span><span class="na">peekFirst</span><span class="o">());</span>  <span class="c1">// 1</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">deque</span><span class="o">.</span><span class="na">peekLast</span><span class="o">());</span>   <span class="c1">// 3</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="deque-주요-메서드">Deque 주요 메서드</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>기능</th>
+      <th>앞(First)</th>
+      <th>뒤(Last)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>삽입</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">addFirst(e)</code> / <code class="language-plaintext highlighter-rouge">offerFirst(e)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">addLast(e)</code> / <code class="language-plaintext highlighter-rouge">offerLast(e)</code></td>
+    </tr>
+    <tr>
+      <td><strong>제거</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">removeFirst()</code> / <code class="language-plaintext highlighter-rouge">pollFirst()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">removeLast()</code> / <code class="language-plaintext highlighter-rouge">pollLast()</code></td>
+    </tr>
+    <tr>
+      <td><strong>조회</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">getFirst()</code> / <code class="language-plaintext highlighter-rouge">peekFirst()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">getLast()</code> / <code class="language-plaintext highlighter-rouge">peekLast()</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Stack으로 사용:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+<span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>      <span class="c1">// addFirst()</span>
+<span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+<span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>        <span class="c1">// removeFirst()</span>
+<span class="n">stack</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>       <span class="c1">// peekFirst()</span>
+</code></pre></div></div>
+
+<p><strong>Queue로 사용:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+<span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>     <span class="c1">// addLast()</span>
+<span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+<span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>       <span class="c1">// removeFirst()</span>
+<span class="n">queue</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>       <span class="c1">// peekFirst()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="deque-구현체">Deque 구현체</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. ArrayDeque - 배열 기반 (가장 빠름, 추천!)</span>
+<span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deque1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// 2. LinkedList - 연결 리스트 기반</span>
+<span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deque2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+</code></pre></div></div>
+
+<p><strong>ArrayDeque vs LinkedList:</strong></p>
+<ul>
+  <li><strong>ArrayDeque</strong>: 메모리 효율적, 캐시 친화적, 더 빠름</li>
+  <li><strong>LinkedList</strong>: 중간 삽입/삭제 시 유리 (Deque로는 거의 사용 안 함)</li>
+</ul>
+
+<hr />
+
+<h3 id="deque-실전-활용">Deque 실전 활용</h3>
+
+<h4 id="1-sliding-window-maximum">1. Sliding Window Maximum</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">maxSlidingWindow</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>  <span class="c1">// 인덱스 저장</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="c1">// 윈도우 범위를 벗어난 인덱스 제거</span>
+        <span class="k">while</span> <span class="o">(!</span><span class="n">deque</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">deque</span><span class="o">.</span><span class="na">peekFirst</span><span class="o">()</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">-</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">deque</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">();</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 현재 값보다 작은 값들 제거 (단조 감소 유지)</span>
+        <span class="k">while</span> <span class="o">(!</span><span class="n">deque</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="o">[</span><span class="n">deque</span><span class="o">.</span><span class="na">peekLast</span><span class="o">()]</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">deque</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+        <span class="o">}</span>
+        
+        <span class="n">deque</span><span class="o">.</span><span class="na">offerLast</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        
+        <span class="c1">// 윈도우가 완성되면 최댓값 추가</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">[</span><span class="n">idx</span><span class="o">++]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">deque</span><span class="o">.</span><span class="na">peekFirst</span><span class="o">()];</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">maxSlidingWindow</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+<span class="c1">// [3, 3, 5, 5, 6, 7]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-회문-검사-palindrome">2. 회문 검사 (Palindrome)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isPalindrome</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="c1">// 알파벳과 숫자만 추가</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">isLetterOrDigit</span><span class="o">(</span><span class="n">c</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">deque</span><span class="o">.</span><span class="na">offerLast</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 양끝에서 비교</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">deque</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">deque</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">()</span> <span class="o">!=</span> <span class="n">deque</span><span class="o">.</span><span class="na">pollLast</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isPalindrome</span><span class="o">(</span><span class="s">"A man, a plan, a canal: Panama"</span><span class="o">));</span>  <span class="c1">// true</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isPalindrome</span><span class="o">(</span><span class="s">"race a car"</span><span class="o">));</span>  <span class="c1">// false</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="3-최근-k개-요소-유지">3. 최근 K개 요소 유지</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">RecentItems</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Deque</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">deque</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">maxSize</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">RecentItems</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">maxSize</span> <span class="o">=</span> <span class="n">k</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="no">T</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">deque</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">maxSize</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">deque</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">();</span>  <span class="c1">// 가장 오래된 항목 제거</span>
+        <span class="o">}</span>
+        <span class="n">deque</span><span class="o">.</span><span class="na">offerLast</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>  <span class="c1">// 새 항목 추가</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nf">getRecent</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">deque</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 사용</span>
+<span class="nc">RecentItems</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">recent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RecentItems</span><span class="o">&lt;&gt;(</span><span class="mi">3</span><span class="o">);</span>
+<span class="n">recent</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"A"</span><span class="o">);</span>
+<span class="n">recent</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"B"</span><span class="o">);</span>
+<span class="n">recent</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"C"</span><span class="o">);</span>
+<span class="n">recent</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"D"</span><span class="o">);</span>  <span class="c1">// A 제거됨</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">recent</span><span class="o">.</span><span class="na">getRecent</span><span class="o">());</span>  <span class="c1">// [B, C, D]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-성능-비교">📊 성능 비교</h2>
+
+<h3 id="시간복잡도">시간복잡도</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>연산</th>
+      <th>Stack</th>
+      <th>Queue</th>
+      <th>Deque</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>삽입 (앞)</td>
+      <td>-</td>
+      <td>-</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>삽입 (뒤)</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>제거 (앞)</td>
+      <td>-</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>제거 (뒤)</td>
+      <td>O(1)</td>
+      <td>-</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>조회 (앞)</td>
+      <td>-</td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>조회 (뒤)</td>
+      <td>O(1)</td>
+      <td>-</td>
+      <td>O(1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="공간복잡도">공간복잡도</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ArrayDeque (추천)</span>
+<span class="c1">// 내부 배열 크기는 2의 거듭제곱으로 자동 조정</span>
+<span class="c1">// 초기 크기: 16</span>
+
+<span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+<span class="c1">// 메모리: 16 * 4 bytes (int) = 64 bytes</span>
+
+<span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deque2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;(</span><span class="mi">100</span><span class="o">);</span>
+<span class="c1">// 메모리: 128 * 4 bytes = 512 bytes (다음 2의 거듭제곱)</span>
+
+
+<span class="c1">// LinkedList</span>
+<span class="c1">// 각 노드: 데이터 + prev + next + 객체 오버헤드</span>
+<span class="c1">// 약 40 bytes per element</span>
+
+<span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="c1">// 100개 저장 시: ~4KB</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-자료구조-선택-가이드">🎯 자료구조 선택 가이드</h2>
+
+<h3 id="언제-무엇을-사용할까">언제 무엇을 사용할까?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>상황</th>
+      <th>선택</th>
+      <th>이유</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>후입선출(LIFO) 필요</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">ArrayDeque</code> (Stack으로)</td>
+      <td>Stack 클래스는 레거시</td>
+    </tr>
+    <tr>
+      <td><strong>선입선출(FIFO) 필요</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">ArrayDeque</code> (Queue로)</td>
+      <td>가장 빠르고 효율적</td>
+    </tr>
+    <tr>
+      <td><strong>양쪽 삽입/삭제</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">ArrayDeque</code></td>
+      <td>Deque의 기본 용도</td>
+    </tr>
+    <tr>
+      <td><strong>우선순위가 필요</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">PriorityQueue</code></td>
+      <td>최소/최대 힙</td>
+    </tr>
+    <tr>
+      <td><strong>중간 삽입/삭제</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">LinkedList</code></td>
+      <td>하지만 비추천</td>
+    </tr>
+    <tr>
+      <td><strong>BFS 구현</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">LinkedList</code> 또는 <code class="language-plaintext highlighter-rouge">ArrayDeque</code></td>
+      <td>둘 다 OK</td>
+    </tr>
+    <tr>
+      <td><strong>DFS 구현</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">ArrayDeque</code> (Stack으로)</td>
+      <td>재귀 또는 명시적 스택</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-실전-팁">💡 실전 팁</h2>
+
+<h3 id="1-stack-대신-deque-사용">1. Stack 대신 Deque 사용</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 비추천</span>
+<span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// ✅ 추천</span>
+<span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+</code></pre></div></div>
+
+<h3 id="2-예외-vs-null-반환">2. 예외 vs null 반환</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// 예외 발생 메서드</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">queue</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>  <span class="c1">// NoSuchElementException</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 처리</span>
+<span class="o">}</span>
+
+<span class="c1">// null 반환 메서드 (추천)</span>
+<span class="nc">Integer</span> <span class="n">value</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">value</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 비어있음</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="3-초기-용량-지정">3. 초기 용량 지정</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 크기를 알고 있다면 초기 용량 지정</span>
+<span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;(</span><span class="mi">1000</span><span class="o">);</span>
+<span class="c1">// 재할당 횟수 감소 → 성능 향상</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-코딩테스트-단골-문제-유형">🏆 코딩테스트 단골 문제 유형</h2>
+
+<h3 id="stack-문제">Stack 문제</h3>
+<ol>
+  <li><strong>괄호 검증</strong> - LeetCode 20</li>
+  <li><strong>일일 온도</strong> - LeetCode 739</li>
+  <li><strong>히스토그램 최대 직사각형</strong> - LeetCode 84</li>
+  <li><strong>후위 표기법 계산</strong> - LeetCode 150</li>
+  <li><strong>최소 스택</strong> - LeetCode 155</li>
+</ol>
+
+<h3 id="queue-문제">Queue 문제</h3>
+<ol>
+  <li><strong>BFS</strong> - 대부분의 그래프 문제</li>
+  <li><strong>최근 요청 횟수</strong> - LeetCode 933</li>
+  <li><strong>벽 부수고 이동하기</strong> - 백준 2206</li>
+  <li><strong>토마토</strong> - 백준 7576</li>
+  <li><strong>숨바꼭질</strong> - 백준 1697</li>
+</ol>
+
+<h3 id="deque-문제">Deque 문제</h3>
+<ol>
+  <li><strong>슬라이딩 윈도우 최댓값</strong> - LeetCode 239</li>
+  <li><strong>회전하는 큐</strong> - 백준 1021</li>
+  <li><strong>AC</strong> - 백준 5430</li>
+  <li><strong>최솟값 찾기</strong> - 백준 11003</li>
+</ol>
+
+<hr />
+
+<h2 id="-핵심-정리">📝 핵심 정리</h2>
+
+<h3 id="기억해야-할-것">기억해야 할 것</h3>
+
+<ol>
+  <li><strong>Stack = LIFO</strong> (후입선출)
+    <ul>
+      <li>실행 취소, 괄호 검증, DFS</li>
+      <li>Java에서는 <code class="language-plaintext highlighter-rouge">ArrayDeque</code> 사용 권장</li>
+    </ul>
+  </li>
+  <li><strong>Queue = FIFO</strong> (선입선출)
+    <ul>
+      <li>대기열, 작업 스케줄링, BFS</li>
+      <li><code class="language-plaintext highlighter-rouge">ArrayDeque</code> 또는 <code class="language-plaintext highlighter-rouge">LinkedList</code> 사용</li>
+    </ul>
+  </li>
+  <li><strong>Deque = 양쪽 가능</strong>
+    <ul>
+      <li>Stack + Queue 기능</li>
+      <li><code class="language-plaintext highlighter-rouge">ArrayDeque</code>가 가장 빠름</li>
+    </ul>
+  </li>
+  <li><strong>모든 기본 연산은 O(1)</strong></li>
+</ol>
+
+<h3 id="빠른-선택-차트">빠른 선택 차트</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>필요한 기능         →  선택할 자료구조
+─────────────────────────────────────
+후입선출(LIFO)     →  ArrayDeque (Stack으로)
+선입선출(FIFO)     →  ArrayDeque (Queue로)
+양쪽 삽입/삭제     →  ArrayDeque
+우선순위          →  PriorityQueue
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-연습-문제">📚 연습 문제</h2>
+
+<h3 id="문제-1-적절한-자료구조-선택">문제 1: 적절한 자료구조 선택</h3>
+<p>다음 상황에 적합한 자료구조를 선택하세요:</p>
+
+<ol>
+  <li>웹 브라우저의 뒤로가기/앞으로가기</li>
+  <li>프린터 출력 대기열</li>
+  <li>최근 검색어 10개 유지</li>
+  <li>괄호 짝 맞추기</li>
+</ol>
+
+<p><strong>정답:</strong></p>
+<ol>
+  <li>2개의 Stack (뒤로가기용, 앞으로가기용)</li>
+  <li>Queue</li>
+  <li>Deque (크기 제한)</li>
+  <li>Stack</li>
+</ol>
+
+<hr />
+
+<h3 id="문제-2-구현-연습">문제 2: 구현 연습</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 두 개의 Stack으로 Queue 구현하기</span>
+<span class="kd">class</span> <span class="nc">MyQueue</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack2</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">MyQueue</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">stack1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="n">stack2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">stack1</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">pop</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">stack2</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">while</span> <span class="o">(!</span><span class="n">stack1</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">stack2</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">stack1</span><span class="o">.</span><span class="na">pop</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">stack2</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">peek</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">stack2</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">while</span> <span class="o">(!</span><span class="n">stack1</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">stack2</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">stack1</span><span class="o">.</span><span class="na">pop</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">stack2</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">empty</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">stack1</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">stack2</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>#Java #자료구조 #Stack #Queue #Deque #LIFO #FIFO #알고리즘 #코딩테스트 #BFS #DFS #ArrayDeque</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

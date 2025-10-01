@@ -21,15 +21,15 @@ sidebar:
 - 배열의 기본 연산
 - StringBuilder 활용법
 
-#### <a href="#" data-content="/assets/contents/algorithm/list-comparison.md"><span style="color: #9bd6bd;">♡</span> ArrayList vs LinkedList</a>
+#### <a href="#" data-content="/assets/contents/algorithm/arraylist-vs-linkedlist.md"><span style="color: #9bd6bd;">♡</span> ArrayList vs LinkedList</a>
 - 차이점과 선택 기준
 - 시간복잡도 비교
 
-#### <a href="#" data-content="/assets/contents/algorithm/stack-queue.md"><span style="color: #9bd6bd;">♡</span> Stack, Queue, Deque</a>
+#### <a href="#" data-content="/assets/contents/algorithm/stack-queue_deque.md"><span style="color: #9bd6bd;">♡</span> Stack, Queue, Deque</a>
 - LIFO와 FIFO 구조
 - 실전 활용법
 
-#### <a href="#" data-content="/assets/contents/algorithm/hashmap-set.md"><span style="color: #9bd6bd;">♡</span> HashMap, HashSet</a>
+#### <a href="#" data-content="/assets/contents/algorithm/hashmap-hashset.md"><span style="color: #9bd6bd;">♡</span> HashMap, HashSet</a>
 - 해시 자료구조 이해
 - 문제 해결 패턴
 

@@ -312,26 +312,38 @@ function initSplitView() {
       return r.text();
     })
     .then(md => {
-      // Front matter 제거
       let content = md.replace(/^---[\s\S]*?---\n/, '');
       
-      // Liquid raw 태그 제거
+      // Front matter에서 날짜 추출
+      const createdMatch = md.match(/created:\s*(\d{4}-\d{2}-\d{2})/);
+      const updatedMatch = md.match(/updated:\s*(\d{4}-\d{2}-\d{2})/);
+      
+      // Liquid raw 제거
       const rawStart = String.fromCharCode(123, 37) + ' raw ' + String.fromCharCode(37, 125);
       const rawEnd = String.fromCharCode(123, 37) + ' endraw ' + String.fromCharCode(37, 125);
       content = content.replace(new RegExp(rawStart, 'g'), '').replace(new RegExp(rawEnd, 'g'), '');
       
-      // Marked로 변환 + TOC 생성
       let html = marked.parse(content);
+      
+      // 날짜 추가
+      if (createdMatch || updatedMatch) {
+        const dateInfo = `<div style="color:#999;font-size:0.85em;margin-bottom:20px;padding:10px;background:#f8f9fa;border-radius:4px;">
+          ${createdMatch ? 'created: ' + createdMatch[1] : ''} 
+          ${updatedMatch ? 'updated: ' + updatedMatch[1] : ''}
+        </div>`;
+        html = dateInfo + html;
+      }
+      
       html = generateTOC(html);
       contentDisplay.innerHTML = html;
       
-      // Prism 적용
       Prism.highlightAllUnder(contentDisplay);
     })
     .catch(e => {
       contentDisplay.innerHTML = `<p style="color: #e74c3c;">❌ ${e.message}</p>`;
     });
 }
+
   // 닫기 버튼
   closeButton.addEventListener('click', function() {
     splitContent.style.display = 'none';

@@ -1,0 +1,1730 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>HashMap, HashSet - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="HashMap, HashSet">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/hashmap-hashset/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/hashmap-hashset/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="hashmap-hashset">HashMap, HashSet</h1>
+
+<p>HashMap과 HashSet은 <strong>해시 테이블(Hash Table)</strong> 기반의 자료구조로, <strong>O(1)</strong> 시간에 데이터를 저장하고 검색할 수 있습니다.</p>
+
+<hr />
+
+<h2 id="-해시-자료구조-이해">🔍 해시 자료구조 이해</h2>
+
+<h3 id="해시-테이블의-원리">해시 테이블의 원리</h3>
+
+<p><strong>해시 함수를 사용하여 키를 배열의 인덱스로 변환</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>키(Key) → [해시 함수] → 해시 코드 → 배열 인덱스
+  "apple"  →  hashCode()  →  12345  →  index 5
+</code></pre></div></div>
+
+<p><strong>구조:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>해시 테이블 (배열)
+┌─────┬─────┬─────┬─────┬─────┐
+│  0  │  1  │  2  │  3  │  4  │
+└─────┴─────┴─────┴─────┴─────┘
+                    ↓
+                 [충돌 처리]
+                 Linked List
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="해시-충돌-hash-collision">해시 충돌 (Hash Collision)</h3>
+
+<p><strong>서로 다른 키가 같은 인덱스를 가리키는 경우</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 예시: 서로 다른 키가 같은 해시 코드를 가질 수 있음</span>
+<span class="s">"Aa"</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>  <span class="c1">// 2112</span>
+<span class="s">"BB"</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>  <span class="c1">// 2112  ← 충돌!</span>
+</code></pre></div></div>
+
+<h4 id="충돌-해결-방법">충돌 해결 방법</h4>
+
+<p><strong>1. Separate Chaining (분리 연결법)</strong></p>
+<ul>
+  <li>Java HashMap의 기본 방식</li>
+  <li>같은 인덱스에 연결 리스트로 저장</li>
+  <li>Java 8+: 리스트가 8개 이상이면 트리로 변환</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>인덱스 3: [Key1, Value1] → [Key2, Value2] → [Key3, Value3]
+</code></pre></div></div>
+
+<p><strong>2. Open Addressing (개방 주소법)</strong></p>
+<ul>
+  <li>충돌 시 다른 빈 공간을 찾음</li>
+  <li>Linear Probing, Quadratic Probing 등</li>
+</ul>
+
+<hr />
+
+<h3 id="hashmap-내부-구조">HashMap 내부 구조</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// HashMap 내부 (간단화)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="c1">// 내부 배열</span>
+    <span class="nc">Node</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;[]</span> <span class="n">table</span><span class="o">;</span>
+    
+    <span class="c1">// 저장된 요소 개수</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="o">;</span>
+    
+    <span class="c1">// 임계값 (capacity * loadFactor)</span>
+    <span class="kt">int</span> <span class="n">threshold</span><span class="o">;</span>
+    
+    <span class="c1">// 기본 용량</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">DEFAULT_INITIAL_CAPACITY</span> <span class="o">=</span> <span class="mi">16</span><span class="o">;</span>
+    
+    <span class="c1">// 로드 팩터 (75%)</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">float</span> <span class="no">DEFAULT_LOAD_FACTOR</span> <span class="o">=</span> <span class="mf">0.75f</span><span class="o">;</span>
+    
+    <span class="c1">// 노드 구조</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">hash</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="no">K</span> <span class="n">key</span><span class="o">;</span>
+        <span class="no">V</span> <span class="n">value</span><span class="o">;</span>
+        <span class="nc">Node</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="n">next</span><span class="o">;</span>  <span class="c1">// 충돌 시 연결</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>동작 과정:</strong></p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">put(key, value)</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">key.hashCode()</code> 계산</li>
+      <li>인덱스 결정: <code class="language-plaintext highlighter-rouge">hash &amp; (capacity - 1)</code></li>
+      <li>해당 위치에 저장 (충돌 시 연결)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">get(key)</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">key.hashCode()</code> 계산</li>
+      <li>인덱스로 이동</li>
+      <li><code class="language-plaintext highlighter-rouge">equals()</code>로 실제 키 비교</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="resize-재해싱">Resize (재해싱)</h3>
+
+<p><strong>로드 팩터 초과 시 배열 크기를 2배로 확장</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 현재 크기: 16, 로드 팩터: 0.75</span>
+<span class="c1">// 임계값: 16 * 0.75 = 12</span>
+
+<span class="c1">// 12개 저장 후 13번째 추가 시</span>
+<span class="c1">// → 배열 크기 32로 확장</span>
+<span class="c1">// → 모든 요소 재배치 (rehashing)</span>
+</code></pre></div></div>
+
+<p><strong>시간복잡도:</strong></p>
+<ul>
+  <li>평균: O(1)</li>
+  <li>Resize 발생: O(n)</li>
+  <li><strong>Amortized O(1)</strong>: 평균적으로 O(1)</li>
+</ul>
+
+<hr />
+
+<h2 id="️-hashmap-사용법">🗺️ HashMap 사용법</h2>
+
+<h3 id="기본-연산">기본 연산</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 생성</span>
+        <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="c1">// 삽입 - O(1)</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"apple"</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"banana"</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"orange"</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        
+        <span class="c1">// 조회 - O(1)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"apple"</span><span class="o">));</span>  <span class="c1">// 100</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"grape"</span><span class="o">));</span>  <span class="c1">// null</span>
+        
+        <span class="c1">// 기본값과 함께 조회</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="s">"grape"</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>  <span class="c1">// 0</span>
+        
+        <span class="c1">// 존재 확인 - O(1)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="s">"banana"</span><span class="o">));</span>   <span class="c1">// true</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsValue</span><span class="o">(</span><span class="mi">200</span><span class="o">));</span>      <span class="c1">// true</span>
+        
+        <span class="c1">// 삭제 - O(1)</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">"orange"</span><span class="o">);</span>
+        
+        <span class="c1">// 크기</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>  <span class="c1">// 2</span>
+        
+        <span class="c1">// 비어있는지 확인</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">());</span>  <span class="c1">// false</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="주요-메서드">주요 메서드</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>메서드</th>
+      <th>설명</th>
+      <th>시간복잡도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">put(K key, V value)</code></td>
+      <td>키-값 쌍 저장</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">get(Object key)</code></td>
+      <td>값 조회</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getOrDefault(K, V)</code></td>
+      <td>없으면 기본값 반환</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">remove(Object key)</code></td>
+      <td>삭제</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">containsKey(Object)</code></td>
+      <td>키 존재 확인</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">containsValue(Object)</code></td>
+      <td>값 존재 확인</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>크기 반환</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>비어있는지 확인</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clear()</code></td>
+      <td>모두 삭제</td>
+      <td>O(n)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="순회-방법">순회 방법</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"A"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"B"</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"C"</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+
+<span class="c1">// 1. keySet() - 키만 순회</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="c1">// 2. values() - 값만 순회</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">Integer</span> <span class="n">value</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// 3. entrySet() - 키-값 쌍 순회 (가장 효율적!)</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+<span class="o">}</span>
+
+<span class="c1">// 4. forEach (Java 8+)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="o">-&gt;</span> 
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">value</span><span class="o">)</span>
+<span class="o">);</span>
+</code></pre></div></div>
+
+<p><strong>추천:</strong> <code class="language-plaintext highlighter-rouge">entrySet()</code> 사용 (한 번에 키와 값 모두 접근)</p>
+
+<hr />
+
+<h3 id="고급-메서드-java-8">고급 메서드 (Java 8+)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// 1. putIfAbsent - 키가 없을 때만 추가</span>
+<span class="n">map</span><span class="o">.</span><span class="na">putIfAbsent</span><span class="o">(</span><span class="s">"apple"</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+<span class="n">map</span><span class="o">.</span><span class="na">putIfAbsent</span><span class="o">(</span><span class="s">"apple"</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>  <span class="c1">// 무시됨</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"apple"</span><span class="o">));</span>  <span class="c1">// 100</span>
+
+<span class="c1">// 2. compute - 값을 계산하여 저장</span>
+<span class="n">map</span><span class="o">.</span><span class="na">compute</span><span class="o">(</span><span class="s">"apple"</span><span class="o">,</span> <span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">value</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"apple"</span><span class="o">));</span>  <span class="c1">// 101</span>
+
+<span class="c1">// 3. computeIfAbsent - 키가 없을 때만 계산</span>
+<span class="n">map</span><span class="o">.</span><span class="na">computeIfAbsent</span><span class="o">(</span><span class="s">"banana"</span><span class="o">,</span> <span class="n">key</span> <span class="o">-&gt;</span> <span class="mi">50</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"banana"</span><span class="o">));</span>  <span class="c1">// 50</span>
+
+<span class="c1">// 4. computeIfPresent - 키가 있을 때만 계산</span>
+<span class="n">map</span><span class="o">.</span><span class="na">computeIfPresent</span><span class="o">(</span><span class="s">"apple"</span><span class="o">,</span> <span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">value</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"apple"</span><span class="o">));</span>  <span class="c1">// 202</span>
+
+<span class="c1">// 5. merge - 값 병합</span>
+<span class="n">map</span><span class="o">.</span><span class="na">merge</span><span class="o">(</span><span class="s">"apple"</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="nl">Integer:</span><span class="o">:</span><span class="n">sum</span><span class="o">);</span>  <span class="c1">// 기존값 + 10</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"apple"</span><span class="o">));</span>  <span class="c1">// 212</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-hashmap-문제-해결-패턴">🎯 HashMap 문제 해결 패턴</h2>
+
+<h3 id="패턴-1-빈도수-세기-frequency-count">패턴 1: 빈도수 세기 (Frequency Count)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 문자 빈도수 세기</span>
+<span class="kd">public</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">countFrequency</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="c1">// 또는: map.merge(c, 1, Integer::sum);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">map</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 사용</span>
+<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">freq</span> <span class="o">=</span> <span class="n">countFrequency</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">freq</span><span class="o">);</span>  <span class="c1">// {h=1, e=1, l=2, o=1}</span>
+</code></pre></div></div>
+
+<p><strong>응용 문제:</strong></p>
+<ul>
+  <li>가장 많이 등장한 문자 찾기</li>
+  <li>아나그램 검사</li>
+  <li>문자열 패턴 매칭</li>
+</ul>
+
+<hr />
+
+<h3 id="패턴-2-two-sum-투-포인터-대신-해시">패턴 2: Two Sum (투 포인터 대신 해시)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 두 수의 합이 target이 되는 인덱스 찾기</span>
+<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">twoSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">complement</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">complement</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">complement</span><span class="o">),</span> <span class="n">i</span><span class="o">};</span>
+        <span class="o">}</span>
+        
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">};</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">11</span><span class="o">,</span> <span class="mi">15</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">twoSum</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="mi">9</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">result</span><span class="o">));</span>  <span class="c1">// [0, 1]</span>
+</code></pre></div></div>
+
+<p><strong>시간복잡도:</strong> O(n) (배열 한 번 순회)</p>
+
+<hr />
+
+<h3 id="패턴-3-그룹화-grouping">패턴 3: 그룹화 (Grouping)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 아나그램 그룹화</span>
+<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="nf">groupAnagrams</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">strs</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">strs</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 정렬된 문자열을 키로 사용</span>
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">chars</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">chars</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">key</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">chars</span><span class="o">);</span>
+        
+        <span class="n">map</span><span class="o">.</span><span class="na">computeIfAbsent</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">k</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;()).</span><span class="na">add</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">map</span><span class="o">.</span><span class="na">values</span><span class="o">());</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="nc">String</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="o">{</span><span class="s">"eat"</span><span class="o">,</span> <span class="s">"tea"</span><span class="o">,</span> <span class="s">"tan"</span><span class="o">,</span> <span class="s">"ate"</span><span class="o">,</span> <span class="s">"nat"</span><span class="o">,</span> <span class="s">"bat"</span><span class="o">};</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">groups</span> <span class="o">=</span> <span class="n">groupAnagrams</span><span class="o">(</span><span class="n">words</span><span class="o">);</span>
+<span class="c1">// [[eat, tea, ate], [tan, nat], [bat]]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-4-캐싱-memoization">패턴 4: 캐싱 (Memoization)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 피보나치 수열 (메모이제이션)</span>
+<span class="kd">class</span> <span class="nc">Fibonacci</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="n">memo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">fib</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
+        
+        <span class="c1">// 캐시에 있으면 반환</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">memo</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">n</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">memo</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 계산 후 캐시에 저장</span>
+        <span class="kt">long</span> <span class="n">result</span> <span class="o">=</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="n">memo</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">result</span><span class="o">);</span>
+        
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 사용</span>
+<span class="nc">Fibonacci</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Fibonacci</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f</span><span class="o">.</span><span class="na">fib</span><span class="o">(</span><span class="mi">50</span><span class="o">));</span>  <span class="c1">// 빠르게 계산!</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-5-중복-제거-deduplication">패턴 5: 중복 제거 (Deduplication)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 중복되지 않는 첫 번째 문자 찾기</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">firstUniqChar</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="c1">// 1. 빈도수 세기</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">count</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 2. 첫 번째 고유 문자 찾기</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">))</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">i</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">firstUniqChar</span><span class="o">(</span><span class="s">"leetcode"</span><span class="o">));</span>     <span class="c1">// 0 (l)</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">firstUniqChar</span><span class="o">(</span><span class="s">"loveleetcode"</span><span class="o">));</span> <span class="c1">// 2 (v)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-6-윈도우-내-요소-추적">패턴 6: 윈도우 내 요소 추적</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 연속된 K개의 고유 정수</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">lengthOfLongestSubstringKDistinct</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">maxLen</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">right</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">right</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+        
+        <span class="c1">// 고유 문자가 k개 초과하면 왼쪽 축소</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">char</span> <span class="n">leftChar</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">left</span><span class="o">);</span>
+            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">leftChar</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">leftChar</span><span class="o">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">leftChar</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">leftChar</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">left</span><span class="o">++;</span>
+        <span class="o">}</span>
+        
+        <span class="n">maxLen</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxLen</span><span class="o">,</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">maxLen</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-hashset-사용법">🎨 HashSet 사용법</h2>
+
+<h3 id="기본-개념">기본 개념</h3>
+
+<p><strong>HashSet = HashMap의 Key만 사용</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 내부 구조</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="no">E</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">;</span>  <span class="c1">// Value는 더미 객체</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Object</span> <span class="no">PRESENT</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">();</span>
+    
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">add</span><span class="o">(</span><span class="no">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="no">PRESENT</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="기본-연산-1">기본 연산</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashSetExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 생성</span>
+        <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="c1">// 추가 - O(1)</span>
+        <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"apple"</span><span class="o">);</span>
+        <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"banana"</span><span class="o">);</span>
+        <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"orange"</span><span class="o">);</span>
+        <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"apple"</span><span class="o">);</span>  <span class="c1">// 중복, 무시됨</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">set</span><span class="o">);</span>  <span class="c1">// [banana, orange, apple]</span>
+        
+        <span class="c1">// 존재 확인 - O(1)</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"apple"</span><span class="o">));</span>  <span class="c1">// true</span>
+        
+        <span class="c1">// 삭제 - O(1)</span>
+        <span class="n">set</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">"banana"</span><span class="o">);</span>
+        
+        <span class="c1">// 크기</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>  <span class="c1">// 2</span>
+        
+        <span class="c1">// 순회</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">item</span> <span class="o">:</span> <span class="n">set</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 모두 삭제</span>
+        <span class="n">set</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="주요-메서드-1">주요 메서드</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>메서드</th>
+      <th>설명</th>
+      <th>시간복잡도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">add(E e)</code></td>
+      <td>요소 추가</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">remove(Object o)</code></td>
+      <td>요소 삭제</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">contains(Object o)</code></td>
+      <td>존재 확인</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>크기 반환</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>비어있는지 확인</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clear()</code></td>
+      <td>모두 삭제</td>
+      <td>O(n)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="집합-연산">집합 연산</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">set1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+<span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">set2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">));</span>
+
+<span class="c1">// 1. 합집합 (Union)</span>
+<span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">union</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;(</span><span class="n">set1</span><span class="o">);</span>
+<span class="n">union</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">set2</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">union</span><span class="o">);</span>  <span class="c1">// [1, 2, 3, 4, 5, 6, 7, 8]</span>
+
+<span class="c1">// 2. 교집합 (Intersection)</span>
+<span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">intersection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;(</span><span class="n">set1</span><span class="o">);</span>
+<span class="n">intersection</span><span class="o">.</span><span class="na">retainAll</span><span class="o">(</span><span class="n">set2</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intersection</span><span class="o">);</span>  <span class="c1">// [4, 5]</span>
+
+<span class="c1">// 3. 차집합 (Difference)</span>
+<span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">difference</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;(</span><span class="n">set1</span><span class="o">);</span>
+<span class="n">difference</span><span class="o">.</span><span class="na">removeAll</span><span class="o">(</span><span class="n">set2</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">difference</span><span class="o">);</span>  <span class="c1">// [1, 2, 3]</span>
+
+<span class="c1">// 4. 부분집합 확인</span>
+<span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">subset</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">set1</span><span class="o">.</span><span class="na">containsAll</span><span class="o">(</span><span class="n">subset</span><span class="o">));</span>  <span class="c1">// true</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-hashset-문제-해결-패턴">🎯 HashSet 문제 해결 패턴</h2>
+
+<h3 id="패턴-1-중복-제거">패턴 1: 중복 제거</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 배열에서 중복 제거</span>
+<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">removeDuplicates</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">set</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">intValue</span><span class="o">).</span><span class="na">toArray</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// 또는 간단하게</span>
+<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">removeDuplicates</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;(</span><span class="n">list</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-2-존재-여부-빠른-확인">패턴 2: 존재 여부 빠른 확인</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 배열에 중복이 있는지 확인</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">containsDuplicate</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">num</span><span class="o">))</span> <span class="o">{</span>  <span class="c1">// add()가 false를 반환하면 중복</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">containsDuplicate</span><span class="o">(</span><span class="n">nums1</span><span class="o">));</span>  <span class="c1">// true</span>
+
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">containsDuplicate</span><span class="o">(</span><span class="n">nums2</span><span class="o">));</span>  <span class="c1">// false</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-3-두-배열의-교집합">패턴 3: 두 배열의 교집합</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 두 배열의 교집합 (중복 제거)</span>
+<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">intersection</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums1</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">set1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">nums1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">set1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">nums2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">set1</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">num</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">intValue</span><span class="o">).</span><span class="na">toArray</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">intersection</span><span class="o">(</span><span class="n">nums1</span><span class="o">,</span> <span class="n">nums2</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">result</span><span class="o">));</span>  <span class="c1">// [2]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-4-가장-긴-연속-수열">패턴 4: 가장 긴 연속 수열</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 정렬하지 않고 가장 긴 연속 수열 길이 찾기</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">longestConsecutive</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kt">int</span> <span class="n">longest</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">set</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 시퀀스의 시작점인지 확인</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">set</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">currentNum</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">currentStreak</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            
+            <span class="c1">// 연속된 숫자 카운트</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">currentNum</span> <span class="o">+</span> <span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">currentNum</span><span class="o">++;</span>
+                <span class="n">currentStreak</span><span class="o">++;</span>
+            <span class="o">}</span>
+            
+            <span class="n">longest</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">longest</span><span class="o">,</span> <span class="n">currentStreak</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">longest</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">100</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">longestConsecutive</span><span class="o">(</span><span class="n">nums</span><span class="o">));</span>  <span class="c1">// 4 (1,2,3,4)</span>
+</code></pre></div></div>
+
+<p><strong>시간복잡도:</strong> O(n) - 각 숫자는 시작점일 때만 확인</p>
+
+<hr />
+
+<h3 id="패턴-5-해피-넘버-사이클-감지">패턴 5: 해피 넘버 (사이클 감지)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 해피 넘버: 각 자릿수 제곱의 합이 1이 되는지</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isHappy</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">seen</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">while</span> <span class="o">(</span><span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">seen</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">n</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">seen</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">getNext</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kt">int</span> <span class="nf">getNext</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">digit</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">*</span> <span class="n">digit</span><span class="o">;</span>
+        <span class="n">n</span> <span class="o">/=</span> <span class="mi">10</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isHappy</span><span class="o">(</span><span class="mi">19</span><span class="o">));</span>  <span class="c1">// true (1²+9²=82 → 8²+2²=68 → ... → 1)</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isHappy</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>   <span class="c1">// false (사이클)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-hashmap-vs-hashset-vs-treemap-vs-treeset">📊 HashMap vs HashSet vs TreeMap vs TreeSet</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>특성</th>
+      <th>HashMap</th>
+      <th>HashSet</th>
+      <th>TreeMap</th>
+      <th>TreeSet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>구조</strong></td>
+      <td>Key-Value</td>
+      <td>Key만</td>
+      <td>Key-Value 정렬</td>
+      <td>Key만 정렬</td>
+    </tr>
+    <tr>
+      <td><strong>순서</strong></td>
+      <td>없음</td>
+      <td>없음</td>
+      <td>정렬됨</td>
+      <td>정렬됨</td>
+    </tr>
+    <tr>
+      <td><strong>중복 Key</strong></td>
+      <td>불가</td>
+      <td>불가</td>
+      <td>불가</td>
+      <td>불가</td>
+    </tr>
+    <tr>
+      <td><strong>null 허용</strong></td>
+      <td>1개</td>
+      <td>1개</td>
+      <td>불가</td>
+      <td>불가</td>
+    </tr>
+    <tr>
+      <td><strong>삽입/검색</strong></td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+      <td>O(log n)</td>
+      <td>O(log n)</td>
+    </tr>
+    <tr>
+      <td><strong>사용 시점</strong></td>
+      <td>빠른 검색</td>
+      <td>중복 제거</td>
+      <td>정렬 필요</td>
+      <td>정렬 필요</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="️-주의사항">⚠️ 주의사항</h2>
+
+<h3 id="1-equals와-hashcode-오버라이드">1. equals()와 hashCode() 오버라이드</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 잘못된 예</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    
+    <span class="c1">// equals와 hashCode 미구현</span>
+<span class="o">}</span>
+
+<span class="nc">Person</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="mi">25</span><span class="o">);</span>
+<span class="nc">Person</span> <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="mi">25</span><span class="o">);</span>
+
+<span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+<span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">p1</span><span class="o">);</span>
+<span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">p2</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>  <span class="c1">// 2 (같은 사람인데 중복!)</span>
+
+
+<span class="c1">// ✅ 올바른 예</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">o</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">o</span><span class="o">.</span><span class="na">getClass</span><span class="o">())</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="nc">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Person</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">age</span> <span class="o">==</span> <span class="n">person</span><span class="o">.</span><span class="na">age</span> <span class="o">&amp;&amp;</span> <span class="nc">Objects</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">person</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Objects</span><span class="o">.</span><span class="na">hash</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">p1</span><span class="o">);</span>
+<span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">p2</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>  <span class="c1">// 1 (올바르게 중복 제거)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-mutable-객체를-key로-사용-금지">2. Mutable 객체를 Key로 사용 금지</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 위험한 코드</span>
+<span class="kd">class</span> <span class="nc">MutableKey</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setValue</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// equals, hashCode 구현...</span>
+<span class="o">}</span>
+
+<span class="nc">MutableKey</span> <span class="n">key</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MutableKey</span><span class="o">();</span>
+<span class="n">key</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+
+<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">MutableKey</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="s">"value"</span><span class="o">);</span>
+
+<span class="n">key</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>  <span class="c1">// Key 변경!</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>  <span class="c1">// null! (해시 코드 변경됨)</span>
+</code></pre></div></div>
+
+<p><strong>해결책:</strong> Immutable 객체 사용 (String, Integer 등)</p>
+
+<hr />
+
+<h3 id="3-thread-safety">3. Thread-Safety</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// HashMap은 Thread-Safe하지 않음</span>
+
+<span class="c1">// 방법 1: ConcurrentHashMap 사용</span>
+<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcurrentHashMap</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// 방법 2: Collections.synchronizedMap</span>
+<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">syncMap</span> <span class="o">=</span> 
+    <span class="nc">Collections</span><span class="o">.</span><span class="na">synchronizedMap</span><span class="o">(</span><span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;());</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-성능-최적화-팁">💡 성능 최적화 팁</h2>
+
+<h3 id="1-초기-용량-지정">1. 초기 용량 지정</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 기본 용량 (16)</span>
+<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// ✅ 예상 크기만큼 미리 할당</span>
+<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;(</span><span class="mi">1000</span><span class="o">);</span>
+
+<span class="c1">// 재할당 횟수 감소 → 성능 향상</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-로드-팩터-조정">2. 로드 팩터 조정</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 기본 로드 팩터: 0.75 (75%)</span>
+<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// 메모리 절약 (충돌 증가)</span>
+<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;(</span><span class="mi">16</span><span class="o">,</span> <span class="mf">0.9f</span><span class="o">);</span>
+
+<span class="c1">// 속도 우선 (메모리 증가)</span>
+<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;(</span><span class="mi">16</span><span class="o">,</span> <span class="mf">0.5f</span><span class="o">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-containsvalue-사용-주의">3. containsValue() 사용 주의</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ O(n) - 느림</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsValue</span><span class="o">(</span><span class="mi">100</span><span class="o">))</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+
+<span class="c1">// ✅ 값으로도 검색이 필요하면 역방향 Map 유지</span>
+<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">nameToAge</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">ageToName</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+
+<span class="n">nameToAge</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="mi">25</span><span class="o">);</span>
+<span class="n">ageToName</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">25</span><span class="o">,</span> <span class="s">"John"</span><span class="o">);</span>
+
+<span class="c1">// O(1)로 양방향 검색 가능</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-코딩테스트-단골-문제">🏆 코딩테스트 단골 문제</h2>
+
+<h3 id="hashmap-문제">HashMap 문제</h3>
+<ol>
+  <li><strong>Two Sum</strong> - LeetCode 1</li>
+  <li><strong>Group Anagrams</strong> - LeetCode 49</li>
+  <li><strong>Subarray Sum Equals K</strong> - LeetCode 560</li>
+  <li><strong>LRU Cache</strong> - LeetCode 146</li>
+  <li><strong>First Unique Character</strong> - LeetCode 387</li>
+</ol>
+
+<h3 id="hashset-문제">HashSet 문제</h3>
+<ol>
+  <li><strong>Contains Duplicate</strong> - LeetCode 217</li>
+  <li><strong>Intersection of Two Arrays</strong> - LeetCode 349</li>
+  <li><strong>Longest Consecutive Sequence</strong> - LeetCode 128</li>
+  <li><strong>Happy Number</strong> - LeetCode 202</li>
+  <li><strong>Valid Sudoku</strong> - LeetCode 36</li>
+</ol>
+
+<hr />
+
+<h2 id="-핵심-정리">📝 핵심 정리</h2>
+
+<h3 id="언제-사용할까">언제 사용할까?</h3>
+
+<p><strong>HashMap:</strong></p>
+<ul>
+  <li>키-값 매핑이 필요할 때</li>
+  <li>빈도수 계산</li>
+  <li>빠른 검색/삽입/삭제</li>
+  <li>캐싱, 메모이제이션</li>
+</ul>
+
+<p><strong>HashSet:</strong></p>
+<ul>
+  <li>중복 제거</li>
+  <li>존재 여부만 확인</li>
+  <li>집합 연산 (합집합, 교집합)</li>
+  <li>방문 체크</li>
+</ul>
+
+<h3 id="기억할-것">기억할 것</h3>
+
+<ol>
+  <li><strong>평균 O(1)</strong> 시간복잡도</li>
+  <li><strong>순서 보장 안 됨</strong> (LinkedHashMap 사용 시 가능)</li>
+  <li><strong>equals()와 hashCode() 필수</strong></li>
+  <li><strong>Key는 Immutable 권장</strong></li>
+  <li><strong>초기 용량 지정</strong>으로 성능 향상</li>
+</ol>
+
+<hr />
+
+<h2 id="-실전-문제-풀이">🎓 실전 문제 풀이</h2>
+
+<h3 id="문제-1-로마-숫자를-정수로-변환">문제 1: 로마 숫자를 정수로 변환</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">romanToInt</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'I'</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'V'</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'X'</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'L'</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'C'</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'D'</span><span class="o">,</span> <span class="mi">500</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'M'</span><span class="o">,</span> <span class="mi">1000</span><span class="o">);</span>
+    
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">prevValue</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">currentValue</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">currentValue</span> <span class="o">&lt;</span> <span class="n">prevValue</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span> <span class="o">-=</span> <span class="n">currentValue</span><span class="o">;</span>  <span class="c1">// IV = 5 - 1</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">currentValue</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="n">prevValue</span> <span class="o">=</span> <span class="n">currentValue</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">romanToInt</span><span class="o">(</span><span class="s">"III"</span><span class="o">));</span>     <span class="c1">// 3</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">romanToInt</span><span class="o">(</span><span class="s">"LVIII"</span><span class="o">));</span>   <span class="c1">// 58</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">romanToInt</span><span class="o">(</span><span class="s">"MCMXCIV"</span><span class="o">));</span> <span class="c1">// 1994</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-2-부분-배열의-합이-k인-경우의-수">문제 2: 부분 배열의 합이 K인 경우의 수</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Prefix Sum + HashMap</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">subarraySum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">prefixSumCount</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">prefixSumCount</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>  <span class="c1">// 초기값</span>
+    
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">num</span><span class="o">;</span>
+        
+        <span class="c1">// sum - k가 이전에 나왔다면</span>
+        <span class="c1">// 그 지점부터 현재까지의 합이 k</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">prefixSumCount</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">sum</span> <span class="o">-</span> <span class="n">k</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="n">prefixSumCount</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">sum</span> <span class="o">-</span> <span class="n">k</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="n">prefixSumCount</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">sum</span><span class="o">,</span> <span class="n">prefixSumCount</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">sum</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">subarraySum</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>  <span class="c1">// 2 ([1,1], [1,1])</span>
+
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">subarraySum</span><span class="o">(</span><span class="n">nums2</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span> <span class="c1">// 2 ([1,2], [3])</span>
+</code></pre></div></div>
+
+<p><strong>시간복잡도:</strong> O(n)
+<strong>핵심:</strong> Prefix Sum을 HashMap에 저장하여 부분합 빠르게 계산</p>
+
+<hr />
+
+<h3 id="문제-3-가장-많이-등장한-k개의-요소">문제 3: 가장 많이 등장한 K개의 요소</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">topKFrequent</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 1. 빈도수 계산</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">count</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 2. 우선순위 큐 (빈도수 기준 최대 힙)</span>
+    <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">pq</span> <span class="o">=</span> 
+        <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">b</span><span class="o">.</span><span class="na">getValue</span><span class="o">()</span> <span class="o">-</span> <span class="n">a</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+    
+    <span class="n">pq</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">count</span><span class="o">.</span><span class="na">entrySet</span><span class="o">());</span>
+    
+    <span class="c1">// 3. 상위 K개 추출</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">result</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">().</span><span class="na">getKey</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">topKFrequent</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">result</span><span class="o">));</span>  <span class="c1">// [1, 2]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-4-이진-트리의-수직-순회">문제 4: 이진 트리의 수직 순회</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">verticalOrder</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    
+    <span class="c1">// 열 번호 → 노드 값 리스트</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="c1">// BFS + 열 번호 추적</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Pair</span><span class="o">&lt;</span><span class="nc">TreeNode</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Pair</span><span class="o">&lt;&gt;(</span><span class="n">root</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>
+    
+    <span class="kt">int</span> <span class="n">minCol</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">maxCol</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="nc">Pair</span><span class="o">&lt;</span><span class="nc">TreeNode</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">pair</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        <span class="nc">TreeNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">pair</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="n">pair</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+        
+        <span class="n">map</span><span class="o">.</span><span class="na">computeIfAbsent</span><span class="o">(</span><span class="n">col</span><span class="o">,</span> <span class="n">k</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;()).</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+        
+        <span class="n">minCol</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minCol</span><span class="o">,</span> <span class="n">col</span><span class="o">);</span>
+        <span class="n">maxCol</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxCol</span><span class="o">,</span> <span class="n">col</span><span class="o">);</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Pair</span><span class="o">&lt;&gt;(</span><span class="n">node</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">col</span> <span class="o">-</span> <span class="mi">1</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Pair</span><span class="o">&lt;&gt;(</span><span class="n">node</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 열 순서대로 결과 생성</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">minCol</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">maxCol</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-5-랜섬-노트-ransom-note">문제 5: 랜섬 노트 (Ransom Note)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// magazine의 글자로 ransomNote를 만들 수 있는지</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">canConstruct</span><span class="o">(</span><span class="nc">String</span> <span class="n">ransomNote</span><span class="o">,</span> <span class="nc">String</span> <span class="n">magazine</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="c1">// magazine 글자 세기</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">magazine</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">count</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// ransomNote 글자 확인</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">ransomNote</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">count</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="o">||</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">count</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">canConstruct</span><span class="o">(</span><span class="s">"a"</span><span class="o">,</span> <span class="s">"b"</span><span class="o">));</span>        <span class="c1">// false</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">canConstruct</span><span class="o">(</span><span class="s">"aa"</span><span class="o">,</span> <span class="s">"aab"</span><span class="o">));</span>     <span class="c1">// true</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">canConstruct</span><span class="o">(</span><span class="s">"aa"</span><span class="o">,</span> <span class="s">"ab"</span><span class="o">));</span>      <span class="c1">// false</span>
+</code></pre></div></div>
+
+<p><strong>최적화:</strong> 알파벳만 사용한다면 <code class="language-plaintext highlighter-rouge">int[26]</code> 배열이 더 빠름</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">canConstructOptimized</span><span class="o">(</span><span class="nc">String</span> <span class="n">ransomNote</span><span class="o">,</span> <span class="nc">String</span> <span class="n">magazine</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">26</span><span class="o">];</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">magazine</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">count</span><span class="o">[</span><span class="n">c</span> <span class="o">-</span> <span class="sc">'a'</span><span class="o">]++;</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">ransomNote</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(--</span><span class="n">count</span><span class="o">[</span><span class="n">c</span> <span class="o">-</span> <span class="sc">'a'</span><span class="o">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-6-동형-문자열-isomorphic-strings">문제 6: 동형 문자열 (Isomorphic Strings)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// s와 t가 동형인지 확인 (일대일 매핑)</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isIsomorphic</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="nc">String</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">!=</span> <span class="n">t</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Character</span><span class="o">&gt;</span> <span class="n">mapS</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Character</span><span class="o">&gt;</span> <span class="n">mapT</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        
+        <span class="c1">// s → t 매핑 확인</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">mapS</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">c1</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">mapS</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c1</span><span class="o">)</span> <span class="o">!=</span> <span class="n">c2</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">mapS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c1</span><span class="o">,</span> <span class="n">c2</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// t → s 매핑 확인 (양방향)</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">mapT</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">c2</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">mapT</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c2</span><span class="o">)</span> <span class="o">!=</span> <span class="n">c1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">mapT</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c2</span><span class="o">,</span> <span class="n">c1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isIsomorphic</span><span class="o">(</span><span class="s">"egg"</span><span class="o">,</span> <span class="s">"add"</span><span class="o">));</span>   <span class="c1">// true</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isIsomorphic</span><span class="o">(</span><span class="s">"foo"</span><span class="o">,</span> <span class="s">"bar"</span><span class="o">));</span>   <span class="c1">// false</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isIsomorphic</span><span class="o">(</span><span class="s">"paper"</span><span class="o">,</span> <span class="s">"title"</span><span class="o">));</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-7-단어-패턴-word-pattern">문제 7: 단어 패턴 (Word Pattern)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">wordPattern</span><span class="o">(</span><span class="nc">String</span> <span class="n">pattern</span><span class="o">,</span> <span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">String</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">pattern</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">!=</span> <span class="n">words</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">charToWord</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Character</span><span class="o">&gt;</span> <span class="n">wordToChar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">pattern</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">word</span> <span class="o">=</span> <span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        
+        <span class="c1">// 문자 → 단어 매핑</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">charToWord</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">c</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">charToWord</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">word</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">charToWord</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">word</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 단어 → 문자 매핑</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">wordToChar</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">word</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">wordToChar</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">word</span><span class="o">)</span> <span class="o">!=</span> <span class="n">c</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">wordToChar</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="n">c</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">wordPattern</span><span class="o">(</span><span class="s">"abba"</span><span class="o">,</span> <span class="s">"dog cat cat dog"</span><span class="o">));</span>  <span class="c1">// true</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">wordPattern</span><span class="o">(</span><span class="s">"abba"</span><span class="o">,</span> <span class="s">"dog cat cat fish"</span><span class="o">));</span> <span class="c1">// false</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">wordPattern</span><span class="o">(</span><span class="s">"aaaa"</span><span class="o">,</span> <span class="s">"dog cat cat dog"</span><span class="o">));</span>  <span class="c1">// false</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-고급-패턴">🔥 고급 패턴</h2>
+
+<h3 id="패턴-1-lru-cache-구현">패턴 1: LRU Cache 구현</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">LRUCache</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">capacity</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LinkedHashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">cache</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">LRUCache</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">capacity</span> <span class="o">=</span> <span class="n">capacity</span><span class="o">;</span>
+        <span class="c1">// accessOrder = true → 접근 순서 유지</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedHashMap</span><span class="o">&lt;&gt;(</span><span class="n">capacity</span><span class="o">,</span> <span class="mf">0.75f</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="kt">boolean</span> <span class="nf">removeEldestEntry</span><span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span> <span class="n">eldest</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="nf">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">capacity</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">put</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">,</span> <span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 사용</span>
+<span class="nc">LRUCache</span> <span class="n">cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LRUCache</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+<span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+<span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>    <span class="c1">// 1</span>
+<span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>                     <span class="c1">// 2 제거됨</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>    <span class="c1">// -1</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-2-trie를-hashmap으로-구현">패턴 2: Trie를 HashMap으로 구현</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">TrieNode</span> <span class="o">{</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">TrieNode</span><span class="o">&gt;</span> <span class="n">children</span><span class="o">;</span>
+    <span class="kt">boolean</span> <span class="n">isEndOfWord</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">TrieNode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">children</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">isEndOfWord</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Trie</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">TrieNode</span> <span class="n">root</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Trie</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TrieNode</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insert</span><span class="o">(</span><span class="nc">String</span> <span class="n">word</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">TrieNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">word</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">node</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">putIfAbsent</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="k">new</span> <span class="nc">TrieNode</span><span class="o">());</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">node</span><span class="o">.</span><span class="na">isEndOfWord</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">search</span><span class="o">(</span><span class="nc">String</span> <span class="n">word</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">TrieNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">word</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">node</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">c</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="na">isEndOfWord</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">startsWith</span><span class="o">(</span><span class="nc">String</span> <span class="n">prefix</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">TrieNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">prefix</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">node</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">c</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-3-union-find를-hashmap으로">패턴 3: Union-Find를 HashMap으로</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">UnionFind</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">parent</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">rank</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">UnionFind</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">rank</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">parent</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">x</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">parent</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">x</span><span class="o">);</span>
+            <span class="n">rank</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">find</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">!=</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">parent</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">find</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">x</span><span class="o">)));</span>  <span class="c1">// 경로 압축</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">parent</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">rootX</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">rootY</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">y</span><span class="o">);</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">rootX</span> <span class="o">!=</span> <span class="n">rootY</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Rank 기반 합치기</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rootX</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">rank</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rootY</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">parent</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">rootX</span><span class="o">,</span> <span class="n">rootY</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rootX</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">rank</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rootY</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">parent</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">rootY</span><span class="o">,</span> <span class="n">rootX</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">parent</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">rootY</span><span class="o">,</span> <span class="n">rootX</span><span class="o">);</span>
+                <span class="n">rank</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">rootX</span><span class="o">,</span> <span class="n">rank</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rootX</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">connected</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">find</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">==</span> <span class="n">find</span><span class="o">(</span><span class="n">y</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-성능-비교-실험">📈 성능 비교 실험</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashPerformanceTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+        
+        <span class="c1">// HashMap 성능 테스트</span>
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"HashMap: "</span> <span class="o">+</span> 
+            <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+        
+        <span class="c1">// TreeMap 성능 테스트</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">TreeMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">treeMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeMap</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">treeMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">treeMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"TreeMap: "</span> <span class="o">+</span> 
+            <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+        
+        <span class="c1">// ArrayList 검색 성능 (비교용)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ArrayList: "</span> <span class="o">+</span> 
+            <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/* 예상 출력 (100만 건):
+HashMap: 150ms    (O(1))
+TreeMap: 800ms    (O(log n))
+ArrayList: 매우 느림 (O(n²))
+*/</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-면접-준비-핵심-질문">🎯 면접 준비 핵심 질문</h2>
+
+<h3 id="q1-hashmap의-시간복잡도가-항상-o1인가요">Q1: HashMap의 시간복잡도가 항상 O(1)인가요?</h3>
+
+<p><strong>답변:</strong></p>
+<ul>
+  <li><strong>평균:</strong> O(1)</li>
+  <li><strong>최악:</strong> O(n) (모든 키가 같은 버킷에 충돌)</li>
+  <li><strong>Java 8+:</strong> 버킷이 트리로 변환되면 O(log n)</li>
+</ul>
+
+<h3 id="q2-hashmap과-hashtable의-차이는">Q2: HashMap과 Hashtable의 차이는?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>특성</th>
+      <th>HashMap</th>
+      <th>Hashtable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Null 키/값</td>
+      <td>허용</td>
+      <td>불가</td>
+    </tr>
+    <tr>
+      <td>동기화</td>
+      <td>X</td>
+      <td>O (느림)</td>
+    </tr>
+    <tr>
+      <td>상속</td>
+      <td>AbstractMap</td>
+      <td>Dictionary (레거시)</td>
+    </tr>
+    <tr>
+      <td>사용</td>
+      <td>권장</td>
+      <td>비권장</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="q3-언제-treemap을-사용하나요">Q3: 언제 TreeMap을 사용하나요?</h3>
+
+<p><strong>TreeMap 사용 시기:</strong></p>
+<ul>
+  <li>키의 정렬이 필요할 때</li>
+  <li>범위 검색이 필요할 때 (<code class="language-plaintext highlighter-rouge">subMap()</code>, <code class="language-plaintext highlighter-rouge">headMap()</code>, <code class="language-plaintext highlighter-rouge">tailMap()</code>)</li>
+  <li>최소/최대 키가 필요할 때 (<code class="language-plaintext highlighter-rouge">firstKey()</code>, <code class="language-plaintext highlighter-rouge">lastKey()</code>)</li>
+</ul>
+
+<hr />
+
+<h2 id="-추가-학습-자료">📚 추가 학습 자료</h2>
+
+<h3 id="관련-자료구조">관련 자료구조</h3>
+<ul>
+  <li><strong>LinkedHashMap</strong>: 삽입 순서 유지</li>
+  <li><strong>ConcurrentHashMap</strong>: Thread-safe</li>
+  <li><strong>WeakHashMap</strong>: 약한 참조로 메모리 관리</li>
+  <li><strong>IdentityHashMap</strong>: 객체 동일성(<code class="language-plaintext highlighter-rouge">==</code>)으로 비교</li>
+</ul>
+
+<h3 id="학습-순서">학습 순서</h3>
+<ol>
+  <li>HashMap/HashSet 기본 (이 문서)</li>
+  <li>TreeMap/TreeSet (정렬된 맵)</li>
+  <li>LinkedHashMap (순서 유지)</li>
+  <li>ConcurrentHashMap (동시성)</li>
+</ol>
+
+<hr />
+
+<h2 id="-최종-체크리스트">🎓 최종 체크리스트</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />HashMap의 내부 구조 이해</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />해시 충돌 해결 방법 숙지</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />equals()와 hashCode() 관계 이해</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />6가지 HashMap 패턴 암기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />5가지 HashSet 패턴 암기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />LRU Cache 구현 가능</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />시간복잡도 분석 가능</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />실전 문제 10개 이상 풀이</li>
+</ul>
+
+<hr />
+
+<p>#Java #자료구조 #HashMap #HashSet #해시테이블 #알고리즘 #코딩테스트 #LeetCode #시간복잡도 #해시충돌 #면접준비</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

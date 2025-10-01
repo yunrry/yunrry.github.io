@@ -1,0 +1,798 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>ArrayList vs LinkedList - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="ArrayList vs LinkedList">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/arraylist-vs-linkedlist/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/arraylist-vs-linkedlist/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="arraylist-vs-linkedlist">ArrayList vs LinkedList</h1>
+
+<p>Java에서 List 인터페이스를 구현하는 두 가지 주요 클래스입니다. 각각의 내부 구조와 특성이 다르므로 상황에 맞게 선택해야 합니다.</p>
+
+<hr />
+
+<h2 id="-내부-구조">🔍 내부 구조</h2>
+
+<h3 id="arraylist">ArrayList</h3>
+<ul>
+  <li><strong>동적 배열(Dynamic Array)</strong> 기반</li>
+  <li>연속된 메모리 공간에 데이터 저장</li>
+  <li>인덱스로 직접 접근 가능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ArrayList 내부 구조 (간단화)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Object</span><span class="o">[]</span> <span class="n">elementData</span><span class="o">;</span>  <span class="c1">// 내부 배열</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span>               <span class="c1">// 실제 요소 개수</span>
+    
+    <span class="c1">// 기본 용량 10</span>
+    <span class="kd">public</span> <span class="nf">ArrayList</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">elementData</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>메모리 구조:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>인덱스:  [0] [1] [2] [3] [4] ...
+데이터:  [A] [B] [C] [D] [E] ...
+         ↑ 연속된 메모리 공간
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="linkedlist">LinkedList</h3>
+<ul>
+  <li><strong>이중 연결 리스트(Doubly Linked List)</strong> 기반</li>
+  <li>각 노드가 이전/다음 노드를 참조</li>
+  <li>메모리 공간이 연속적이지 않음</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// LinkedList 내부 구조 (간단화)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">first</span><span class="o">;</span>  <span class="c1">// 첫 번째 노드</span>
+    <span class="kd">private</span> <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">last</span><span class="o">;</span>   <span class="c1">// 마지막 노드</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span>
+    
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="no">E</span> <span class="n">item</span><span class="o">;</span>           <span class="c1">// 데이터</span>
+        <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">next</span><span class="o">;</span>     <span class="c1">// 다음 노드 참조</span>
+        <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">prev</span><span class="o">;</span>     <span class="c1">// 이전 노드 참조</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>메모리 구조:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[노드A] ←→ [노드B] ←→ [노드C] ←→ [노드D]
+  ↓          ↓          ↓          ↓
+ data      data       data       data
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-시간복잡도-비교">⚡ 시간복잡도 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>연산</th>
+      <th>ArrayList</th>
+      <th>LinkedList</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>get(index)</strong></td>
+      <td>O(1)</td>
+      <td>O(n)</td>
+      <td>ArrayList 압도적 우위</td>
+    </tr>
+    <tr>
+      <td><strong>add(element)</strong></td>
+      <td>O(1)*</td>
+      <td>O(1)</td>
+      <td>끝에 추가</td>
+    </tr>
+    <tr>
+      <td><strong>add(index, element)</strong></td>
+      <td>O(n)</td>
+      <td>O(n)</td>
+      <td>중간 삽입</td>
+    </tr>
+    <tr>
+      <td><strong>remove(index)</strong></td>
+      <td>O(n)</td>
+      <td>O(n)</td>
+      <td>중간 삭제</td>
+    </tr>
+    <tr>
+      <td><strong>remove(element)</strong></td>
+      <td>O(n)</td>
+      <td>O(n)</td>
+      <td>요소 찾아서 삭제</td>
+    </tr>
+    <tr>
+      <td><strong>contains(element)</strong></td>
+      <td>O(n)</td>
+      <td>O(n)</td>
+      <td>순차 탐색</td>
+    </tr>
+    <tr>
+      <td><strong>size()</strong></td>
+      <td>O(1)</td>
+      <td>O(1)</td>
+      <td>크기 반환</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>주의:</strong> ArrayList의 <code class="language-plaintext highlighter-rouge">add()</code>는 내부 배열이 꽉 찬 경우 O(n) (재할당 필요)</p>
+
+<hr />
+
+<h2 id="-상세-연산-분석">📊 상세 연산 분석</h2>
+
+<h3 id="1-조회-get">1. 조회 (get)</h3>
+
+<h4 id="arraylist-o1">ArrayList: O(1)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="no">E</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">(</span><span class="no">E</span><span class="o">)</span> <span class="n">elementData</span><span class="o">[</span><span class="n">index</span><span class="o">];</span>  <span class="c1">// 배열 직접 접근</span>
+<span class="o">}</span>
+
+<span class="c1">// 예시</span>
+<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"A"</span><span class="o">);</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"B"</span><span class="o">);</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"C"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>  <span class="c1">// 즉시 "B" 반환</span>
+</code></pre></div></div>
+
+<h4 id="linkedlist-on">LinkedList: O(n)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="no">E</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">first</span><span class="o">;</span>
+    <span class="c1">// 처음부터 index까지 순회</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">index</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="na">item</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 예시</span>
+<span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"A"</span><span class="o">);</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"B"</span><span class="o">);</span>
+<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"C"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>  <span class="c1">// first → next → 반환</span>
+</code></pre></div></div>
+
+<p><strong>결론:</strong> 인덱스 접근이 많다면 <strong>ArrayList 사용!</strong></p>
+
+<hr />
+
+<h3 id="2-끝에-추가-add">2. 끝에 추가 (add)</h3>
+
+<h4 id="arraylist-o1-평균">ArrayList: O(1) (평균)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">add</span><span class="o">(</span><span class="no">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ensureCapacity</span><span class="o">();</span>  <span class="c1">// 용량 체크</span>
+    <span class="n">elementData</span><span class="o">[</span><span class="n">size</span><span class="o">++]</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 배열이 꽉 차면?</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">ensureCapacity</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">elementData</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 새 배열 생성 (1.5배 크기)</span>
+        <span class="nc">Object</span><span class="o">[]</span> <span class="n">newArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">[</span><span class="n">elementData</span><span class="o">.</span><span class="na">length</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="o">];</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">elementData</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">newArray</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">size</span><span class="o">);</span>
+        <span class="n">elementData</span> <span class="o">=</span> <span class="n">newArray</span><span class="o">;</span>  <span class="c1">// O(n) 발생!</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>Amortized O(1)</strong>: 대부분은 O(1), 가끔 O(n)이지만 평균적으로 O(1)</p>
+
+<h4 id="linkedlist-o1">LinkedList: O(1)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">add</span><span class="o">(</span><span class="no">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">&lt;&gt;(</span><span class="n">e</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">last</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">last</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">last</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="na">prev</span> <span class="o">=</span> <span class="n">last</span><span class="o">;</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">size</span><span class="o">++;</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>결론:</strong> 둘 다 빠르지만, ArrayList가 메모리 재할당 때문에 가끔 느려질 수 있음</p>
+
+<hr />
+
+<h3 id="3-중간-삽입-addindex-element">3. 중간 삽입 (add(index, element))</h3>
+
+<h4 id="arraylist-on">ArrayList: O(n)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="no">E</span> <span class="n">element</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// index 이후의 모든 요소를 한 칸씩 뒤로 이동</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">elementData</span><span class="o">,</span> <span class="n">index</span><span class="o">,</span> 
+                     <span class="n">elementData</span><span class="o">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> 
+                     <span class="n">size</span> <span class="o">-</span> <span class="n">index</span><span class="o">);</span>  <span class="c1">// O(n)</span>
+    <span class="n">elementData</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">=</span> <span class="n">element</span><span class="o">;</span>
+    <span class="n">size</span><span class="o">++;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>시각화:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>삽입 전: [A][B][C][D][E]
+삽입 위치:     ↑ (index 2에 X 삽입)
+
+1단계: [A][B][_][C][D][E]  // C,D,E를 한 칸씩 이동 → O(n)
+2단계: [A][B][X][C][D][E]  // X 삽입
+</code></pre></div></div>
+
+<h4 id="linkedlist-on-1">LinkedList: O(n)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="no">E</span> <span class="n">element</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">node</span> <span class="o">=</span> <span class="n">getNode</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>  <span class="c1">// O(n) - 해당 위치까지 순회</span>
+    
+    <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">&lt;&gt;(</span><span class="n">element</span><span class="o">);</span>
+    <span class="n">newNode</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+    <span class="n">newNode</span><span class="o">.</span><span class="na">prev</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">prev</span><span class="o">;</span>
+    
+    <span class="k">if</span> <span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">prev</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">node</span><span class="o">.</span><span class="na">prev</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">node</span><span class="o">.</span><span class="na">prev</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>시각화:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>삽입 전: [A]↔[B]↔[C]↔[D]
+
+1. index 2까지 순회 → O(n)
+2. 포인터만 수정 → O(1)
+   [A]↔[B]↔[X]↔[C]↔[D]
+</code></pre></div></div>
+
+<p><strong>결론:</strong> 둘 다 O(n)이지만, LinkedList는 <strong>앞/뒤 삽입</strong>일 때 O(1)!</p>
+
+<hr />
+
+<h3 id="4-삭제-remove">4. 삭제 (remove)</h3>
+
+<h4 id="arraylist-on-1">ArrayList: O(n)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="no">E</span> <span class="nf">remove</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+    <span class="no">E</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="o">(</span><span class="no">E</span><span class="o">)</span> <span class="n">elementData</span><span class="o">[</span><span class="n">index</span><span class="o">];</span>
+    
+    <span class="c1">// index 이후 요소들을 앞으로 이동</span>
+    <span class="kt">int</span> <span class="n">numMoved</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">numMoved</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">elementData</span><span class="o">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span>
+                         <span class="n">elementData</span><span class="o">,</span> <span class="n">index</span><span class="o">,</span>
+                         <span class="n">numMoved</span><span class="o">);</span>  <span class="c1">// O(n)</span>
+    <span class="o">}</span>
+    
+    <span class="n">elementData</span><span class="o">[--</span><span class="n">size</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="k">return</span> <span class="n">oldValue</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="linkedlist-on-2">LinkedList: O(n)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="no">E</span> <span class="nf">remove</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Node</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">node</span> <span class="o">=</span> <span class="n">getNode</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>  <span class="c1">// O(n) - 순회</span>
+    
+    <span class="c1">// 포인터만 수정 - O(1)</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">prev</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">node</span><span class="o">.</span><span class="na">prev</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">prev</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">prev</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="na">item</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>결론:</strong> 삭제도 마찬가지로 LinkedList는 <strong>앞/뒤 삭제</strong>에서 유리!</p>
+
+<hr />
+
+<h2 id="-선택-기준">🎯 선택 기준</h2>
+
+<h3 id="arraylist를-사용해야-할-때-">ArrayList를 사용해야 할 때 ✅</h3>
+
+<ol>
+  <li><strong>인덱스 접근이 빈번한 경우</strong>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  <span class="c1">// O(1)</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>데이터 크기가 고정되어 있거나 예측 가능한 경우</strong>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="mi">1000</span><span class="o">);</span>  <span class="c1">// 초기 용량 지정</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>읽기 작업이 쓰기 작업보다 많은 경우</strong></p>
+  </li>
+  <li><strong>메모리 효율이 중요한 경우</strong>
+    <ul>
+      <li>노드의 prev/next 포인터 오버헤드 없음</li>
+    </ul>
+  </li>
+  <li><strong>랜덤 액세스가 필요한 경우</strong>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Collections</span><span class="o">.</span><span class="na">binarySearch</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>  <span class="c1">// O(log n)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="linkedlist를-사용해야-할-때-">LinkedList를 사용해야 할 때 ✅</h3>
+
+<ol>
+  <li><strong>앞/뒤에서 삽입/삭제가 빈번한 경우</strong>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">list</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>   <span class="c1">// O(1)</span>
+<span class="n">list</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>    <span class="c1">// O(1)</span>
+<span class="n">list</span><span class="o">.</span><span class="na">removeFirst</span><span class="o">();</span>       <span class="c1">// O(1)</span>
+<span class="n">list</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>        <span class="c1">// O(1)</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Queue나 Deque로 사용할 때</strong>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+<span class="n">deque</span><span class="o">.</span><span class="na">offerFirst</span><span class="o">(</span><span class="s">"A"</span><span class="o">);</span>
+<span class="n">deque</span><span class="o">.</span><span class="na">offerLast</span><span class="o">(</span><span class="s">"B"</span><span class="o">);</span>
+<span class="n">deque</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">();</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>크기가 자주 변하는 경우</strong>
+    <ul>
+      <li>재할당 오버헤드 없음</li>
+    </ul>
+  </li>
+  <li><strong>순차 접근만 하는 경우</strong>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">item</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// Iterator 사용</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="-실전-예제">💻 실전 예제</h2>
+
+<h3 id="예제-1-성능-비교-테스트">예제 1: 성능 비교 테스트</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListPerformanceTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100000</span><span class="o">;</span>
+        
+        <span class="c1">// ArrayList 테스트</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">arrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        
+        <span class="c1">// 끝에 추가</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">arrayList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ArrayList add: "</span> <span class="o">+</span> 
+            <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+        
+        <span class="c1">// 중간에 삽입</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">arrayList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ArrayList insert: "</span> <span class="o">+</span> 
+            <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+        
+        <span class="c1">// 인덱스 접근</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">arrayList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ArrayList get: "</span> <span class="o">+</span> 
+            <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+        
+        
+        <span class="c1">// LinkedList 테스트</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">linkedList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        
+        <span class="c1">// 끝에 추가</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">linkedList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"LinkedList add: "</span> <span class="o">+</span> 
+            <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+        
+        <span class="c1">// 중간에 삽입</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">linkedList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"LinkedList insert: "</span> <span class="o">+</span> 
+            <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+        
+        <span class="c1">// 인덱스 접근</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">linkedList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"LinkedList get: "</span> <span class="o">+</span> 
+            <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/* 예상 출력:
+ArrayList add: 5ms
+ArrayList insert: 450ms
+ArrayList get: 3ms
+
+LinkedList add: 8ms
+LinkedList insert: 15000ms  // 매우 느림!
+LinkedList get: 8000ms      // 매우 느림!
+*/</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="예제-2-올바른-사용-사례">예제 2: 올바른 사용 사례</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ ArrayList - 조회가 많은 경우</span>
+<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="nf">searchProducts</span><span class="o">(</span><span class="nc">String</span> <span class="n">keyword</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>  <span class="c1">// 올바른 선택</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="nc">Product</span> <span class="n">product</span> <span class="o">:</span> <span class="n">allProducts</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">product</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="n">keyword</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">results</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">product</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 빈번한 인덱스 접근</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">results</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">results</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">updateRanking</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  <span class="c1">// O(1)</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">results</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// ✅ LinkedList - Queue로 사용</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TaskQueue</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Task</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>  <span class="c1">// 올바른 선택</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addTask</span><span class="o">(</span><span class="nc">Task</span> <span class="n">task</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offerLast</span><span class="o">(</span><span class="n">task</span><span class="o">);</span>  <span class="c1">// O(1)</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">Task</span> <span class="nf">getNextTask</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">queue</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">();</span>  <span class="c1">// O(1)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// ❌ 잘못된 사용</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">processItems</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">items</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// LinkedList인데 인덱스 접근 → 비효율적!</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">items</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  <span class="c1">// LinkedList면 O(n²)!</span>
+        <span class="n">process</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// ✅ 올바른 수정</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">processItems</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">items</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Iterator 또는 for-each 사용</span>
+    <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">item</span> <span class="o">:</span> <span class="n">items</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// O(n)</span>
+        <span class="n">process</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-메모리-사용량-비교">📊 메모리 사용량 비교</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ArrayList 메모리</span>
+<span class="c1">// 각 요소: 참조(8byte)</span>
+<span class="c1">// 오버헤드: 배열 객체(24byte) + 미사용 공간</span>
+
+<span class="c1">// LinkedList 메모리</span>
+<span class="c1">// 각 요소: 데이터(8byte) + prev(8byte) + next(8byte) + 노드객체(16byte)</span>
+<span class="c1">// → 요소당 40byte!</span>
+
+<span class="c1">// 예: Integer 1000개 저장</span>
+<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;:</span>  <span class="mi">8</span><span class="no">KB</span> <span class="o">+</span> <span class="n">소량</span> <span class="n">오버헤드</span>
+<span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;:</span> <span class="mi">40</span><span class="no">KB</span>
+</code></pre></div></div>
+
+<p><strong>결론:</strong> ArrayList가 메모리 효율적!</p>
+
+<hr />
+
+<h2 id="-핵심-정리">🎓 핵심 정리</h2>
+
+<h3 id="빠른-선택-가이드">빠른 선택 가이드</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>작업 유형</th>
+      <th>추천</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>인덱스로 자주 조회</td>
+      <td><strong>ArrayList</strong></td>
+    </tr>
+    <tr>
+      <td>끝에만 추가/삭제</td>
+      <td><strong>ArrayList</strong></td>
+    </tr>
+    <tr>
+      <td>앞/뒤에 추가/삭제</td>
+      <td><strong>LinkedList</strong></td>
+    </tr>
+    <tr>
+      <td>중간에 자주 삽입/삭제</td>
+      <td><strong>LinkedList</strong> (단, 순차 접근 시)</td>
+    </tr>
+    <tr>
+      <td>for문으로 순회</td>
+      <td><strong>ArrayList</strong></td>
+    </tr>
+    <tr>
+      <td>Iterator로 순회</td>
+      <td>둘 다 OK</td>
+    </tr>
+    <tr>
+      <td>메모리 효율 중요</td>
+      <td><strong>ArrayList</strong></td>
+    </tr>
+    <tr>
+      <td>Queue/Deque 필요</td>
+      <td><strong>LinkedList</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="기억해야-할-핵심">기억해야 할 핵심</h3>
+
+<ol>
+  <li><strong>ArrayList</strong>: 배열 기반 → 조회 빠름 (O(1))</li>
+  <li><strong>LinkedList</strong>: 노드 기반 → 앞/뒤 삽입/삭제 빠름 (O(1))</li>
+  <li><strong>기본 선택</strong>: 대부분의 경우 <strong>ArrayList</strong>가 더 나음</li>
+  <li><strong>특수 목적</strong>: Queue/Deque가 필요하면 <strong>LinkedList</strong></li>
+</ol>
+
+<hr />
+
+<h2 id="-연습-문제">📚 연습 문제</h2>
+
+<h3 id="문제-1-적절한-자료구조-선택">문제 1: 적절한 자료구조 선택</h3>
+<p>다음 상황에 적합한 List 구현체를 선택하세요:</p>
+
+<ol>
+  <li>로그 파일을 순차적으로 읽고 마지막 100개만 유지</li>
+  <li>학생 명단을 학번 순으로 정렬해서 자주 조회</li>
+  <li>대기열(Queue) 시스템 구현</li>
+  <li>페이징 처리를 위해 특정 페이지의 데이터만 조회</li>
+</ol>
+
+<p><strong>정답:</strong></p>
+<ol>
+  <li>LinkedList (Deque로 사용)</li>
+  <li>ArrayList (정렬 + 조회)</li>
+  <li>LinkedList (Queue)</li>
+  <li>ArrayList (인덱스 접근)</li>
+</ol>
+
+<hr />
+
+<h3 id="문제-2-성능-예측">문제 2: 성능 예측</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>  <span class="c1">// 또는 LinkedList</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="s">"item"</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>  <span class="c1">// 맨 앞에 삽입</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>ArrayList와 LinkedList 중 어느 것이 더 빠를까요?</p>
+
+<p><strong>정답:</strong> LinkedList가 훨씬 빠름</p>
+<ul>
+  <li>ArrayList: O(n²) - 매번 모든 요소를 이동</li>
+  <li>LinkedList: O(n) - 노드만 연결</li>
+</ul>
+
+<hr />
+
+<h2 id="-관련-학습">🔗 관련 학습</h2>
+
+<ul>
+  <li><strong>Vector</strong>: 동기화된 ArrayList (레거시, 사용 비추천)</li>
+  <li><strong>CopyOnWriteArrayList</strong>: Thread-safe한 ArrayList</li>
+  <li><strong>Collections.synchronizedList()</strong>: List를 동기화</li>
+  <li><strong>Stack</strong>: Vector 기반 (대신 Deque 사용 권장)</li>
+</ul>
+
+<hr />
+
+<p>#Java #자료구조 #ArrayList #LinkedList #List #성능비교 #시간복잡도 #알고리즘 #코딩테스트 #면접준비</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
