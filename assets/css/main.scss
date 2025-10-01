@@ -1,0 +1,76 @@
+---
+---
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+.nav__sub-title {
+  padding-top: 24px !important;
+  margin-bottom: 12px !important;
+  padding-bottom: 8px !important;
+  border-bottom: 2px solid #f0f0f0 !important;
+  font-size: 0.9em !important;
+}
+
+/* 카테고리 간격 */
+.sidebar .nav__list .nav__items li {
+    margin-bottom: 16px !important;
+  }
+  
+  /* Menu 제목 */
+  .sidebar .nav__list .nav__items .nav__title {
+    margin-bottom: 12px !important;
+    font-size: 0.9em !important;
+    border-bottom: 2px solid #f0f0f0 !important;
+    padding-bottom: 8px !important;
+  }
+  
+  /* 상위 카테고리 (정확한 URL) */
+  .sidebar .nav__list .nav__items li a[href="/categories/dev/"],
+  .sidebar .nav__list .nav__items li a[href="/categories/language/"],
+  .sidebar .nav__list .nav__items li a[href="/categories/algorithm/"],
+  .sidebar .nav__list .nav__items li a[href="/categories/cs/"] {
+    font-weight: 600 !important;
+    font-size: 0.9em !important;
+    color: #333 !important;
+  }
+  
+  /* 화살표 애니메이션 */
+.toggle-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  /* 하위 카테고리 */
+  .sidebar .nav__list .nav__items li a[href*="/dev/frontend"],
+  .sidebar .nav__list .nav__items li a[href*="/dev/backend"],
+  .sidebar .nav__list .nav__items li a[href*="/dev/devops"],
+  .sidebar .nav__list .nav__items li a[href*="/language/python"],
+  .sidebar .nav__list .nav__items li a[href*="/language/javascript"],
+  .sidebar .nav__list .nav__items li a[href*="/language/java"],
+  .sidebar .nav__list .nav__items li a[href*="/algorithm/baekjoon"],
+  .sidebar .nav__list .nav__items li a[href*="/algorithm/programmers"],
+  .sidebar .nav__list .nav__items li a[href*="/algorithm/leetcode"],
+  .sidebar .nav__list .nav__items li a[href*="/cs/datastructure"],
+  .sidebar .nav__list .nav__items li a[href*="/cs/network"],
+  .sidebar .nav__list .nav__items li a[href*="/cs/os"],
+  .sidebar .nav__list .nav__items li a[href*="/cs/database"] {
+    font-size: 0.8em !important;
+    color: #666 !important;
+    font-weight: 400 !important;
+    padding-left: 5px !important;
+  }
+  
+  /* 호버 효과 */
+  .sidebar .nav__list .nav__items a:hover {
+    color: #0066cc !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  /* 하위 카테고리 호버 시 들여쓰기 */
+  .sidebar .nav__list .nav__items li a[href*="/dev/"]:not([href="/categories/dev/"]):hover,
+  .sidebar .nav__list .nav__items li a[href*="/language/"]:not([href="/categories/language/"]):hover,
+  .sidebar .nav__list .nav__items li a[href*="/algorithm/"]:not([href="/categories/algorithm/"]):hover,
+  .sidebar .nav__list .nav__items li a[href*="/cs/"]:not([href="/categories/cs/"]):hover {
+    padding-left: 10px !important;
+  }

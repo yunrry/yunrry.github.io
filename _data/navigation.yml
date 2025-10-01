@@ -1,0 +1,44 @@
+# 카테고리 네비게이션
+categories:
+  - title: "📁 Menu"
+    children:
+      - title: "💻 Dev"
+        url: /categories/dev/
+      - title: "  • Frontend"
+        url: /categories/dev/frontend/
+      - title: "  • Backend"
+        url: /categories/dev/backend/
+      - title: "  • DevOps"
+        url: /categories/dev/devops/
+      
+      - title: "📝 Language"
+        url: /categories/language/
+      - title: "  • Python"
+        url: /categories/language/python/
+      - title: "  • JavaScript"
+        url: /categories/language/javascript/
+      - title: "  • Java"
+        url: /categories/language/java/
+      
+      - title: "🧮 Algorithm"
+        url: /categories/algorithm/
+      - title: "  • 백준"
+        url: /categories/algorithm/baekjoon/
+      - title: "  • 프로그래머스"
+        url: /categories/algorithm/programmers/
+      - title: "  • LeetCode"
+        url: /categories/algorithm/leetcode/
+      
+      - title: "📚 CS"
+        url: /categories/cs/
+      - title: "  • 자료구조"
+        url: /categories/cs/datastructure/
+      - title: "  • 네트워크"
+        url: /categories/cs/network/
+      - title: "  • 운영체제"
+        url: /categories/cs/os/
+      - title: "  • 데이터베이스"
+        url: /categories/cs/database/
+      
+      - title: "📊 All"
+        url: /categories/

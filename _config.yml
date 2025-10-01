@@ -12,23 +12,23 @@ plugins:
 minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # 사이트 설정
-title: "내 블로그"
-subtitle: "부제목"
-name: "본인 이름"
-description: "블로그 설명"
+title: "AD윤영스윗투웬티HD"
+subtitle: "뇌정리노트"
+name: "yunYoung e"
+description: "2026년 목표: 개발로 월급받기<br>추가 정보 없음"
 url: "https://yunrry.github.io"
 repository: "yunrry/yunrry.github.io"
 
 # 작성자 정보
 author:
-  name: "본인 이름"
+  name: "yunYoung e"
   avatar: "/assets/images/mandu.jpeg"
-  bio: "간단한 소개"
+  bio: "2026년 목표: 개발로 월급받기<br>"
   location: "Seoul, Korea"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:your-email@example.com"
+      url: "mailto:yunryy329@gmail.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/yunrry"
@@ -50,3 +50,21 @@ defaults:
       comments: true
       share: true
       related: true
+      sidebar:
+        nav: "categories"
+
+    # 페이지 기본값
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      sidebar:
+        nav: "categories"
+
+include:
+  - _pages
+
+head_scripts:
+  - /assets/js/custom.js

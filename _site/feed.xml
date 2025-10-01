@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-10-01T13:16:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">내 블로그</title><subtitle>블로그 설명</subtitle><author><name>본인 이름</name></author><entry><title type="html">첫 번째 게시글</title><link href="http://localhost:4000/%EB%B8%94%EB%A1%9C%EA%B7%B8/first-post/" rel="alternate" type="text/html" title="첫 번째 게시글" /><published>2025-10-01T00:00:00+09:00</published><updated>2025-10-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B8%94%EB%A1%9C%EA%B7%B8/first-post</id><content type="html" xml:base="http://localhost:4000/%EB%B8%94%EB%A1%9C%EA%B7%B8/first-post/"><![CDATA[<p>안녕하세요! 첫 번째 게시글입니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-10-01T14:58:13+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">AD윤영스윗투웬티HD</title><subtitle>2026년 목표: 개발로 월급받기&lt;br&gt;추가 정보 없음</subtitle><author><name>yunYoung e</name></author><entry><title type="html">첫 번째 게시글</title><link href="http://localhost:4000/%EA%B0%9C%EB%B0%9C/first-post/" rel="alternate" type="text/html" title="첫 번째 게시글" /><published>2025-10-01T00:00:00+09:00</published><updated>2025-10-01T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B0%9C%EB%B0%9C/first-post</id><content type="html" xml:base="http://localhost:4000/%EA%B0%9C%EB%B0%9C/first-post/"><![CDATA[<p>안녕하세요! 첫 번째 게시글입니다.</p>
 
 <h2 id="소제목">소제목</h2>
 
@@ -9,4 +9,4 @@
   <li>이미지 삽입도 가능
 ```python
 print(“Hello, World!”)</li>
-</ul>]]></content><author><name>본인 이름</name></author><category term="블로그" /><category term="시작" /><summary type="html"><![CDATA[안녕하세요! 첫 번째 게시글입니다.]]></summary></entry></feed>
+</ul>]]></content><author><name>yunYoung e</name></author><category term="개발" /><category term="시작" /><summary type="html"><![CDATA[안녕하세요! 첫 번째 게시글입니다.]]></summary></entry></feed>
