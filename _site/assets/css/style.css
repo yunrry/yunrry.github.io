@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> - 내 블로그</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="/">내 블로그</a></h1>
+        <p>블로그 설명</p>
+    </header>
+    
+    <main>
+        <article class="post">
+    <h1></h1>
+    <p class="post-meta">
+        <time></time>
+    </p>
+    
+    <div class="post-content">
+        <article class="post">
+    <h1></h1>
+    <p class="post-meta">
+        <time></time>
+    </p>
+    
+    <div class="post-content">
+        <article class="post">
+    <h1>첫 번째 게시글</h1>
+    <p class="post-meta">
+        <time>2025년 10월 01일</time>
+    </p>
+    
+    <div class="post-content">
+        <p>안녕하세요! 첫 번째 게시글입니다.</p>
+
+<h2 id="소제목">소제목</h2>
+
+<p>Markdown으로 쉽게 글을 작성할 수 있습니다.</p>
+
+<ul>
+  <li>리스트도 가능</li>
+  <li>이미지 삽입: <code class="language-plaintext highlighter-rouge">![설명](이미지주소)</code></li>
+  <li>코드 블록도 지원
+```python
+print(“Hello, World!”)</li>
+</ul>
+
+    </div>
+    
+    <div class="post-tags">
+        
+            <span class="tag">일상</span>
+        
+            <span class="tag">시작</span>
+        
+    </div>
+</article>
+    </div>
+    
+    <div class="post-tags">
+        
+    </div>
+</article>
+    </div>
+    
+    <div class="post-tags">
+        
+    </div>
+</article>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 {"name"=>"본인 이름", "avatar"=>"/assets/images/avatar.jpg", "bio"=>"간단한 소개", "location"=>"Seoul, Korea", "links"=>[{"label"=>"Email", "icon"=>"fas fa-fw fa-envelope-square", "url"=>"mailto:your-email@example.com"}, {"label"=>"GitHub", "icon"=>"fab fa-fw fa-github", "url"=>"https://github.com/username"}]}</p>
+    </footer>
+</body>
+</html>
