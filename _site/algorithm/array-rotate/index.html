@@ -9,25 +9,24 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>AD윤영스윗투웬티HD</title>
-<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+<!-- begin _includes/seo.html --><title>배열 회전 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="배열 왼쪽 회전 시각화">
 
 
   <meta name="author" content="yunYoung e">
   
+  <meta property="article:author" content="yunYoung e">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="AD윤영스윗투웬티HD">
-<meta property="og:title" content="AD윤영스윗투웬티HD">
-<meta property="og:url" content="http://localhost:4000/">
+<meta property="og:title" content="배열 회전">
+<meta property="og:url" content="http://localhost:4000/algorithm/array-rotate/">
 
 
-  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
-
-
-
+  <meta property="og:description" content="배열 왼쪽 회전 시각화">
 
 
 
@@ -35,9 +34,14 @@
 
 
 
+  <meta property="article:published_time" content="2025-10-03T00:00:00+09:00">
 
 
-<link rel="canonical" href="http://localhost:4000/">
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/array-rotate/">
 
 
 
@@ -92,7 +96,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -317,34 +321,18 @@
 
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title"></h1>
-    
-    
-
-
-<h3 class="archive__subtitle">Recent Posts</h3>
-
-
-
-
-<div class="entries-list">
-  
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="배열 회전">
+    <meta itemprop="description" content="배열 왼쪽 회전 시각화">
+    <meta itemprop="datePublished" content="2025-10-03T00:00:00+09:00">
     
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="/algorithm/array-rotate/" rel="permalink">배열 회전
-</a>
-      
-    </h2>
-    
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">배열 회전
+</h1>
+          
 
   <p class="page__meta">
     
@@ -365,18 +353,111 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">배열 왼쪽 회전 시각화
+        </header>
+      
 
-</p>
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="배열-왼쪽-회전-시각화">배열 왼쪽 회전 시각화</h1>
+
+<h2 id="예시-12345를-왼쪽으로-2칸-회전">예시: <code class="language-plaintext highlighter-rouge">[1,2,3,4,5]</code>를 왼쪽으로 2칸 회전</h2>
+
+<h3 id="초기-상태">초기 상태</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5]
+</code></pre></div></div>
+
+<h3 id="step-1-reversearr-0-1---처음-k개-뒤집기">Step 1: <code class="language-plaintext highlighter-rouge">reverse(arr, 0, 1)</code> - 처음 k개 뒤집기</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5]
+ ↓  ↓
+[2, 1, 3, 4, 5]
+</code></pre></div></div>
+
+<h3 id="step-2-reversearr-2-4---나머지-뒤집기">Step 2: <code class="language-plaintext highlighter-rouge">reverse(arr, 2, 4)</code> - 나머지 뒤집기</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2, 1, 3, 4, 5]
+       ↓  ↓  ↓
+[2, 1, 5, 4, 3]
+</code></pre></div></div>
+
+<h3 id="step-3-reversearr-0-4---전체-뒤집기">Step 3: <code class="language-plaintext highlighter-rouge">reverse(arr, 0, 4)</code> - 전체 뒤집기</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2, 1, 5, 4, 3]
+ ↓  ↓  ↓  ↓  ↓
+[3, 4, 5, 1, 2]  ✅ 완료!
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="왜-이렇게-동작하나">왜 이렇게 동작하나?</h2>
+
+<h3 id="패턴-발견">패턴 발견</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>원본: [1, 2 | 3, 4, 5]
+목표: [3, 4, 5 | 1, 2]
+
+1. 앞부분 뒤집기:  [2, 1 | 3, 4, 5]
+2. 뒷부분 뒤집기:  [2, 1 | 5, 4, 3]
+3. 전체 뒤집기:    [3, 4, 5 | 1, 2]
+</code></pre></div></div>
+
+<h3 id="핵심-아이디어">핵심 아이디어</h3>
+<p>두 그룹을 뒤집은 후 → 전체를 뒤집으면 → 그룹 순서가 바뀜!</p>
+
+<hr />
+
+<h2 id="다른-예시-k3">다른 예시: k=3</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5, 6, 7]
+
+Step 1: [3, 2, 1 | 4, 5, 6, 7]
+Step 2: [3, 2, 1 | 7, 6, 5, 4]
+Step 3: [4, 5, 6, 7 | 1, 2, 3]  ✅
+</code></pre></div></div>
+
+<p><strong>시간복잡도:</strong> O(n)<br />
+<strong>공간복잡도:</strong> O(1)</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2025-10-03T00:00:00+09:00">October 3, 2025</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/dev/first-post/" class="pagination--pager" title="첫 번째 게시글
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
-</div>
 
   
-    
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -412,14 +493,13 @@
   </article>
 </div>
 
+        
+      </div>
+    </div>
+  
   
 </div>
 
-
-
-
-  </div>
-</div>
     </div>
 
     

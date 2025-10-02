@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-10-03T00:59:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">AD윤영스윗투웬티HD</title><subtitle>2026년 목표: 개발로 월급받기&lt;br&gt;추가 정보 없음</subtitle><author><name>yunYoung e</name></author><entry><title type="html">첫 번째 게시글</title><link href="http://localhost:4000/dev/first-post/" rel="alternate" type="text/html" title="첫 번째 게시글" /><published>2025-10-01T00:00:00+09:00</published><updated>2025-10-01T00:00:00+09:00</updated><id>http://localhost:4000/dev/first-post</id><content type="html" xml:base="http://localhost:4000/dev/first-post/"><![CDATA[<p>안녕하세요! 첫 번째 게시글입니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-10-03T01:54:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">AD윤영스윗투웬티HD</title><subtitle>2026년 목표: 개발로 월급받기&lt;br&gt;추가 정보 없음</subtitle><author><name>yunYoung e</name></author><entry><title type="html">배열 회전</title><link href="http://localhost:4000/algorithm/array-rotate/" rel="alternate" type="text/html" title="배열 회전" /><published>2025-10-03T00:00:00+09:00</published><updated>2025-10-03T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/array-rotate</id><content type="html" xml:base="http://localhost:4000/algorithm/array-rotate/"><![CDATA[<h1 id="배열-왼쪽-회전-시각화">배열 왼쪽 회전 시각화</h1>
+
+<h2 id="예시-12345를-왼쪽으로-2칸-회전">예시: <code class="language-plaintext highlighter-rouge">[1,2,3,4,5]</code>를 왼쪽으로 2칸 회전</h2>
+
+<h3 id="초기-상태">초기 상태</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5]
+</code></pre></div></div>
+
+<h3 id="step-1-reversearr-0-1---처음-k개-뒤집기">Step 1: <code class="language-plaintext highlighter-rouge">reverse(arr, 0, 1)</code> - 처음 k개 뒤집기</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5]
+ ↓  ↓
+[2, 1, 3, 4, 5]
+</code></pre></div></div>
+
+<h3 id="step-2-reversearr-2-4---나머지-뒤집기">Step 2: <code class="language-plaintext highlighter-rouge">reverse(arr, 2, 4)</code> - 나머지 뒤집기</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2, 1, 3, 4, 5]
+       ↓  ↓  ↓
+[2, 1, 5, 4, 3]
+</code></pre></div></div>
+
+<h3 id="step-3-reversearr-0-4---전체-뒤집기">Step 3: <code class="language-plaintext highlighter-rouge">reverse(arr, 0, 4)</code> - 전체 뒤집기</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2, 1, 5, 4, 3]
+ ↓  ↓  ↓  ↓  ↓
+[3, 4, 5, 1, 2]  ✅ 완료!
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="왜-이렇게-동작하나">왜 이렇게 동작하나?</h2>
+
+<h3 id="패턴-발견">패턴 발견</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>원본: [1, 2 | 3, 4, 5]
+목표: [3, 4, 5 | 1, 2]
+
+1. 앞부분 뒤집기:  [2, 1 | 3, 4, 5]
+2. 뒷부분 뒤집기:  [2, 1 | 5, 4, 3]
+3. 전체 뒤집기:    [3, 4, 5 | 1, 2]
+</code></pre></div></div>
+
+<h3 id="핵심-아이디어">핵심 아이디어</h3>
+<p>두 그룹을 뒤집은 후 → 전체를 뒤집으면 → 그룹 순서가 바뀜!</p>
+
+<hr />
+
+<h2 id="다른-예시-k3">다른 예시: k=3</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5, 6, 7]
+
+Step 1: [3, 2, 1 | 4, 5, 6, 7]
+Step 2: [3, 2, 1 | 7, 6, 5, 4]
+Step 3: [4, 5, 6, 7 | 1, 2, 3]  ✅
+</code></pre></div></div>
+
+<p><strong>시간복잡도:</strong> O(n)<br />
+<strong>공간복잡도:</strong> O(1)</p>]]></content><author><name>yunYoung e</name></author><category term="Algorithm" /><category term="알고리즘" /><category term="자료구조" /><category term="배열" /><summary type="html"><![CDATA[배열 왼쪽 회전 시각화]]></summary></entry><entry><title type="html">첫 번째 게시글</title><link href="http://localhost:4000/dev/first-post/" rel="alternate" type="text/html" title="첫 번째 게시글" /><published>2025-10-01T00:00:00+09:00</published><updated>2025-10-01T00:00:00+09:00</updated><id>http://localhost:4000/dev/first-post</id><content type="html" xml:base="http://localhost:4000/dev/first-post/"><![CDATA[<p>안녕하세요! 첫 번째 게시글입니다.</p>
 
 <h2 id="소제목">소제목</h2>
 
