@@ -203,23 +203,25 @@ class Solution {
 
 ---
 
-## 🎯 개선 후 코드 (추천)
+## 🎯 개선 후 코드 (Try 1)
 
 ```java
 class Solution {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int i = m - 1;
-        int j = n - 1;
-        int k = m + n - 1;
-        
-        while (j >= 0) {
-            if (i >= 0 && nums1[i] > nums2[j]) {
-                nums1[k--] = nums1[i--];
-            } else {
-                nums1[k--] = nums2[j--];
-            }
-        }
-    }
+
+	public void merge(int[] nums1, int m, int[] nums2, int n) {
+
+		int p = m+n-1;
+		int np = n-1;
+		int mp = m-1;
+
+		while(np>=0){
+			if(mp>=0 && nums1[mp]>nums2[np]){
+				nums1[p--]=nums1[mp--];
+			}else{
+				nums1[p--]=nums2[np--];
+			}
+		}
+	}
 }
 ```
 

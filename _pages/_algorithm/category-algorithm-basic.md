@@ -41,7 +41,7 @@ sidebar:
 - <a href="https://leetcode.com/problems/two-sum/" target="_blank">LeetCode 1: Two Sum</a>
 - <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" target="_blank">LeetCode 26</a> | <a href="#" data-content="/assets/contents/algorithm/leetcode-26.md">풀이</a>
 - <a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank">LeetCode 88: Merge Sorted Array</a>| <a href="#" data-content="/assets/contents/algorithm/leetcode-88.md">풀이</a>
-- <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank">LeetCode 121: Best Time to Buy and Sell Stock</a>
+- <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank">LeetCode 121: Best Time to Buy and Sell Stock</a>| <a href="#" data-content="/assets/contents/algorithm/leetcode-121.md">풀이</a>
 
 ### 문자열
 - <a href="https://leetcode.com/problems/valid-palindrome/" target="_blank">LeetCode 125: Valid Palindrome</a>

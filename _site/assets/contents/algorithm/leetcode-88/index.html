@@ -381,22 +381,24 @@
 
 <hr />
 
-<h2 id="-개선-후-코드-추천">🎯 개선 후 코드 (추천)</h2>
+<h2 id="-개선-후-코드-try-1">🎯 개선 후 코드 (Try 1)</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">merge</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">m</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-        
-        <span class="k">while</span> <span class="o">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">nums1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">nums2</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
-                <span class="n">nums1</span><span class="o">[</span><span class="n">k</span><span class="o">--]</span> <span class="o">=</span> <span class="n">nums1</span><span class="o">[</span><span class="n">i</span><span class="o">--];</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">nums1</span><span class="o">[</span><span class="n">k</span><span class="o">--]</span> <span class="o">=</span> <span class="n">nums2</span><span class="o">[</span><span class="n">j</span><span class="o">--];</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">merge</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">m</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+
+		<span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="n">m</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">np</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">mp</span> <span class="o">=</span> <span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+
+		<span class="k">while</span><span class="o">(</span><span class="n">np</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">){</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">mp</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">nums1</span><span class="o">[</span><span class="n">mp</span><span class="o">]&gt;</span><span class="n">nums2</span><span class="o">[</span><span class="n">np</span><span class="o">]){</span>
+				<span class="n">nums1</span><span class="o">[</span><span class="n">p</span><span class="o">--]=</span><span class="n">nums1</span><span class="o">[</span><span class="n">mp</span><span class="o">--];</span>
+			<span class="o">}</span><span class="k">else</span><span class="o">{</span>
+				<span class="n">nums1</span><span class="o">[</span><span class="n">p</span><span class="o">--]=</span><span class="n">nums2</span><span class="o">[</span><span class="n">np</span><span class="o">--];</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
