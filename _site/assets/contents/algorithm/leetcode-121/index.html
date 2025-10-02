@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>AD윤영스윗투웬티HD</title>
+<!-- begin _includes/seo.html --><title>LeetCode 121: Best Time to Buy and Sell Stock 풀이 - AD윤영스윗투웬티HD</title>
 <meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
 
 
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="AD윤영스윗투웬티HD">
-<meta property="og:title" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="LeetCode 121: Best Time to Buy and Sell Stock 풀이">
 <meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/leetcode-121/">
 
 
@@ -131,6 +131,458 @@
 
     <div class="initial-content">
       
+<h1 id="leetcode-121-best-time-to-buy-and-sell-stock-풀이">LeetCode 121: Best Time to Buy and Sell Stock 풀이</h1>
+
+<h2 id="-결과">📊 결과</h2>
+<ul>
+  <li><strong>소요시간:</strong> 12H</li>
+  <li><strong>Runtime:</strong> 2ms (상위 85%)</li>
+  <li><strong>Memory:</strong> 62.13MB</li>
+</ul>
+
+<hr />
+
+<h2 id="-내-코드-try-1">💻 내 코드 (Try 1)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxProfit</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">prices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">small</span> <span class="o">=</span> <span class="n">prices</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">big</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">prices</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">small</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">small</span> <span class="o">=</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="n">big</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">big</span> <span class="o">=</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="o">}</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">max</span> <span class="o">&lt;</span> <span class="n">big</span> <span class="o">-</span> <span class="n">small</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">max</span> <span class="o">=</span> <span class="n">big</span> <span class="o">-</span> <span class="n">small</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>   
+        
+        <span class="k">return</span> <span class="n">max</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-평가">📝 평가</h2>
+
+<p>이거 Easy라고?? 자괴감 든다…. 
+아무 생각없이 n^n 로 풀었다가 런타임 에러나서 
+map 만들고 별짓 다해봤는데 
+난이도는 Easy라니까 맵까지는 안쓸것같고
+점점 산으로가다가 결국 클로드한테 힌트만 달라고 했다.</p>
+
+<p>힌트 내용
+<img src="/assets/images/스크린샷 2025-10-03 오전 12.40.03.png" alt="힌트" width="600" />
+<img src="/assets/images/스크린샷 2025-10-03 오전 12.40.28.png" alt="힌트" width="600" />
+힌트도 정말 잘준다 AI..
+힌트를 보자마자 5분만에 풀어버렸다
+1시간 내로 못풀겠으면 힌트라도 받자 앞으로…</p>
+
+<h3 id="-잘한-점">✅ 잘한 점</h3>
+<p>form Ai</p>
+
+<ol>
+  <li><strong>핵심 아이디어 파악</strong>
+    <ul>
+      <li>“지금까지 본 최솟값”을 추적하는 접근 방식 정확</li>
+      <li>한 번의 순회로 해결 (O(n))</li>
+    </ul>
+  </li>
+  <li><strong>변수 네이밍</strong>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">small</code> (최솟값), <code class="language-plaintext highlighter-rouge">big</code> (현재 가격), <code class="language-plaintext highlighter-rouge">max</code> (최대 이익)</li>
+      <li>직관적이고 이해하기 쉬움</li>
+    </ul>
+  </li>
+  <li><strong>시간복잡도 최적</strong>
+    <ul>
+      <li>O(n) - 배열 한 번만 순회</li>
+      <li>추가 공간 사용 없음 O(1)</li>
+    </ul>
+  </li>
+  <li><strong>정확한 동작</strong>
+    <ul>
+      <li>모든 테스트 케이스 통과</li>
+      <li>엣지 케이스 처리 완료</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="-개선점">🔴 개선점</h2>
+
+<h3 id="1-불필요한-변수-big">1. 불필요한 변수 <code class="language-plaintext highlighter-rouge">big</code></h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 현재 코드</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">small</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">small</span> <span class="o">=</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="n">big</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  <span class="c1">// 불필요한 재설정</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">big</span> <span class="o">=</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="n">max</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max</span><span class="o">,</span> <span class="n">big</span> <span class="o">-</span> <span class="n">small</span><span class="o">);</span>
+
+<span class="c1">// ✅ 개선</span>
+<span class="n">max</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max</span><span class="o">,</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">small</span><span class="o">);</span>
+<span class="c1">// big 변수 없이 직접 계산 가능</span>
+</code></pre></div></div>
+
+<h3 id="2-big--0-설정의-의미-불명확">2. <code class="language-plaintext highlighter-rouge">big = 0</code> 설정의 의미 불명확</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">small</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">small</span> <span class="o">=</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="n">big</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  <span class="c1">// 왜 0으로?</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">big</code>을 0으로 설정하는 것은 논리적으로 혼란스러움</li>
+  <li>실제로는 <code class="language-plaintext highlighter-rouge">big</code> 변수 자체가 불필요</li>
+</ul>
+
+<h3 id="3-변수명-개선-여지">3. 변수명 개선 여지</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 현재</span>
+<span class="kt">int</span> <span class="n">small</span><span class="o">,</span> <span class="n">big</span><span class="o">,</span> <span class="n">max</span>
+
+<span class="c1">// 더 명확하게</span>
+<span class="kt">int</span> <span class="n">minPrice</span><span class="o">,</span> <span class="n">currentPrice</span><span class="o">,</span> <span class="n">maxProfit</span>
+<span class="c1">// 또는</span>
+<span class="kt">int</span> <span class="n">lowestBuy</span><span class="o">,</span> <span class="n">maxProfit</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-최적화된-풀이">✨ 최적화된 풀이</h2>
+
+<h3 id="방법-1-간결한-버전-추천">방법 1: 간결한 버전 (추천!)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxProfit</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">prices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">minPrice</span> <span class="o">=</span> <span class="n">prices</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">maxProfit</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">prices</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">minPrice</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minPrice</span><span class="o">,</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="n">maxProfit</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxProfit</span><span class="o">,</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">minPrice</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">maxProfit</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>변경사항:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">big</code> 변수 제거</li>
+  <li><code class="language-plaintext highlighter-rouge">Math.min()</code>, <code class="language-plaintext highlighter-rouge">Math.max()</code> 활용</li>
+  <li>로직 더 명확해짐</li>
+</ul>
+
+<hr />
+
+<h3 id="방법-2-한-줄로-더-간결하게">방법 2: 한 줄로 더 간결하게</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxProfit</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">prices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">minPrice</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">maxProfit</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">price</span> <span class="o">:</span> <span class="n">prices</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">minPrice</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minPrice</span><span class="o">,</span> <span class="n">price</span><span class="o">);</span>
+            <span class="n">maxProfit</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxProfit</span><span class="o">,</span> <span class="n">price</span> <span class="o">-</span> <span class="n">minPrice</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">maxProfit</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>장점:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">prices[0]</code> 초기화 불필요</li>
+  <li>for-each로 더 간결</li>
+</ul>
+
+<hr />
+
+<h3 id="방법-3-kadanes-algorithm-변형">방법 3: Kadane’s Algorithm 변형</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxProfit</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">prices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">maxProfit</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">minPrice</span> <span class="o">=</span> <span class="n">prices</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">price</span> <span class="o">:</span> <span class="n">prices</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 오늘 팔면 얼마 벌까?</span>
+            <span class="kt">int</span> <span class="n">profit</span> <span class="o">=</span> <span class="n">price</span> <span class="o">-</span> <span class="n">minPrice</span><span class="o">;</span>
+            <span class="n">maxProfit</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxProfit</span><span class="o">,</span> <span class="n">profit</span><span class="o">);</span>
+            
+            <span class="c1">// 더 싼 날이 있으면 갱신</span>
+            <span class="n">minPrice</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minPrice</span><span class="o">,</span> <span class="n">price</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">maxProfit</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-성능-비교">📊 성능 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>시간복잡도</th>
+      <th>공간복잡도</th>
+      <th>코드 길이</th>
+      <th>가독성</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>내 코드</strong></td>
+      <td>O(n)</td>
+      <td>O(1)</td>
+      <td>15줄</td>
+      <td>보통</td>
+    </tr>
+    <tr>
+      <td><strong>방법 1</strong></td>
+      <td>O(n)</td>
+      <td>O(1)</td>
+      <td>10줄</td>
+      <td>좋음 ⭐</td>
+    </tr>
+    <tr>
+      <td><strong>방법 2</strong></td>
+      <td>O(n)</td>
+      <td>O(1)</td>
+      <td>10줄</td>
+      <td>매우 좋음</td>
+    </tr>
+    <tr>
+      <td><strong>방법 3</strong></td>
+      <td>O(n)</td>
+      <td>O(1)</td>
+      <td>12줄</td>
+      <td>좋음</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-핵심-인사이트">💡 핵심 인사이트</h2>
+
+<h3 id="배운-점">배운 점</h3>
+
+<ol>
+  <li>
+    <p><strong>Greedy 알고리즘</strong></p>
+
+    <ul>
+      <li>각 지점에서 최선의 선택</li>
+      <li>“지금까지 최솟값”만 기억하면 충분</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>불필요한 변수 제거</strong></p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">big</code> 변수는 중간 계산용</li>
+      <li>직접 계산하면 코드 간결</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Math 함수 활용</strong></p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Math.min()</code>, <code class="language-plaintext highlighter-rouge">Math.max()</code> 사용</li>
+      <li>if-else보다 깔끔</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Dynamic Programming 관점</strong></p>
+
+    <ul>
+      <li>이전 상태(최솟값)만 유지</li>
+      <li>현재 위치에서 최적해 계산</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="핵심-개념">핵심 개념</h3>
+
+<p><strong>문제의 본질:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>최대 이익 = max(현재 가격 - 지금까지 최저 가격)
+</code></pre></div></div>
+
+<p><strong>왜 이렇게 풀 수 있나?</strong></p>
+
+<ul>
+  <li>최저가에 사서 최고가에 팔면 됨</li>
+  <li>최저가는 항상 최고가보다 먼저 나와야 함</li>
+  <li>각 시점에서 “오늘 팔면 얼마?”를 계산</li>
+</ul>
+
+<hr />
+
+<h2 id="-개선-후-코드-추천">🎯 개선 후 코드 (추천)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxProfit</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">prices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">minPrice</span> <span class="o">=</span> <span class="n">prices</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">maxProfit</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">prices</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 더 싼 날이 있으면 갱신</span>
+            <span class="n">minPrice</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minPrice</span><span class="o">,</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            
+            <span class="c1">// 오늘 팔면 얼마 벌까?</span>
+            <span class="n">maxProfit</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxProfit</span><span class="o">,</span> <span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">minPrice</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">maxProfit</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>개선 사항:</strong></p>
+
+<ul>
+  <li>✂️ <code class="language-plaintext highlighter-rouge">big</code> 변수 제거 (33% 코드 감소)</li>
+  <li>📈 가독성 향상</li>
+  <li>🎯 로직 더 명확</li>
+  <li>🚀 성능 동일</li>
+</ul>
+
+<hr />
+
+<h2 id="-관련-개념">📚 관련 개념</h2>
+
+<h3 id="greedy-algorithm-탐욕-알고리즘">Greedy Algorithm (탐욕 알고리즘)</h3>
+
+<ul>
+  <li>각 단계에서 최선의 선택</li>
+  <li>전체 최적해를 보장하는 경우에만 사용</li>
+  <li>이 문제: “지금까지 최저가”가 항상 최선</li>
+</ul>
+
+<h3 id="dynamic-programming-연관">Dynamic Programming 연관</h3>
+
+<ul>
+  <li><strong>상태:</strong> <code class="language-plaintext highlighter-rouge">dp[i]</code> = i번째 날까지의 최대 이익</li>
+  <li><strong>전이:</strong> <code class="language-plaintext highlighter-rouge">dp[i] = max(dp[i-1], prices[i] - minPrice)</code></li>
+  <li>공간 최적화: 이전 상태만 필요 → O(1)</li>
+</ul>
+
+<h3 id="kadanes-algorithm">Kadane’s Algorithm</h3>
+
+<ul>
+  <li>최대 부분 배열 합 문제</li>
+  <li>이 문제도 유사한 패턴</li>
+  <li>차이: 음수 이익은 0으로 처리</li>
+</ul>
+
+<hr />
+
+<h2 id="-다음-단계">🎓 다음 단계</h2>
+
+<h3 id="비슷한-문제">비슷한 문제</h3>
+
+<ol>
+  <li>
+    <p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank">LeetCode 122: Best Time to Buy and Sell Stock II</a> (Medium)</p>
+
+    <ul>
+      <li>여러 번 거래 가능</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank">LeetCode 123: Best Time to Buy and Sell Stock III</a> (Hard)</p>
+
+    <ul>
+      <li>최대 2번 거래</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank">LeetCode 188: Best Time to Buy and Sell Stock IV</a> (Hard)</p>
+
+    <ul>
+      <li>최대 k번 거래</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank">LeetCode 309: Best Time to Buy and Sell Stock with Cooldown</a> (Medium)</p>
+
+    <ul>
+      <li>쿨다운 있음</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://leetcode.com/problems/maximum-subarray/" target="_blank">LeetCode 53: Maximum Subarray</a> (Medium)</p>
+
+    <ul>
+      <li>Kadane’s Algorithm</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="프로그래머스">프로그래머스</h3>
+
+<ul>
+  <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/42584" target="_blank">프로그래머스: 주식가격</a> (Level 2)</li>
+</ul>
+
+<h3 id="연습-포인트">연습 포인트</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />불필요한 변수 제거 습관화</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Greedy vs DP 판단 기준 이해</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Math 함수 활용 익숙해지기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />코드 간결성과 가독성 균형 찾기</li>
+</ul>
+
+<hr />
+
+<h2 id="-추가-최적화">🏆 추가 최적화</h2>
+
+<h3 id="stream-api-버전-참고용">Stream API 버전 (참고용)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxProfit</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">prices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">minPrice</span> <span class="o">=</span> <span class="o">{</span><span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">maxProfit</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">};</span>
+        
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">prices</span><span class="o">).</span><span class="na">forEach</span><span class="o">(</span><span class="n">price</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">minPrice</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minPrice</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">price</span><span class="o">);</span>
+            <span class="n">maxProfit</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxProfit</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">price</span> <span class="o">-</span> <span class="n">minPrice</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="o">});</span>
+        
+        <span class="k">return</span> <span class="n">maxProfit</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>주의:</strong> 가독성은 떨어지고 성능도 느림. 실전에서는 비추천!</p>
+
+<hr />
+
+<p>#LeetCode #Greedy #DynamicProgramming #BestTimeToBuyAndSellStock #알고리즘 #코딩테스트 #Java #Easy #배열순회 #최적화</p>
 
     </div>
 
