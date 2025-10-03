@@ -58,11 +58,11 @@ sidebar:
 ## 📚 ArrayList vs LinkedList 연습 문제
 
 ### LeetCode
-- <a href="https://leetcode.com/problems/design-linked-list/" target="_blank">LeetCode 707: Design Linked List</a> (Medium)
-- <a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank">LeetCode 19: Remove Nth Node From End of List</a> (Medium)
-- <a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">LeetCode 206: Reverse Linked List</a> (Easy)
-- <a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank">LeetCode 141: Linked List Cycle</a> (Easy)
-- <a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank">LeetCode 21: Merge Two Sorted Lists</a> (Easy)
+- <a href="https://leetcode.com/problems/design-linked-list/" target="_blank">LeetCode 707: Design Linked List</a> (Medium)| <a href="#" data-content="/assets/contents/algorithm/leetcode-707.md">풀이</a>
+- <a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank">LeetCode 19: Remove Nth Node From End of List</a> (Medium)| <a href="#" data-content="/assets/contents/algorithm/leetcode-19.md">풀이</a>
+- <a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">LeetCode 206: Reverse Linked List</a> (Easy)| <a href="#" data-content="/assets/contents/algorithm/leetcode-206.md">풀이</a>
+- <a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank">LeetCode 141: Linked List Cycle</a> (Easy)| <a href="#" data-content="/assets/contents/algorithm/leetcode-141.md">풀이</a>
+- <a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank">LeetCode 21: Merge Two Sorted Lists</a> (Easy)| <a href="#" data-content="/assets/contents/algorithm/leetcode-21.md">풀이</a>
 
 ### 백준
 - <a href="https://www.acmicpc.net/problem/1406" target="_blank">백준 1406: 에디터</a> (실버 2)
