@@ -1,0 +1,295 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>LeetCode 344: Reverse String 풀이 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="LeetCode 344: Reverse String 풀이">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/leetcode-344/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/leetcode-344/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+<h1 id="leetcode-344-reverse-string-풀이">LeetCode 344: Reverse String 풀이</h1>
+
+<h2 id="-결과">📊 결과</h2>
+<ul>
+  <li><strong>소요시간:</strong> 10분</li>
+  <li><strong>Runtime:</strong> 0ms (100%)</li>
+  <li><strong>Memory:</strong> 49.81MB</li>
+</ul>
+
+<hr />
+
+<h2 id="-내-코드">💻 내 코드</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">reverseString</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">char</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">[</span><span class="n">s</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="o">];</span>
+            <span class="n">s</span><span class="o">[</span><span class="n">s</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-평가">📝 평가</h2>
+
+<h3 id="-잘한-점">✅ 잘한 점</h3>
+
+<ul>
+  <li>Two Pointer 정석 풀이</li>
+  <li>In-place 처리 (O(1) 공간)</li>
+  <li>최적 성능 (0ms)</li>
+</ul>
+
+<h3 id="-개선점">🔴 개선점</h3>
+
+<p>없음. 완벽한 풀이.</p>
+
+<hr />
+
+<h2 id="-다른-방법">✨ 다른 방법</h2>
+
+<h3 id="two-pointer-명시적-버전">Two Pointer 명시적 버전</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">reverseString</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+        
+        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">char</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">s</span><span class="o">[</span><span class="n">left</span><span class="o">];</span>
+            <span class="n">s</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
+            <span class="n">s</span><span class="o">[</span><span class="n">right</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+            <span class="n">left</span><span class="o">++;</span>
+            <span class="n">right</span><span class="o">--;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="xor-swap-비추천">XOR Swap (비추천)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">reverseString</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="o">;</span>
+            <span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^=</span> <span class="n">s</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+            <span class="n">s</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">^=</span> <span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^=</span> <span class="n">s</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-성능">📊 성능</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>시간</th>
+      <th>공간</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>내 코드</strong></td>
+      <td>O(n)</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><strong>Two Pointer</strong></td>
+      <td>O(n)</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td><strong>XOR</strong></td>
+      <td>O(n)</td>
+      <td>O(1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-핵심">🎯 핵심</h2>
+
+<p><strong>In-place Reverse = Two Pointer Swap</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">s.length / 2</code>만큼만 순회</li>
+  <li>양 끝을 swap하며 중앙으로 이동</li>
+</ul>
+
+<hr />
+
+<p>#LeetCode #TwoPointer #String #Easy #InPlace</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

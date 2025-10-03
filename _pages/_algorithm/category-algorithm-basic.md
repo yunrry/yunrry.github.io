@@ -44,16 +44,16 @@ sidebar:
 - <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank">LeetCode 121: Best Time to Buy and Sell Stock</a>| <a href="#" data-content="/assets/contents/algorithm/leetcode-121.md">풀이</a>
 
 ### 문자열
-- <a href="https://leetcode.com/problems/valid-palindrome/" target="_blank">LeetCode 125: Valid Palindrome</a>
-- <a href="https://leetcode.com/problems/valid-anagram/" target="_blank">LeetCode 242: Valid Anagram</a>
-- <a href="https://leetcode.com/problems/reverse-string/" target="_blank">LeetCode 344: Reverse String</a>
-- <a href="https://leetcode.com/problems/first-unique-character-in-a-string/" target="_blank">LeetCode 387: First Unique Character in a String</a>
+- <a href="https://leetcode.com/problems/valid-palindrome/" target="_blank">LeetCode 125: Valid Palindrome</a>| <a href="#" data-content="/assets/contents/algorithm/leetcode-125.md">풀이</a>
+- <a href="https://leetcode.com/problems/valid-anagram/" target="_blank">LeetCode 242: Valid Anagram</a>| <a href="#" data-content="/assets/contents/algorithm/leetcode-242.md">풀이</a>
+- <a href="https://leetcode.com/problems/reverse-string/" target="_blank">LeetCode 344: Reverse String</a>| <a href="#" data-content="/assets/contents/algorithm/leetcode-344.md">풀이</a>
+- <a href="https://leetcode.com/problems/first-unique-character-in-a-string/" target="_blank">LeetCode 387: First Unique Character in a String</a>| <a href="#" data-content="/assets/contents/algorithm/leetcode-387.md">풀이</a>
 
 ### StringBuilder 활용
-- <a href="https://leetcode.com/problems/string-compression/" target="_blank">LeetCode 443: String Compression</a>
-- <a href="https://leetcode.com/problems/reverse-words-in-a-string/" target="_blank">LeetCode 151: Reverse Words in a String</a>
-- <a href="https://www.acmicpc.net/problem/10953" target="_blank">백준 10953: A+B - 6</a>
-- <a href="https://www.acmicpc.net/problem/11720" target="_blank">백준 11720: 숫자의 합</a>
+- <a href="https://leetcode.com/problems/string-compression/" target="_blank">LeetCode 443: String Compression</a>| <a href="#" data-content="/assets/contents/algorithm/leetcode-443.md">풀이</a>
+- <a href="https://leetcode.com/problems/reverse-words-in-a-string/" target="_blank">LeetCode 151: Reverse Words in a String</a>| <a href="#" data-content="/assets/contents/algorithm/leetcode-151.md">풀이</a>
+- <a href="https://www.acmicpc.net/problem/10953" target="_blank">백준 10953: A+B - 6</a> | <a href="#" data-content="/assets/contents/algorithm/baekjoon-10953.md">풀이</a>
+- <a href="https://www.acmicpc.net/problem/11720" target="_blank">백준 11720: 숫자의 합</a>| <a href="#" data-content="/assets/contents/algorithm/baekjoon-11720.md">풀이</a>
 
 ## 📚 ArrayList vs LinkedList 연습 문제
 
