@@ -119,8 +119,3 @@ class Solution {
 ---
 
 #LeetCode #LinkedList #Merge #TwoPointer #Easy #DummyNode
-
-```
-
-40분 걸렸지만 완벽한 풀이입니다. Dummy Node 패턴을 정확히 이해하고 있습니다.
-```

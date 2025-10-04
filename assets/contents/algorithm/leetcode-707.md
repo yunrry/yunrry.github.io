@@ -360,8 +360,3 @@ dummy.next = head;
 ---
 
 #LeetCode #LinkedList #Design #DataStructure #Medium #포인터조작
-
-```
-
-4시간 동안 고생했지만 구현 완료했습니다. `this.head.next = this.head` 버그만 수정하면 완벽합니다.
-```
