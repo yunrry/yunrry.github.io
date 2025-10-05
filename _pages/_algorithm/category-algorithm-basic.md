@@ -79,9 +79,9 @@ sidebar:
 
 ### Stack 문제
 - <a href="https://leetcode.com/problems/valid-parentheses/" target="_blank">LeetCode 20: Valid Parentheses</a> (Easy) | <a href="#" data-content="/assets/contents/algorithm/leetcode-20.md">풀이</a>
-- <a href="https://leetcode.com/problems/daily-temperatures/" target="_blank">LeetCode 739: Daily Temperatures</a> (Medium)
-- <a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/" target="_blank">LeetCode 150: Evaluate Reverse Polish Notation</a> (Medium)
-- <a href="https://leetcode.com/problems/min-stack/" target="_blank">LeetCode 155: Min Stack</a> (Medium)
+- <a href="https://leetcode.com/problems/daily-temperatures/" target="_blank">LeetCode 739: Daily Temperatures</a> (Medium) | <a href="#" data-content="/assets/contents/algorithm/leetcode-739.md">풀이</a>
+- <a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/" target="_blank">LeetCode 150: Evaluate Reverse Polish Notation</a> (Medium) | <a href="#" data-content="/assets/contents/algorithm/leetcode-150.md">풀이</a>
+- <a href="https://leetcode.com/problems/min-stack/" target="_blank">LeetCode 155: Min Stack</a> (Medium) | <a href="#" data-content="/assets/contents/algorithm/leetcode-155.md">풀이</a>
 - <a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank">LeetCode 84: Largest Rectangle in Histogram</a> (Hard)
 
 ### Queue 문제

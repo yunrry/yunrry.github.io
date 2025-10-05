@@ -93,7 +93,13 @@
 <loc>http://localhost:4000/assets/contents/algorithm/leetcode-141/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/assets/contents/algorithm/leetcode-150/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/contents/algorithm/leetcode-151/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/algorithm/leetcode-155/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/contents/algorithm/leetcode-19/</loc>
@@ -124,6 +130,12 @@
 </url>
 <url>
 <loc>http://localhost:4000/assets/contents/algorithm/leetcode-707/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/algorithm/leetcode-739/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/algorithm/leetcode-84/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/contents/algorithm/leetcode-88/</loc>
