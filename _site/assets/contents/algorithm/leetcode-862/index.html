@@ -1,0 +1,662 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>LeetCode 862. Shortest Subarray with Sum at Least K - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="LeetCode 862. Shortest Subarray with Sum at Least K">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/leetcode-862/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/leetcode-862/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+<h1 id="leetcode-862-shortest-subarray-with-sum-at-least-k">LeetCode 862. Shortest Subarray with Sum at Least K</h1>
+
+<h2 id="-문제-이해">📋 문제 이해</h2>
+
+<p><strong>목표</strong>: 합이 k 이상인 <strong>가장 짧은</strong> 부분 배열의 길이 찾기</p>
+
+<p><strong>핵심 난점</strong>:</p>
+<ul>
+  <li><strong>음수가 있음</strong> → 일반 슬라이딩 윈도우 불가능</li>
+  <li>합이 커졌다가 음수 때문에 다시 작아질 수 있음</li>
+</ul>
+
+<hr />
+
+<h2 id="-핵심-아이디어">💡 핵심 아이디어</h2>
+
+<h3 id="1-prefix-sum-활용">1. Prefix Sum 활용</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+부분 배열 [i, j]의 합 = prefixSum[j+1] - prefixSum[i]
+
+합 &gt;= k 조건: prefixSum[j+1] - prefixSum[i] &gt;= k → prefixSum[i] &lt;= prefixSum[j+1] - k
+
+</code></pre></div></div>
+
+<p><strong>문제 변환</strong>:</p>
+<blockquote>
+  <p>“각 j에 대해, prefixSum[i] &lt;= prefixSum[j] - k를 만족하는
+가장 큰 i를 찾아라”</p>
+</blockquote>
+
+<hr />
+
+<h3 id="2-단조-증가-deque">2. 단조 증가 Deque</h3>
+
+<p><strong>왜 단조 증가?</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+deque에 prefixSum이 증가하는 순서로 인덱스 저장
+
+예시: prefixSum = [0, 1, -1, 2] indices = [0, 1, 2, 3]
+
+i=2일 때 prefixSum[2]=-1 &lt; prefixSum[1]=1 → 1을 제거!
+
+이유: 2를 선택하면 더 짧은 부분 배열 가능 (2에서 시작 vs 1에서 시작)
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-최적-풀이">✨ 최적 풀이</h2>
+
+<h3 id="방법-1-prefix-sum--단조-deque-추천-">방법 1: Prefix Sum + 단조 Deque (추천 ⭐⭐⭐⭐⭐)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">shortestSubarray</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        
+        <span class="c1">// 1. Prefix Sum 계산 (long 타입 - overflow 방지)</span>
+        <span class="kt">long</span><span class="o">[]</span> <span class="n">prefixSum</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 2. 단조 증가 Deque</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">minLength</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 3. 조건 만족하는 부분 배열 찾기</span>
+            <span class="c1">// prefixSum[i] - prefixSum[deque.peekFirst()] &gt;= k</span>
+            <span class="k">while</span> <span class="o">(!</span><span class="n">deque</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> 
+                   <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">deque</span><span class="o">.</span><span class="na">peekFirst</span><span class="o">()]</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">minLength</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minLength</span><span class="o">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">deque</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">());</span>
+            <span class="o">}</span>
+            
+            <span class="c1">// 4. 단조 증가 유지</span>
+            <span class="c1">// 현재 prefixSum보다 큰 값들 제거</span>
+            <span class="k">while</span> <span class="o">(!</span><span class="n">deque</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> 
+                   <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">deque</span><span class="o">.</span><span class="na">peekLast</span><span class="o">()])</span> <span class="o">{</span>
+                <span class="n">deque</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+            <span class="o">}</span>
+            
+            <span class="n">deque</span><span class="o">.</span><span class="na">offerLast</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">minLength</span> <span class="o">==</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="n">minLength</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>시간복잡도</strong>: O(n) <strong>공간복잡도</strong>: O(n)</p>
+
+<hr />
+
+<h2 id="-상세-동작-과정">🔍 상세 동작 과정</h2>
+
+<h3 id="example-3-nums--2--1-2-k--3">Example 3: <code class="language-plaintext highlighter-rouge">nums = [2, -1, 2], k = 3</code></h3>
+
+<p><strong>Step 1: Prefix Sum 계산</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nums       = [2, -1,  2]
+indices    = [0,  1,  2]
+prefixSum  = [0,  2,  1,  3]
+             ↑   ↑   ↑   ↑
+          i=0  i=1 i=2 i=3
+</code></pre></div></div>
+
+<p><strong>Step 2: Deque로 처리</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="mi">0</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+  <span class="nl">minLength:</span> <span class="err">∞</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="mi">2</span>
+  <span class="c1">// 조건 확인: 2 - 0 = 2 &lt; 3 → 불만족</span>
+  <span class="c1">// 단조성 확인: 2 &gt; 0 → OK</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">]</span>
+  <span class="nl">minLength:</span> <span class="err">∞</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">2</span><span class="o">]=</span><span class="mi">1</span>
+  <span class="c1">// 조건 확인: 1 - 0 = 1 &lt; 3 → 불만족</span>
+  <span class="c1">// 단조성 확인: 1 &lt;= 2 → 1 제거!</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">]</span>
+  <span class="nl">minLength:</span> <span class="err">∞</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">3</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">3</span><span class="o">]=</span><span class="mi">3</span>
+  <span class="c1">// 조건 확인: 3 - 0 = 3 &gt;= 3 → 만족! ✓</span>
+  <span class="n">minLength</span> <span class="o">=</span> <span class="n">min</span><span class="o">(</span><span class="err">∞</span><span class="o">,</span> <span class="mi">3</span><span class="o">-</span><span class="mi">0</span><span class="o">)</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">deque에서</span> <span class="mi">0</span> <span class="n">제거</span>
+  
+  <span class="c1">// 다시 확인: deque = [2]</span>
+  <span class="c1">// 3 - 1 = 2 &lt; 3 → 불만족</span>
+  
+  <span class="c1">// 단조성: 3 &gt; 1 → OK</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">]</span>
+  
+<span class="nl">답:</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="example-상세-nums--84--37-32-40-95-k--167">Example 상세: <code class="language-plaintext highlighter-rouge">nums = [84, -37, 32, 40, 95], k = 167</code></h3>
+
+<p><strong>Prefix Sum</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nums      = [84, -37, 32, 40, 95]
+prefixSum = [0, 84, 47, 79, 119, 214]
+            ↑   ↑   ↑   ↑   ↑    ↑
+         i=0  i=1 i=2 i=3 i=4  i=5
+</code></pre></div></div>
+
+<p><strong>처리 과정</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="mi">0</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="mi">84</span>
+  <span class="c1">// 84 - 0 = 84 &lt; 167</span>
+  <span class="c1">// 84 &gt; 0 → OK</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">]</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">2</span><span class="o">]=</span><span class="mi">47</span>
+  <span class="c1">// 47 - 0 = 47 &lt; 167</span>
+  <span class="c1">// 47 &lt;= 84 → 1 제거!</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">]</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">3</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">3</span><span class="o">]=</span><span class="mi">79</span>
+  <span class="c1">// 79 - 0 = 79 &lt; 167</span>
+  <span class="c1">// 79 &gt; 47 → OK</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">]</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">4</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">4</span><span class="o">]=</span><span class="mi">119</span>
+  <span class="c1">// 119 - 0 = 119 &lt; 167</span>
+  <span class="c1">// 119 &gt; 79 → OK</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">]</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">5</span><span class="o">:</span> <span class="n">prefixSum</span><span class="o">[</span><span class="mi">5</span><span class="o">]=</span><span class="mi">214</span>
+  <span class="c1">// 214 - 0 = 214 &gt;= 167 ✓</span>
+  <span class="n">minLength</span> <span class="o">=</span> <span class="mi">5</span><span class="o">-</span><span class="mi">0</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">]</span>
+  
+  <span class="c1">// 214 - 47 = 167 &gt;= 167 ✓</span>
+  <span class="n">minLength</span> <span class="o">=</span> <span class="n">min</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">-</span><span class="mi">2</span><span class="o">)</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">]</span>
+  
+  <span class="c1">// 214 - 79 = 135 &lt; 167</span>
+  <span class="c1">// 214 &gt; 119 → OK</span>
+  <span class="nl">deque:</span> <span class="o">[</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">]</span>
+
+<span class="nl">답:</span> <span class="mi">3</span> <span class="o">(</span><span class="n">부분</span> <span class="n">배열</span> <span class="o">[</span><span class="mi">32</span><span class="o">,</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">95</span><span class="o">])</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-시각적-이해">🎨 시각적 이해</h2>
+
+<h3 id="왜-단조-증가-deque">왜 단조 증가 Deque?</h3>
+
+<p><strong>Case 1: prefixSum이 감소하는 경우</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>prefixSum: [0, 5, 3, 8]
+            ↑  ↑  ↑  ↑
+         i=0  1  2  3
+
+i=2일 때:
+- prefixSum[2]=3 &lt; prefixSum[1]=5
+- 만약 나중에 합이 k 이상이 되면:
+  - [1,?]보다 [2,?]가 항상 더 짧음!
+  - 왜? 2가 1보다 오른쪽에 있으니까
+- 따라서 1은 절대 답이 될 수 없음 → 제거!
+</code></pre></div></div>
+
+<p><strong>Case 2: 조건 만족 시 제거</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>prefixSum: [0, 2, 5, 10]
+k = 8
+
+i=3일 때:
+- 10 - 0 = 10 &gt;= 8 ✓ → [0,3] 길이 3
+- 10 - 2 = 8 &gt;= 8 ✓ → [1,3] 길이 2
+- 0 제거! (이미 사용했으니 더 이상 필요 없음)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-다른-접근법-비교">📊 다른 접근법 비교</h2>
+
+<h3 id="방법-2-brute-force-시간-초과">방법 2: Brute Force (시간 초과)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">shortestSubarray</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">minLength</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">long</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">sum</span> <span class="o">+=</span> <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">minLength</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minLength</span><span class="o">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">minLength</span> <span class="o">==</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="n">minLength</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>시간복잡도</strong>: O(n²) <strong>결과</strong>: TLE (Time Limit Exceeded)</p>
+
+<hr />
+
+<h3 id="방법-3-treemap-느림">방법 3: TreeMap (느림)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">shortestSubarray</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">long</span><span class="o">[]</span> <span class="n">prefixSum</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="o">}</span>
+        
+        <span class="nc">TreeMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeMap</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">minLength</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// prefixSum[i] - x &gt;= k</span>
+            <span class="c1">// x &lt;= prefixSum[i] - k</span>
+            <span class="nc">Long</span> <span class="n">target</span> <span class="o">=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">k</span><span class="o">;</span>
+            
+            <span class="c1">// headMap: key &lt;= target인 모든 항목</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">headMap</span><span class="o">(</span><span class="n">target</span><span class="o">,</span> <span class="kc">true</span><span class="o">).</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">minLength</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minLength</span><span class="o">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+            <span class="o">}</span>
+            
+            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">minLength</span> <span class="o">==</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="n">minLength</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>시간복잡도</strong>: O(n²) (headMap 순회) <strong>결과</strong>: TLE</p>
+
+<hr />
+
+<h2 id="-성능-비교">📊 성능 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>시간복잡도</th>
+      <th>공간복잡도</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Brute Force</td>
+      <td>O(n²)</td>
+      <td>O(1)</td>
+      <td>TLE</td>
+    </tr>
+    <tr>
+      <td>TreeMap</td>
+      <td>O(n²) or O(n log n)</td>
+      <td>O(n)</td>
+      <td>TLE or Slow</td>
+    </tr>
+    <tr>
+      <td><strong>단조 Deque</strong></td>
+      <td><strong>O(n)</strong></td>
+      <td><strong>O(n)</strong></td>
+      <td><strong>AC ✅</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-핵심-인사이트">💡 핵심 인사이트</h2>
+
+<h3 id="1-prefix-sum의-활용">1. Prefix Sum의 활용</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>부분 배열 합을 O(1)에 계산
+→ 모든 가능한 부분 배열을 빠르게 검사 가능
+</code></pre></div></div>
+
+<h3 id="2-단조-deque의-두-가지-역할">2. 단조 Deque의 두 가지 역할</h3>
+
+<p><strong>역할 1: 불필요한 후보 제거</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// prefixSum이 감소하면 제거</span>
+<span class="k">while</span> <span class="o">(!</span><span class="n">deque</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> 
+       <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">deque</span><span class="o">.</span><span class="na">peekLast</span><span class="o">()])</span> <span class="o">{</span>
+    <span class="n">deque</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>역할 2: 조건 만족 시 즉시 제거</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 이미 답을 찾았으면 제거 (더 긴 부분 배열은 불필요)</span>
+<span class="k">while</span> <span class="o">(!</span><span class="n">deque</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> 
+       <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">deque</span><span class="o">.</span><span class="na">peekFirst</span><span class="o">()]</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">minLength</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minLength</span><span class="o">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">deque</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="3-왜-음수가-어려운가">3. 왜 음수가 어려운가?</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>양수만 있으면: Two Pointer로 O(n) 가능
+음수가 있으면: 합이 증가했다가 감소 → Two Pointer 불가
+
+예: [5, -3, 8]
+누적: 5 → 2 → 10
+     ↑   ↓   ↑
+   증가 감소 증가
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-완성-코드-주석-포함">🎯 완성 코드 (주석 포함)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">shortestSubarray</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        
+        <span class="c1">// Prefix Sum 배열 (long 타입으로 overflow 방지)</span>
+        <span class="kt">long</span><span class="o">[]</span> <span class="n">prefixSum</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 단조 증가 Deque (인덱스 저장)</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">minLength</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 1. 조건을 만족하는 부분 배열 찾기</span>
+            <span class="c1">// prefixSum[i] - prefixSum[j] &gt;= k</span>
+            <span class="k">while</span> <span class="o">(!</span><span class="n">deque</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> 
+                   <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">deque</span><span class="o">.</span><span class="na">peekFirst</span><span class="o">()]</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 최소 길이 갱신 후 제거</span>
+                <span class="c1">// (이미 사용했으므로 더 이상 필요 없음)</span>
+                <span class="n">minLength</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">minLength</span><span class="o">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">deque</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">());</span>
+            <span class="o">}</span>
+            
+            <span class="c1">// 2. 단조 증가 유지</span>
+            <span class="c1">// 현재 prefixSum이 더 작으면 이전 것들 제거</span>
+            <span class="c1">// 이유: 현재 위치가 더 오른쪽이면서 값도 작으므로</span>
+            <span class="c1">// 나중에 더 짧은 부분 배열을 만들 수 있음</span>
+            <span class="k">while</span> <span class="o">(!</span><span class="n">deque</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> 
+                   <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">deque</span><span class="o">.</span><span class="na">peekLast</span><span class="o">()])</span> <span class="o">{</span>
+                <span class="n">deque</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+            <span class="o">}</span>
+            
+            <span class="c1">// 3. 현재 인덱스 추가</span>
+            <span class="n">deque</span><span class="o">.</span><span class="na">offerLast</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">minLength</span> <span class="o">==</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="n">minLength</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/**
+ * 시간복잡도: O(n) - 각 인덱스는 최대 1번 추가, 1번 제거
+ * 공간복잡도: O(n) - prefixSum 배열과 deque
+ * 
+ * Runtime: 20-30ms
+ * Memory: 55-60MB
+ */</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-핵심-포인트">🔑 핵심 포인트</h2>
+
+<h3 id="1-long-타입-사용">1. Long 타입 사용</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">long</span><span class="o">[]</span> <span class="n">prefixSum</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+<span class="c1">// nums[i]가 최대 10^5, n이 최대 10^5</span>
+<span class="c1">// 최악의 경우: 10^5 * 10^5 = 10^10 &gt; Integer.MAX_VALUE</span>
+</code></pre></div></div>
+
+<h3 id="2-단조-증가의-의미">2. 단조 증가의 의미</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deque의 prefixSum 값들:
+[작은 값] → [중간 값] → [큰 값]
+
+왜? 작으면서 오른쪽에 있는 게 유리
+→ 더 짧은 부분 배열 가능
+</code></pre></div></div>
+
+<h3 id="3-두-while-루프의-차이">3. 두 while 루프의 차이</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 첫 번째: pollFirst() - 답 찾기</span>
+<span class="k">while</span> <span class="o">(...)</span> <span class="o">{</span>
+    <span class="n">minLength</span> <span class="o">=</span> <span class="n">min</span><span class="o">(</span><span class="n">minLength</span><span class="o">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">deque</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">());</span>
+<span class="o">}</span>
+
+<span class="c1">// 두 번째: pollLast() - 불필요한 후보 제거</span>
+<span class="k">while</span> <span class="o">(...)</span> <span class="o">{</span>
+    <span class="n">deque</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-연습-문제">🎓 연습 문제</h2>
+
+<h3 id="비슷한-문제">비슷한 문제</h3>
+
+<ol>
+  <li>
+    <p><strong><a href="https://leetcode.com/problems/minimum-size-subarray-sum/">LeetCode 209. Minimum Size Subarray Sum</a></strong> ⭐⭐</p>
+
+    <ul>
+      <li>양수만 있는 버전 (Two Pointer로 가능)</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong><a href="https://leetcode.com/problems/constrained-subsequence-sum/">LeetCode 1425. Constrained Subsequence Sum</a></strong> ⭐⭐⭐⭐</p>
+
+    <ul>
+      <li>DP + 단조 Deque</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong><a href="https://leetcode.com/problems/max-value-of-equation/">LeetCode 1499. Max Value of Equation</a></strong> ⭐⭐⭐⭐</p>
+
+    <ul>
+      <li>단조 Deque 응용</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="️-keywords">🏷️ Keywords</h2>
+
+<p>#MonotonicDeque #PrefixSum #ShortestSubarray #단조큐 #누적합 #Deque #SubarraySum #Hard난이도 #슬라이딩윈도우 #음수처리 #LeetCodeHard #최적화 #O(n)알고리즘</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

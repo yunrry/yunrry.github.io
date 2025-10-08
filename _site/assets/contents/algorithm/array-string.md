@@ -156,57 +156,6 @@ int[] primitiveArr2 = list3.stream()
 ```
 {% endraw %}
 
-
-### Primitive 배열 vs 객체 배열
-
-**Primitive 배열:**
-- 기본 자료형을 담는 배열
-- `int[]`, `double[]`, `boolean[]`, `char[]` 등
-
-**객체 배열:**
-- 참조 타입을 담는 배열
-- `Integer[]`, `String[]`, `Object[]` 등
-
----
-
-### 차이점
-
-{% raw %}
-```java
-// Primitive 배열
-int[] primitiveArr = {1, 2, 3};
-// 메모리에 값이 직접 저장됨
-// [1][2][3]
-
-// 객체 배열
-Integer[] objectArr = {1, 2, 3};
-// 메모리에 참조(주소)가 저장됨
-// [→][→][→] → Integer객체들
-```
-{% endraw %}
-
----
-
-### 왜 구분하나?
-
-**변환이 다름:**
-
-{% raw %}
-```java
-// List → primitive 배열 (복잡)
-List<Integer> list = Arrays.asList(1, 2, 3);
-int[] arr = list.stream()
-                .mapToInt(i -> i)  // 언박싱 필요
-                .toArray();
-
-// List → 객체 배열 (간단)
-Integer[] arr2 = list.toArray(new Integer[0]);
-```
-{% endraw %}
-
-**핵심:** primitive는 객체가 아니라서 직접 변환 불가. Stream으로 언박싱 필요.
-
-
 ---
 
 ### 6. 자주 사용하는 배열 패턴
@@ -232,7 +181,7 @@ int min2 = Arrays.stream(arr).min().getAsInt();
 {% endraw %}
 
 #### 배열 회전
-- [배열 회전 문제 풀이](/algorithm/array-rotate/)
+
 ```java
 // 왼쪽으로 k칸 회전
 public void rotateLeft(int[] arr, int k) {

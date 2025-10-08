@@ -85,13 +85,13 @@ sidebar:
 - <a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank">LeetCode 84: Largest Rectangle in Histogram</a> (Hard) | <a href="#" data-content="/assets/contents/algorithm/leetcode-84.md">풀이</a>
 
 ### Queue 문제
-- <a href="https://leetcode.com/problems/number-of-recent-calls/" target="_blank">LeetCode 933: Number of Recent Calls</a> (Easy)
+- <a href="https://leetcode.com/problems/number-of-recent-calls/" target="_blank">LeetCode 933: Number of Recent Calls</a> (Easy) | <a href="#" data-content="/assets/contents/algorithm/leetcode-933.md">풀이</a>
 - <a href="https://leetcode.com/problems/design-circular-queue/" target="_blank">LeetCode 622: Design Circular Queue</a> (Medium)
 - <a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank">LeetCode 225: Implement Stack using Queues</a> (Easy)
 
 ### Deque 문제
-- <a href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank">LeetCode 239: Sliding Window Maximum</a> (Hard)
-- <a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/" target="_blank">LeetCode 862: Shortest Subarray with Sum at Least K</a> (Hard)
+- <a href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank">LeetCode 239: Sliding Window Maximum</a> (Hard) | <a href="#" data-content="/assets/contents/algorithm/leetcode-239.md">풀이</a>
+- <a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/" target="_blank">LeetCode 862: Shortest Subarray with Sum at Least K</a> (Hard) | <a href="#" data-content="/assets/contents/algorithm/leetcode-862.md">풀이</a>
 
 ### 백준
 - <a href="https://www.acmicpc.net/problem/10828" target="_blank">백준 10828: 스택</a> (실버 4)
@@ -103,7 +103,7 @@ sidebar:
 - <a href="https://www.acmicpc.net/problem/2164" target="_blank">백준 2164: 카드2</a> (실버 4)
 
 ### 프로그래머스
-- <a href="https://school.programmers.co.kr/learn/courses/30/lessons/42586" target="_blank">프로그래머스: 기능개발</a> (Level 2)
+- <a href="https://school.programmers.co.kr/learn/courses/30/lessons/42586" target="_blank">프로그래머스: 기능개발</a> (Level 2) | <a href="#" data-content="/assets/contents/algorithm/programmers-42586.md">풀이</a> 
 - <a href="https://school.programmers.co.kr/learn/courses/30/lessons/42587" target="_blank">프로그래머스: 프로세스</a> (Level 2)
 - <a href="https://school.programmers.co.kr/learn/courses/30/lessons/42583" target="_blank">프로그래머스: 다리를 지나는 트럭</a> (Level 2)
 - <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12909" target="_blank">프로그래머스: 올바른 괄호</a> (Level 2)

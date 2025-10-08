@@ -1,0 +1,475 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>프로그래머스: 기능개발 (Level 2) - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="프로그래머스: 기능개발 (Level 2)">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/programmers-42586/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/programmers-42586/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+<h1 id="프로그래머스-기능개발-level-2">프로그래머스: 기능개발 (Level 2)</h1>
+
+<h2 id="-결과">📊 결과</h2>
+<ul>
+  <li><strong>소요시간</strong>: 25분</li>
+  <li><strong>통과</strong>: 11/11 테스트 케이스</li>
+  <li><strong>평균 Runtime</strong>: 0.11ms</li>
+  <li><strong>평균 Memory</strong>: 81MB</li>
+</ul>
+
+<hr />
+
+<h2 id="-코드">💻 코드</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">progresses</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">speeds</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">counts</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+        
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">progresses</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="o">(</span><span class="mi">100</span><span class="o">-</span><span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">])/</span><span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="k">if</span><span class="o">((</span><span class="mi">100</span><span class="o">-</span><span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">])%</span><span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="n">day</span><span class="o">++;</span>
+            <span class="k">if</span><span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+                <span class="kt">int</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">prev</span><span class="o">&gt;</span><span class="n">day</span><span class="o">)</span> <span class="n">day</span><span class="o">=</span><span class="n">prev</span><span class="o">;</span>
+            <span class="o">}</span>    
+            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">day</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="kt">int</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">len</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">back</span><span class="o">=</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+        <span class="k">while</span><span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+            <span class="kt">int</span> <span class="n">curr</span><span class="o">=</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">back</span> <span class="o">==</span> <span class="n">curr</span><span class="o">){</span>
+              <span class="n">count</span><span class="o">++;</span>  
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">len</span><span class="o">++;</span> 
+                <span class="n">counts</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+                <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span>   
+            <span class="n">back</span> <span class="o">=</span> <span class="n">curr</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">len</span><span class="o">++;</span> 
+        <span class="n">counts</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+        
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">len</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">len</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span> <span class="n">counts</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-평가">📝 평가</h2>
+
+<h3 id="-잘한-점">✅ 잘한 점</h3>
+
+<ol>
+  <li><strong>올림 처리 정확</strong>: <code class="language-plaintext highlighter-rouge">if((100-progresses[i])%speeds[i]&gt;0) day++</code></li>
+  <li><strong>배포일 조정</strong>: 앞 작업이 늦으면 뒤 작업도 같은 날 배포</li>
+  <li><strong>그룹핑 로직</strong>: 같은 날 배포되는 기능 카운트</li>
+  <li><strong>모든 테스트 통과</strong></li>
+</ol>
+
+<h3 id="-개선점">🔴 개선점</h3>
+
+<ol>
+  <li><strong>Stack 남용</strong>: 문제는 Queue 개념인데 Stack 사용</li>
+  <li><strong>불필요한 역순 처리</strong>: Stack에 넣었다가 다시 pop</li>
+  <li><strong>변수명</strong>: <code class="language-plaintext highlighter-rouge">stack</code> → <code class="language-plaintext highlighter-rouge">days</code>, <code class="language-plaintext highlighter-rouge">counts</code> → <code class="language-plaintext highlighter-rouge">result</code></li>
+  <li><strong>복잡한 2단계 처리</strong>: 계산과 그룹핑을 한번에 가능</li>
+</ol>
+
+<hr />
+
+<h2 id="-최적화된-풀이">✨ 최적화된 풀이</h2>
+
+<h3 id="방법-1-queue-사용-직관적">방법 1: Queue 사용 (직관적)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">progresses</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">speeds</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="c1">// 1. 각 기능의 완료일 계산</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">progresses</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">days</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">((</span><span class="mf">100.0</span> <span class="o">-</span> <span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">/</span> <span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">days</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 2. 배포 그룹 계산</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">prevDay</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">currentDay</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">currentDay</span> <span class="o">&lt;=</span> <span class="n">prevDay</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 같은 날 배포</span>
+                <span class="n">count</span><span class="o">++;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 다른 날 배포</span>
+                <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="n">prevDay</span> <span class="o">=</span> <span class="n">currentDay</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+        
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span><span class="o">).</span><span class="na">toArray</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="방법-2-한-번의-순회로-처리">방법 2: 한 번의 순회로 처리</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">progresses</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">speeds</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">maxDay</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  <span class="c1">// 현재 배포일</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">progresses</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">days</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">((</span><span class="mf">100.0</span> <span class="o">-</span> <span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">/</span> <span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">days</span> <span class="o">&gt;</span> <span class="n">maxDay</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 새로운 배포일</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="n">maxDay</span> <span class="o">=</span> <span class="n">days</span><span class="o">;</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 같은 배포일</span>
+                <span class="n">count</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+        
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span><span class="o">).</span><span class="na">toArray</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>시간복잡도</strong>: O(n)<br />
+<strong>공간복잡도</strong>: O(1) (결과 제외)</p>
+
+<hr />
+
+<h2 id="-동작-과정">🔍 동작 과정</h2>
+
+<h3 id="예시-progresses933055-speeds1305">예시: <code class="language-plaintext highlighter-rouge">progresses=[93,30,55]</code>, <code class="language-plaintext highlighter-rouge">speeds=[1,30,5]</code></h3>
+
+<p><strong>Step 1: 완료일 계산</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>기능 0: (100-93)/1 = 7일
+기능 1: (100-30)/30 = 2.33 → 3일
+기능 2: (100-55)/5 = 9일
+</code></pre></div></div>
+
+<p><strong>Step 2: 배포 그룹핑</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>days: [7, 3, 9]
+
+i=0: maxDay=7, count=1
+i=1: 3 &lt;= 7 → count=2 (같은 날 배포)
+i=2: 9 &gt; 7 → result=[2], maxDay=9, count=1
+
+최종: result=[2, 1]
+</code></pre></div></div>
+
+<p><strong>의미</strong>:</p>
+
+<ul>
+  <li>1차 배포(7일): 기능 0, 1 (2개)</li>
+  <li>2차 배포(9일): 기능 2 (1개)</li>
+</ul>
+
+<hr />
+
+<h2 id="-핵심-개념">💡 핵심 개념</h2>
+
+<h3 id="배포-규칙">배포 규칙</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>앞 기능이 완료되어야 뒤 기능도 배포 가능
+→ 뒤 기능이 먼저 완료되어도 대기
+
+예: [7일, 3일, 9일]
+- 기능1은 3일에 완료되지만 7일까지 대기
+- 7일에 기능0, 1 함께 배포
+</code></pre></div></div>
+
+<h3 id="mathceil-활용">Math.ceil 활용</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 원본: 나누기 + 나머지 체크</span>
+<span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="o">(</span><span class="mi">100</span><span class="o">-</span><span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">])/</span><span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="k">if</span><span class="o">((</span><span class="mi">100</span><span class="o">-</span><span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">])%</span><span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="n">day</span><span class="o">++;</span>
+
+<span class="c1">// 개선: Math.ceil</span>
+<span class="kt">int</span> <span class="n">days</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">((</span><span class="mf">100.0</span> <span class="o">-</span> <span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">/</span> <span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-개선-후-코드">🎯 개선 후 코드</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">progresses</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">speeds</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">maxDay</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">progresses</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 완료일 계산 (올림)</span>
+            <span class="kt">int</span> <span class="n">days</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">((</span><span class="mf">100.0</span> <span class="o">-</span> <span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">/</span> <span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">days</span> <span class="o">&gt;</span> <span class="n">maxDay</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 새로운 배포일 → 이전 그룹 저장</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+                <span class="n">maxDay</span> <span class="o">=</span> <span class="n">days</span><span class="o">;</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 기존 배포일에 포함</span>
+                <span class="n">count</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>  <span class="c1">// 마지막 그룹</span>
+        
+        <span class="k">return</span> <span class="n">answer</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span><span class="o">).</span><span class="na">toArray</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>개선 효과</strong>:</p>
+
+<ul>
+  <li>Stack 제거 → 직관적</li>
+  <li>한 번의 순회로 처리</li>
+  <li>코드 간결화</li>
+</ul>
+
+<h2 id="최적-성능-코드">최적 성능 코드</h2>
+
+<p>java</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">progresses</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">speeds</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">progresses</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">maxDay</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">progresses</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">days</span> <span class="o">=</span> <span class="o">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">days</span> <span class="o">&gt;</span> <span class="n">maxDay</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="n">temp</span><span class="o">[</span><span class="n">idx</span><span class="o">++]</span> <span class="o">=</span> <span class="n">count</span><span class="o">;</span>
+                <span class="n">maxDay</span> <span class="o">=</span> <span class="n">days</span><span class="o">;</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">count</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">temp</span><span class="o">[</span><span class="n">idx</span><span class="o">++]</span> <span class="o">=</span> <span class="n">count</span><span class="o">;</span>
+        
+        <span class="k">return</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">temp</span><span class="o">,</span> <span class="n">idx</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>개선점</strong>:</p>
+
+<ul>
+  <li>ArrayList 제거 (boxing/unboxing 오버헤드 없음)</li>
+  <li><code class="language-plaintext highlighter-rouge">Math.ceil</code> → 정수 연산으로 변경</li>
+  <li>Stream API 제거</li>
+</ul>
+
+<hr />
+
+<h2 id="-관련-문제">📚 관련 문제</h2>
+
+<ol>
+  <li><strong>[프로그래머스] 다리를 지나는 트럭</strong> ⭐⭐</li>
+  <li><strong>[프로그래머스] 프린터</strong> ⭐⭐</li>
+  <li><strong>[LeetCode 933] Number of Recent Calls</strong> ⭐</li>
+</ol>
+
+<hr />
+
+<h2 id="️-keywords">🏷️ Keywords</h2>
+
+<p>#Queue #Stack #프로그래머스 #배포그룹핑 #Math.ceil #FIFO #Level2</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
