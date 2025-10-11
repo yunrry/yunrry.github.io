@@ -1,0 +1,1842 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>그래프 탐색 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="그래프 탐색">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/graph/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/graph/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+<h1 id="그래프-탐색">그래프 탐색</h1>
+
+<p>그래프는 정점(Vertex)과 간선(Edge)으로 이루어진 자료구조로, 네트워크, 지도, 소셜 관계 등 다양한 문제를 표현할 수 있습니다. BFS와 DFS는 그래프 탐색의 핵심 알고리즘입니다.</p>
+
+<hr />
+
+<h2 id="-그래프-기초">📊 그래프 기초</h2>
+
+<h3 id="그래프-용어">그래프 용어</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+정점(Vertex/Node): 그래프의 노드 간선(Edge): 정점을 연결하는 선 차수(Degree): 정점에 연결된 간선의 수 경로(Path): 정점들을 잇는 간선들의 순서 사이클(Cycle): 시작과 끝이 같은 경로
+
+</code></pre></div></div>
+
+<h3 id="그래프-종류">그래프 종류</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+무향 그래프(Undirected): A-B = B-A 유향 그래프(Directed): A→B ≠ B→A 가중치 그래프(Weighted): 간선에 비용/거리 비가중치 그래프(Unweighted): 모든 간선 동일
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="️-그래프-표현-방법">🗂️ 그래프 표현 방법</h2>
+
+<h3 id="1-인접-행렬-adjacency-matrix">1. 인접 행렬 (Adjacency Matrix)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AdjacencyMatrix</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">matrix</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">vertices</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">AdjacencyMatrix</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">vertices</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">matrix</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">n</span><span class="o">];</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 무향 그래프 간선 추가</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addEdge</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">matrix</span><span class="o">[</span><span class="n">from</span><span class="o">][</span><span class="n">to</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">matrix</span><span class="o">[</span><span class="n">to</span><span class="o">][</span><span class="n">from</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 가중치 그래프 간선 추가</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addEdgeWeighted</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="kt">int</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">matrix</span><span class="o">[</span><span class="n">from</span><span class="o">][</span><span class="n">to</span><span class="o">]</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+        <span class="n">matrix</span><span class="o">[</span><span class="n">to</span><span class="o">][</span><span class="n">from</span><span class="o">]</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 유향 그래프 간선 추가</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addDirectedEdge</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">matrix</span><span class="o">[</span><span class="n">from</span><span class="o">][</span><span class="n">to</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 간선 존재 확인</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasEdge</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">matrix</span><span class="o">[</span><span class="n">from</span><span class="o">][</span><span class="n">to</span><span class="o">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 출력</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vertices</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">vertices</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 사용 예시</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">AdjacencyMatrix</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AdjacencyMatrix</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">print</span><span class="o">();</span>
+    
+    <span class="c1">// 출력:</span>
+    <span class="c1">// 0 1 1 0 0</span>
+    <span class="c1">// 1 0 0 1 0</span>
+    <span class="c1">// 1 0 0 0 1</span>
+    <span class="c1">// 0 1 0 0 0</span>
+    <span class="c1">// 0 0 1 0 0</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>장점:</strong></p>
+
+<ul>
+  <li>간선 존재 여부 O(1)에 확인</li>
+  <li>구현 간단</li>
+</ul>
+
+<p><strong>단점:</strong></p>
+
+<ul>
+  <li>공간복잡도 O(V²)</li>
+  <li>희소 그래프에 비효율적</li>
+</ul>
+
+<hr />
+
+<h3 id="2-인접-리스트-adjacency-list--추천">2. 인접 리스트 (Adjacency List) ⭐ 추천</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AdjacencyList</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">adjList</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">vertices</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">AdjacencyList</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">vertices</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">adjList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">adjList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 무향 그래프 간선 추가</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addEdge</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">adjList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">from</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="n">to</span><span class="o">);</span>
+        <span class="n">adjList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">to</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="n">from</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 유향 그래프 간선 추가</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addDirectedEdge</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">adjList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">from</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="n">to</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 인접 노드 가져오기</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">getNeighbors</span><span class="o">(</span><span class="kt">int</span> <span class="n">node</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">adjList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 출력</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vertices</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="s">" → "</span><span class="o">);</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">neighbor</span> <span class="o">:</span> <span class="n">adjList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">))</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">neighbor</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 사용 예시</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">AdjacencyList</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AdjacencyList</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">addEdge</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+    <span class="n">graph</span><span class="o">.</span><span class="na">print</span><span class="o">();</span>
+    
+    <span class="c1">// 출력:</span>
+    <span class="c1">// 0 → 1 2</span>
+    <span class="c1">// 1 → 0 3</span>
+    <span class="c1">// 2 → 0 4</span>
+    <span class="c1">// 3 → 1</span>
+    <span class="c1">// 4 → 2</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>장점:</strong></p>
+
+<ul>
+  <li>공간복잡도 O(V+E) - 효율적</li>
+  <li>희소 그래프에 적합</li>
+  <li>인접 노드 순회 빠름</li>
+</ul>
+
+<p><strong>단점:</strong></p>
+
+<ul>
+  <li>간선 존재 확인 O(V) (worst case)</li>
+</ul>
+
+<hr />
+
+<h3 id="3-간선-리스트-edge-list">3. 간선 리스트 (Edge List)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EdgeList</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Edge</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="n">to</span><span class="o">,</span> <span class="n">weight</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">Edge</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="kt">int</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">from</span> <span class="o">=</span> <span class="n">from</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">to</span> <span class="o">=</span> <span class="n">to</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Edge</span><span class="o">&gt;</span> <span class="n">edges</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">EdgeList</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">edges</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addEdge</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="kt">int</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">edges</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="n">from</span><span class="o">,</span> <span class="n">to</span><span class="o">,</span> <span class="n">weight</span><span class="o">));</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Edge</span><span class="o">&gt;</span> <span class="nf">getEdges</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">edges</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 크루스칼 알고리즘 등에서 사용</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-bfs-breadth-first-search">🔍 BFS (Breadth-First Search)</h2>
+
+<h3 id="원리">원리</h3>
+
+<p><strong>너비 우선 탐색 = 레벨별로 탐색</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BFS 특징:
+- Queue 사용
+- 가까운 노드부터 탐색
+- 최단 경로 보장 (비가중치)
+- 메모리 사용량 많음
+</code></pre></div></div>
+
+<p><strong>시각화:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       1
+      / \
+     2   3
+    / \   \
+   4   5   6
+
+BFS 순서: 1 → 2 → 3 → 4 → 5 → 6
+(레벨별로 탐색)
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="기본-구현">기본 구현</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BFS</span> <span class="o">{</span>
+    <span class="c1">// 기본 BFS</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bfs</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="c1">// 시작 노드</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">node</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+            
+            <span class="c1">// 인접 노드 탐색</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">graph</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 간선 추가</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">6</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">6</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        
+        <span class="no">BFS</span> <span class="n">bfs</span> <span class="o">=</span> <span class="k">new</span> <span class="no">BFS</span><span class="o">();</span>
+        <span class="n">bfs</span><span class="o">.</span><span class="na">bfs</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>  <span class="c1">// 1 2 3 4 5 6</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="레벨별-bfs">레벨별 BFS</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LevelBFS</span> <span class="o">{</span>
+    <span class="c1">// 각 레벨을 구분하여 탐색</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bfsByLevel</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>  <span class="c1">// 현재 레벨의 노드 수</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Level "</span> <span class="o">+</span> <span class="n">level</span> <span class="o">+</span> <span class="s">": "</span><span class="o">);</span>
+            
+            <span class="c1">// 현재 레벨의 모든 노드 처리</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">node</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+                
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                        <span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+            <span class="n">level</span><span class="o">++;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 출력:</span>
+<span class="c1">// Level 0: 1</span>
+<span class="c1">// Level 1: 2 3</span>
+<span class="c1">// Level 2: 4 5 6</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="최단-거리-구하기">최단 거리 구하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ShortestPath</span> <span class="o">{</span>
+    <span class="c1">// 시작점부터 모든 노드까지의 최단 거리</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">bfsDistance</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">distance</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">distance</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>  <span class="c1">// -1 = 방문 안 함</span>
+        
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        <span class="n">distance</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">distance</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">distance</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="n">distance</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">distance</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 그래프 생성</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">graph</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
+        <span class="o">}</span>
+        
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">6</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">6</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        
+        <span class="nc">ShortestPath</span> <span class="n">sp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ShortestPath</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="na">bfsDistance</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1 → "</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">dist</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 출력:</span>
+        <span class="c1">// 1 → 1: 0</span>
+        <span class="c1">// 1 → 2: 1</span>
+        <span class="c1">// 1 → 3: 1</span>
+        <span class="c1">// 1 → 4: 2</span>
+        <span class="c1">// 1 → 5: 2</span>
+        <span class="c1">// 1 → 6: 2</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="경로-역추적">경로 역추적</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PathTracking</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">bfsPath</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>  <span class="c1">// 부모 노드 기록</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">parent</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+        
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="n">end</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>  <span class="c1">// 목표 도달</span>
+            
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">parent</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>  <span class="c1">// 부모 기록</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 경로 역추적</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">end</span><span class="o">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">start</span> <span class="o">!=</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">path</span><span class="o">;</span>  <span class="c1">// 경로 없음</span>
+        <span class="o">}</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">at</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span> <span class="n">at</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">at</span> <span class="o">=</span> <span class="n">parent</span><span class="o">[</span><span class="n">at</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">path</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">at</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="nc">Collections</span><span class="o">.</span><span class="na">reverse</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">path</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 그래프 생성</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">graph</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
+        <span class="o">}</span>
+        
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">6</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">6</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        
+        <span class="nc">PathTracking</span> <span class="n">pt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PathTracking</span><span class="o">();</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="na">bfsPath</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"경로: "</span> <span class="o">+</span> <span class="n">path</span><span class="o">);</span>  <span class="c1">// [1, 2, 4]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-dfs-vs-bfs-비교">🔄 DFS vs BFS 비교</h2>
+
+<h3 id="차이점">차이점</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>특성</th>
+      <th>DFS</th>
+      <th>BFS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>자료구조</strong></td>
+      <td>Stack (재귀)</td>
+      <td>Queue</td>
+    </tr>
+    <tr>
+      <td><strong>탐색 방향</strong></td>
+      <td>깊이 우선</td>
+      <td>너비 우선</td>
+    </tr>
+    <tr>
+      <td><strong>메모리</strong></td>
+      <td>O(H) - 높이</td>
+      <td>O(W) - 너비</td>
+    </tr>
+    <tr>
+      <td><strong>최단 경로</strong></td>
+      <td>보장 안 함</td>
+      <td>보장함 (비가중치)</td>
+    </tr>
+    <tr>
+      <td><strong>구현</strong></td>
+      <td>재귀가 간단</td>
+      <td>반복문 사용</td>
+    </tr>
+    <tr>
+      <td><strong>활용</strong></td>
+      <td>백트래킹, 사이클, 위상정렬</td>
+      <td>최단거리, 레벨</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="시각적-비교">시각적 비교</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>그래프:
+       1
+      /|\
+     2 3 4
+    /|   |
+   5 6   7
+
+DFS: 1 → 2 → 5 → 6 → 3 → 4 → 7 (깊이)
+BFS: 1 → 2 → 3 → 4 → 5 → 6 → 7 (레벨)
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dfs-구현-복습">DFS 구현 (복습)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DFS</span> <span class="o">{</span>
+    <span class="c1">// 재귀 버전</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dfsRecursive</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">node</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">node</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">dfsRecursive</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="n">next</span><span class="o">,</span> <span class="n">visited</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 스택 버전</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dfsIterative</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">])</span> <span class="k">continue</span><span class="o">;</span>
+            
+            <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">node</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+            
+            <span class="c1">// 역순으로 추가 (작은 번호부터 방문)</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">neighbors</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">);</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">neighbors</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)])</span> <span class="o">{</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">neighbors</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="언제-무엇을-사용할까">언제 무엇을 사용할까?</h3>
+
+<p><strong>DFS 사용:</strong></p>
+
+<ul>
+  <li>✅ 모든 경로 탐색</li>
+  <li>✅ 백트래킹</li>
+  <li>✅ 사이클 감지</li>
+  <li>✅ 위상 정렬</li>
+  <li>✅ 연결 요소</li>
+</ul>
+
+<p><strong>BFS 사용:</strong></p>
+
+<ul>
+  <li>✅ 최단 거리 (비가중치)</li>
+  <li>✅ 레벨별 처리</li>
+  <li>✅ 가장 가까운 노드 찾기</li>
+  <li>✅ 미로 탈출</li>
+</ul>
+
+<hr />
+
+<h2 id="-bfs-실전-예제">🎯 BFS 실전 예제</h2>
+
+<h3 id="예제-1-미로-탈출">예제 1: 미로 탈출</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MazeEscape</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+    
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Point</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">dist</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">Point</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dist</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">dist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">shortestPath</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">maze</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">maze</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">maze</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">boolean</span><span class="o">[][]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">m</span><span class="o">];</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Point</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="c1">// 시작점 (0, 0)</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>
+        <span class="n">visited</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            
+            <span class="c1">// 도착점 (n-1, m-1)</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">x</span> <span class="o">==</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">y</span> <span class="o">==</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="na">dist</span><span class="o">;</span>
+            <span class="o">}</span>
+            
+            <span class="c1">// 4방향 탐색</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">x</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">y</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                
+                <span class="k">if</span> <span class="o">(</span><span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">maze</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">visited</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">nx</span><span class="o">,</span> <span class="n">ny</span><span class="o">,</span> <span class="n">p</span><span class="o">.</span><span class="na">dist</span> <span class="o">+</span> <span class="mi">1</span><span class="o">));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>  <span class="c1">// 도달 불가</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">maze</span> <span class="o">=</span> <span class="o">{</span>
+            <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">}</span>
+        <span class="o">};</span>
+        
+        <span class="nc">MazeEscape</span> <span class="n">me</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MazeEscape</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">me</span><span class="o">.</span><span class="na">shortestPath</span><span class="o">(</span><span class="n">maze</span><span class="o">));</span>  <span class="c1">// 9</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="예제-2-단어-변환">예제 2: 단어 변환</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WordLadder</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">ladderLength</span><span class="o">(</span><span class="nc">String</span> <span class="n">begin</span><span class="o">,</span> <span class="nc">String</span> <span class="n">end</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">wordList</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">wordSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;(</span><span class="n">wordList</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">wordSet</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">end</span><span class="o">))</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">begin</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">level</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+            
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">word</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+                
+                <span class="k">if</span> <span class="o">(</span><span class="n">word</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">end</span><span class="o">))</span> <span class="k">return</span> <span class="n">level</span><span class="o">;</span>
+                
+                <span class="c1">// 한 글자씩 바꿔보기</span>
+                <span class="kt">char</span><span class="o">[]</span> <span class="n">chars</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">chars</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="kt">char</span> <span class="n">original</span> <span class="o">=</span> <span class="n">chars</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                    
+                    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'a'</span><span class="o">;</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="o">;</span> <span class="n">c</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">==</span> <span class="n">original</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span>
+                        
+                        <span class="n">chars</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">c</span><span class="o">;</span>
+                        <span class="nc">String</span> <span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">chars</span><span class="o">);</span>
+                        
+                        <span class="k">if</span> <span class="o">(</span><span class="n">wordSet</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">next</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                            <span class="n">wordSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>  <span class="c1">// 방문 처리</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                    
+                    <span class="n">chars</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">original</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            
+            <span class="n">level</span><span class="o">++;</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">WordLadder</span> <span class="n">wl</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WordLadder</span><span class="o">();</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">wordList</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"hot"</span><span class="o">,</span><span class="s">"dot"</span><span class="o">,</span><span class="s">"dog"</span><span class="o">,</span><span class="s">"lot"</span><span class="o">,</span><span class="s">"log"</span><span class="o">,</span><span class="s">"cog"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">wl</span><span class="o">.</span><span class="na">ladderLength</span><span class="o">(</span><span class="s">"hit"</span><span class="o">,</span> <span class="s">"cog"</span><span class="o">,</span> <span class="n">wordList</span><span class="o">));</span>  <span class="c1">// 5</span>
+        <span class="c1">// hit → hot → dot → dog → cog</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="예제-3-벽-부수고-이동하기">예제 3: 벽 부수고 이동하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BreakWall</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+    
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">State</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">dist</span><span class="o">,</span> <span class="n">walls</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">State</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dist</span><span class="o">,</span> <span class="kt">int</span> <span class="n">walls</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">dist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">walls</span> <span class="o">=</span> <span class="n">walls</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">shortestPath</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">map</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">map</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">;</span>
+        
+        <span class="c1">// visited[x][y][walls] = (x,y)에 벽을 walls개 부수고 도달 가능</span>
+        <span class="kt">boolean</span><span class="o">[][][]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">m</span><span class="o">][</span><span class="mi">2</span><span class="o">];</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">State</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">State</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>
+        <span class="n">visited</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">State</span> <span class="n">s</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">x</span> <span class="o">==</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">y</span> <span class="o">==</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">dist</span><span class="o">;</span>
+            <span class="o">}</span>
+            
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">x</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">y</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                
+                <span class="k">if</span> <span class="o">(</span><span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="n">n</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="n">m</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span>
+                
+                <span class="c1">// 빈 칸</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">visited</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">][</span><span class="n">s</span><span class="o">.</span><span class="na">walls</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">][</span><span class="n">s</span><span class="o">.</span><span class="na">walls</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">State</span><span class="o">(</span><span class="n">nx</span><span class="o">,</span> <span class="n">ny</span><span class="o">,</span> <span class="n">s</span><span class="o">.</span><span class="na">dist</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">s</span><span class="o">.</span><span class="na">walls</span><span class="o">));</span>
+                <span class="o">}</span>
+                
+                <span class="c1">// 벽 (아직 안 부쉈으면)</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">walls</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">visited</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">][</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">State</span><span class="o">(</span><span class="n">nx</span><span class="o">,</span> <span class="n">ny</span><span class="o">,</span> <span class="n">s</span><span class="o">.</span><span class="na">dist</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="️-최단-경로-알고리즘">🛣️ 최단 경로 알고리즘</h2>
+
+<h3 id="다익스트라-dijkstra">다익스트라 (Dijkstra)</h3>
+
+<p><strong>원리: 가중치가 있는 그래프에서 최단 경로</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>특징:
+- 음수 가중치 불가
+- 우선순위 큐 사용
+- 시간복잡도: O((V+E) log V)
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="기본-구현-1">기본 구현</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dijkstra</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Edge</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="n">weight</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">Edge</span><span class="o">(</span><span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="kt">int</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">to</span> <span class="o">=</span> <span class="n">to</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">vertex</span><span class="o">,</span> <span class="n">distance</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">vertex</span><span class="o">,</span> <span class="kt">int</span> <span class="n">distance</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">vertex</span> <span class="o">=</span> <span class="n">vertex</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">distance</span> <span class="o">=</span> <span class="n">distance</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">Node</span> <span class="n">other</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">distance</span><span class="o">,</span> <span class="n">other</span><span class="o">.</span><span class="na">distance</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">dijkstra</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Edge</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dist</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+        <span class="n">dist</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;</span> <span class="n">pq</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+        <span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">pq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">vertex</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">distance</span><span class="o">;</span>
+            
+            <span class="c1">// 이미 처리한 노드</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">d</span> <span class="o">&gt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">u</span><span class="o">])</span> <span class="k">continue</span><span class="o">;</span>
+            
+            <span class="c1">// 인접 노드 확인</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">edge</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">u</span><span class="o">))</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">;</span>
+                <span class="kt">int</span> <span class="n">newDist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">[</span><span class="n">u</span><span class="o">]</span> <span class="o">+</span> <span class="n">edge</span><span class="o">.</span><span class="na">weight</span><span class="o">;</span>
+                
+                <span class="c1">// 더 짧은 경로 발견</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">newDist</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">v</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">dist</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="n">newDist</span><span class="o">;</span>
+                    <span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">newDist</span><span class="o">));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">dist</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Edge</span><span class="o">&gt;&gt;</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">graph</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 간선 추가 (양방향)</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">6</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">6</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Edge</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">6</span><span class="o">));</span>
+        
+        <span class="nc">Dijkstra</span> <span class="n">dij</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dijkstra</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">dij</span><span class="o">.</span><span class="na">dijkstra</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"0 → "</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">dist</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 출력:</span>
+        <span class="c1">// 0 → 0: 0</span>
+        <span class="c1">// 0 → 1: 2</span>
+        <span class="c1">// 0 → 2: 5</span>
+        <span class="c1">// 0 → 3: 6</span>
+        <span class="c1">// 0 → 4: 8</span>
+        <span class="c1">// 0 → 5: 9</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="경로-역추적-포함">경로 역추적 포함</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DijkstraWithPath</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Edge</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="n">weight</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">Edge</span><span class="o">(</span><span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="kt">int</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">to</span> <span class="o">=</span> <span class="n">to</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">vertex</span><span class="o">,</span> <span class="n">distance</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">vertex</span><span class="o">,</span> <span class="kt">int</span> <span class="n">distance</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">vertex</span> <span class="o">=</span> <span class="n">vertex</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">distance</span> <span class="o">=</span> <span class="n">distance</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">Node</span> <span class="n">other</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">distance</span><span class="o">,</span> <span class="n">other</span><span class="o">.</span><span class="na">distance</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">dijkstraPath</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Edge</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>  <span class="c1">// 경로 추적</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dist</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">parent</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">dist</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;</span> <span class="n">pq</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+        <span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">pq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">vertex</span><span class="o">;</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">end</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>  <span class="c1">// 목표 도달</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">distance</span> <span class="o">&gt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">u</span><span class="o">])</span> <span class="k">continue</span><span class="o">;</span>
+            
+            <span class="k">for</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">edge</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">u</span><span class="o">))</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">;</span> 
+                <span class="kt">int</span> <span class="n">newDist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">[</span><span class="n">u</span><span class="o">]</span> <span class="o">+</span> <span class="n">edge</span><span class="o">.</span><span class="na">weight</span><span class="o">;</span>
+                
+            <span class="k">if</span> <span class="o">(</span><span class="n">newDist</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">v</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">dist</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="n">newDist</span><span class="o">;</span>
+                <span class="n">parent</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="n">u</span><span class="o">;</span>  <span class="c1">// 부모 기록</span>
+                <span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">newDist</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 경로 역추적</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">dist</span><span class="o">[</span><span class="n">end</span><span class="o">]</span> <span class="o">==</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">path</span><span class="o">;</span>  <span class="c1">// 경로 없음</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">at</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span> <span class="n">at</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">at</span> <span class="o">=</span> <span class="n">parent</span><span class="o">[</span><span class="n">at</span><span class="o">])</span> <span class="o">{</span>
+        <span class="n">path</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">at</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="nc">Collections</span><span class="o">.</span><span class="na">reverse</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+    
+    <span class="k">return</span> <span class="n">path</span><span class="o">;</span>
+<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 그래프 생성 (위와 동일)</span>
+    <span class="c1">// ...</span>
+	    <span class="nc">DijkstraWithPath</span> <span class="n">dwp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DijkstraWithPath</span><span class="o">();</span>
+	    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span> <span class="o">=</span> <span class="n">dwp</span><span class="o">.</span><span class="na">dijkstraPath</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"최단 경로: "</span> <span class="o">+</span> <span class="n">path</span><span class="o">);</span>
+	    <span class="c1">// [0, 1, 2, 3, 5]</span>
+		<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="벨만-포드-bellman-ford">벨만-포드 (Bellman-Ford)</h3>
+
+<p><strong>음수 가중치 허용</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BellmanFord</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Edge</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="n">to</span><span class="o">,</span> <span class="n">weight</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">Edge</span><span class="o">(</span><span class="kt">int</span> <span class="n">from</span><span class="o">,</span> <span class="kt">int</span> <span class="n">to</span><span class="o">,</span> <span class="kt">int</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">from</span> <span class="o">=</span> <span class="n">from</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">to</span> <span class="o">=</span> <span class="n">to</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">bellmanFord</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Edge</span><span class="o">&gt;</span> <span class="n">edges</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dist</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+        <span class="n">dist</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="c1">// V-1번 반복</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">edge</span> <span class="o">:</span> <span class="n">edges</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">from</span><span class="o">]</span> <span class="o">!=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">from</span><span class="o">]</span> <span class="o">+</span> <span class="n">edge</span><span class="o">.</span><span class="na">weight</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">from</span><span class="o">]</span> <span class="o">+</span> <span class="n">edge</span><span class="o">.</span><span class="na">weight</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 음수 사이클 검사</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">edge</span> <span class="o">:</span> <span class="n">edges</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">from</span><span class="o">]</span> <span class="o">!=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">&amp;&amp;</span>
+                <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">from</span><span class="o">]</span> <span class="o">+</span> <span class="n">edge</span><span class="o">.</span><span class="na">weight</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">])</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"음수 사이클 존재!"</span><span class="o">);</span>
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">dist</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>시간복잡도</strong>: O(VE)<br />
+<strong>사용 시기</strong>: 음수 가중치가 있을 때</p>
+
+<hr />
+
+<h2 id="-알고리즘-선택-가이드">📊 알고리즘 선택 가이드</h2>
+
+<h3 id="최단-경로-문제">최단 경로 문제</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>상황</th>
+      <th>알고리즘</th>
+      <th>시간복잡도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>비가중치 그래프</strong></td>
+      <td>BFS</td>
+      <td>O(V+E)</td>
+    </tr>
+    <tr>
+      <td><strong>양수 가중치</strong></td>
+      <td>다익스트라</td>
+      <td>O((V+E) log V)</td>
+    </tr>
+    <tr>
+      <td><strong>음수 가중치</strong></td>
+      <td>벨만-포드</td>
+      <td>O(VE)</td>
+    </tr>
+    <tr>
+      <td><strong>모든 쌍 최단 경로</strong></td>
+      <td>플로이드-워셜</td>
+      <td>O(V³)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-실전-문제-패턴">🎯 실전 문제 패턴</h2>
+
+<h3 id="패턴-1-기본-bfs">패턴 1: 기본 BFS</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 템플릿</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">bfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    
+    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+    <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-2-레벨별-bfs">패턴 2: 레벨별 BFS</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 레벨(거리) 추적</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">bfsByLevel</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">distance</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">distance</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+    
+    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+    <span class="n">distance</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">distance</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">distance</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="n">distance</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-3-다중-시작점-bfs">패턴 3: 다중 시작점 BFS</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 여러 시작점 동시 탐색</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">multiSourceBFS</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">sources</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    
+    <span class="c1">// 모든 시작점 큐에 추가</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">source</span> <span class="o">:</span> <span class="n">sources</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">source</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-4-양방향-bfs">패턴 4: 양방향 BFS</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 시작점과 끝점에서 동시에 BFS</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">bidirectionalBFS</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">visited1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">visited2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="n">queue1</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+    <span class="n">queue2</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">end</span><span class="o">);</span>
+    <span class="n">visited1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+    <span class="n">visited2</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">end</span><span class="o">);</span>
+    
+    <span class="kt">int</span> <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue1</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">queue2</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="c1">// 작은 큐부터 확장 (최적화)</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">queue1</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">queue2</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">queue1</span><span class="o">;</span>
+            <span class="n">queue1</span> <span class="o">=</span> <span class="n">queue2</span><span class="o">;</span>
+            <span class="n">queue2</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+            
+            <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">tempSet</span> <span class="o">=</span> <span class="n">visited1</span><span class="o">;</span>
+            <span class="n">visited1</span> <span class="o">=</span> <span class="n">visited2</span><span class="o">;</span>
+            <span class="n">visited2</span> <span class="o">=</span> <span class="n">tempSet</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">queue1</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="n">level</span><span class="o">++;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue1</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+                <span class="c1">// 만남!</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">visited2</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">next</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="n">level</span><span class="o">;</span>
+                <span class="o">}</span>
+                
+                <span class="k">if</span> <span class="o">(!</span><span class="n">visited1</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">next</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">visited1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                    <span class="n">queue1</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-최적화-기법">💡 최적화 기법</h2>
+
+<h3 id="1-조기-종료">1. 조기 종료</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 목표 찾으면 즉시 종료</span>
+<span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    
+    <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">distance</span><span class="o">[</span><span class="n">node</span><span class="o">];</span>  <span class="c1">// 조기 종료</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-방문-체크-최적화">2. 방문 체크 최적화</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 느림: poll 후 체크</span>
+<span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">])</span> <span class="k">continue</span><span class="o">;</span>
+    <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+
+<span class="c1">// ✅ 빠름: offer 전 체크</span>
+<span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>  <span class="c1">// 큐에 넣을 때 체크</span>
+            <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-다익스트라-최적화">3. 다익스트라 최적화</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 이미 처리한 노드 스킵</span>
+<span class="k">while</span> <span class="o">(!</span><span class="n">pq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+    <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    
+    <span class="c1">// 이미 더 짧은 경로 발견됨</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">distance</span> <span class="o">&gt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">current</span><span class="o">.</span><span class="na">vertex</span><span class="o">])</span> <span class="o">{</span>
+        <span class="k">continue</span><span class="o">;</span>  <span class="c1">// 처리 안 함</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-추천-문제">🏆 추천 문제</h2>
+
+<h3 id="bfs-기초-">BFS 기초 (⭐)</h3>
+
+<ol>
+  <li><strong>[백준 1260] DFS와 BFS</strong>
+    <ul>
+      <li>BFS 기본 구현</li>
+    </ul>
+  </li>
+  <li><strong>[백준 2178] 미로 탐색</strong>
+    <ul>
+      <li>2D BFS, 최단 거리</li>
+    </ul>
+  </li>
+  <li><strong>[백준 7576] 토마토</strong>
+    <ul>
+      <li>다중 시작점 BFS</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 102] Binary Tree Level Order Traversal</strong>
+    <ul>
+      <li>레벨별 순회</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 111] Minimum Depth of Binary Tree</strong>
+    <ul>
+      <li>트리 BFS</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="bfs-응용-">BFS 응용 (⭐⭐)</h3>
+
+<ol>
+  <li><strong>[백준 7569] 토마토 (3D)</strong>
+    <ul>
+      <li>3차원 BFS</li>
+    </ul>
+  </li>
+  <li><strong>[백준 1697] 숨바꼭질</strong>
+    <ul>
+      <li>1차원 BFS</li>
+    </ul>
+  </li>
+  <li><strong>[백준 2206] 벽 부수고 이동하기</strong>
+    <ul>
+      <li>상태 추가 BFS</li>
+    </ul>
+  </li>
+  <li><strong>[백준 16236] 아기 상어</strong>
+    <ul>
+      <li>우선순위 BFS</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 127] Word Ladder</strong>
+    <ul>
+      <li>단어 변환</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 207] Course Schedule</strong>
+    <ul>
+      <li>위상 정렬 (BFS)</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 994] Rotting Oranges</strong>
+    <ul>
+      <li>다중 시작점</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="dfs-vs-bfs-">DFS vs BFS (⭐⭐)</h3>
+
+<ol>
+  <li><strong>[백준 2667] 단지번호붙이기</strong>
+    <ul>
+      <li>연결 요소 (둘 다 가능)</li>
+    </ul>
+  </li>
+  <li><strong>[백준 11724] 연결 요소의 개수</strong>
+    <ul>
+      <li>연결 요소</li>
+    </ul>
+  </li>
+  <li><strong>[백준 1012] 유기농 배추</strong>
+    <ul>
+      <li>영역 찾기</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 200] Number of Islands</strong>
+    <ul>
+      <li>섬 개수</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 695] Max Area of Island</strong>
+    <ul>
+      <li>최대 영역</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="다익스트라-">다익스트라 (⭐⭐⭐)</h3>
+
+<ol>
+  <li><strong>[백준 1753] 최단경로</strong>
+    <ul>
+      <li>다익스트라 기본</li>
+    </ul>
+  </li>
+  <li><strong>[백준 1916] 최소비용 구하기</strong>
+    <ul>
+      <li>최단 경로</li>
+    </ul>
+  </li>
+  <li><strong>[백준 1238] 파티</strong>
+    <ul>
+      <li>왕복 최단 경로</li>
+    </ul>
+  </li>
+  <li><strong>[백준 4485] 녹색 옷 입은 애가 젤다지?</strong>
+    <ul>
+      <li>2D 다익스트라</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 743] Network Delay Time</strong>
+    <ul>
+      <li>기본 다익스트라</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 787] Cheapest Flights Within K Stops</strong>
+    <ul>
+      <li>제약 조건 추가</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="심화-">심화 (⭐⭐⭐⭐)</h3>
+
+<ol>
+  <li><strong>[백준 1167] 트리의 지름</strong>
+    <ul>
+      <li>BFS 2번</li>
+    </ul>
+  </li>
+  <li><strong>[백준 2250] 트리의 높이와 너비</strong>
+    <ul>
+      <li>레벨별 처리</li>
+    </ul>
+  </li>
+  <li><strong>[백준 13549] 숨바꼭질 3</strong>
+    <ul>
+      <li>0-1 BFS</li>
+    </ul>
+  </li>
+  <li><strong>[백준 1865] 웜홀</strong>
+    <ul>
+      <li>벨만-포드 (음수 사이클)</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 847] Shortest Path Visiting All Nodes</strong>
+    <ul>
+      <li>비트마스킹 BFS</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="-학습-로드맵">📚 학습 로드맵</h2>
+
+<h3 id="1주차-bfs-기초">1주차: BFS 기초</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />BFS 기본 구현 (그래프)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2D 그리드 BFS</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />최단 거리 구하기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />경로 역추적</li>
+</ul>
+
+<h3 id="2주차-bfs-응용">2주차: BFS 응용</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />레벨별 BFS</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />다중 시작점 BFS</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />상태 확장 BFS</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />양방향 BFS</li>
+</ul>
+
+<h3 id="3주차-dfs-vs-bfs">3주차: DFS vs BFS</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />DFS 재귀/스택 구현</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />BFS와 DFS 차이 이해</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />문제별 적합한 방법 선택</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />연결 요소, 사이클 감지</li>
+</ul>
+
+<h3 id="4주차-최단-경로">4주차: 최단 경로</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />다익스트라 구현</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />우선순위 큐 활용</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />경로 역추적</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />벨만-포드 이해</li>
+</ul>
+
+<hr />
+
+<h2 id="-디버깅-팁">💡 디버깅 팁</h2>
+
+<h3 id="1-bfs-시각화">1. BFS 시각화</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">bfsDebug</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    
+    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+    <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="kt">int</span> <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=== Level "</span> <span class="o">+</span> <span class="n">level</span> <span class="o">+</span> <span class="s">" ==="</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Queue: "</span> <span class="o">+</span> <span class="n">queue</span><span class="o">);</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Processing: "</span> <span class="o">+</span> <span class="n">node</span><span class="o">);</span>
+            
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"  Added: "</span> <span class="o">+</span> <span class="n">next</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">level</span><span class="o">++;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-다익스트라-디버깅">2. 다익스트라 디버깅</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="o">(!</span><span class="n">pq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+    <span class="nc">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"처리: node=%d, dist=%d%n"</span><span class="o">,</span> 
+        <span class="n">current</span><span class="o">.</span><span class="na">vertex</span><span class="o">,</span> <span class="n">current</span><span class="o">.</span><span class="na">distance</span><span class="o">);</span>
+    
+    <span class="k">if</span> <span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">distance</span> <span class="o">&gt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">current</span><span class="o">.</span><span class="na">vertex</span><span class="o">])</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"  → 스킵 (이미 처리됨)"</span><span class="o">);</span>
+        <span class="k">continue</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">edge</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">vertex</span><span class="o">))</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">newDist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">[</span><span class="n">current</span><span class="o">.</span><span class="na">vertex</span><span class="o">]</span> <span class="o">+</span> <span class="n">edge</span><span class="o">.</span><span class="na">weight</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"  검사: %d → %d, 기존=%d, 새=%d%n"</span><span class="o">,</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">vertex</span><span class="o">,</span> <span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">,</span> <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">],</span> <span class="n">newDist</span><span class="o">);</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">newDist</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">])</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"    → 갱신!"</span><span class="o">);</span>
+            <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="n">newDist</span><span class="o">;</span>
+            <span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">,</span> <span class="n">newDist</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-핵심-정리">🎯 핵심 정리</h2>
+
+<h3 id="bfs-체크리스트">BFS 체크리스트</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Queue 사용</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />방문 체크 (offer 시)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />레벨 구분 필요한지 확인</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />최단 거리 = 비가중치만!</li>
+</ul>
+
+<h3 id="다익스트라-체크리스트">다익스트라 체크리스트</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />우선순위 큐 사용</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />음수 가중치 없는지 확인</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />이미 처리한 노드 스킵</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />경로 역추적 필요한지</li>
+</ul>
+
+<h3 id="dfs-vs-bfs-선택">DFS vs BFS 선택</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />최단 거리? → BFS</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />모든 경로? → DFS</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />백트래킹? → DFS</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />레벨 구분? → BFS</li>
+</ul>
+
+<hr />
+
+<h2 id="-암기-필수-템플릿">📝 암기 필수 템플릿</h2>
+
+<h3 id="1-bfs-기본">1. BFS 기본</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">bfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    
+    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+    <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-2d-bfs">2. 2D BFS</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">bfs2D</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="kt">boolean</span><span class="o">[][]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">m</span><span class="o">];</span>
+    
+    <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">});</span>
+    <span class="n">visited</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">cx</span> <span class="o">=</span> <span class="n">pos</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">cy</span> <span class="o">=</span> <span class="n">pos</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="o">&amp;&amp;</span>
+                <span class="o">!</span><span class="n">visited</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">grid</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="n">queue</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">nx</span><span class="o">,</span> <span class="n">ny</span><span class="o">});</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-다익스트라">3. 다익스트라</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">dijkstra</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dist</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+    <span class="n">dist</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;</span> <span class="n">pq</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+    <span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>
+    
+    <span class="k">while</span> <span class="o">(!</span><span class="n">pq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="nc">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">distance</span> <span class="o">&gt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">cur</span><span class="o">.</span><span class="na">vertex</span><span class="o">])</span> <span class="k">continue</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">edge</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">vertex</span><span class="o">))</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">newDist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">[</span><span class="n">cur</span><span class="o">.</span><span class="na">vertex</span><span class="o">]</span> <span class="o">+</span> <span class="n">edge</span><span class="o">.</span><span class="na">weight</span><span class="o">;</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">newDist</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">dist</span><span class="o">[</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">]</span> <span class="o">=</span> <span class="n">newDist</span><span class="o">;</span>
+                <span class="n">pq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">edge</span><span class="o">.</span><span class="na">to</span><span class="o">,</span> <span class="n">newDist</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">dist</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>#Java #그래프 #Graph #BFS #DFS #다익스트라 #Dijkstra #최단경로 #ShortestPath #큐 #Queue #우선순위큐 #PriorityQueue #알고리즘 #코딩테스트</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

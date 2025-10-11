@@ -24,6 +24,16 @@ categories:
         url: /categories/algorithm/
       - title: "  • basic"
         url: /categories/algorithm/basic/
+      - title: "  • sorting"
+        url: /categories/algorithm/sorting/
+      - title: "  • recursion"
+        url: /categories/algorithm/recursion/
+      - title: "  • graph"
+        url: /categories/algorithm/graph/
+      - title: "  • dynamic"
+        url: /categories/algorithm/dynamic/
+      - title: "  • greedy"
+        url: /categories/algorithm/greedy/
       - title: "  • 백준"
         url: /categories/algorithm/baekjoon/
       - title: "  • 프로그래머스"

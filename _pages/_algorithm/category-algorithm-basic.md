@@ -142,4 +142,4 @@ sidebar:
 - <a href="https://school.programmers.co.kr/learn/courses/30/lessons/42579" target="_blank">프로그래머스: 베스트앨범</a> (Level 3)
 - <a href="https://school.programmers.co.kr/learn/courses/30/lessons/42888" target="_blank">프로그래머스: 오픈채팅방</a> (Level 2)
 - <a href="https://school.programmers.co.kr/learn/courses/30/lessons/92334" target="_blank">프로그래머스: 신고 결과 받기</a> (Level 2)
-- <a href="https://school.programmers.co.kr/learn/courses/30/lessons/64063" target="_blank">프로그래머스: 호텔 방 배정</a> (Level 4)
+- <a href="https://school.programmers.co.kr/learn/courses/30/lessons/64063" target="_blank">프로그래머스: 호텔 방 배정</a> (Level 4) | <a href="#" data-content="/assets/contents/algorithm/programmers-64063.md">풀이</a>

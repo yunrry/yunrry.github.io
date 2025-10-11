@@ -21,6 +21,11 @@
         ],
         '/categories/algorithm/': [
           '/categories/algorithm/basic/',
+          '/categories/algorithm/sorting/',
+          '/categories/algorithm/recursion/',
+          '/categories/algorithm/graph/',
+          '/categories/algorithm/dynamic/',
+          '/categories/algorithm/greedy/',
           '/categories/algorithm/baekjoon/',
           '/categories/algorithm/programmers/',
           '/categories/algorithm/leetcode/'

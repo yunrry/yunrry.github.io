@@ -1,0 +1,1939 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>재귀와 완전탐색 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="재귀와 완전탐색">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/recursion/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/recursion/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+<h1 id="재귀와-완전탐색">재귀와 완전탐색</h1>
+
+<p>재귀는 자기 자신을 호출하는 함수로, 복잡한 문제를 작은 문제로 나누어 해결하는 강력한 기법입니다. 완전탐색과 백트래킹의 기초가 됩니다.</p>
+
+<hr />
+
+<h2 id="-재귀-recursion">🔄 재귀 (Recursion)</h2>
+
+<h3 id="재귀의-원리">재귀의 원리</h3>
+
+<p><strong>재귀 = 자기 자신을 호출하는 함수</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+재귀 함수의 구조:
+
+1. Base Case (종료 조건)
+2. Recursive Case (재귀 호출)
+
+</code></pre></div></div>
+
+<p><strong>실생활 예시:</strong></p>
+<ul>
+  <li>러시아 인형 (마트료시카)</li>
+  <li>거울 속의 거울</li>
+  <li>“재귀를 이해하려면 먼저 재귀를 이해해야 한다”</li>
+</ul>
+
+<hr />
+
+<h3 id="재귀의-기본-구조">재귀의 기본 구조</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RecursionBasic</span> <span class="o">{</span>
+    <span class="c1">// 기본 템플릿</span>
+    <span class="kd">public</span> <span class="nc">ReturnType</span> <span class="nf">recursiveFunction</span><span class="o">(</span><span class="nc">Parameters</span> <span class="n">params</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 1. Base Case (종료 조건) - 필수!</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">종료조건</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">기본값</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 2. Recursive Case (재귀 호출)</span>
+        <span class="c1">// - 문제를 작게 만들기</span>
+        <span class="c1">// - 자기 자신 호출</span>
+        <span class="k">return</span> <span class="nf">recursiveFunction</span><span class="o">(</span><span class="n">더_작은_문제</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="기초-예제">기초 예제</h3>
+
+<h4 id="1-팩토리얼-factorial">1. 팩토리얼 (Factorial)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Factorial</span> <span class="o">{</span>
+    <span class="c1">// n! = n × (n-1) × (n-2) × ... × 1</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">factorial</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// Recursive Case</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Factorial</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Factorial</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f</span><span class="o">.</span><span class="na">factorial</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span>  <span class="c1">// 120</span>
+        
+        <span class="c1">// 호출 과정:</span>
+        <span class="c1">// factorial(5) = 5 × factorial(4)</span>
+        <span class="c1">// factorial(4) = 4 × factorial(3)</span>
+        <span class="c1">// factorial(3) = 3 × factorial(2)</span>
+        <span class="c1">// factorial(2) = 2 × factorial(1)</span>
+        <span class="c1">// factorial(1) = 1 ← Base Case</span>
+        <span class="c1">// 역순으로 계산: 1 → 2 → 6 → 24 → 120</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-피보나치-수열-fibonacci">2. 피보나치 수열 (Fibonacci)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fibonacci</span> <span class="o">{</span>
+    <span class="c1">// F(n) = F(n-1) + F(n-2)</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">fib</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// Recursive Case</span>
+        <span class="k">return</span> <span class="nf">fib</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 메모이제이션 (최적화)</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">fibMemo</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">memo</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
+        
+        <span class="c1">// 이미 계산한 값이 있으면 재사용</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">memo</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        
+        <span class="n">memo</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">memo</span><span class="o">)</span> <span class="o">+</span> <span class="n">fibMemo</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="o">,</span> <span class="n">memo</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Fibonacci</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Fibonacci</span><span class="o">();</span>
+        
+        <span class="c1">// 기본 재귀: O(2^n) - 매우 느림!</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f</span><span class="o">.</span><span class="na">fib</span><span class="o">(</span><span class="mi">10</span><span class="o">));</span>  <span class="c1">// 55</span>
+        
+        <span class="c1">// 메모이제이션: O(n) - 빠름!</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">memo</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">50</span><span class="o">];</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f</span><span class="o">.</span><span class="na">fibMemo</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">memo</span><span class="o">));</span>  <span class="c1">// 55</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>시각화:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fib(5) 호출 트리:
+                    fib(5)
+                   /      \
+              fib(4)        fib(3)
+             /     \        /     \
+        fib(3)   fib(2)  fib(2)  fib(1)
+        /   \     /   \   /   \
+    fib(2) fib(1) f(1) f(0) f(1) f(0)
+    /   \
+  f(1) f(0)
+
+많은 중복 계산 발생! → 메모이제이션 필요
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="3-배열-합-구하기">3. 배열 합 구하기</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArraySum</span> <span class="o">{</span>
+    <span class="c1">// 배열의 합을 재귀로 구하기</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">sum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case: 끝에 도달</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// Recursive Case</span>
+        <span class="k">return</span> <span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">+</span> <span class="n">sum</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ArraySum</span> <span class="n">as</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArraySum</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">as</span><span class="o">.</span><span class="na">sum</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>  <span class="c1">// 15</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="4-문자열-뒤집기">4. 문자열 뒤집기</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringReverse</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">reverse</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case: 빈 문자열 또는 길이 1</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">str</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// Recursive Case</span>
+        <span class="c1">// "hello" → reverse("ello") + "h"</span>
+        <span class="k">return</span> <span class="nf">reverse</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span> <span class="o">+</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">StringReverse</span> <span class="n">sr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringReverse</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sr</span><span class="o">.</span><span class="na">reverse</span><span class="o">(</span><span class="s">"hello"</span><span class="o">));</span>  <span class="c1">// "olleh"</span>
+        
+        <span class="c1">// 호출 과정:</span>
+        <span class="c1">// reverse("hello") = reverse("ello") + "h"</span>
+        <span class="c1">// reverse("ello") = reverse("llo") + "e"</span>
+        <span class="c1">// reverse("llo") = reverse("lo") + "l"</span>
+        <span class="c1">// reverse("lo") = reverse("o") + "l"</span>
+        <span class="c1">// reverse("o") = "o" ← Base Case</span>
+        <span class="c1">// 결과: "o" + "l" + "l" + "e" + "h" = "olleh"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-완전탐색-brute-force">🎯 완전탐색 (Brute Force)</h2>
+
+<h3 id="원리">원리</h3>
+
+<p><strong>모든 경우의 수를 다 확인하는 방법</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>완전탐색 = 무식하지만 확실한 방법
+- 작은 입력 크기에서 유용
+- 최적화의 시작점
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-1-중첩-반복문">패턴 1: 중첩 반복문</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BruteForce1</span> <span class="o">{</span>
+    <span class="c1">// 두 수의 합이 target인 쌍 찾기</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">twoSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">};</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{-</span><span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">};</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 시간복잡도: O(n²)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-2-재귀로-완전탐색">패턴 2: 재귀로 완전탐색</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BruteForce2</span> <span class="o">{</span>
+    <span class="c1">// 부분집합의 합이 target인지 확인</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">subsetSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sum</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        
+        <span class="c1">// Recursive Case: 포함 or 불포함</span>
+        <span class="c1">// 1. 현재 원소 포함</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">subsetSum</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">],</span> <span class="n">target</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 2. 현재 원소 불포함</span>
+        <span class="k">return</span> <span class="nf">subsetSum</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">sum</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">BruteForce2</span> <span class="n">bf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BruteForce2</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">34</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bf</span><span class="o">.</span><span class="na">subsetSum</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">9</span><span class="o">));</span>  <span class="c1">// true (4+5)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-백트래킹-backtracking">🔙 백트래킹 (Backtracking)</h2>
+
+<h3 id="원리-1">원리</h3>
+
+<p><strong>완전탐색 + 가지치기(Pruning)</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>백트래킹 = DFS + 조건 검사
+1. 선택 (Choose)
+2. 탐색 (Explore)
+3. 취소 (Unchoose)
+</code></pre></div></div>
+
+<p><strong>핵심 아이디어:</strong></p>
+
+<ul>
+  <li>답이 될 수 없는 경로는 조기에 포기</li>
+  <li>메모리와 시간 절약</li>
+</ul>
+
+<hr />
+
+<h3 id="백트래킹-기본-템플릿">백트래킹 기본 템플릿</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="n">상태</span><span class="o">,</span> <span class="n">선택들</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Base Case: 답 찾음</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">목표_달성</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">결과_저장</span><span class="o">();</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// Recursive Case</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">각_선택지</span> <span class="o">:</span> <span class="n">가능한_선택들</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 1. 가지치기 (Pruning)</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">유효한_선택</span><span class="o">(</span><span class="n">선택지</span><span class="o">))</span> <span class="k">continue</span><span class="o">;</span>
+        
+        <span class="c1">// 2. 선택 (Choose)</span>
+        <span class="n">상태_변경</span><span class="o">(</span><span class="n">선택지</span><span class="o">);</span>
+        
+        <span class="c1">// 3. 탐색 (Explore)</span>
+        <span class="n">backtrack</span><span class="o">(</span><span class="n">새로운_상태</span><span class="o">,</span> <span class="n">선택들</span><span class="o">);</span>
+        
+        <span class="c1">// 4. 취소 (Unchoose) - 중요!</span>
+        <span class="n">상태_복원</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="예제-1-순열-permutation">예제 1: 순열 (Permutation)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Permutation</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">permute</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">backtrack</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(),</span> <span class="n">nums</span><span class="o">,</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">]);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">current</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="n">used</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case: 모든 원소 사용</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">current</span><span class="o">));</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// Recursive Case</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 가지치기: 이미 사용한 숫자</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">used</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="k">continue</span><span class="o">;</span>
+            
+            <span class="c1">// 선택</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="n">used</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            
+            <span class="c1">// 탐색</span>
+            <span class="n">backtrack</span><span class="o">(</span><span class="n">current</span><span class="o">,</span> <span class="n">nums</span><span class="o">,</span> <span class="n">used</span><span class="o">);</span>
+            
+            <span class="c1">// 취소 (Backtrack)</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="n">used</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Permutation</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Permutation</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">};</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">permute</span><span class="o">(</span><span class="n">nums</span><span class="o">));</span>
+        <span class="c1">// [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>시각화:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                     []
+          /          |          \
+        [1]         [2]         [3]
+       /   \       /   \       /   \
+    [1,2] [1,3] [2,1] [2,3] [3,1] [3,2]
+      |     |     |     |     |     |
+  [1,2,3][1,3,2][2,1,3][2,3,1][3,1,2][3,2,1]
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="예제-2-조합-combination">예제 2: 조합 (Combination)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Combination</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="c1">// n개 중 k개 선택</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">combine</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">backtrack</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(),</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span><span class="o">,</span> <span class="n">k</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">current</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case: k개 선택 완료</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">current</span><span class="o">));</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// Recursive Case</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 선택</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            
+            <span class="c1">// 탐색 (i+1부터 시작 → 중복 방지)</span>
+            <span class="n">backtrack</span><span class="o">(</span><span class="n">current</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span><span class="o">,</span> <span class="n">k</span><span class="o">);</span>
+            
+            <span class="c1">// 취소</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Combination</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Combination</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">combine</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+        <span class="c1">// [[1,2], [1,3], [1,4], [2,3], [2,4], [3,4]]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="예제-3-부분집합-subset">예제 3: 부분집합 (Subset)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Subset</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">subsets</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">backtrack</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(),</span> <span class="n">nums</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">current</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 모든 상태를 결과에 추가</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">current</span><span class="o">));</span>
+        
+        <span class="c1">// Recursive Case</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 선택</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            
+            <span class="c1">// 탐색</span>
+            <span class="n">backtrack</span><span class="o">(</span><span class="n">current</span><span class="o">,</span> <span class="n">nums</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+            
+            <span class="c1">// 취소</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Subset</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Subset</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">};</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">subsets</span><span class="o">(</span><span class="n">nums</span><span class="o">));</span>
+        <span class="c1">// [[], [1], [1,2], [1,2,3], [1,3], [2], [2,3], [3]]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="예제-4-n-queen-문제">예제 4: N-Queen 문제</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NQueen</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="nf">solveNQueens</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">n</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">row</span> <span class="o">:</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="sc">'.'</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="n">backtrack</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span><span class="o">,</span> <span class="kt">int</span> <span class="n">row</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case: 모든 행에 퀸 배치 완료</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">row</span> <span class="o">==</span> <span class="n">board</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">construct</span><span class="o">(</span><span class="n">board</span><span class="o">));</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// Recursive Case: 현재 행의 각 열 시도</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="n">board</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 가지치기: 유효하지 않은 위치</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">isValid</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="n">row</span><span class="o">,</span> <span class="n">col</span><span class="o">))</span> <span class="k">continue</span><span class="o">;</span>
+            
+            <span class="c1">// 선택</span>
+            <span class="n">board</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'Q'</span><span class="o">;</span>
+            
+            <span class="c1">// 탐색</span>
+            <span class="n">backtrack</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+            
+            <span class="c1">// 취소</span>
+            <span class="n">board</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'.'</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isValid</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span><span class="o">,</span> <span class="kt">int</span> <span class="n">row</span><span class="o">,</span> <span class="kt">int</span> <span class="n">col</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        
+        <span class="c1">// 같은 열 체크</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">row</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">==</span> <span class="sc">'Q'</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 왼쪽 대각선 체크</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">row</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">col</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--,</span> <span class="n">j</span><span class="o">--)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="sc">'Q'</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 오른쪽 대각선 체크</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">row</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">--,</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="sc">'Q'</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">construct</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">row</span> <span class="o">:</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">res</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">row</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">NQueen</span> <span class="n">nq</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NQueen</span><span class="o">();</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">solutions</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="na">solveNQueens</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">solution</span> <span class="o">:</span> <span class="n">solutions</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">row</span> <span class="o">:</span> <span class="n">solution</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">row</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 출력:</span>
+        <span class="c1">// .Q..</span>
+        <span class="c1">// ...Q</span>
+        <span class="c1">// Q...</span>
+        <span class="c1">// ..Q.</span>
+        <span class="c1">//</span>
+        <span class="c1">// ..Q.</span>
+        <span class="c1">// Q...</span>
+        <span class="c1">// ...Q</span>
+        <span class="c1">// .Q..</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-dfs-depth-first-search">🌳 DFS (Depth-First Search)</h2>
+
+<h3 id="원리-2">원리</h3>
+
+<p><strong>깊이 우선 탐색 = 한 방향으로 끝까지 탐색</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DFS 특징:
+- 스택 또는 재귀 사용
+- 메모리 효율적
+- 백트래킹의 기초
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dfs-구현-방법">DFS 구현 방법</h3>
+
+<h4 id="1-재귀-버전-추천">1. 재귀 버전 (추천)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DFSRecursive</span> <span class="o">{</span>
+    <span class="c1">// 그래프: 인접 리스트</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">;</span>
+    <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">node</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 방문 처리</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">node</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+        
+        <span class="c1">// 인접 노드 탐색</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">dfs</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">DFSRecursive</span> <span class="n">dfs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DFSRecursive</span><span class="o">();</span>
+        
+        <span class="c1">// 그래프 초기화</span>
+        <span class="n">dfs</span><span class="o">.</span><span class="na">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">dfs</span><span class="o">.</span><span class="na">graph</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 간선 추가</span>
+        <span class="n">dfs</span><span class="o">.</span><span class="na">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+        <span class="n">dfs</span><span class="o">.</span><span class="na">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">));</span>
+        <span class="n">dfs</span><span class="o">.</span><span class="na">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">addAll</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">));</span>
+        <span class="n">dfs</span><span class="o">.</span><span class="na">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">dfs</span><span class="o">.</span><span class="na">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">dfs</span><span class="o">.</span><span class="na">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">dfs</span><span class="o">.</span><span class="na">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">6</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        
+        <span class="n">dfs</span><span class="o">.</span><span class="na">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="mi">7</span><span class="o">];</span>
+        <span class="n">dfs</span><span class="o">.</span><span class="na">dfs</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>  <span class="c1">// 0 1 3 4 2 5 6</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-스택-버전">2. 스택 버전</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DFSStack</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            
+            <span class="k">if</span> <span class="o">(</span><span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">])</span> <span class="k">continue</span><span class="o">;</span>
+            
+            <span class="c1">// 방문 처리</span>
+            <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">node</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+            
+            <span class="c1">// 인접 노드를 스택에 추가 (역순으로)</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">neighbors</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">);</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">neighbors</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)])</span> <span class="o">{</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">neighbors</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="dfs-응용">DFS 응용</h3>
+
+<h4 id="1-경로-찾기">1. 경로 찾기</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PathFinding</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">;</span>
+    <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span><span class="o">;</span>
+    
+    <span class="c1">// start에서 end까지 경로 존재 여부</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasPath</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+        <span class="k">return</span> <span class="nf">dfs</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">node</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">dfs</span><span class="o">(</span><span class="n">next</span><span class="o">,</span> <span class="n">target</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 모든 경로 찾기</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">allPaths</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">graph</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+        
+        <span class="n">path</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        <span class="n">dfsAllPaths</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">,</span> <span class="n">path</span><span class="o">,</span> <span class="n">result</span><span class="o">);</span>
+        
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">dfsAllPaths</span><span class="o">(</span><span class="kt">int</span> <span class="n">node</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">,</span> 
+                             <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span><span class="o">,</span> 
+                             <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">path</span><span class="o">));</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">path</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                <span class="n">dfsAllPaths</span><span class="o">(</span><span class="n">next</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="n">path</span><span class="o">,</span> <span class="n">result</span><span class="o">);</span>
+                <span class="n">path</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">path</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>  <span class="c1">// Backtrack</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>  <span class="c1">// Backtrack</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-연결-요소-개수">2. 연결 요소 개수</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConnectedComponents</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">countComponents</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">edges</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 그래프 구성</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">graph</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
+        <span class="o">}</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">edge</span> <span class="o">:</span> <span class="n">edges</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">edge</span><span class="o">[</span><span class="mi">0</span><span class="o">]).</span><span class="na">add</span><span class="o">(</span><span class="n">edge</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+            <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">edge</span><span class="o">[</span><span class="mi">1</span><span class="o">]).</span><span class="na">add</span><span class="o">(</span><span class="n">edge</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// DFS로 연결 요소 카운트</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">dfs</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">visited</span><span class="o">);</span>
+                <span class="n">count</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">node</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">dfs</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="n">next</span><span class="o">,</span> <span class="n">visited</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ConnectedComponents</span> <span class="n">cc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConnectedComponents</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">edges</span> <span class="o">=</span> <span class="o">{{</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">},</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">},</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">}};</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cc</span><span class="o">.</span><span class="na">countComponents</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">edges</span><span class="o">));</span>  <span class="c1">// 2</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="3-섬의-개수-2d-그리드">3. 섬의 개수 (2D 그리드)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NumberOfIslands</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">numIslands</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">grid</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">dfs</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">);</span>
+                    <span class="n">count</span><span class="o">++;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">int</span> <span class="n">j</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 경계 체크</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span> <span class="o">||</span> 
+            <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">grid</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span> <span class="o">||</span> 
+            <span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">!=</span> <span class="sc">'1'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 방문 처리</span>
+        <span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'0'</span><span class="o">;</span>
+        
+        <span class="c1">// 4방향 탐색</span>
+        <span class="n">dfs</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">j</span><span class="o">);</span>  <span class="c1">// 아래</span>
+        <span class="n">dfs</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">j</span><span class="o">);</span>  <span class="c1">// 위</span>
+        <span class="n">dfs</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>  <span class="c1">// 오른쪽</span>
+        <span class="n">dfs</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>  <span class="c1">// 왼쪽</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">NumberOfIslands</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NumberOfIslands</span><span class="o">();</span>
+        <span class="kt">char</span><span class="o">[][]</span> <span class="n">grid</span> <span class="o">=</span> <span class="o">{</span>
+            <span class="o">{</span><span class="sc">'1'</span><span class="o">,</span><span class="sc">'1'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">},</span>
+            <span class="o">{</span><span class="sc">'1'</span><span class="o">,</span><span class="sc">'1'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">},</span>
+            <span class="o">{</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'1'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">},</span>
+            <span class="o">{</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'0'</span><span class="o">,</span><span class="sc">'1'</span><span class="o">,</span><span class="sc">'1'</span><span class="o">}</span>
+        <span class="o">};</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sol</span><span class="o">.</span><span class="na">numIslands</span><span class="o">(</span><span class="n">grid</span><span class="o">));</span>  <span class="c1">// 3</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-실전-패턴">🎨 실전 패턴</h2>
+
+<h3 id="패턴-1-선택비선택-includeexclude">패턴 1: 선택/비선택 (Include/Exclude)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 부분집합, 조합 문제</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 결과 처리</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 선택 O</span>
+    <span class="n">선택</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+    <span class="n">backtrack</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">취소</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+    
+    <span class="c1">// 선택 X</span>
+    <span class="n">backtrack</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-2-가능한-모든-선택-시도">패턴 2: 가능한 모든 선택 시도</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 순열, N-Queen 문제</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="n">상태</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">목표_달성</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">결과_저장</span><span class="o">();</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="n">각_선택지</span> <span class="o">:</span> <span class="n">가능한_선택들</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">유효</span><span class="o">(</span><span class="n">선택지</span><span class="o">))</span> <span class="k">continue</span><span class="o">;</span>
+        
+        <span class="n">선택</span><span class="o">(</span><span class="n">선택지</span><span class="o">);</span>
+        <span class="n">backtrack</span><span class="o">(</span><span class="n">새로운_상태</span><span class="o">);</span>
+        <span class="n">취소</span><span class="o">(</span><span class="n">선택지</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-3-격자-탐색-grid-dfs">패턴 3: 격자 탐색 (Grid DFS)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 섬, 영역 문제</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">n</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">m</span> <span class="o">||</span> <span class="n">grid</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span> <span class="o">!=</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="n">grid</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span> <span class="o">=</span> <span class="n">visited_mark</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="n">dfs</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">nx</span><span class="o">,</span> <span class="n">ny</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-복잡도-분석">📊 복잡도 분석</h2>
+
+<h3 id="재귀-시간복잡도">재귀 시간복잡도</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>문제</th>
+      <th>시간복잡도</th>
+      <th>공간복잡도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>팩토리얼</td>
+      <td>O(n)</td>
+      <td>O(n) 스택</td>
+    </tr>
+    <tr>
+      <td>피보나치 (기본)</td>
+      <td>O(2^n)</td>
+      <td>O(n) 스택</td>
+    </tr>
+    <tr>
+      <td>피보나치 (메모)</td>
+      <td>O(n)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>순열</td>
+      <td>O(n!)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>조합</td>
+      <td>O(2^n)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>부분집합</td>
+      <td>O(2^n)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>N-Queen</td>
+      <td>O(n!)</td>
+      <td>O(n²)</td>
+    </tr>
+    <tr>
+      <td>DFS (그래프)</td>
+      <td>O(V+E)</td>
+      <td>O(V)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="️-주의사항">⚠️ 주의사항</h2>
+
+<h3 id="1-base-case-필수">1. Base Case 필수!</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 무한 재귀 - Base Case 없음</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">wrong</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">wrong</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>  <span class="c1">// 멈추지 않음!</span>
+<span class="o">}</span>
+
+<span class="c1">// ✅ 올바른 재귀</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">correct</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>  <span class="c1">// Base Case</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">correct</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-stack-overflow-주의">2. Stack Overflow 주의</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 재귀 깊이가 너무 깊으면 Stack Overflow</span>
+<span class="c1">// Java 기본 스택 크기: 약 1MB (약 5000~10000 재귀)</span>
+
+<span class="c1">// 해결 방법:</span>
+<span class="c1">// 1. 메모이제이션</span>
+<span class="c1">// 2. 반복문으로 변환</span>
+<span class="c1">// 3. 꼬리 재귀 최적화 (Java는 지원 안 함)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-상태-복원-backtrack-필수">3. 상태 복원 (Backtrack) 필수!</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 잘못된 백트래킹 - 상태 복원 안 함</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">wrong</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">조건</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>  <span class="c1">// 위험! 같은 객체 참조</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">:</span> <span class="n">choices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">path</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="n">wrong</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+        <span class="c1">// path.remove(path.size() - 1);  // 복원 안 함!</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// ✅ 올바른 백트래킹</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">correct</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">조건</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">path</span><span class="o">));</span>  <span class="c1">// 복사!</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">:</span> <span class="n">choices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">path</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="n">correct</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+        <span class="n">path</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">path</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>  <span class="c1">// 상태 복원!</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="4-방문-체크-주의">4. 방문 체크 주의</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// DFS에서 방문 체크 타이밍</span>
+
+<span class="c1">// 패턴 1: 방문 전에 체크 (일반적)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dfs1</span><span class="o">(</span><span class="kt">int</span> <span class="n">node</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">dfs1</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 패턴 2: 모든 경로 찾기 (백트래킹)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dfs2</span><span class="o">(</span><span class="kt">int</span> <span class="n">node</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 경로 저장</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">dfs2</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>  <span class="c1">// 백트래킹!</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-최적화-기법">💡 최적화 기법</h2>
+
+<h3 id="1-메모이제이션-memoization">1. 메모이제이션 (Memoization)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Memoization</span> <span class="o">{</span>
+    <span class="c1">// 피보나치 최적화</span>
+    <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">memo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">fib</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">memo</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">n</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">memo</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="n">memo</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">result</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// 배열로 메모이제이션 (더 빠름)</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">fibArray</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">memo</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">memo</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        
+        <span class="n">memo</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">fibArray</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">memo</span><span class="o">)</span> <span class="o">+</span> <span class="n">fibArray</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="o">,</span> <span class="n">memo</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-가지치기-pruning">2. 가지치기 (Pruning)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pruning</span> <span class="o">{</span>
+    <span class="c1">// 조합의 합 최적화</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">combinationSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> 
+                              <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">current</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sum</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">current</span><span class="o">));</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 가지치기: 이미 target 초과</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 가지치기: 정렬되어 있다면 이후는 볼 필요 없음</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">+</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+            
+            <span class="n">current</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="n">combinationSum</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">current</span><span class="o">,</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-중복-제거">3. 중복 제거</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DuplicateRemoval</span> <span class="o">{</span>
+    <span class="c1">// 중복 있는 배열에서 순열</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">permuteUnique</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">nums</span><span class="o">);</span>  <span class="c1">// 정렬 필수!</span>
+        <span class="n">backtrack</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(),</span> <span class="n">nums</span><span class="o">,</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">]);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">result</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">temp</span><span class="o">,</span>
+                          <span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="n">used</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">temp</span><span class="o">));</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 중복 제거: 같은 숫자가 연속되고 이전 것을 안 썼으면 스킵</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">used</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">||</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">used</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]))</span> <span class="o">{</span>
+                <span class="k">continue</span><span class="o">;</span>
+            <span class="o">}</span>
+            
+            <span class="n">used</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="n">backtrack</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">temp</span><span class="o">,</span> <span class="n">nums</span><span class="o">,</span> <span class="n">used</span><span class="o">);</span>
+            <span class="n">temp</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="n">used</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-실전-문제-풀이">🎯 실전 문제 풀이</h2>
+
+<h3 id="문제-1-전화번호-문자-조합-leetcode-17">문제 1: 전화번호 문자 조합 (LeetCode 17)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LetterCombinations</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span><span class="o">[]</span> <span class="no">KEYS</span> <span class="o">=</span> <span class="o">{</span>
+        <span class="s">""</span><span class="o">,</span> <span class="s">""</span><span class="o">,</span> <span class="s">"abc"</span><span class="o">,</span> <span class="s">"def"</span><span class="o">,</span> <span class="s">"ghi"</span><span class="o">,</span> <span class="s">"jkl"</span><span class="o">,</span> <span class="s">"mno"</span><span class="o">,</span> <span class="s">"pqrs"</span><span class="o">,</span> <span class="s">"tuv"</span><span class="o">,</span> <span class="s">"wxyz"</span>
+    <span class="o">};</span>
+    
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">letterCombinations</span><span class="o">(</span><span class="nc">String</span> <span class="n">digits</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">digits</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+        
+        <span class="n">backtrack</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">(),</span> <span class="n">digits</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">result</span><span class="o">,</span> <span class="nc">StringBuilder</span> <span class="n">current</span><span class="o">,</span> 
+                          <span class="nc">String</span> <span class="n">digits</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">digits</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 현재 숫자에 대응하는 문자들</span>
+        <span class="nc">String</span> <span class="n">letters</span> <span class="o">=</span> <span class="no">KEYS</span><span class="o">[</span><span class="n">digits</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">index</span><span class="o">)</span> <span class="o">-</span> <span class="sc">'0'</span><span class="o">];</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">letters</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+            <span class="n">backtrack</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">current</span><span class="o">,</span> <span class="n">digits</span><span class="o">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">deleteCharAt</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">LetterCombinations</span> <span class="n">lc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LetterCombinations</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">lc</span><span class="o">.</span><span class="na">letterCombinations</span><span class="o">(</span><span class="s">"23"</span><span class="o">));</span>
+        <span class="c1">// [ad, ae, af, bd, be, bf, cd, ce, cf]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-2-단어-검색-leetcode-79">문제 2: 단어 검색 (LeetCode 79)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WordSearch</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">exist</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span><span class="o">,</span> <span class="nc">String</span> <span class="n">word</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">board</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">;</span>
+        
+        <span class="c1">// 모든 위치에서 시작 시도</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">dfs</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="n">word</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="mi">0</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span><span class="o">,</span> <span class="nc">String</span> <span class="n">word</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">int</span> <span class="n">j</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case: 단어 완성</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">word</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="c1">// 경계 체크</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">board</span><span class="o">.</span><span class="na">length</span> <span class="o">||</span> 
+            <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">board</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span> <span class="o">||</span> 
+            <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">!=</span> <span class="n">word</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">index</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 방문 표시</span>
+        <span class="kt">char</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
+        <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'#'</span><span class="o">;</span>
+        
+        <span class="c1">// 4방향 탐색</span>
+        <span class="kt">boolean</span> <span class="n">found</span> <span class="o">=</span> <span class="n">dfs</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="n">word</span><span class="o">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="o">)</span> <span class="o">||</span>
+                       <span class="n">dfs</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="n">word</span><span class="o">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="o">)</span> <span class="o">||</span>
+                       <span class="n">dfs</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="n">word</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="o">)</span> <span class="o">||</span>
+                       <span class="n">dfs</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="n">word</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+        
+        <span class="c1">// 복원</span>
+        <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+        
+        <span class="k">return</span> <span class="n">found</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">WordSearch</span> <span class="n">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WordSearch</span><span class="o">();</span>
+        <span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span> <span class="o">=</span> <span class="o">{</span>
+            <span class="o">{</span><span class="sc">'A'</span><span class="o">,</span><span class="sc">'B'</span><span class="o">,</span><span class="sc">'C'</span><span class="o">,</span><span class="sc">'E'</span><span class="o">},</span>
+            <span class="o">{</span><span class="sc">'S'</span><span class="o">,</span><span class="sc">'F'</span><span class="o">,</span><span class="sc">'C'</span><span class="o">,</span><span class="sc">'S'</span><span class="o">},</span>
+            <span class="o">{</span><span class="sc">'A'</span><span class="o">,</span><span class="sc">'D'</span><span class="o">,</span><span class="sc">'E'</span><span class="o">,</span><span class="sc">'E'</span><span class="o">}</span>
+        <span class="o">};</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ws</span><span class="o">.</span><span class="na">exist</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="s">"ABCCED"</span><span class="o">));</span>  <span class="c1">// true</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ws</span><span class="o">.</span><span class="na">exist</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="s">"SEE"</span><span class="o">));</span>     <span class="c1">// true</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ws</span><span class="o">.</span><span class="na">exist</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="s">"ABCB"</span><span class="o">));</span>    <span class="c1">// false</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-3-팰린드롬-분할-leetcode-131">문제 3: 팰린드롬 분할 (LeetCode 131)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PalindromePartitioning</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="nf">partition</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">backtrack</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(),</span> <span class="n">s</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">result</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">current</span><span class="o">,</span>
+                          <span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Base Case: 문자열 끝</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">start</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">current</span><span class="o">));</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 모든 가능한 분할 시도</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">end</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 팰린드롬인 경우만 선택</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">isPalindrome</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">current</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="o">));</span>
+                <span class="n">backtrack</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">current</span><span class="o">,</span> <span class="n">s</span><span class="o">,</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+                <span class="n">current</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isPalindrome</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">left</span><span class="o">++)</span> <span class="o">!=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">right</span><span class="o">--))</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">PalindromePartitioning</span> <span class="n">pp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PalindromePartitioning</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">pp</span><span class="o">.</span><span class="na">partition</span><span class="o">(</span><span class="s">"aab"</span><span class="o">));</span>
+        <span class="c1">// [[a, a, b], [aa, b]]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="문제-4-스도쿠-풀기-leetcode-37">문제 4: 스도쿠 풀기 (LeetCode 37)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SudokuSolver</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">solveSudoku</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">solve</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">solve</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="sc">'.'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">// 1~9 시도</span>
+                    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'1'</span><span class="o">;</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">'9'</span><span class="o">;</span> <span class="n">c</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">isValid</span><span class="o">(</span><span class="n">board</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">c</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">c</span><span class="o">;</span>
+                            
+                            <span class="k">if</span> <span class="o">(</span><span class="n">solve</span><span class="o">(</span><span class="n">board</span><span class="o">))</span> <span class="o">{</span>
+                                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                            <span class="o">}</span>
+                            
+                            <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="sc">'.'</span><span class="o">;</span>  <span class="c1">// Backtrack</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>  <span class="c1">// 모든 숫자 실패</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>  <span class="c1">// 모든 칸 채움</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isValid</span><span class="o">(</span><span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span><span class="o">,</span> <span class="kt">int</span> <span class="n">row</span><span class="o">,</span> <span class="kt">int</span> <span class="n">col</span><span class="o">,</span> <span class="kt">char</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">// 행 체크</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">board</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">c</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            
+            <span class="c1">// 열 체크</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">==</span> <span class="n">c</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            
+            <span class="c1">// 3×3 박스 체크</span>
+            <span class="kt">int</span> <span class="n">boxRow</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="o">(</span><span class="n">row</span> <span class="o">/</span> <span class="mi">3</span><span class="o">)</span> <span class="o">+</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">3</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">boxCol</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="o">(</span><span class="n">col</span> <span class="o">/</span> <span class="mi">3</span><span class="o">)</span> <span class="o">+</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">board</span><span class="o">[</span><span class="n">boxRow</span><span class="o">][</span><span class="n">boxCol</span><span class="o">]</span> <span class="o">==</span> <span class="n">c</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-추천-문제">🏆 추천 문제</h2>
+
+<h3 id="재귀-기초-">재귀 기초 (⭐)</h3>
+
+<ol>
+  <li>
+    <p><strong>[LeetCode 344] Reverse String</strong></p>
+
+    <ul>
+      <li>재귀로 문자열 뒤집기</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 509] Fibonacci Number</strong></p>
+
+    <ul>
+      <li>피보나치 수열</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 206] Reverse Linked List</strong></p>
+
+    <ul>
+      <li>재귀로 연결 리스트 뒤집기</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 10872] 팩토리얼</strong></p>
+
+    <ul>
+      <li>기본 재귀</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 2447] 별 찍기 - 10</strong></p>
+
+    <ul>
+      <li>분할 정복</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="백트래킹-">백트래킹 (⭐⭐)</h3>
+
+<ol>
+  <li>
+    <p><strong>[LeetCode 46] Permutations</strong></p>
+
+    <ul>
+      <li>순열</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 77] Combinations</strong></p>
+
+    <ul>
+      <li>조합</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 78] Subsets</strong></p>
+
+    <ul>
+      <li>부분집합</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 39] Combination Sum</strong></p>
+
+    <ul>
+      <li>조합의 합</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 51] N-Queens</strong></p>
+
+    <ul>
+      <li>N-Queen 문제</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 22] Generate Parentheses</strong></p>
+
+    <ul>
+      <li>유효한 괄호 생성</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[프로그래머스] 피로도</strong></p>
+
+    <ul>
+      <li>순열 응용</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 15649] N과 M (1)</strong></p>
+
+    <ul>
+      <li>순열 기초</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 9663] N-Queen</strong></p>
+
+    <ul>
+      <li>백트래킹 대표 문제</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 1987] 알파벳</strong></p>
+
+    <ul>
+      <li>격자 백트래킹</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="dfs-">DFS (⭐⭐)</h3>
+
+<ol>
+  <li>
+    <p><strong>[LeetCode 200] Number of Islands</strong></p>
+
+    <ul>
+      <li>섬의 개수</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 695] Max Area of Island</strong></p>
+
+    <ul>
+      <li>최대 섬 크기</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 133] Clone Graph</strong></p>
+
+    <ul>
+      <li>그래프 복제</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 547] Number of Provinces</strong></p>
+
+    <ul>
+      <li>연결 요소 개수</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[LeetCode 79] Word Search</strong></p>
+
+    <ul>
+      <li>단어 검색</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 2606] 바이러스</strong></p>
+
+    <ul>
+      <li>DFS 기초</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 1260] DFS와 BFS</strong></p>
+
+    <ul>
+      <li>DFS 구현</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 2667] 단지번호붙이기</strong></p>
+
+    <ul>
+      <li>영역 찾기</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 11724] 연결 요소의 개수</strong></p>
+
+    <ul>
+      <li>연결 요소</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>[백준 1012] 유기농 배추</strong></p>
+
+    <ul>
+      <li>2D DFS</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="심화-">심화 (⭐⭐⭐)</h3>
+
+<ol>
+  <li><strong>[LeetCode 37] Sudoku Solver</strong>
+    <ul>
+      <li>스도쿠</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 131] Palindrome Partitioning</strong>
+    <ul>
+      <li>팰린드롬 분할</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 212] Word Search II</strong>
+    <ul>
+      <li>Trie + DFS</li>
+    </ul>
+  </li>
+  <li><strong>[LeetCode 301] Remove Invalid Parentheses</strong>
+    <ul>
+      <li>BFS/DFS 응용</li>
+    </ul>
+  </li>
+  <li><strong>[백준 14888] 연산자 끼워넣기</strong>
+    <ul>
+      <li>백트래킹 응용</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="-학습-로드맵">📚 학습 로드맵</h2>
+
+<h3 id="1주차-재귀-기초">1주차: 재귀 기초</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />팩토리얼, 피보나치 구현</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />배열 합, 문자열 뒤집기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />재귀 → 반복문 변환 연습</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />메모이제이션 이해</li>
+</ul>
+
+<h3 id="2주차-백트래킹-기초">2주차: 백트래킹 기초</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />순열 구현 (중복 X)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />조합 구현 (중복 X)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />부분집합 구현</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />순열 (중복 O) 구현</li>
+</ul>
+
+<h3 id="3주차-dfs-기초">3주차: DFS 기초</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />그래프 DFS 구현 (재귀)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />그래프 DFS 구현 (스택)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2D 그리드 DFS</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />연결 요소 찾기</li>
+</ul>
+
+<h3 id="4주차-종합-응용">4주차: 종합 응용</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />N-Queen 문제</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />단어 검색 문제</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />조합의 합 문제</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />섬의 개수 문제</li>
+</ul>
+
+<hr />
+
+<h2 id="-디버깅-팁">💡 디버깅 팁</h2>
+
+<h3 id="1-재귀-호출-추적">1. 재귀 호출 추적</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DebugRecursion</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">factorial</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 들여쓰기로 깊이 표시</span>
+        <span class="nc">String</span> <span class="n">indent</span> <span class="o">=</span> <span class="s">"  "</span><span class="o">.</span><span class="na">repeat</span><span class="o">(</span><span class="n">depth</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">indent</span> <span class="o">+</span> <span class="s">"→ factorial("</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="s">")"</span><span class="o">);</span>
+        <span class="n">depth</span><span class="o">++;</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">depth</span><span class="o">--;</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">indent</span> <span class="o">+</span> <span class="s">"← return 1"</span><span class="o">);</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+        
+        <span class="n">depth</span><span class="o">--;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">indent</span> <span class="o">+</span> <span class="s">"← return "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">DebugRecursion</span> <span class="n">dr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DebugRecursion</span><span class="o">();</span>
+        <span class="n">dr</span><span class="o">.</span><span class="na">factorial</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+        
+        <span class="c1">// 출력:</span>
+        <span class="c1">// → factorial(5)</span>
+        <span class="c1">//   → factorial(4)</span>
+        <span class="c1">//     → factorial(3)</span>
+        <span class="c1">//       → factorial(2)</span>
+        <span class="c1">//         → factorial(1)</span>
+        <span class="c1">//         ← return 1</span>
+        <span class="c1">//       ← return 2</span>
+        <span class="c1">//     ← return 6</span>
+        <span class="c1">//   ← return 24</span>
+        <span class="c1">// ← return 120</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-백트래킹-상태-출력">2. 백트래킹 상태 출력</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">backtrackDebug</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">current</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"현재 경로: "</span> <span class="o">+</span> <span class="n">current</span> <span class="o">+</span> <span class="s">", start: "</span> <span class="o">+</span> <span class="n">start</span><span class="o">);</span>
+    
+    <span class="k">if</span> <span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"  → 답 발견: "</span> <span class="o">+</span> <span class="n">current</span><span class="o">);</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"  선택: "</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="n">current</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="n">backtrackDebug</span><span class="o">(</span><span class="n">current</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="n">current</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"  취소: "</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-핵심-정리">🎯 핵심 정리</h2>
+
+<h3 id="재귀-체크리스트">재귀 체크리스트</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Base Case 확인</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />재귀 호출이 더 작은 문제로 수렴하는가?</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Stack Overflow 가능성은?</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />메모이제이션 필요한가?</li>
+</ul>
+
+<h3 id="백트래킹-체크리스트">백트래킹 체크리스트</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />선택 → 탐색 → 취소 패턴</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />상태 복원 (Backtrack) 했는가?</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />가지치기 최적화 가능한가?</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />중복 제거 필요한가?</li>
+</ul>
+
+<h3 id="dfs-체크리스트">DFS 체크리스트</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />방문 체크 위치 정확한가?</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />경계 조건 확인했는가?</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />모든 경로 vs 하나의 경로?</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />재귀 vs 스택 선택 기준은?</li>
+</ul>
+
+<hr />
+
+<h2 id="-암기-필수-템플릿">📝 암기 필수 템플릿</h2>
+
+<h3 id="1-백트래킹-기본">1. 백트래킹 기본</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">current</span><span class="o">,</span> <span class="o">...)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">목표_달성</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">current</span><span class="o">));</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="n">선택지</span> <span class="o">:</span> <span class="n">선택들</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">유효</span><span class="o">(</span><span class="n">선택지</span><span class="o">))</span> <span class="k">continue</span><span class="o">;</span>
+        
+        <span class="n">current</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">선택지</span><span class="o">);</span>
+        <span class="n">backtrack</span><span class="o">(</span><span class="n">current</span><span class="o">,</span> <span class="o">...);</span>
+        <span class="n">current</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">current</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-dfs-재귀">2. DFS (재귀)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">node</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">visited</span><span class="o">[</span><span class="n">node</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">graph</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">dfs</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-2d-그리드-dfs">3. 2D 그리드 DFS</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">n</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">m</span> <span class="o">||</span> <span class="n">grid</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span> <span class="o">!=</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="n">grid</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span> <span class="o">=</span> <span class="n">visited</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">dfs</span><span class="o">(</span><span class="n">grid</span><span class="o">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>#Java #재귀 #Recursion #백트래킹 #Backtracking #DFS #완전탐색 #BruteForce #순열 #조합 #NQueen #알고리즘 #코딩테스트</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
