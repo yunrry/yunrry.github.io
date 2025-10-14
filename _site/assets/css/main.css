@@ -1331,6 +1331,102 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
 
 .highlight .ss { color: #a1b56c; }
 
+/* ============================================ 다크모드 변수 설정 ============================================ */
+:root { --bg-color: #ffffff; --text-color: #222222; --link-color: #0066cc; --link-hover: #0052a3; --border-color: #f0f0f0; --code-bg: #f8f9fa; --code-inline-bg: #f0f0f0; --code-inline-color: #c7254e; --sidebar-bg: #ffffff; --header-bg: #ffffff; --footer-bg: #f8f9fa; --category-color: #333; --subcategory-color: #666; --nav-accent: #9bd6bd; --nav-accent-hover: #88bca7; --code-border: #9bd6bd; }
+
+[data-theme="dark"] { --bg-color: #1a1a1a; --text-color: #e0e0e0; --link-color: #66b3ff; --link-hover: #99ccff; --border-color: #333333; --code-bg: #2d2d2d; --code-inline-bg: #3a3a3a; --code-inline-color: #ff6b9d; --sidebar-bg: #1a1a1a; --header-bg: #0d0d0d; --footer-bg: #0d0d0d; --category-color: #e0e0e0; --subcategory-color: #b0b0b0; --nav-accent: #9bd6bd; --nav-accent-hover: #88bca7; --code-border: #7ab5a0; }
+
+/* ============================================ 부드러운 전환 효과 ============================================ */
+body, .page__content, .masthead, .page__footer, .sidebar, .sidebar .nav__list, a, code, pre, .pagination--pager { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+
+/* ============================================ 다크모드 기본 스타일 ============================================ */
+[data-theme="dark"] body { background-color: var(--bg-color); color: var(--text-color); }
+
+[data-theme="dark"] .page__content { background-color: var(--bg-color); color: var(--text-color); }
+
+[data-theme="dark"] .masthead { background-color: var(--header-bg); border-bottom-color: var(--border-color); }
+
+[data-theme="dark"] .masthead__inner-wrap, [data-theme="dark"] .greedy-nav { background-color: var(--header-bg); }
+
+[data-theme="dark"] .site-title { color: var(--text-color); }
+
+[data-theme="dark"] .page__footer { background-color: var(--footer-bg); color: var(--text-color); }
+
+/* ============================================ 링크 스타일 ============================================ */
+[data-theme="dark"] a { color: var(--link-color); }
+
+[data-theme="dark"] a:hover { color: var(--link-hover); }
+
+/* ============================================ 사이드바 다크모드 ============================================ */
+[data-theme="dark"] .sidebar { background-color: var(--sidebar-bg); color: var(--text-color); }
+
+[data-theme="dark"] .sidebar .nav__list { background-color: var(--sidebar-bg); }
+
+[data-theme="dark"] .sidebar .nav__list .nav__items .nav__title { color: var(--text-color); border-bottom-color: var(--border-color); }
+
+[data-theme="dark"] .nav__sub-title { color: var(--text-color); border-bottom-color: var(--border-color); }
+
+/* 상위 카테고리 */
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/dev/"], [data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/language/"], [data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/algorithm/"], [data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/cs/"], [data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/"] { color: var(--category-color) !important; }
+
+/* 하위 카테고리 */
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/dev/"], [data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/language/"], [data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/algorithm/"], [data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/cs/"] { color: var(--subcategory-color) !important; }
+
+[data-theme="dark"] .sidebar .nav__list .nav__items a:hover { color: var(--link-hover) !important; }
+
+/* ============================================ 작성자 프로필 ============================================ */
+[data-theme="dark"] .author__avatar img { border-color: var(--border-color); }
+
+[data-theme="dark"] .author__name { color: var(--text-color); }
+
+[data-theme="dark"] .author__bio { color: var(--subcategory-color); }
+
+[data-theme="dark"] .author__urls { color: var(--text-color); }
+
+/* ============================================ 코드 블록 다크모드 ============================================ */
+[data-theme="dark"] .page__content pre { background: var(--code-bg) !important; border-left-color: var(--code-border) !important; }
+
+[data-theme="dark"] .page__content code { background: var(--code-inline-bg) !important; color: var(--code-inline-color) !important; }
+
+[data-theme="dark"] .page__content pre code { background: none !important; color: var(--text-color) !important; }
+
+[data-theme="dark"] pre, [data-theme="dark"] code { border-color: var(--border-color); }
+
+/* ============================================ 네비게이션 (Previous/Next) 다크모드 ============================================ */
+[data-theme="dark"] .pagination--pager { color: var(--nav-accent); }
+
+[data-theme="dark"] .pagination--pager:hover { color: var(--nav-accent-hover); }
+
+/* ============================================ 아카이브 및 포스트 목록 ============================================ */
+[data-theme="dark"] .archive__item-title { color: var(--text-color); }
+
+[data-theme="dark"] .archive__item-excerpt { color: var(--subcategory-color); }
+
+[data-theme="dark"] .archive__subtitle { color: var(--text-color); border-bottom-color: var(--border-color); }
+
+/* ============================================ 헤딩 및 구분선 ============================================ */
+[data-theme="dark"] .page__content h1, [data-theme="dark"] .page__content h2, [data-theme="dark"] .page__content h3, [data-theme="dark"] .page__content h4, [data-theme="dark"] .page__content h5, [data-theme="dark"] .page__content h6 { color: var(--text-color); }
+
+[data-theme="dark"] hr { border-color: var(--border-color); }
+
+/* ============================================ 인용구 ============================================ */
+[data-theme="dark"] blockquote { border-left-color: var(--border-color); background-color: #252525; color: var(--subcategory-color); }
+
+/* ============================================ 알림 박스 ============================================ */
+[data-theme="dark"] .notice, [data-theme="dark"] .notice--primary, [data-theme="dark"] .notice--info, [data-theme="dark"] .notice--warning, [data-theme="dark"] .notice--success, [data-theme="dark"] .notice--danger { background-color: #252525; border-color: var(--border-color); color: var(--text-color); }
+
+/* ============================================ 테이블 ============================================ */
+[data-theme="dark"] table { border-color: var(--border-color); background-color: var(--bg-color); }
+
+[data-theme="dark"] table thead { background-color: #252525; color: var(--text-color); }
+
+[data-theme="dark"] table tbody tr { border-color: var(--border-color); }
+
+[data-theme="dark"] table tbody tr:hover { background-color: #252525; }
+
+[data-theme="dark"] table th, [data-theme="dark"] table td { color: var(--text-color); border-color: var(--border-color); }
+
+/* ============================================ 기존 스타일 (라이트/다크 공통) ============================================ */
 /* 전체 폰트 크기 축소 */
 body { font-size: 18px !important; }
 
@@ -1414,4 +1510,23 @@ table { font-size: 0.85em !important; }
 
 .page__content code { font-size: 0.95em !important; }
 
-/* 다크모드 지원 (선택사항) */
+/* ============================================ 다크모드 토글 버튼 (헤더) ============================================ */
+.dark-mode-toggle-header { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 2px solid #e0e0e0; background: transparent; color: #333; font-size: 20px; cursor: pointer; transition: all 0.3s ease; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 0; }
+
+.dark-mode-toggle-header:hover { background: #f0f0f0; transform: translateY(-50%) scale(1.1); border-color: #9bd6bd; }
+
+/* 다크모드일 때 버튼 스타일 */
+[data-theme="dark"] .dark-mode-toggle-header { border-color: #555555; color: #e0e0e0; }
+
+[data-theme="dark"] .dark-mode-toggle-header:hover { background: #2d2d2d; border-color: #9bd6bd; }
+
+/* 헤더 위치 조정 */
+.masthead__inner-wrap { position: relative; }
+
+/* 반응형: 모바일에서는 크기 조정 */
+@media (max-width: 768px) { .dark-mode-toggle-header { width: 35px; height: 35px; font-size: 18px; right: 15px; } }
+@media (max-width: 480px) { .dark-mode-toggle-header { width: 32px; height: 32px; font-size: 16px; right: 10px; } }
+/* 네비게이션 메뉴와 겹치지 않도록 여백 추가 */
+.greedy-nav { padding-right: 60px; }
+
+@media (max-width: 768px) { .greedy-nav { padding-right: 50px; } }

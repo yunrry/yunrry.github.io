@@ -5,38 +5,333 @@
 @import "minimal-mistakes";
 @import "syntax";
 
+/* ============================================
+   다크모드 변수 설정
+   ============================================ */
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --link-color: #0066cc;
+  --link-hover: #0052a3;
+  --border-color: #f0f0f0;
+  --code-bg: #f8f9fa;
+  --code-inline-bg: #f0f0f0;
+  --code-inline-color: #c7254e;
+  --sidebar-bg: #ffffff;
+  --header-bg: #ffffff;
+  --footer-bg: #f8f9fa;
+  --category-color: #333;
+  --subcategory-color: #666;
+  --nav-accent: #9bd6bd;
+  --nav-accent-hover: #88bca7;
+  --code-border: #9bd6bd;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --link-color: #66b3ff;
+  --link-hover: #99ccff;
+  --border-color: #333333;
+  --code-bg: #2d2d2d;
+  --code-inline-bg: #3a3a3a;
+  --code-inline-color: #ff6b9d;
+  --sidebar-bg: #1a1a1a;
+  --header-bg: #0d0d0d;
+  --footer-bg: #0d0d0d;
+  --category-color: #e0e0e0;
+  --subcategory-color: #b0b0b0;
+  --nav-accent: #9bd6bd;
+  --nav-accent-hover: #88bca7;
+  --code-border: #7ab5a0;
+}
+
+/* ============================================
+   부드러운 전환 효과
+   ============================================ */
+
+body,
+.page__content,
+.masthead,
+.page__footer,
+.sidebar,
+.sidebar .nav__list,
+a,
+code,
+pre,
+.pagination--pager {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ============================================
+   다크모드 기본 스타일
+   ============================================ */
+
+[data-theme="dark"] body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .page__content {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .masthead {
+  background-color: var(--header-bg);
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .masthead__inner-wrap,
+[data-theme="dark"] .greedy-nav {
+  background-color: var(--header-bg);
+}
+
+[data-theme="dark"] .site-title {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .page__footer {
+  background-color: var(--footer-bg);
+  color: var(--text-color);
+}
+
+/* ============================================
+   링크 스타일
+   ============================================ */
+
+[data-theme="dark"] a {
+  color: var(--link-color);
+}
+
+[data-theme="dark"] a:hover {
+  color: var(--link-hover);
+}
+
+/* ============================================
+   사이드바 다크모드
+   ============================================ */
+
+[data-theme="dark"] .sidebar {
+  background-color: var(--sidebar-bg);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .sidebar .nav__list {
+  background-color: var(--sidebar-bg);
+}
+
+[data-theme="dark"] .sidebar .nav__list .nav__items .nav__title {
+  color: var(--text-color);
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .nav__sub-title {
+  color: var(--text-color);
+  border-bottom-color: var(--border-color);
+}
+
+/* 상위 카테고리 */
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/dev/"],
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/language/"],
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/algorithm/"],
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/cs/"],
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/"] {
+  color: var(--category-color) !important;
+}
+
+/* 하위 카테고리 */
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/dev/"],
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/language/"],
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/algorithm/"],
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/cs/"] {
+  color: var(--subcategory-color) !important;
+}
+
+[data-theme="dark"] .sidebar .nav__list .nav__items a:hover {
+  color: var(--link-hover) !important;
+}
+
+/* ============================================
+   작성자 프로필
+   ============================================ */
+
+[data-theme="dark"] .author__avatar img {
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .author__name {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .author__bio {
+  color: var(--subcategory-color);
+}
+
+[data-theme="dark"] .author__urls {
+  color: var(--text-color);
+}
+
+/* ============================================
+   코드 블록 다크모드
+   ============================================ */
+
+[data-theme="dark"] .page__content pre {
+  background: var(--code-bg) !important;
+  border-left-color: var(--code-border) !important;
+}
+
+[data-theme="dark"] .page__content code {
+  background: var(--code-inline-bg) !important;
+  color: var(--code-inline-color) !important;
+}
+
+[data-theme="dark"] .page__content pre code {
+  background: none !important;
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+  border-color: var(--border-color);
+}
+
+/* ============================================
+   네비게이션 (Previous/Next) 다크모드
+   ============================================ */
+
+[data-theme="dark"] .pagination--pager {
+  color: var(--nav-accent);
+}
+
+[data-theme="dark"] .pagination--pager:hover {
+  color: var(--nav-accent-hover);
+}
+
+/* ============================================
+   아카이브 및 포스트 목록
+   ============================================ */
+
+[data-theme="dark"] .archive__item-title {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .archive__item-excerpt {
+  color: var(--subcategory-color);
+}
+
+[data-theme="dark"] .archive__subtitle {
+  color: var(--text-color);
+  border-bottom-color: var(--border-color);
+}
+
+/* ============================================
+   헤딩 및 구분선
+   ============================================ */
+
+[data-theme="dark"] .page__content h1,
+[data-theme="dark"] .page__content h2,
+[data-theme="dark"] .page__content h3,
+[data-theme="dark"] .page__content h4,
+[data-theme="dark"] .page__content h5,
+[data-theme="dark"] .page__content h6 {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] hr {
+  border-color: var(--border-color);
+}
+
+/* ============================================
+   인용구
+   ============================================ */
+
+[data-theme="dark"] blockquote {
+  border-left-color: var(--border-color);
+  background-color: #252525;
+  color: var(--subcategory-color);
+}
+
+/* ============================================
+   알림 박스
+   ============================================ */
+
+[data-theme="dark"] .notice,
+[data-theme="dark"] .notice--primary,
+[data-theme="dark"] .notice--info,
+[data-theme="dark"] .notice--warning,
+[data-theme="dark"] .notice--success,
+[data-theme="dark"] .notice--danger {
+  background-color: #252525;
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+/* ============================================
+   테이블
+   ============================================ */
+
+[data-theme="dark"] table {
+  border-color: var(--border-color);
+  background-color: var(--bg-color);
+}
+
+[data-theme="dark"] table thead {
+  background-color: #252525;
+  color: var(--text-color);
+}
+
+[data-theme="dark"] table tbody tr {
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] table tbody tr:hover {
+  background-color: #252525;
+}
+
+[data-theme="dark"] table th,
+[data-theme="dark"] table td {
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+/* ============================================
+   기존 스타일 (라이트/다크 공통)
+   ============================================ */
+
 /* 전체 폰트 크기 축소 */
 body {
-    font-size: 18px !important;
-  }
-  
-  .page__content {
-    font-size: 0.9em !important;
-  }
-  
-  /* 헤딩 크기 축소 */
-  h1 { font-size: 1.8em !important; }
-  h2 { font-size: 1.5em !important; }
-  h3 { font-size: 1.2em !important; }
-  h4 { font-size: 1.1em !important; }
-  
-  /* 코드 블록 */
-  pre, code {
-    font-size: 0.85em !important;
-  }
-  
-  /* 리스트 */
-  ul, ol {
-    font-size: 0.9em !important;
-  }
-  
-  /* 테이블 */
-  table {
-    font-size: 0.85em !important;
-  }
+  font-size: 18px !important;
+}
+
+.page__content {
+  font-size: 0.9em !important;
+}
+
+/* 헤딩 크기 축소 */
+h1 { font-size: 1.8em !important; }
+h2 { font-size: 1.5em !important; }
+h3 { font-size: 1.2em !important; }
+h4 { font-size: 1.1em !important; }
+
+/* 코드 블록 */
+pre, code {
+  font-size: 0.85em !important;
+}
+
+/* 리스트 */
+ul, ol {
+  font-size: 0.9em !important;
+}
+
+/* 테이블 */
+table {
+  font-size: 0.85em !important;
+}
 
 .site-title {
-    font-size: 1.6em !important;
+  font-size: 1.6em !important;
 }  
 
 .nav__sub-title {
@@ -49,168 +344,167 @@ body {
 
 /* 카테고리 간격 */
 .sidebar .nav__list .nav__items li {
-    margin-bottom: 16px !important;
-  }
-  
-  /* Menu 제목 */
-  .sidebar .nav__list .nav__items .nav__title {
-    margin-bottom: 12px !important;
-    font-size: 1.8em !important;
-    border-bottom: 2px solid #f0f0f0 !important;
-    padding-bottom: 8px !important;
-  }
-  
-  /* 상위 카테고리 (정확한 URL) */
-  .sidebar .nav__list .nav__items li a[href="/categories/dev/"],
-  .sidebar .nav__list .nav__items li a[href="/categories/language/"],
-  .sidebar .nav__list .nav__items li a[href="/categories/algorithm/"],
-  .sidebar .nav__list .nav__items li a[href="/categories/cs/"],
-  .sidebar .nav__list .nav__items li a[href="/categories/"] {
-    font-weight: 600 !important;
-    font-size: 1.8em !important;
-    color: #333 !important;
-  }
-  
-  /* 화살표 애니메이션 */
+  margin-bottom: 16px !important;
+}
+
+/* Menu 제목 */
+.sidebar .nav__list .nav__items .nav__title {
+  margin-bottom: 12px !important;
+  font-size: 1.8em !important;
+  border-bottom: 2px solid #f0f0f0 !important;
+  padding-bottom: 8px !important;
+}
+
+/* 상위 카테고리 (정확한 URL) */
+.sidebar .nav__list .nav__items li a[href="/categories/dev/"],
+.sidebar .nav__list .nav__items li a[href="/categories/language/"],
+.sidebar .nav__list .nav__items li a[href="/categories/algorithm/"],
+.sidebar .nav__list .nav__items li a[href="/categories/cs/"],
+.sidebar .nav__list .nav__items li a[href="/categories/"] {
+  font-weight: 600 !important;
+  font-size: 1.8em !important;
+  color: #333 !important;
+}
+
+/* 화살표 애니메이션 */
 .toggle-arrow {
-    display: inline-block;
-    transition: transform 0.3s ease;
-  }
-  
-  /* 하위 카테고리 */
-  .sidebar .nav__list .nav__items li a[href*="/dev/frontend"],
-  .sidebar .nav__list .nav__items li a[href*="/dev/backend"],
-  .sidebar .nav__list .nav__items li a[href*="/dev/devops"],
-  .sidebar .nav__list .nav__items li a[href*="/language/python"],
-  .sidebar .nav__list .nav__items li a[href*="/language/javascript"],
-  .sidebar .nav__list .nav__items li a[href*="/language/java"],
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/basic"],
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/sorting"],
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/recursion"],
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/graph"],
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/dynamic"],
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/greedy"],
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/baekjoon"],
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/programmers"],
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/leetcode"],
-  .sidebar .nav__list .nav__items li a[href*="/cs/datastructure"],
-  .sidebar .nav__list .nav__items li a[href*="/cs/network"],
-  .sidebar .nav__list .nav__items li a[href*="/cs/os"],
-  .sidebar .nav__list .nav__items li a[href*="/cs/database"] {
-    font-size: 1.8em !important;
-    color: #666 !important;
-    font-weight: 400 !important;
-    padding-left: 5px !important;
-  }
-  
-  /* 호버 효과 */
-  .sidebar .nav__list .nav__items a:hover {
-    color: #0066cc !important;
-    transition: all 0.2s ease !important;
-  }
-  
-  /* 하위 카테고리 호버 시 들여쓰기 */
-  .sidebar .nav__list .nav__items li a[href*="/dev/"]:not([href="/categories/dev/"]):hover,
-  .sidebar .nav__list .nav__items li a[href*="/language/"]:not([href="/categories/language/"]):hover,
-  .sidebar .nav__list .nav__items li a[href*="/algorithm/"]:not([href="/categories/algorithm/"]):hover,
-  .sidebar .nav__list .nav__items li a[href*="/cs/"]:not([href="/categories/cs/"]):hover {
-    padding-left: 10px !important;
-  }
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
 
+/* 하위 카테고리 */
+.sidebar .nav__list .nav__items li a[href*="/dev/frontend"],
+.sidebar .nav__list .nav__items li a[href*="/dev/backend"],
+.sidebar .nav__list .nav__items li a[href*="/dev/devops"],
+.sidebar .nav__list .nav__items li a[href*="/language/python"],
+.sidebar .nav__list .nav__items li a[href*="/language/javascript"],
+.sidebar .nav__list .nav__items li a[href*="/language/java"],
+.sidebar .nav__list .nav__items li a[href*="/algorithm/basic"],
+.sidebar .nav__list .nav__items li a[href*="/algorithm/sorting"],
+.sidebar .nav__list .nav__items li a[href*="/algorithm/recursion"],
+.sidebar .nav__list .nav__items li a[href*="/algorithm/graph"],
+.sidebar .nav__list .nav__items li a[href*="/algorithm/dynamic"],
+.sidebar .nav__list .nav__items li a[href*="/algorithm/greedy"],
+.sidebar .nav__list .nav__items li a[href*="/algorithm/baekjoon"],
+.sidebar .nav__list .nav__items li a[href*="/algorithm/programmers"],
+.sidebar .nav__list .nav__items li a[href*="/algorithm/leetcode"],
+.sidebar .nav__list .nav__items li a[href*="/cs/datastructure"],
+.sidebar .nav__list .nav__items li a[href*="/cs/network"],
+.sidebar .nav__list .nav__items li a[href*="/cs/os"],
+.sidebar .nav__list .nav__items li a[href*="/cs/database"] {
+  font-size: 1.8em !important;
+  color: #666 !important;
+  font-weight: 400 !important;
+  padding-left: 5px !important;
+}
 
-  /* Previous/Next 네비게이션 - 반응형 */
+/* 호버 효과 */
+.sidebar .nav__list .nav__items a:hover {
+  color: #0066cc !important;
+  transition: all 0.2s ease !important;
+}
+
+/* 하위 카테고리 호버 시 들여쓰기 */
+.sidebar .nav__list .nav__items li a[href*="/dev/"]:not([href="/categories/dev/"]):hover,
+.sidebar .nav__list .nav__items li a[href*="/language/"]:not([href="/categories/language/"]):hover,
+.sidebar .nav__list .nav__items li a[href*="/algorithm/"]:not([href="/categories/algorithm/"]):hover,
+.sidebar .nav__list .nav__items li a[href*="/cs/"]:not([href="/categories/cs/"]):hover {
+  padding-left: 10px !important;
+}
+
+/* Previous/Next 네비게이션 - 반응형 */
+.page__inner-wrap nav.pagination,
+.layout--single nav.pagination,
+body nav.pagination {
+  position: fixed !important;
+  bottom: 200px !important;
+  left: 36% !important;
+  display: flex !important;
+  gap: 100px !important;
+  z-index: 1000 !important;
+  margin: 0 !important;
+  float: none !important;
+  clear: none !important;
+  width: auto !important;
+}
+
+.pagination--pager {
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  font-size: 0.8em;
+  color: #9bd6bd;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination--pager:hover {
+  color: #88bca7;
+  transform: scale(1.0);
+}
+
+.pagination--pager::before {
+  font-size: 0.8em;
+}
+
+.pagination--pager:first-child::before {
+  content: "←";
+}
+
+.pagination--pager:last-child::before {
+  content: "→";
+}
+
+.pagination--pager span {
+  display: none;
+}
+
+/* 반응형 */
+@media (max-width: 1200px) {
   .page__inner-wrap nav.pagination,
   .layout--single nav.pagination,
   body nav.pagination {
-    position: fixed !important;
-    bottom: 200px !important;
-    left: 36% !important;
-    // transform: translateX(-90%) !important;
-    display: flex !important;
-    gap: 100px !important;
-    z-index: 1000 !important;
-    margin: 0 !important;
-    float: none !important;
-    clear: none !important;
-    width: auto !important;
+    gap: 400px !important;
   }
+}
+
+@media (max-width: 768px) {
+  .page__inner-wrap nav.pagination,
+  .layout--single nav.pagination,
+  body nav.pagination {
+    gap: 250px !important;
+    bottom: 100px !important;
+  }
+  
   .pagination--pager {
-    width: 50px;
-    height: 50px;
-    background: none;
-    border: none;
-    font-size: 0.8em;
-    color: #9bd6bd;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .page__inner-wrap nav.pagination,
+  .layout--single nav.pagination,
+  body nav.pagination {
+    gap: 150px !important;
+    bottom: 80px !important;
   }
   
-  .pagination--pager:hover {
-    color: #88bca7;
-    transform: scale(1.0);
+  .pagination--pager {
+    font-size: 0.9em;
+    width: 40px;
+    height: 40px;
   }
-  
-  .pagination--pager::before {
-    font-size: 0.8em;
-  }
-  
-  .pagination--pager:first-child::before {
-    content: "←";
-  }
-  
-  .pagination--pager:last-child::before {
-    content: "→";
-  }
-  
-  .pagination--pager span {
-    display: none;
-  }
-  
-  /* 반응형 */
-@media (max-width: 1200px) {
-    .page__inner-wrap nav.pagination,
-    .layout--single nav.pagination,
-    body nav.pagination {
-      gap: 400px !important;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .page__inner-wrap nav.pagination,
-    .layout--single nav.pagination,
-    body nav.pagination {
-      gap: 250px !important;
-      bottom: 100px !important;
-    }
-    
-    .pagination--pager {
-      font-size: 1em;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .page__inner-wrap nav.pagination,
-    .layout--single nav.pagination,
-    body nav.pagination {
-      gap: 150px !important;
-      bottom: 80px !important;
-    }
-    
-    .pagination--pager {
-      font-size: 0.9em;
-      width: 40px;
-      height: 40px;
-    }
-  }
-  
-  .page__footer {
-    padding-top: 20px;
-    margin-top: 50px;
-  }
+}
+
+.page__footer {
+  padding-top: 20px;
+  margin-top: 50px;
+}
 
 /* ========================================
    Syntax Highlighting 커스터마이징
@@ -236,6 +530,7 @@ body {
   color: inherit !important;
   padding: 0 !important;
 }
+
 .page__content pre code {
   font-size: 1em !important;
 }
@@ -243,23 +538,81 @@ body {
 .page__content code {
   font-size: 0.95em !important;
 }
+
+
+/* ============================================
+   다크모드 토글 버튼 (헤더)
+   ============================================ */
+
+   .dark-mode-toggle-header {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #e0e0e0;
+    background: transparent;
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
   
-  /* 다크모드 지원 (선택사항) */
-  // @media (prefers-color-scheme: dark) {
-  //   .highlight {
-  //     background-color: #1e1e1e;
-  //     border-color: #333;
-      
-  //     pre code {
-  //       color: #d4d4d4;
-  //     }
-  //   }
-    
-  //   p code,
-  //   li code,
-  //   td code {
-  //     background-color: #2d2d2d;
-  //     border-color: #444;
-  //     color: #ff6b6b;
-  //   }
-  // }
+  .dark-mode-toggle-header:hover {
+    background: #f0f0f0;
+    transform: translateY(-50%) scale(1.1);
+    border-color: #9bd6bd;
+  }
+  
+  /* 다크모드일 때 버튼 스타일 */
+  [data-theme="dark"] .dark-mode-toggle-header {
+    border-color: #555555;
+    color: #e0e0e0;
+  }
+  
+  [data-theme="dark"] .dark-mode-toggle-header:hover {
+    background: #2d2d2d;
+    border-color: #9bd6bd;
+  }
+  
+  /* 헤더 위치 조정 */
+  .masthead__inner-wrap {
+    position: relative;
+  }
+  
+  /* 반응형: 모바일에서는 크기 조정 */
+  @media (max-width: 768px) {
+    .dark-mode-toggle-header {
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+      right: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .dark-mode-toggle-header {
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+      right: 10px;
+    }
+  }
+  
+  /* 네비게이션 메뉴와 겹치지 않도록 여백 추가 */
+  .greedy-nav {
+    padding-right: 60px;
+  }
+  
+  @media (max-width: 768px) {
+    .greedy-nav {
+      padding-right: 50px;
+    }
+  }
