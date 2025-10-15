@@ -19,7 +19,7 @@ sidebar:
 
 ### 학습 내용
 
-#### <a href="#" data-content="/assets/contents/cs/sql-grammer.md"><span style="color: #9bd6bd;">♡</span> SQL 기본 문법 </a>
+#### <a href="#" data-content="/assets/contents/cs/sql-grammer.md"><span style="color: #9bd6bd;">♡</span> SQL 기본 문법</a>
 
 #### <a href="#" data-content="/assets/contents/cs/
 join.md"><span style="color: #9bd6bd;">♡</span> JOIN 연산</a>
