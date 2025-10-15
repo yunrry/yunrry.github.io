@@ -23,6 +23,7 @@ sidebar:
 
 #### <a href="#" data-content="/assets/contents/cs/array-linkedlist.md"><span style="color: #9bd6bd;">♡</span> Array, LinkedList</a>
 
+#### <a href="#" data-content="/assets/contents/cs/data-structure-interview.md"><span style="color: #9bd6bd;">♡</span> 면접 단답/서술 </a>
 
 
 ---
