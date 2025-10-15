@@ -25,6 +25,8 @@ sidebar:
 
 #### <a href="#" data-content="/assets/contents/cs/group-by.md"><span style="color: #9bd6bd;">♡</span> GROUP BY & 집계함수</a>
 
+#### <a href="#" data-content="/assets/contents/cs/sub-query.md"><span style="color: #9bd6bd;">♡</span>서브쿼리</a>
+
 #### <a href="#" data-content="/assets/contents/cs/ddl-dml-dcl.md"><span style="color: #9bd6bd;">♡</span>DDL/DML/DCL</a>
 
 #### <a href="#" data-content="/assets/contents/cs/constraints.md"><span style="color: #9bd6bd;">♡</span>제약조건</a>
