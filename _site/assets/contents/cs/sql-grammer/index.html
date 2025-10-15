@@ -1,0 +1,316 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>SQL 기본 문법 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="SQL 기본 문법">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/sql-grammer/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/sql-grammer/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+<h2 id="sql-기본-문법">SQL 기본 문법</h2>
+
+<h3 id="select-문">SELECT 문</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 기본 조회</span>
+<span class="k">SELECT</span> <span class="n">column1</span><span class="p">,</span> <span class="n">column2</span> <span class="k">FROM</span> <span class="k">table_name</span><span class="p">;</span>
+
+<span class="c1">-- 모든 컬럼 조회</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+
+<span class="c1">-- 중복 제거</span>
+<span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">department</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+
+<span class="c1">-- 조건 검색</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">salary</span> <span class="o">&gt;=</span> <span class="mi">50000</span><span class="p">;</span>
+
+<span class="c1">-- 정렬</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">;</span>
+
+<span class="c1">-- 상위 N개 조회</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="where-절-조건">WHERE 절 조건</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 비교 연산자</span>
+<span class="k">WHERE</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">30</span>
+<span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">'홍길동'</span>
+<span class="k">WHERE</span> <span class="n">salary</span> <span class="k">BETWEEN</span> <span class="mi">30000</span> <span class="k">AND</span> <span class="mi">50000</span>
+
+<span class="c1">-- 논리 연산자</span>
+<span class="k">WHERE</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">30</span> <span class="k">AND</span> <span class="n">department</span> <span class="o">=</span> <span class="s1">'IT'</span>
+<span class="k">WHERE</span> <span class="n">salary</span> <span class="o">&lt;</span> <span class="mi">30000</span> <span class="k">OR</span> <span class="n">salary</span> <span class="o">&gt;</span> <span class="mi">80000</span>
+
+<span class="c1">-- IN 연산자</span>
+<span class="k">WHERE</span> <span class="n">department</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'IT'</span><span class="p">,</span> <span class="s1">'HR'</span><span class="p">,</span> <span class="s1">'Sales'</span><span class="p">)</span>
+
+<span class="c1">-- LIKE 패턴 매칭</span>
+<span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">'김%'</span>     <span class="c1">-- 김으로 시작</span>
+<span class="k">WHERE</span> <span class="n">email</span> <span class="k">LIKE</span> <span class="s1">'%@gmail.com'</span>  <span class="c1">-- gmail.com으로 끝</span>
+<span class="k">WHERE</span> <span class="n">phone</span> <span class="k">LIKE</span> <span class="s1">'010-____-____'</span>  <span class="c1">-- _는 한 글자</span>
+</code></pre></div></div>
+
+<h2 id="as-별칭-alias">AS (별칭, Alias)</h2>
+
+<h3 id="-핵심-목적-가독성-향상">🎯 핵심 목적: <strong>가독성 향상</strong></h3>
+
+<hr />
+
+<h3 id="1-컬럼명을-알아보기-쉽게">1. 컬럼명을 알아보기 쉽게</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- AS 없이</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+<span class="c1">-- 결과 컬럼명: COUNT(*)  ← 이게 뭔지 한눈에 안 들어옴</span>
+
+<span class="c1">-- AS 사용</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="err">총직원수</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+<span class="c1">-- 결과 컬럼명: 총직원수  ← 명확함!</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-복잡한-계산식-이름-붙이기">2. 복잡한 계산식 이름 붙이기</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- AS 없이</span>
+<span class="k">SELECT</span> <span class="n">salary</span> <span class="o">*</span> <span class="mi">12</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+<span class="c1">-- 결과 컬럼명: salary * 12  ← 무슨 의미인지 불명확</span>
+
+<span class="c1">-- AS 사용</span>
+<span class="k">SELECT</span> <span class="n">salary</span> <span class="o">*</span> <span class="mi">12</span> <span class="k">AS</span> <span class="err">연봉</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+<span class="c1">-- 결과 컬럼명: 연봉  ← 의미 명확!</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-테이블명-줄이기-join에서-필수">3. 테이블명 줄이기 (JOIN에서 필수)</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- AS 없이 (너무 길어서 불편)</span>
+<span class="k">SELECT</span> <span class="n">employees</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">departments</span><span class="p">.</span><span class="n">department_name</span>
+<span class="k">FROM</span> <span class="n">employees</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">departments</span> 
+<span class="k">ON</span> <span class="n">employees</span><span class="p">.</span><span class="n">dept_id</span> <span class="o">=</span> <span class="n">departments</span><span class="p">.</span><span class="n">dept_id</span><span class="p">;</span>
+
+<span class="c1">-- AS 사용 (간결함)</span>
+<span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">department_name</span>
+<span class="k">FROM</span> <span class="n">employees</span> <span class="k">AS</span> <span class="n">e</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">departments</span> <span class="k">AS</span> <span class="n">d</span>
+<span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">dept_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_id</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="4-같은-테이블-구분하기-self-join">4. 같은 테이블 구분하기 (SELF JOIN)</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 직원과 상사를 구분하기 위해 별칭 필수</span>
+<span class="k">SELECT</span> 
+    <span class="n">e1</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="err">직원</span><span class="p">,</span>
+    <span class="n">e2</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="err">상사</span>
+<span class="k">FROM</span> <span class="n">employees</span> <span class="n">e1</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">employees</span> <span class="n">e2</span> 
+<span class="k">ON</span> <span class="n">e1</span><span class="p">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="n">e2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-정리">💡 정리</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>AS 사용 위치</th>
+      <th>목적</th>
+      <th>생략 가능?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SELECT 컬럼</td>
+      <td>결과 컬럼명 변경</td>
+      <td>⭕ (AS 생략 가능)</td>
+    </tr>
+    <tr>
+      <td>FROM 테이블</td>
+      <td>테이블명 줄이기</td>
+      <td>⭕ (AS 생략 가능)</td>
+    </tr>
+    <tr>
+      <td>SELF JOIN</td>
+      <td>같은 테이블 구분</td>
+      <td>❌ (필수)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>AS는 생략 가능하지만, 명확성을 위해 쓰는 게 좋음</strong></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 둘 다 동일하게 동작</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">cnt</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">cnt</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>  <span class="c1">-- AS 생략</span>
+
+<span class="c1">-- 하지만 AS를 쓰는 게 더 명확함</span>
+</code></pre></div></div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

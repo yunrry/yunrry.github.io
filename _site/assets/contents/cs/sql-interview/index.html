@@ -1,0 +1,308 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>면접 필수 개념 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="면접 필수 개념">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/sql-interview/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/sql-interview/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h2 id="면접-필수-개념">면접 필수 개념</h2>
+
+<h3 id="1-인덱스-내부-구조-b-tree">1. 인덱스 내부 구조 (B-Tree)</h3>
+
+<ul>
+  <li>균형 이진 트리 구조</li>
+  <li>루트 → 브랜치 → 리프 노드로 구성</li>
+  <li>리프 노드에 실제 데이터 포인터 저장</li>
+  <li>시간복잡도 O(logN)</li>
+</ul>
+
+<h3 id="2-클러스터링-vs-리플리케이션">2. 클러스터링 vs 리플리케이션</h3>
+
+<p><strong>클러스터링 (Clustering)</strong></p>
+
+<ul>
+  <li>여러 DB 서버가 하나의 DB처럼 동작</li>
+  <li>Active-Active 구성 (모두 쓰기 가능)</li>
+  <li>고가용성(HA) 제공</li>
+  <li>장애 발생 시 자동 전환</li>
+</ul>
+
+<p><strong>리플리케이션 (Replication)</strong></p>
+
+<ul>
+  <li>Master(쓰기) - Slave(읽기) 구조</li>
+  <li>데이터 복제로 부하 분산</li>
+  <li>읽기 성능 향상</li>
+  <li>Master 장애 시 수동 전환 필요</li>
+</ul>
+
+<h3 id="3-db-lock의-종류">3. DB Lock의 종류</h3>
+
+<p><strong>Shared Lock (공유 락, S Lock)</strong></p>
+
+<ul>
+  <li>읽기 작업에 사용</li>
+  <li>여러 트랜잭션이 동시에 읽기 가능</li>
+  <li>쓰기는 불가</li>
+</ul>
+
+<p><strong>Exclusive Lock (배타 락, X Lock)</strong></p>
+
+<ul>
+  <li>쓰기 작업에 사용</li>
+  <li>다른 트랜잭션의 읽기/쓰기 모두 차단</li>
+</ul>
+
+<p><strong>Optimistic Lock (낙관적 락)</strong></p>
+
+<ul>
+  <li>충돌이 드물다고 가정</li>
+  <li>버전 컬럼으로 충돌 감지</li>
+  <li>UPDATE 시점에 검증</li>
+</ul>
+
+<p><strong>Pessimistic Lock (비관적 락)</strong></p>
+
+<ul>
+  <li>충돌이 빈번하다고 가정</li>
+  <li>데이터 조회 시점에 락 획득</li>
+  <li><code class="language-plaintext highlighter-rouge">SELECT ... FOR UPDATE</code></li>
+</ul>
+
+<h3 id="4-트랜잭션-격리-수준-문제">4. 트랜잭션 격리 수준 문제</h3>
+
+<p><strong>Dirty Read</strong></p>
+
+<ul>
+  <li>커밋되지 않은 데이터 읽기</li>
+  <li>READ UNCOMMITTED에서 발생</li>
+</ul>
+
+<p><strong>Non-Repeatable Read</strong></p>
+
+<ul>
+  <li>같은 데이터를 두 번 읽었을 때 값이 다름</li>
+  <li>READ COMMITTED에서 발생</li>
+</ul>
+
+<p><strong>Phantom Read</strong></p>
+
+<ul>
+  <li>같은 조건으로 조회했을 때 행 개수가 다름</li>
+  <li>REPEATABLE READ에서 발생</li>
+</ul>
+
+<h3 id="5-정규화-vs-역정규화">5. 정규화 vs 역정규화</h3>
+
+<p><strong>정규화 (Normalization)</strong></p>
+
+<ul>
+  <li>중복 제거, 무결성 향상</li>
+  <li>읽기가 적고 쓰기가 많은 경우 유리</li>
+</ul>
+
+<p><strong>역정규화 (Denormalization)</strong></p>
+
+<ul>
+  <li>의도적으로 중복 허용</li>
+  <li>JOIN 감소로 읽기 성능 향상</li>
+  <li>읽기가 많고 쓰기가 적은 경우 유리</li>
+</ul>
+
+<h3 id="6-nosql-vs-rdbms">6. NoSQL vs RDBMS</h3>
+
+<p><strong>RDBMS</strong></p>
+
+<ul>
+  <li>정형 데이터, 강한 일관성</li>
+  <li>ACID 보장</li>
+  <li>복잡한 쿼리 지원</li>
+  <li>수직 확장 (Scale-Up)</li>
+</ul>
+
+<p><strong>NoSQL</strong></p>
+
+<ul>
+  <li>비정형 데이터, 유연한 스키마</li>
+  <li>BASE (Basically Available, Soft state, Eventually consistent)</li>
+  <li>단순한 쿼리</li>
+  <li>수평 확장 (Scale-Out)</li>
+</ul>
+
+<h3 id="7-실행-계획-execution-plan">7. 실행 계획 (Execution Plan)</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">department</span> <span class="o">=</span> <span class="s1">'IT'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>type: ALL(풀스캔), index, range, ref, eq_ref</li>
+  <li>key: 사용된 인덱스</li>
+  <li>rows: 예상 행 수</li>
+  <li>Extra: Using where, Using index, Using filesort</li>
+</ul>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

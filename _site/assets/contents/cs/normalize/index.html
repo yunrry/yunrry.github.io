@@ -1,0 +1,449 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>정규화 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="정규화">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/normalize/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/normalize/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h2 id="정규화">정규화</h2>
+
+<h3 id="정규화란">정규화란?</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>데이터 중복을 최소화하고 무결성을 향상시키는 데이터베이스 설계 기법
+</code></pre></div></div>
+
+<h3 id="제1정규형-1nf">제1정규형 (1NF)</h3>
+
+<p><strong>조건</strong>: 모든 속성 값이 원자값(Atomic Value)이어야 함</p>
+
+<p><strong>비정규형 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학생ID</th>
+      <th>이름</th>
+      <th>수강과목</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>홍길동</td>
+      <td>수학, 영어</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>1NF 적용</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학생ID</th>
+      <th>이름</th>
+      <th>수강과목</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>홍길동</td>
+      <td>수학</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>홍길동</td>
+      <td>영어</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="제2정규형-2nf">제2정규형 (2NF)</h3>
+
+<p><strong>조건</strong>: 1NF + 부분 함수 종속 제거 (기본키가 아닌 속성이 기본키의 일부에만 종속되면 안됨)</p>
+
+<p><strong>1NF 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학생ID</th>
+      <th>과목코드</th>
+      <th>학생이름</th>
+      <th>과목이름</th>
+      <th>성적</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>C01</td>
+      <td>홍길동</td>
+      <td>수학</td>
+      <td>A</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>2NF 적용</strong></p>
+
+<p><strong>학생 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학생ID</th>
+      <th>학생이름</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>홍길동</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>과목 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>과목코드</th>
+      <th>과목이름</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C01</td>
+      <td>수학</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>수강 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학생ID</th>
+      <th>과목코드</th>
+      <th>성적</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>C01</td>
+      <td>A</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="제3정규형-3nf">제3정규형 (3NF)</h3>
+
+<p><strong>조건</strong>: 2NF + 이행적 함수 종속 제거 (기본키가 아닌 속성끼리 종속되면 안됨)</p>
+
+<p><strong>2NF 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학생ID</th>
+      <th>학생이름</th>
+      <th>학과코드</th>
+      <th>학과명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>홍길동</td>
+      <td>D01</td>
+      <td>컴퓨터공학</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>3NF 적용</strong></p>
+
+<p><strong>학생 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학생ID</th>
+      <th>학생이름</th>
+      <th>학과코드</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>홍길동</td>
+      <td>D01</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>학과 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학과코드</th>
+      <th>학과명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>D01</td>
+      <td>컴퓨터공학</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="bcnf-boyce-codd-normal-form">BCNF (Boyce-Codd Normal Form)</h3>
+
+<p><strong>조건</strong>: 3NF + 모든 결정자가 후보키여야 함</p>
+
+<p><strong>3NF 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학생ID</th>
+      <th>과목</th>
+      <th>교수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>수학</td>
+      <td>김교수</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>문제: 한 과목은 한 교수만 담당 → 교수가 과목을 결정 (교수→과목)</p>
+
+<p><strong>BCNF 적용</strong></p>
+
+<p><strong>수강 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>학생ID</th>
+      <th>교수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>김교수</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>담당 테이블</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>교수</th>
+      <th>과목</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>김교수</td>
+      <td>수학</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="정규화의-장단점">정규화의 장단점</h3>
+
+<p><strong>장점</strong></p>
+
+<ul>
+  <li>데이터 중복 최소화</li>
+  <li>이상(Anomaly) 현상 방지 (삽입/갱신/삭제 이상)</li>
+  <li>데이터 무결성 향상</li>
+</ul>
+
+<p><strong>단점</strong></p>
+
+<ul>
+  <li>JOIN 연산 증가로 성능 저하</li>
+  <li>쿼리 복잡도 증가</li>
+  <li>인덱스 관리 복잡</li>
+</ul>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

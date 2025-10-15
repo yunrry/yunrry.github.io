@@ -1,0 +1,1978 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>스택, 큐, 트리 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="스택, 큐, 트리">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/stack-queue-tree/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/stack-queue-tree/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="스택-큐-트리">스택, 큐, 트리</h1>
+
+<h2 id="-스택-stack">📌 스택 (Stack)</h2>
+
+<p><strong>LIFO (Last In First Out)</strong> 구조</p>
+<ul>
+  <li>마지막에 들어간 데이터가 가장 먼저 나옴</li>
+  <li>“접시 쌓기”와 같은 구조</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────┐
+│  3  │ ← Top (가장 최근에 삽입)
+├─────┤
+│  2  │
+├─────┤
+│  1  │
+└─────┘
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-스택의-주요-연산">🔧 스택의 주요 연산</h3>
+
+<p><strong>1. push (삽입)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>스택에 데이터 추가
+
+초기: [1, 2]
+push(3) → [1, 2, 3]
+push(4) → [1, 2, 3, 4]
+</code></pre></div></div>
+
+<p><strong>2. pop (삭제)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>스택의 Top 데이터 제거 및 반환
+
+초기: [1, 2, 3, 4]
+pop() → 4 반환, 스택: [1, 2, 3]
+pop() → 3 반환, 스택: [1, 2]
+</code></pre></div></div>
+
+<p><strong>3. peek / top (조회)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>스택의 Top 데이터 조회 (제거하지 않음)
+
+초기: [1, 2, 3]
+peek() → 3 반환, 스택: [1, 2, 3] (그대로)
+</code></pre></div></div>
+
+<p><strong>4. isEmpty (공백 검사)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>스택이 비어있는지 확인
+
+[1, 2, 3] → isEmpty() → False
+[] → isEmpty() → True
+</code></pre></div></div>
+
+<p><strong>5. isFull (포화 검사)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>스택이 가득 찼는지 확인 (배열 기반 스택)
+
+최대 크기 5, 현재 [1, 2, 3] → isFull() → False
+최대 크기 5, 현재 [1, 2, 3, 4, 5] → isFull() → True
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-스택-구현-c언어">💻 스택 구현 (C언어)</h3>
+
+<p><strong>배열 기반 스택</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define MAX_SIZE 100
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">[</span><span class="n">MAX_SIZE</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">top</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Stack</span><span class="p">;</span>
+
+<span class="c1">// 초기화</span>
+<span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 공백 검사</span>
+<span class="kt">int</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 포화 검사</span>
+<span class="kt">int</span> <span class="nf">isFull</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">==</span> <span class="n">MAX_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// push</span>
+<span class="kt">void</span> <span class="nf">push</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isFull</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Stack Overflow</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="o">++</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// pop</span>
+<span class="kt">int</span> <span class="nf">pop</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isEmpty</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Stack Underflow</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span><span class="o">--</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// peek</span>
+<span class="kt">int</span> <span class="nf">peek</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isEmpty</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Stack is empty</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-스택의-활용">🎯 스택의 활용</h3>
+
+<p><strong>1. 함수 호출 (Call Stack)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>main() {
+    funcA();      // Call Stack: [main]
+}
+
+funcA() {
+    funcB();      // Call Stack: [main, funcA]
+}
+
+funcB() {
+    return;       // Call Stack: [main, funcA, funcB]
+}                 // funcB 종료 → [main, funcA]
+                  // funcA 종료 → [main]
+</code></pre></div></div>
+
+<p><strong>2. 괄호 검사</strong></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 올바른 괄호: (), (()), (())(), {[()]}</span>
+<span class="c1">// 잘못된 괄호: ((), ))(, ([)]</span>
+
+<span class="n">bool</span> <span class="nf">isValid</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Stack</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">'\0'</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'('</span> <span class="o">||</span> <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'{'</span> <span class="o">||</span> <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'['</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">,</span> <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>  <span class="c1">// 여는 괄호 push</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">')'</span> <span class="o">||</span> <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'}'</span> <span class="o">||</span> <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">']'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">isEmpty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">))</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">// 닫는 괄호인데 스택이 비어있음</span>
+            
+            <span class="kt">char</span> <span class="n">top</span> <span class="o">=</span> <span class="n">pop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+            <span class="c1">// 괄호 짝 확인</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">')'</span> <span class="o">&amp;&amp;</span> <span class="n">top</span> <span class="o">!=</span> <span class="sc">'('</span><span class="p">)</span> <span class="o">||</span>
+                <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'}'</span> <span class="o">&amp;&amp;</span> <span class="n">top</span> <span class="o">!=</span> <span class="sc">'{'</span><span class="p">)</span> <span class="o">||</span>
+                <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">']'</span> <span class="o">&amp;&amp;</span> <span class="n">top</span> <span class="o">!=</span> <span class="sc">'['</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">isEmpty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>  <span class="c1">// 모든 괄호가 닫혔는지 확인</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>3. 수식 계산 (후위 표기법)</strong></p>
+
+<p>중위 표기법 → 후위 표기법</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>중위: A + B * C
+후위: A B C * +
+
+중위: (A + B) * C
+후위: A B + C *
+</code></pre></div></div>
+
+<p>후위 표기법 계산</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예: 5 3 + 2 *
+
+1. 5 push → Stack: [5]
+2. 3 push → Stack: [5, 3]
+3. + 연산 → pop 3, pop 5, 5+3=8, push 8 → Stack: [8]
+4. 2 push → Stack: [8, 2]
+5. * 연산 → pop 2, pop 8, 8*2=16, push 16 → Stack: [16]
+
+결과: 16
+</code></pre></div></div>
+
+<p><strong>4. DFS (깊이 우선 탐색)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>그래프 탐색에서 스택 사용
+- 한 경로를 끝까지 탐색
+- 막히면 되돌아가서 다른 경로 탐색
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-스택-시간복잡도">📊 스택 시간복잡도</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>연산</th>
+      <th>시간복잡도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>push</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>pop</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>peek</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>isEmpty</td>
+      <td>O(1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-큐-queue">📌 큐 (Queue)</h2>
+
+<p><strong>FIFO (First In First Out)</strong> 구조</p>
+<ul>
+  <li>먼저 들어간 데이터가 먼저 나옴</li>
+  <li>“줄서기”와 같은 구조</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Front                    Rear
+  ↓                        ↓
+┌───┬───┬───┬───┬───┐
+│ 1 │ 2 │ 3 │ 4 │ 5 │
+└───┴───┴───┴───┴───┘
+  ↑                   ↑
+ 삭제(Dequeue)      삽입(Enqueue)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-큐의-주요-연산">🔧 큐의 주요 연산</h2>
+
+<p><strong>1. enqueue (삽입)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>큐의 rear에 데이터 추가
+
+초기: [1, 2, 3]
+enqueue(4) → [1, 2, 3, 4]
+enqueue(5) → [1, 2, 3, 4, 5]
+</code></pre></div></div>
+
+<p><strong>2. dequeue (삭제)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>큐의 front 데이터 제거 및 반환
+
+초기: [1, 2, 3, 4]
+dequeue() → 1 반환, 큐: [2, 3, 4]
+dequeue() → 2 반환, 큐: [3, 4]
+</code></pre></div></div>
+
+<p><strong>3. peek / front (조회)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>큐의 front 데이터 조회 (제거하지 않음)
+
+초기: [1, 2, 3]
+peek() → 1 반환, 큐: [1, 2, 3] (그대로)
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-큐-구현">💻 큐 구현</h3>
+
+<p><strong>1. 선형 큐 (Linear Queue)</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define MAX_SIZE 5
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">[</span><span class="n">MAX_SIZE</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">front</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">rear</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Queue</span><span class="p">;</span>
+
+<span class="c1">// 초기화</span>
+<span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="n">Queue</span> <span class="o">*</span><span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">q</span><span class="o">-&gt;</span><span class="n">front</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 공백 검사</span>
+<span class="kt">int</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="n">Queue</span> <span class="o">*</span><span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">front</span> <span class="o">==</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 포화 검사</span>
+<span class="kt">int</span> <span class="nf">isFull</span><span class="p">(</span><span class="n">Queue</span> <span class="o">*</span><span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span> <span class="o">==</span> <span class="n">MAX_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// enqueue</span>
+<span class="kt">void</span> <span class="nf">enqueue</span><span class="p">(</span><span class="n">Queue</span> <span class="o">*</span><span class="n">q</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isFull</span><span class="p">(</span><span class="n">q</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Queue Overflow</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">q</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="o">++</span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span><span class="p">)]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// dequeue</span>
+<span class="kt">int</span> <span class="nf">dequeue</span><span class="p">(</span><span class="n">Queue</span> <span class="o">*</span><span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isEmpty</span><span class="p">(</span><span class="n">q</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Queue Underflow</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="o">++</span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">front</span><span class="p">)];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>선형 큐의 문제점:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>초기: front=-1, rear=-1
+       [ ][ ][ ][ ][ ]
+
+enqueue(1,2,3): front=-1, rear=2
+       [1][2][3][ ][ ]
+
+dequeue 2번: front=1, rear=2
+       [ ][ ][3][ ][ ]
+              ↑
+            front+1부터 데이터
+
+enqueue(4,5): front=1, rear=4
+       [ ][ ][3][4][5]
+
+enqueue(6)? → Overflow! (rear가 끝에 도달)
+하지만 앞쪽에 공간이 있음 → 공간 낭비!
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>2. 원형 큐 (Circular Queue) ⭐</strong></p>
+
+<p>선형 큐의 공간 낭비 문제 해결</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define MAX_SIZE 5
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">[</span><span class="n">MAX_SIZE</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">front</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">rear</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">CircularQueue</span><span class="p">;</span>
+
+<span class="c1">// 초기화</span>
+<span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="n">CircularQueue</span> <span class="o">*</span><span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">q</span><span class="o">-&gt;</span><span class="n">front</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 공백 검사</span>
+<span class="kt">int</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="n">CircularQueue</span> <span class="o">*</span><span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">front</span> <span class="o">==</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 포화 검사</span>
+<span class="kt">int</span> <span class="nf">isFull</span><span class="p">(</span><span class="n">CircularQueue</span> <span class="o">*</span><span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">MAX_SIZE</span> <span class="o">==</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">front</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// enqueue</span>
+<span class="kt">void</span> <span class="nf">enqueue</span><span class="p">(</span><span class="n">CircularQueue</span> <span class="o">*</span><span class="n">q</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isFull</span><span class="p">(</span><span class="n">q</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Queue Overflow</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">MAX_SIZE</span><span class="p">;</span>
+    <span class="n">q</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">rear</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// dequeue</span>
+<span class="kt">int</span> <span class="nf">dequeue</span><span class="p">(</span><span class="n">CircularQueue</span> <span class="o">*</span><span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isEmpty</span><span class="p">(</span><span class="n">q</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Queue Underflow</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">q</span><span class="o">-&gt;</span><span class="n">front</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">front</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">MAX_SIZE</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">front</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>원형 큐 동작 원리:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>배열 크기: 5 (인덱스 0~4)
+
+초기: front=0, rear=0
+  0   1   2   3   4
+[ ] [ ] [ ] [ ] [ ]
+ ↑
+F/R
+
+enqueue(1): front=0, rear=1
+  0   1   2   3   4
+[ ] [1] [ ] [ ] [ ]
+ ↑   ↑
+ F   R
+
+enqueue(2,3,4): front=0, rear=4
+  0   1   2   3   4
+[ ] [1] [2] [3] [4]
+ ↑               ↑
+ F               R
+
+dequeue 2번: front=2, rear=4
+  0   1   2   3   4
+[ ] [ ] [ ] [3] [4]
+         ↑       ↑
+         F       R
+
+enqueue(5): rear가 4 → (4+1)%5=0
+  0   1   2   3   4
+[5] [ ] [ ] [3] [4]
+ ↑       ↑       ↑
+ R       F      
+
+공간 재사용 가능! ✅
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-큐의-활용">🎯 큐의 활용</h3>
+
+<p><strong>1. 프로세스 스케줄링</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU 작업 대기 큐
+- 먼저 요청한 프로세스가 먼저 실행
+- Round Robin 스케줄링
+</code></pre></div></div>
+
+<p><strong>2. BFS (너비 우선 탐색)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>그래프 탐색에서 큐 사용
+- 같은 레벨의 노드를 먼저 탐색
+- 최단 경로 찾기에 유용
+</code></pre></div></div>
+
+<p><strong>3. 프린터 대기열</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>출력 요청이 들어온 순서대로 인쇄
+</code></pre></div></div>
+
+<p><strong>4. 버퍼 (Buffer)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>데이터 전송 시 임시 저장
+- 키보드 입력 버퍼
+- 네트워크 패킷 버퍼
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-큐-시간복잡도">📊 큐 시간복잡도</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>연산</th>
+      <th>시간복잡도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>enqueue</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>dequeue</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>peek</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>isEmpty</td>
+      <td>O(1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-스택-vs-큐-비교">🆚 스택 vs 큐 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>스택 (Stack)</th>
+      <th>큐 (Queue)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>구조</td>
+      <td>LIFO</td>
+      <td>FIFO</td>
+    </tr>
+    <tr>
+      <td>삽입</td>
+      <td>push (top)</td>
+      <td>enqueue (rear)</td>
+    </tr>
+    <tr>
+      <td>삭제</td>
+      <td>pop (top)</td>
+      <td>dequeue (front)</td>
+    </tr>
+    <tr>
+      <td>조회</td>
+      <td>peek/top</td>
+      <td>peek/front</td>
+    </tr>
+    <tr>
+      <td>활용</td>
+      <td>함수 호출, 괄호 검사, DFS</td>
+      <td>프로세스 스케줄링, BFS, 버퍼</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-트리-tree">📌 트리 (Tree)</h2>
+
+<p><strong>계층적 구조를 표현하는 비선형 자료구조</strong></p>
+<ul>
+  <li>하나의 루트(Root) 노드</li>
+  <li>부모-자식 관계</li>
+  <li>사이클(Cycle) 없음</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         1          ← Root (루트)
+        / \
+       2   3        ← Level 1
+      / \   \
+     4   5   6      ← Level 2 (Leaf 노드들)
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-트리-용어">🔑 트리 용어</h3>
+
+<p><strong>1. 노드 (Node)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>트리의 각 요소
+
+위 예시: 1, 2, 3, 4, 5, 6 모두 노드
+</code></pre></div></div>
+
+<p><strong>2. 루트 (Root)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>트리의 최상위 노드
+
+위 예시: 1
+</code></pre></div></div>
+
+<p><strong>3. 부모 (Parent), 자식 (Child)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         1          
+        / \
+       2   3        
+      / \   
+     4   5   
+
+1의 자식: 2, 3
+2의 부모: 1
+2의 자식: 4, 5
+</code></pre></div></div>
+
+<p><strong>4. 형제 (Sibling)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>같은 부모를 가진 노드
+
+2와 3은 형제 (부모가 1로 같음)
+4와 5는 형제 (부모가 2로 같음)
+</code></pre></div></div>
+
+<p><strong>5. 리프 (Leaf) / 단말 노드</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>자식이 없는 노드
+
+위 예시: 4, 5, 6
+</code></pre></div></div>
+
+<p><strong>6. 내부 노드 (Internal Node)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>자식이 있는 노드 (루트와 리프 제외)
+
+위 예시: 2, 3
+</code></pre></div></div>
+
+<p><strong>7. 간선 (Edge)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>노드와 노드를 연결하는 선
+
+위 예시: 총 5개 간선
+(1-2, 1-3, 2-4, 2-5, 3-6)
+</code></pre></div></div>
+
+<p><strong>8. 레벨 (Level)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>루트로부터의 깊이 (0부터 시작)
+
+         1          ← Level 0
+        / \
+       2   3        ← Level 1
+      / \   \
+     4   5   6      ← Level 2
+</code></pre></div></div>
+
+<p><strong>9. 높이 (Height)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>트리의 최대 레벨 + 1
+
+위 예시: 높이 = 3
+</code></pre></div></div>
+
+<p><strong>10. 차수 (Degree)</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>노드의 자식 수
+
+1의 차수: 2 (자식 2, 3)
+2의 차수: 2 (자식 4, 5)
+3의 차수: 1 (자식 6)
+4의 차수: 0 (리프 노드)
+
+트리의 차수: 노드 차수의 최댓값 = 2
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-이진-트리-binary-tree">🌲 이진 트리 (Binary Tree)</h3>
+
+<h3 id="정의">정의</h3>
+<p><strong>모든 노드의 차수가 2 이하인 트리</strong></p>
+<ul>
+  <li>각 노드는 최대 2개의 자식 (왼쪽, 오른쪽)</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         1
+        / \
+       2   3
+      /   / \
+     4   5   6
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-이진-트리의-종류">🎨 이진 트리의 종류</h3>
+
+<p><strong>1. 포화 이진 트리 (Full Binary Tree)</strong>
+<strong>모든 레벨이 꽉 찬 트리</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         1
+        / \
+       2   3
+      / \ / \
+     4  5 6  7
+
+높이 h일 때 노드 개수: 2^h - 1
+높이 3 → 2^3 - 1 = 7개
+</code></pre></div></div>
+
+<p><strong>2. 완전 이진 트리 (Complete Binary Tree) ⭐</strong>
+<strong>마지막 레벨을 제외하고 모두 채워져 있고, 마지막 레벨은 왼쪽부터 채워진 트리</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 완전 이진 트리
+         1
+        / \
+       2   3
+      / \  /
+     4  5 6
+
+❌ 완전 이진 트리 아님 (왼쪽부터 채워지지 않음)
+         1
+        / \
+       2   3
+      /     \
+     4       6
+</code></pre></div></div>
+
+<p><strong>완전 이진 트리의 특징:</strong></p>
+<ul>
+  <li>배열로 구현 가능</li>
+  <li>힙(Heap) 자료구조의 기본 구조</li>
+</ul>
+
+<p><strong>3. 편향 이진 트리 (Skewed Binary Tree)</strong>
+<strong>한쪽으로만 치우친 트리</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>왼쪽 편향:           오른쪽 편향:
+    1                    1
+   /                      \
+  2                        2
+ /                          \
+3                            3
+
+사실상 연결 리스트와 동일
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-이진-트리-구현">💻 이진 트리 구현</h3>
+
+<p><strong>노드 구조</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">Node</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">Node</span><span class="o">*</span> <span class="n">left</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">Node</span><span class="o">*</span> <span class="n">right</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Node</span><span class="p">;</span>
+
+<span class="c1">// 노드 생성</span>
+<span class="n">Node</span><span class="o">*</span> <span class="nf">createNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Node</span><span class="o">*</span> <span class="n">newNode</span> <span class="o">=</span> <span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Node</span><span class="p">));</span>
+    <span class="n">newNode</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
+    <span class="n">newNode</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">newNode</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">newNode</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-트리-순회-tree-traversal">🚶 트리 순회 (Tree Traversal)</h3>
+
+<p>트리의 모든 노드를 한 번씩 방문하는 방법</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예시 트리:
+         1
+        / \
+       2   3
+      / \
+     4   5
+</code></pre></div></div>
+
+<p><strong>1. 전위 순회 (Preorder) ⭐</strong>
+<strong>Root → Left → Right</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">preorder</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>    <span class="c1">// Root 방문</span>
+    <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>          <span class="c1">// Left 순회</span>
+    <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>         <span class="c1">// Right 순회</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>순회 순서:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Root(1) 방문 → 출력: 1
+2. Left(2) 방문 → 출력: 1, 2
+3. Left의 Left(4) 방문 → 출력: 1, 2, 4
+4. Left의 Right(5) 방문 → 출력: 1, 2, 4, 5
+5. Right(3) 방문 → 출력: 1, 2, 4, 5, 3
+
+결과: 1 → 2 → 4 → 5 → 3
+</code></pre></div></div>
+
+<p><strong>2. 중위 순회 (Inorder) ⭐</strong>
+<strong>Left → Root → Right</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">inorder</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    
+    <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>           <span class="c1">// Left 순회</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>     <span class="c1">// Root 방문</span>
+    <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>          <span class="c1">// Right 순회</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>순회 순서:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Left의 Left(4) 방문 → 출력: 4
+2. Left(2) 방문 → 출력: 4, 2
+3. Left의 Right(5) 방문 → 출력: 4, 2, 5
+4. Root(1) 방문 → 출력: 4, 2, 5, 1
+5. Right(3) 방문 → 출력: 4, 2, 5, 1, 3
+
+결과: 4 → 2 → 5 → 1 → 3
+</code></pre></div></div>
+
+<p><strong>중위 순회의 특징:</strong></p>
+<ul>
+  <li>이진 탐색 트리(BST)에서 <strong>오름차순 정렬</strong> 결과</li>
+</ul>
+
+<p><strong>3. 후위 순회 (Postorder) ⭐</strong>
+<strong>Left → Right → Root</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">postorder</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    
+    <span class="n">postorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>         <span class="c1">// Left 순회</span>
+    <span class="n">postorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>        <span class="c1">// Right 순회</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>     <span class="c1">// Root 방문</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>순회 순서:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Left의 Left(4) 방문 → 출력: 4
+2. Left의 Right(5) 방문 → 출력: 4, 5
+3. Left(2) 방문 → 출력: 4, 5, 2
+4. Right(3) 방문 → 출력: 4, 5, 2, 3
+5. Root(1) 방문 → 출력: 4, 5, 2, 3, 1
+
+결과: 4 → 5 → 2 → 3 → 1
+</code></pre></div></div>
+
+<p><strong>후위 순회의 특징:</strong></p>
+<ul>
+  <li>자식 노드를 먼저 처리</li>
+  <li>디렉토리 용량 계산, 수식 트리 계산에 사용</li>
+</ul>
+
+<hr />
+
+<h3 id="-이진-탐색-트리-bst-binary-search-tree-">🔍 이진 탐색 트리 (BST: Binary Search Tree) ⭐⭐⭐</h3>
+
+<h3 id="정의-1">정의</h3>
+<p><strong>정렬된 이진 트리</strong></p>
+
+<p><strong>규칙:</strong></p>
+<ul>
+  <li>왼쪽 서브트리의 모든 값 &lt; 루트 값</li>
+  <li>오른쪽 서브트리의 모든 값 &gt; 루트 값</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         50
+        /  \
+      30    70
+     / \    / \
+   20  40 60  80
+
+왼쪽(30, 20, 40) &lt; 50 &lt; 오른쪽(70, 60, 80) ✅
+</code></pre></div></div>
+
+<p><strong>BST 탐색 (Search)</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span><span class="o">*</span> <span class="nf">search</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 기저 조건: 노드가 없거나 찾음</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// key가 작으면 왼쪽, 크면 오른쪽</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>탐색 예시: 60 찾기</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         50          50과 비교 → 60 &gt; 50 → 오른쪽
+        /  \
+      30    70       70과 비교 → 60 &lt; 70 → 왼쪽
+     / \    / \
+   20  40 60  80     60과 비교 → 60 = 60 → 찾음!
+
+비교 횟수: 3회
+시간복잡도: O(log N) (균형 잡힌 경우)
+</code></pre></div></div>
+
+<p><strong>BST 삽입 (Insert)</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span><span class="o">*</span> <span class="nf">insert</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 빈 자리에 새 노드 삽입</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">createNode</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 값 비교하여 위치 결정</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>삽입 예시: 65 삽입</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>초기:
+         50
+        /  \
+      30    70
+     / \    / \
+   20  40 60  80
+
+1. 50과 비교 → 65 &gt; 50 → 오른쪽
+2. 70과 비교 → 65 &lt; 70 → 왼쪽
+3. 60과 비교 → 65 &gt; 60 → 오른쪽 (NULL)
+4. 60의 오른쪽에 삽입
+
+결과:
+         50
+        /  \
+      30    70
+     / \    / \
+   20  40 60  80
+           \
+           65
+</code></pre></div></div>
+
+<p><strong>BST 삭제 (Delete)</strong></p>
+
+<p><strong>경우의 수 3가지:</strong></p>
+
+<p><strong>1. 리프 노드 삭제</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         50
+        /  \
+      30    70
+     / \    / \
+   20  40 60  80
+
+20 삭제 → 그냥 제거
+
+         50
+        /  \
+      30    70
+       \    / \
+       40 60  80
+</code></pre></div></div>
+
+<p><strong>2. 자식이 1개인 노드 삭제</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         50
+        /  \
+      30    70
+       \    / \
+       40 60  80
+
+30 삭제 → 40을 30 자리로 이동
+
+         50
+        /  \
+      40    70
+           / \
+         60  80
+</code></pre></div></div>
+
+<p><strong>3. 자식이 2개인 노드 삭제 (복잡) ⭐</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         50
+        /  \
+      30    70
+     / \    / \
+   20  40 60  80
+
+50 삭제 → ?
+
+방법 1: 왼쪽 서브트리의 최댓값(40)으로 대체
+방법 2: 오른쪽 서브트리의 최솟값(60)으로 대체 (주로 사용)
+
+결과 (방법 2):
+         60
+        /  \
+      30    70
+     / \      \
+   20  40     80
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span><span class="o">*</span> <span class="nf">deleteNode</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+    
+    <span class="c1">// 삭제할 노드 찾기</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">deleteNode</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">deleteNode</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// 경우 1, 2: 자식이 0개 또는 1개</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+            <span class="n">free</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">temp</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="n">free</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">temp</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 경우 3: 자식이 2개</span>
+        <span class="c1">// 오른쪽 서브트리의 최솟값 찾기</span>
+        <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">findMin</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>  <span class="c1">// 값 복사</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">deleteNode</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>  <span class="c1">// 최솟값 노드 삭제</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Node</span><span class="o">*</span> <span class="nf">findMin</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-bst-시간복잡도">📊 BST 시간복잡도</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>연산</th>
+      <th>평균</th>
+      <th>최악</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>탐색</td>
+      <td>O(log N)</td>
+      <td>O(N)</td>
+    </tr>
+    <tr>
+      <td>삽입</td>
+      <td>O(log N)</td>
+      <td>O(N)</td>
+    </tr>
+    <tr>
+      <td>삭제</td>
+      <td>O(log N)</td>
+      <td>O(N)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>최악의 경우: 편향 트리</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1
+     \
+      2
+       \
+        3
+         \
+          4
+
+탐색 시 4번 비교 → O(N)
+</code></pre></div></div>
+
+<p><strong>해결책: 균형 이진 탐색 트리</strong></p>
+<ul>
+  <li>AVL Tree</li>
+  <li>Red-Black Tree</li>
+</ul>
+
+<hr />
+
+<h2 id="-avl-트리-균형-이진-탐색-트리">🎯 AVL 트리 (균형 이진 탐색 트리)</h2>
+
+<h3 id="정의-2">정의</h3>
+<p><strong>스스로 균형을 잡는 이진 탐색 트리</strong></p>
+<ul>
+  <li>모든 노드의 왼쪽/오른쪽 서브트리 높이 차이가 최대 1</li>
+</ul>
+
+<h3 id="균형-인수-balance-factor">균형 인수 (Balance Factor)</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BF = (왼쪽 서브트리 높이) - (오른쪽 서브트리 높이)
+
+균형 조건: -1 ≤ BF ≤ 1
+</code></pre></div></div>
+
+<p><strong>예시:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 균형 잡힌 트리 (AVL)
+         50 (BF=0)
+        /  \
+      30    70 (BF=0)
+     / \      \
+   20  40     80
+
+❌ 불균형 트리 (AVL 아님)
+         50 (BF=2)
+        /
+      30 (BF=1)
+     /
+   20
+
+좌측으로 치우침 → 회전 필요!
+</code></pre></div></div>
+
+<h3 id="avl-트리-회전">AVL 트리 회전</h3>
+
+<h4 id="1-ll-회전-left-left">1. LL 회전 (Left-Left)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>불균형:              회전 후:
+    30 (BF=2)           20
+   /                   /  \
+  20 (BF=1)          10    30
+ /
+10
+
+오른쪽으로 회전 →
+</code></pre></div></div>
+
+<h4 id="2-rr-회전-right-right">2. RR 회전 (Right-Right)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>불균형:              회전 후:
+10 (BF=-2)              20
+  \                    /  \
+   20 (BF=-1)         10   30
+     \
+      30
+
+왼쪽으로 회전 →
+</code></pre></div></div>
+
+<h4 id="3-lr-회전-left-right">3. LR 회전 (Left-Right)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>불균형:              왼쪽회전:         오른쪽회전:
+    30                30                20
+   /                 /                 /  \
+  10               20                10   30
+    \             /
+     20         10
+</code></pre></div></div>
+
+<h4 id="4-rl-회전-right-left">4. RL 회전 (Right-Left)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>불균형:              오른쪽회전:       왼쪽회전:
+10                    10                20
+  \                     \              /  \
+   30                   20           10   30
+  /                       \
+20                        30
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-힙-heap-">🌳 힙 (Heap) ⭐⭐⭐</h2>
+
+<h3 id="정의-3">정의</h3>
+<p><strong>완전 이진 트리 + 부모와 자식 간의 대소 관계</strong></p>
+
+<h3 id="종류">종류</h3>
+
+<h4 id="1-최대-힙-max-heap">1. 최대 힙 (Max Heap)</h4>
+<p><strong>부모 노드 ≥ 자식 노드</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         100          ← 최댓값이 루트
+        /   \
+      90     80
+     / \    /
+   70  60  50
+
+루트: 항상 최댓값
+</code></pre></div></div>
+
+<h4 id="2-최소-힙-min-heap">2. 최소 힙 (Min Heap)</h4>
+<p><strong>부모 노드 ≤ 자식 노드</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         10           ← 최솟값이 루트
+        /  \
+      20    30
+     / \   /
+   40  50 60
+
+루트: 항상 최솟값
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-힙-구현-배열-기반">💻 힙 구현 (배열 기반)</h2>
+
+<h3 id="배열-인덱스-관계">배열 인덱스 관계</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>배열: [_, 100, 90, 80, 70, 60, 50]
+인덱스: 0   1   2   3   4   5   6
+
+트리:
+         100(1)
+        /      \
+     90(2)    80(3)
+     / \      /
+  70(4) 60(5) 50(6)
+
+규칙:
+- 부모 인덱스 = i / 2
+- 왼쪽 자식 = i * 2
+- 오른쪽 자식 = i * 2 + 1
+</code></pre></div></div>
+
+<p><strong>예시:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>노드 90 (인덱스 2):
+- 부모: 2 / 2 = 1 (100)
+- 왼쪽 자식: 2 * 2 = 4 (70)
+- 오른쪽 자식: 2 * 2 + 1 = 5 (60)
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="최대-힙-구현-c언어">최대 힙 구현 (C언어)</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define MAX_SIZE 100
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">[</span><span class="n">MAX_SIZE</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>  <span class="c1">// 현재 힙의 크기</span>
+<span class="p">}</span> <span class="n">MaxHeap</span><span class="p">;</span>
+
+<span class="c1">// 초기화</span>
+<span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="n">MaxHeap</span><span class="o">*</span> <span class="n">h</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 삽입</span>
+<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">MaxHeap</span><span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="n">MAX_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Heap is full</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 1. 마지막 위치에 삽입</span>
+    <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">++</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    
+    <span class="c1">// 2. 부모와 비교하며 위로 이동 (상향식)</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">];</span>  <span class="c1">// 부모를 아래로</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 인덱스를 부모로 이동</span>
+    <span class="p">}</span>
+    
+    <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>  <span class="c1">// 최종 위치에 삽입</span>
+<span class="p">}</span>
+
+<span class="c1">// 삭제 (루트 제거)</span>
+<span class="kt">int</span> <span class="nf">delete</span><span class="p">(</span><span class="n">MaxHeap</span><span class="o">*</span> <span class="n">h</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Heap is empty</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">int</span> <span class="n">root</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>  <span class="c1">// 최댓값 (루트)</span>
+    <span class="kt">int</span> <span class="n">last</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">];</span>  <span class="c1">// 마지막 노드</span>
+    <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">--</span><span class="p">;</span>
+    
+    <span class="kt">int</span> <span class="n">parent</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">child</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    
+    <span class="c1">// 하향식으로 재구성</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">child</span> <span class="o">&lt;=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 더 큰 자식 선택</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">child</span> <span class="o">&lt;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&amp;&amp;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">child</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">child</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 마지막 노드가 자식보다 크면 종료</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">last</span> <span class="o">&gt;=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">child</span><span class="p">])</span> <span class="p">{</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 자식을 위로 이동</span>
+        <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">parent</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">child</span><span class="p">];</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="n">child</span><span class="p">;</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">parent</span><span class="p">]</span> <span class="o">=</span> <span class="n">last</span><span class="p">;</span>  <span class="c1">// 최종 위치에 배치</span>
+    <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="힙-삽입-과정-예시">힙 삽입 과정 예시</h3>
+
+<p><strong>90 삽입:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>초기:
+         100
+        /   \
+      80     70
+     / 
+   60  
+
+배열: [_, 100, 80, 70, 60]
+
+1. 마지막에 삽입:
+         100
+        /   \
+      80     70
+     / \
+   60  90
+
+배열: [_, 100, 80, 70, 60, 90]
+인덱스 5에 삽입
+
+2. 부모(80)와 비교: 90 &gt; 80 → 교환
+         100
+        /   \
+      90     70
+     / \
+   60  80
+
+배열: [_, 100, 90, 70, 60, 80]
+
+3. 부모(100)와 비교: 90 &lt; 100 → 종료
+
+최종:
+         100
+        /   \
+      90     70
+     / \
+   60  80
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="힙-삭제-과정-예시">힙 삭제 과정 예시</h3>
+
+<p><strong>루트 삭제 (최댓값 제거):</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>초기:
+         100          ← 삭제
+        /   \
+      90     80
+     / \    /
+   70  60  50
+
+배열: [_, 100, 90, 80, 70, 60, 50]
+
+1. 루트 삭제, 마지막(50) 임시 저장:
+         ?
+        /  \
+      90    80
+     / \
+   70  60
+
+2. 자식 중 큰 값(90)과 비교: 50 &lt; 90 → 90을 위로
+         90
+        /  \
+      ?     80
+     / \
+   70  60
+
+3. 자식 중 큰 값(70)과 비교: 50 &lt; 70 → 70을 위로
+         90
+        /  \
+      70    80
+     / \
+   ?  60
+
+4. 50을 최종 위치에 배치:
+         90
+        /  \
+      70    80
+     / \
+   50  60
+
+배열: [_, 90, 70, 80, 50, 60]
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-힙의-시간복잡도">📊 힙의 시간복잡도</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>연산</th>
+      <th>시간복잡도</th>
+      <th>이유</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>삽입</td>
+      <td>O(log N)</td>
+      <td>트리 높이만큼 이동</td>
+    </tr>
+    <tr>
+      <td>삭제</td>
+      <td>O(log N)</td>
+      <td>트리 높이만큼 이동</td>
+    </tr>
+    <tr>
+      <td>최댓값/최솟값 조회</td>
+      <td>O(1)</td>
+      <td>루트만 확인</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="-힙의-활용">🎯 힙의 활용</h3>
+
+<h4 id="1-우선순위-큐-priority-queue">1. 우선순위 큐 (Priority Queue)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>일반 큐: FIFO
+우선순위 큐: 우선순위가 높은 것부터 처리
+
+예: 병원 응급실
+- 위급 환자(우선순위 높음)
+- 일반 환자(우선순위 낮음)
+
+최대 힙 사용 → 우선순위가 높은 것이 루트
+</code></pre></div></div>
+
+<h4 id="2-힙-정렬-heap-sort">2. 힙 정렬 (Heap Sort)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 배열을 힙으로 구성
+2. 루트(최댓값)를 제거하며 정렬
+
+시간복잡도: O(N log N)
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">heapSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">MaxHeap</span> <span class="n">h</span><span class="p">;</span>
+    <span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">h</span><span class="p">);</span>
+    
+    <span class="c1">// 1. 모든 원소를 힙에 삽입</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">h</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 2. 힙에서 하나씩 제거 (큰 순서대로)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">delete</span><span class="p">(</span><span class="o">&amp;</span><span class="n">h</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="3-최단-경로-알고리즘-dijkstra">3. 최단 경로 알고리즘 (Dijkstra)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>최소 힙을 사용하여 최단 거리 노드 선택
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-기타-트리">🌲 기타 트리</h2>
+
+<h3 id="1-b-tree">1. B-Tree</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 데이터베이스 인덱스에 사용
+- 한 노드에 여러 키 저장
+- 균형 잡힌 다진 트리
+- 디스크 I/O 최소화
+
+예: MySQL 인덱스
+</code></pre></div></div>
+
+<h3 id="2-red-black-tree">2. Red-Black Tree</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 자가 균형 이진 탐색 트리
+- AVL보다 균형 조건 완화
+- 삽입/삭제가 AVL보다 빠름
+
+규칙:
+1. 노드는 빨강 또는 검정
+2. 루트는 검정
+3. 모든 리프(NULL)는 검정
+4. 빨강 노드의 자식은 검정
+5. 모든 경로의 검정 노드 수 동일
+</code></pre></div></div>
+
+<h3 id="3-trie-접두사-트리">3. Trie (접두사 트리)</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 문자열 검색에 특화
+- 자동완성, 사전 검색에 사용
+
+예: "app", "apple", "application" 저장
+
+       root
+        |
+        a
+        |
+        p
+        |
+        p (end)
+        |
+        l
+        |
+        e (end)
+        |
+    ...ication (end)
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="실기-기출-유형">실기 기출 유형</h1>
+
+<h2 id="-유형-1-코드-결과-예측">🎯 유형 1: 코드 결과 예측</h2>
+
+<h3 id="스택-문제">스택 문제</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Stack</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+    
+    <span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+    <span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">pop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">));</span>
+    <span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">pop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">pop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">));</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>풀이:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. push(10) → [10]
+2. push(20) → [10, 20]
+3. push(30) → [10, 20, 30]
+4. pop() → 30 출력, [10, 20]
+5. push(40) → [10, 20, 40]
+6. pop() → 40 출력, [10, 20]
+7. pop() → 20 출력, [10]
+
+출력: 30 40 20
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="큐-문제-원형-큐">큐 문제 (원형 큐)</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">CircularQueue</span> <span class="n">q</span><span class="p">;</span>
+    <span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">q</span><span class="p">);</span>  <span class="c1">// front = 0, rear = 0</span>
+    
+    <span class="n">enqueue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="n">enqueue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+    <span class="n">enqueue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">dequeue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">q</span><span class="p">));</span>
+    <span class="n">enqueue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">dequeue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">q</span><span class="p">));</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>풀이:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>초기: front=0, rear=0
+
+1. enqueue(10): rear=1, [_, 10, _, _, _]
+2. enqueue(20): rear=2, [_, 10, 20, _, _]
+3. enqueue(30): rear=3, [_, 10, 20, 30, _]
+4. dequeue(): front=1, 10 출력, [_, _, 20, 30, _]
+5. enqueue(40): rear=4, [_, _, 20, 30, 40]
+6. dequeue(): front=2, 20 출력
+
+출력: 10 20
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="트리-순회-문제">트리 순회 문제</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>트리:
+         1
+        / \
+       2   3
+      / \
+     4   5
+
+Q: 전위, 중위, 후위 순회 결과는?
+</code></pre></div></div>
+
+<p><strong>풀이:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>전위 (Root→Left→Right):
+1 → 2 → 4 → 5 → 3
+
+중위 (Left→Root→Right):
+4 → 2 → 5 → 1 → 3
+
+후위 (Left→Right→Root):
+4 → 5 → 2 → 3 → 1
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-유형-2-빈칸-채우기">🎯 유형 2: 빈칸 채우기</h2>
+
+<h3 id="스택-push-함수">스택 push 함수</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">push</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isFull</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Overflow</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">______</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>  <span class="c1">// 빈칸</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>정답:</strong> <code class="language-plaintext highlighter-rouge">++</code></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="o">++</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="bst-탐색-함수">BST 탐색 함수</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span><span class="o">*</span> <span class="nf">search</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">______</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>  <span class="c1">// 빈칸</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>정답:</strong> <code class="language-plaintext highlighter-rouge">root-&gt;left</code></p>
+
+<hr />
+
+<h2 id="-유형-3-알고리즘-작성">🎯 유형 3: 알고리즘 작성</h2>
+
+<h3 id="스택으로-괄호-검사">스택으로 괄호 검사</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 올바른 괄호 쌍 판단</span>
+<span class="c1">// 입력: "((()))" → 올바름</span>
+<span class="c1">// 입력: "(()" → 잘못됨</span>
+
+<span class="n">bool</span> <span class="nf">isValid</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Stack</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">'\0'</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'('</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 여는 괄호는 push</span>
+            <span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">,</span> <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">')'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 닫는 괄호 처리</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">isEmpty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">// 짝이 안 맞음</span>
+            <span class="p">}</span>
+            <span class="n">pop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 스택이 비어있어야 올바름</span>
+    <span class="k">return</span> <span class="n">isEmpty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="bst-삽입-함수">BST 삽입 함수</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span><span class="o">*</span> <span class="nf">insert</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 1. 빈 자리 찾음 → 새 노드 생성</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">createNode</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 2. 값 비교</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 왼쪽 서브트리에 삽입</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 오른쪽 서브트리에 삽입</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// data == root-&gt;data인 경우 중복이므로 삽입 안 함</span>
+    
+    <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="힙-삽입-함수">힙 삽입 함수</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">MaxHeap</span><span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="n">MAX_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">++</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    
+    <span class="c1">// 상향식 재구성</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">];</span>  <span class="c1">// 부모를 아래로</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 위로 이동</span>
+    <span class="p">}</span>
+    
+    <span class="n">h</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-유형-4-개념-서술">🎯 유형 4: 개념 서술</h2>
+
+<h3 id="q1-스택과-큐의-차이점을-설명하시오">Q1: 스택과 큐의 차이점을 설명하시오.</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>답:
+- 스택은 LIFO(Last In First Out) 구조로, 
+  마지막에 삽입된 데이터가 가장 먼저 삭제됩니다.
+  
+- 큐는 FIFO(First In First Out) 구조로,
+  먼저 삽입된 데이터가 먼저 삭제됩니다.
+
+예시:
+- 스택: 함수 호출, 괄호 검사, DFS
+- 큐: 프로세스 스케줄링, BFS, 버퍼
+</code></pre></div></div>
+
+<h3 id="q2-이진-탐색-트리의-중위-순회-특징은">Q2: 이진 탐색 트리의 중위 순회 특징은?</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>답:
+이진 탐색 트리를 중위 순회하면
+오름차순으로 정렬된 결과를 얻을 수 있습니다.
+
+이유:
+중위 순회는 Left → Root → Right 순서이고,
+BST는 왼쪽 &lt; 루트 &lt; 오른쪽이므로
+작은 값부터 큰 값 순서로 방문하게 됩니다.
+</code></pre></div></div>
+
+<h3 id="q3-완전-이진-트리란">Q3: 완전 이진 트리란?</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>답:
+마지막 레벨을 제외한 모든 레벨이 완전히 채워져 있고,
+마지막 레벨은 왼쪽부터 차례대로 채워진 이진 트리입니다.
+
+특징:
+- 배열로 효율적으로 구현 가능
+- 힙 자료구조의 기본 형태
+- 부모-자식 인덱스 관계가 명확함
+  (부모: i/2, 왼쪽자식: 2i, 오른쪽자식: 2i+1)
+</code></pre></div></div>
+
+<h3 id="q4-힙의-시간복잡도와-그-이유는">Q4: 힙의 시간복잡도와 그 이유는?</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>답:
+삽입: O(log N)
+삭제: O(log N)
+최댓값 조회: O(1)
+
+이유:
+- 삽입/삭제 시 트리의 높이만큼만 이동하므로 O(log N)
+  (완전 이진 트리이므로 높이는 log N)
+- 최댓값은 항상 루트에 있으므로 O(1)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-핵심-암기-사항">📝 핵심 암기 사항</h2>
+
+<h3 id="스택">스택</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ LIFO 구조
+✅ push, pop, peek 연산
+✅ 시간복잡도: O(1)
+✅ 활용: 함수 호출, 괄호 검사, DFS, 후위 표기법
+✅ Overflow: 스택이 가득 참
+✅ Underflow: 스택이 비어있는데 pop
+</code></pre></div></div>
+
+<h3 id="큐">큐</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ FIFO 구조
+✅ enqueue, dequeue, peek 연산
+✅ 원형 큐: 공간 재사용 가능, (rear+1) % MAX_SIZE
+✅ 시간복잡도: O(1)
+✅ 활용: 프로세스 스케줄링, BFS, 버퍼
+</code></pre></div></div>
+
+<h3 id="이진-트리">이진 트리</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 최대 자식 수: 2개
+✅ 전위: Root → Left → Right
+✅ 중위: Left → Root → Right (BST에서 오름차순)
+✅ 후위: Left → Right → Root
+✅ 포화: 모든 레벨이 꽉 참
+✅ 완전: 마지막 레벨 제외 모두 채워짐, 왼쪽부터
+</code></pre></div></div>
+
+<h3 id="bst-이진-탐색-트리">BST (이진 탐색 트리)</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 왼쪽 &lt; 루트 &lt; 오른쪽
+✅ 중위 순회 → 오름차순 정렬
+✅ 탐색/삽입/삭제: O(log N) 평균, O(N) 최악
+✅ 최악의 경우: 편향 트리 (한쪽으로 치우침)
+</code></pre></div></div>
+
+<h3 id="힙">힙</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 완전 이진 트리
+✅ 최대 힙: 부모 ≥ 자식
+✅ 최소 힙: 부모 ≤ 자식
+✅ 배열 구현: 부모 i/2, 자식 2i, 2i+1
+✅ 삽입/삭제: O(log N)
+✅ 활용: 우선순위 큐, 힙 정렬
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-실기-시험-팁">🎓 실기 시험 팁</h2>
+
+<h3 id="1-코드-추적">1. 코드 추적</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>스택/큐 문제는 손으로 그림 그리면서 추적!
+
+예:
+push(10) → [10]
+push(20) → [10, 20]
+pop() → [10], 반환값: 20
+</code></pre></div></div>
+
+<h3 id="2-트리-그리기">2. 트리 그리기</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>순회 문제는 트리를 직접 그려서 확인!
+
+전위: 1 2 4 5 3
+→ 1부터 시작, 왼쪽 끝까지, 오른쪽
+</code></pre></div></div>
+
+<h3 id="3-인덱스-계산">3. 인덱스 계산</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>배열 기반 힙 문제:
+- 부모: i / 2
+- 왼쪽 자식: i * 2
+- 오른쪽 자식: i * 2 + 1
+
+인덱스 1부터 시작!
+</code></pre></div></div>
+
+<h3 id="4-시간복잡도-암기">4. 시간복잡도 암기</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>배열/링크드리스트: O(N)
+스택/큐: O(1)
+BST/힙: O(log N) 평균
+정렬: O(N log N) 평균
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>chek list:</strong></p>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />각 자료구조를 직접 손으로 그려보기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />코드를 보면서 동작 과정을 추적하기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />기출문제를 반복해서 풀어보기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />용어와 시간복잡도를 정확히 암기하기</li>
+</ul>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -79,8 +79,9 @@
     });
   }
   
-  // ============================================
-  // 2. 다크모드 토글 기능 (헤더에 배치)
+  
+   // ============================================
+  // 2. 다크모드 토글 기능 (시스템 설정 인식)
   // ============================================
   function initDarkMode() {
     // 헤더 찾기
@@ -104,27 +105,50 @@
     // 헤더에 버튼 추가
     masthead.appendChild(toggleButton);
 
-    // 저장된 테마 불러오기
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    if (currentTheme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      toggleButton.innerHTML = '☀️';
+    // 시스템 다크모드 설정 감지
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // 테마 설정 함수
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      toggleButton.innerHTML = theme === 'dark' ? '☀️' : '🌙';
     }
+    
+    // 초기 테마 설정: localStorage > 시스템 설정 순서로 확인
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      
+      if (savedTheme) {
+        // 저장된 테마가 있으면 사용
+        setTheme(savedTheme);
+      } else {
+        // 저장된 테마가 없으면 시스템 설정 따르기
+        setTheme(prefersDark.matches ? 'dark' : 'light');
+      }
+    }
+    
+    // 시스템 다크모드 설정 변경 감지
+    // (단, 사용자가 수동으로 변경한 적이 있으면 시스템 설정 무시)
+    prefersDark.addEventListener('change', (e) => {
+      // 사용자가 수동으로 설정을 변경한 적이 없을 때만 시스템 설정 따르기
+      if (!localStorage.getItem('theme-manual-override')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
 
     // 토글 버튼 클릭 이벤트
     toggleButton.addEventListener('click', function() {
-      const theme = document.documentElement.getAttribute('data-theme');
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
-      if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        toggleButton.innerHTML = '🌙';
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        toggleButton.innerHTML = '☀️';
-      }
+      setTheme(newTheme);
+      // 수동 변경 플래그 설정 (이후 시스템 설정 무시)
+      localStorage.setItem('theme-manual-override', 'true');
     });
+    
+    // 초기 테마 적용
+    initTheme();
   }
   
   // ============================================

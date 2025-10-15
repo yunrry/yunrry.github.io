@@ -1,7 +1,6 @@
 ---
 title: "Sql&DB"
-layout: single
-date: 2025-2-15
+date: 2025-02-15
 tags: 
   - sql
   - database

@@ -9,18 +9,20 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>데이터베이스 - AD윤영스윗투웬티HD</title>
+<!-- begin _includes/seo.html --><title>Sql&amp;DB - AD윤영스윗투웬티HD</title>
 <meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
 
 
   <meta name="author" content="yunYoung e">
   
+  <meta property="article:author" content="yunYoung e">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="AD윤영스윗투웬티HD">
-<meta property="og:title" content="데이터베이스">
+<meta property="og:title" content="Sql&amp;DB">
 <meta property="og:url" content="http://localhost:4000/categories/cs/database/">
 
 
@@ -31,6 +33,8 @@
 
 
 
+
+  <meta property="article:published_time" content="2025-02-15T00:00:00+09:00">
 
 
 
@@ -92,7 +96,7 @@
 
   </head>
 
-  <body class="layout--category">
+  <body class="layout--category-split">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -327,20 +331,812 @@
 
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Sql&amp;DB">
     
-      <h1 id="page-title" class="page__title">데이터베이스</h1>
-    
+    <meta itemprop="datePublished" content="2025-02-15T00:00:00+09:00">
     
 
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Sql&amp;DB
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
 
 
-<div class="entries-list">
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <div id="normal-content">
+  <h2 id="-sql--database">📚 SQL &amp; DataBase</h2>
+
+<h3 id="학습-내용">학습 내용</h3>
+
+<h4 id="-sql-기본-문법"><a href="#" data-content="/assets/contents/cs/sql-grammer.md"><span style="color: #9bd6bd;">♡</span> SQL 기본 문법</a></h4>
+
+<h4 id="-join-연산"><a href="#" data-content="/assets/contents/cs/join.md"><span style="color: #9bd6bd;">♡</span> JOIN 연산</a></h4>
+
+<h4 id="-group-by--집계함수"><a href="#" data-content="/assets/contents/cs/group-by.md"><span style="color: #9bd6bd;">♡</span> GROUP BY &amp; 집계함수</a></h4>
+
+<h4 id="-서브쿼리"><a href="#" data-content="/assets/contents/cs/sub-query.md"><span style="color: #9bd6bd;">♡</span> 서브쿼리</a></h4>
+
+<h4 id="-ddldmldcl"><a href="#" data-content="/assets/contents/cs/ddl-dml-dcl.md"><span style="color: #9bd6bd;">♡</span> DDL/DML/DCL</a></h4>
+
+<h4 id="-제약조건"><a href="#" data-content="/assets/contents/cs/constraints.md"><span style="color: #9bd6bd;">♡</span> 제약조건</a></h4>
+
+<h4 id="-인덱스"><a href="#" data-content="/assets/contents/cs/index.md"><span style="color: #9bd6bd;">♡</span> 인덱스</a></h4>
+
+<h4 id="-뷰view"><a href="#" data-content="/assets/contents/cs/view.md"><span style="color: #9bd6bd;">♡</span> 뷰(View)</a></h4>
+
+<h4 id="-트랜잭션"><a href="#" data-content="/assets/contents/cs/transaction.md"><span style="color: #9bd6bd;">♡</span> 트랜잭션</a></h4>
+
+<h4 id="-정규화"><a href="#" data-content="/assets/contents/cs/normalize.md"><span style="color: #9bd6bd;">♡</span> 정규화</a></h4>
+
+<h4 id="-면접필수개념"><a href="#" data-content="/assets/contents/cs/sql-interview.md"><span style="color: #9bd6bd;">♡</span> 면접필수개념</a></h4>
+
+<hr />
+
+<h2 id="-자주-나오는-기출-유형">📝 자주 나오는 기출 유형</h2>
+
+<h3 id="1-부서별-최고-급여자-찾기">1. 부서별 최고 급여자 찾기</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span> <span class="n">employees</span> <span class="n">e</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">department</span><span class="p">,</span> <span class="n">salary</span><span class="p">)</span> <span class="k">IN</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="n">department</span><span class="p">,</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+    <span class="k">FROM</span> <span class="n">employees</span>
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="2-순위-매기기-rank">2. 순위 매기기 (RANK)</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> 
+    <span class="n">name</span><span class="p">,</span> 
+    <span class="n">salary</span><span class="p">,</span>
+    <span class="n">RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="n">rank</span>
+<span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="3-누적-합계">3. 누적 합계</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> 
+    <span class="n">name</span><span class="p">,</span>
+    <span class="n">salary</span><span class="p">,</span>
+    <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">hire_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">cumulative_sum</span>
+<span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="4-날짜-함수">4. 날짜 함수</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> 
+    <span class="n">NOW</span><span class="p">(),</span>                          <span class="c1">-- 현재 날짜시간</span>
+    <span class="n">CURDATE</span><span class="p">(),</span>                      <span class="c1">-- 현재 날짜</span>
+    <span class="n">DATE_ADD</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span> <span class="n">INTERVAL</span> <span class="mi">7</span> <span class="k">DAY</span><span class="p">),</span> <span class="c1">-- 7일 후</span>
+    <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span> <span class="n">hire_date</span><span class="p">)</span>      <span class="c1">-- 날짜 차이</span>
+<span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="5-문자열-함수">5. 문자열 함수</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> 
+    <span class="n">CONCAT</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="s1">' '</span><span class="p">,</span> <span class="n">last_name</span><span class="p">),</span>  <span class="c1">-- 문자열 결합</span>
+    <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">phone</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>              <span class="c1">-- 부분 문자열</span>
+    <span class="k">LENGTH</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>                        <span class="c1">-- 길이</span>
+    <span class="k">UPPER</span><span class="p">(</span><span class="n">email</span><span class="p">),</span>                        <span class="c1">-- 대문자</span>
+    <span class="k">REPLACE</span><span class="p">(</span><span class="n">phone</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>              <span class="c1">-- 치환</span>
+<span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>goal</strong>: 각 개념을 반드시 직접 SQL로 실행해보기</p>
+
+
+</div>
+
+<div id="split-content" style="display: none;">
+  <div class="split-container">
+    <div class="split-left">
+      <div class="split-header">
+        <button id="close-split" class="close-button">← 돌아가기</button>
+      </div>
+      <div class="left-content">
+        <h2 id="-sql--database">📚 SQL &amp; DataBase</h2>
+
+<h3 id="학습-내용">학습 내용</h3>
+
+<h4 id="-sql-기본-문법"><a href="#" data-content="/assets/contents/cs/sql-grammer.md"><span style="color: #9bd6bd;">♡</span> SQL 기본 문법</a></h4>
+
+<h4 id="-join-연산"><a href="#" data-content="/assets/contents/cs/join.md"><span style="color: #9bd6bd;">♡</span> JOIN 연산</a></h4>
+
+<h4 id="-group-by--집계함수"><a href="#" data-content="/assets/contents/cs/group-by.md"><span style="color: #9bd6bd;">♡</span> GROUP BY &amp; 집계함수</a></h4>
+
+<h4 id="-서브쿼리"><a href="#" data-content="/assets/contents/cs/sub-query.md"><span style="color: #9bd6bd;">♡</span> 서브쿼리</a></h4>
+
+<h4 id="-ddldmldcl"><a href="#" data-content="/assets/contents/cs/ddl-dml-dcl.md"><span style="color: #9bd6bd;">♡</span> DDL/DML/DCL</a></h4>
+
+<h4 id="-제약조건"><a href="#" data-content="/assets/contents/cs/constraints.md"><span style="color: #9bd6bd;">♡</span> 제약조건</a></h4>
+
+<h4 id="-인덱스"><a href="#" data-content="/assets/contents/cs/index.md"><span style="color: #9bd6bd;">♡</span> 인덱스</a></h4>
+
+<h4 id="-뷰view"><a href="#" data-content="/assets/contents/cs/view.md"><span style="color: #9bd6bd;">♡</span> 뷰(View)</a></h4>
+
+<h4 id="-트랜잭션"><a href="#" data-content="/assets/contents/cs/transaction.md"><span style="color: #9bd6bd;">♡</span> 트랜잭션</a></h4>
+
+<h4 id="-정규화"><a href="#" data-content="/assets/contents/cs/normalize.md"><span style="color: #9bd6bd;">♡</span> 정규화</a></h4>
+
+<h4 id="-면접필수개념"><a href="#" data-content="/assets/contents/cs/sql-interview.md"><span style="color: #9bd6bd;">♡</span> 면접필수개념</a></h4>
+
+<hr />
+
+<h2 id="-자주-나오는-기출-유형">📝 자주 나오는 기출 유형</h2>
+
+<h3 id="1-부서별-최고-급여자-찾기">1. 부서별 최고 급여자 찾기</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span> <span class="n">employees</span> <span class="n">e</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">department</span><span class="p">,</span> <span class="n">salary</span><span class="p">)</span> <span class="k">IN</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="n">department</span><span class="p">,</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+    <span class="k">FROM</span> <span class="n">employees</span>
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">department</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="2-순위-매기기-rank">2. 순위 매기기 (RANK)</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> 
+    <span class="n">name</span><span class="p">,</span> 
+    <span class="n">salary</span><span class="p">,</span>
+    <span class="n">RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="n">rank</span>
+<span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="3-누적-합계">3. 누적 합계</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> 
+    <span class="n">name</span><span class="p">,</span>
+    <span class="n">salary</span><span class="p">,</span>
+    <span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">hire_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">cumulative_sum</span>
+<span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="4-날짜-함수">4. 날짜 함수</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> 
+    <span class="n">NOW</span><span class="p">(),</span>                          <span class="c1">-- 현재 날짜시간</span>
+    <span class="n">CURDATE</span><span class="p">(),</span>                      <span class="c1">-- 현재 날짜</span>
+    <span class="n">DATE_ADD</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span> <span class="n">INTERVAL</span> <span class="mi">7</span> <span class="k">DAY</span><span class="p">),</span> <span class="c1">-- 7일 후</span>
+    <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span> <span class="n">hire_date</span><span class="p">)</span>      <span class="c1">-- 날짜 차이</span>
+<span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="5-문자열-함수">5. 문자열 함수</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> 
+    <span class="n">CONCAT</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="s1">' '</span><span class="p">,</span> <span class="n">last_name</span><span class="p">),</span>  <span class="c1">-- 문자열 결합</span>
+    <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">phone</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>              <span class="c1">-- 부분 문자열</span>
+    <span class="k">LENGTH</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>                        <span class="c1">-- 길이</span>
+    <span class="k">UPPER</span><span class="p">(</span><span class="n">email</span><span class="p">),</span>                        <span class="c1">-- 대문자</span>
+    <span class="k">REPLACE</span><span class="p">(</span><span class="n">phone</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>              <span class="c1">-- 치환</span>
+<span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>goal</strong>: 각 개념을 반드시 직접 SQL로 실행해보기</p>
+
+
+      </div>
+    </div>
+    
+    <div class="split-right">
+      <div class="content-display"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ============================================
+   스플릿 뷰 기본 스타일
+   ============================================ */
+
+.split-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  min-height: 70vh;
+}
+
+.split-left {
+  flex: 0 0 45%;
+  padding-right: 20px;
+  border-right: 2px solid #e0e0e0;
+  transition: border-color 0.3s ease;
+}
+
+.split-right {
+  flex: 1;
+  padding-left: 20px;
+  position: relative;
+}
+
+.split-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+  transition: border-color 0.3s ease;
+}
+
+.close-button {
+  background: #9bd6bd;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.close-button:hover {
+  background: #88bca7;
+}
+
+/* ============================================
+   컨텐츠 디스플레이
+   ============================================ */
+
+.content-display {
+  display: flex;
+  gap: 30px;
+}
+
+.main-content {
+  flex: 1;
+  max-width: calc(100% - 250px);
+}
+
+.content-display h1 {
+  font-size: 2em;
+  border-bottom: 3px solid #333;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.content-display h2 {
+  font-size: 1.6em;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-left: 4px solid #5f6764;
+  padding-left: 12px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================
+   TOC (Table of Contents)
+   ============================================ */
+
+.toc {
+  position: sticky;
+  top: 150px;
+  width: 220px;
+  border-radius: 6px;
+  padding: 15px;
+  align-self: flex-start;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  transition: background-color 0.3s ease;
+}
+
+.toc h4 {
+  margin: 0 0 10px 0;
+  color: #9bd6bd;
+  font-size: 0.9em;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc li {
+  margin: 8px 0;
+}
+
+.toc a {
+  color: #7c7d7d;
+  text-decoration: none;
+  font-size: 0.85em;
+  transition: color 0.2s ease;
+}
+
+.toc a:hover {
+  color: #9bd6bd;
+}
+
+.toc-h3 {
+  padding-left: 15px;
+  font-size: 0.9em;
+}
+
+/* ============================================
+   코드 블록 스타일
+   ============================================ */
+
+.content-display .highlight {
+  margin: 20px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border-left: 4px solid #9bd6bd;
+  transition: background-color 0.3s ease;
+}
+
+.content-display .highlight pre {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+  line-height: 1.6;
+  transition: background-color 0.3s ease;
+}
+
+.content-display .highlight code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
+}
+
+.content-display pre:not(.highlight) {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+  border-left: 4px solid #9bd6bd;
+  margin: 20px 0;
+  transition: background-color 0.3s ease;
+}
+
+.content-display p code,
+.content-display li code,
+.content-display td code {
+  background: #f0f0f0;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+  color: #e74c3c;
+  border: 1px solid #e1e4e8;
+  transition: all 0.3s ease;
+}
+
+.content-display .highlight code,
+.content-display pre code {
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  color: inherit !important;
+}
+
+/* ============================================
+   링크 스타일
+   ============================================ */
+
+.page__content a + a::before {
+  content: " | ";
+  color: #999;
+  margin: 0 5px;
+  transition: color 0.3s ease;
+}
+
+a[data-content] {
+  color: #565c59;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+a[data-content]:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   다크모드 스타일
+   ============================================ */
+
+[data-theme="dark"] .split-left {
+  border-right-color: #333333;
+}
+
+[data-theme="dark"] .split-header {
+  border-bottom-color: #333333;
+}
+
+[data-theme="dark"] .content-display h1 {
+  color: #e0e0e0;
+  border-bottom-color: #555555;
+}
+
+[data-theme="dark"] .content-display h2 {
+  color: #e0e0e0;
+  border-left-color: #7ab5a0;
+}
+
+[data-theme="dark"] .content-display h3,
+[data-theme="dark"] .content-display h4,
+[data-theme="dark"] .content-display h5,
+[data-theme="dark"] .content-display h6 {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .content-display p,
+[data-theme="dark"] .content-display li,
+[data-theme="dark"] .main-content {
+  color: #e0e0e0;
+}
+
+/* TOC 다크모드 */
+[data-theme="dark"] .toc {
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+}
+
+[data-theme="dark"] .toc h4 {
+  color: #9bd6bd;
+}
+
+[data-theme="dark"] .toc a {
+  color: #b0b0b0;
+}
+
+[data-theme="dark"] .toc a:hover {
+  color: #9bd6bd;
+}
+
+/* 코드 블록 다크모드 */
+[data-theme="dark"] .content-display .highlight,
+[data-theme="dark"] .content-display pre:not(.highlight) {
+  background: #2d2d2d;
+  border-left-color: #7ab5a0;
+}
+
+[data-theme="dark"] .content-display .highlight pre {
+  background: #2d2d2d;
+}
+
+[data-theme="dark"] .content-display p code,
+[data-theme="dark"] .content-display li code,
+[data-theme="dark"] .content-display td code {
+  background: #3a3a3a;
+  color: #ff6b9d;
+  border-color: #555555;
+}
+
+/* 링크 다크모드 */
+[data-theme="dark"] a[data-content] {
+  color: #b0b0b0;
+}
+
+[data-theme="dark"] a[data-content]:hover {
+  color: #66b3ff;
+}
+
+[data-theme="dark"] .page__content a + a::before {
+  color: #666666;
+}
+
+/* 날짜 정보 박스 다크모드 */
+[data-theme="dark"] .content-display > div[style*="background:#f8f9fa"] {
+  background: #252525 !important;
+  color: #b0b0b0 !important;
+  border: 1px solid #333333;
+}
+
+/* 테이블 다크모드 */
+[data-theme="dark"] .content-display table {
+  border-color: #333333;
+}
+
+[data-theme="dark"] .content-display table thead {
+  background-color: #252525;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .content-display table tbody tr {
+  border-color: #333333;
+}
+
+[data-theme="dark"] .content-display table tbody tr:hover {
+  background-color: #252525;
+}
+
+[data-theme="dark"] .content-display table th,
+[data-theme="dark"] .content-display table td {
+  color: #e0e0e0;
+  border-color: #333333;
+}
+
+/* 인용구 다크모드 */
+[data-theme="dark"] .content-display blockquote {
+  border-left-color: #555555;
+  background-color: #252525;
+  color: #b0b0b0;
+}
+
+/* 로딩/에러 메시지 다크모드 */
+[data-theme="dark"] .content-display p {
+  color: #e0e0e0;
+}
+
+/* ============================================
+   반응형
+   ============================================ */
+
+@media (max-width: 768px) {
+  .content-display {
+    flex-direction: column-reverse;
+  }
+  
+  .main-content {
+    max-width: 100%;
+  }
+  
+  .toc {
+    position: static;
+    width: 100%;
+  }
+  
+  .split-container {
+    flex-direction: column;
+  }
+  
+  .split-left {
+    flex: 1;
+    border-right: none;
+    border-bottom: 2px solid #e0e0e0;
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+  
+  [data-theme="dark"] .split-left {
+    border-bottom-color: #333333;
+  }
+  
+  .split-right {
+    padding-left: 0;
+    padding-top: 20px;
+  }
+}
+
+/* ============================================
+   추가 스타일
+   ============================================ */
+
+.content-display pre,
+.content-display .highlight,
+.content-display pre[class*="language-"] {
+  box-shadow: none !important;
+}
+</style>
+
+<!-- Highlight.js CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css" id="highlight-light">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark.min.css" id="highlight-dark" disabled>
+
+<!-- Prism CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" id="prism-light">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" id="prism-dark" disabled>
+
+<!-- Marked.js -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Prism.js Core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" data-manual></script>
+
+<!-- Prism 언어 컴포넌트 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+
+<script>
+// 다크모드에 따라 syntax highlighting 테마 전환
+function updateSyntaxTheme() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  
+  // Highlight.js
+  document.getElementById('highlight-light').disabled = isDark;
+  document.getElementById('highlight-dark').disabled = !isDark;
+  
+  // Prism
+  document.getElementById('prism-light').disabled = isDark;
+  document.getElementById('prism-dark').disabled = !isDark;
+}
+
+// 테마 변경 감지
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.attributeName === 'data-theme') {
+      updateSyntaxTheme();
+    }
+  });
+});
+
+observer.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ['data-theme']
+});
+
+// 초기 테마 설정
+updateSyntaxTheme();
+
+// Marked만 사용 (Highlight.js 제거)
+function initSplitView() {
+  // Marked 체크
+  if (typeof marked === 'undefined') {
+    console.log('Marked 대기 중...');
+    setTimeout(initSplitView, 100);
+    return;
+  }
+  
+  console.log('Marked 로드 완료!');
+  
+  // DOM 요소 찾기
+  const normalContent = document.getElementById('normal-content');
+  const splitContent = document.getElementById('split-content');
+  const closeButton = document.getElementById('close-split');
+  const contentDisplay = document.querySelector('.content-display');
+  
+  if (!normalContent || !splitContent || !closeButton || !contentDisplay) {
+    console.error('DOM 요소를 찾을 수 없습니다!');
+    return;
+  }
+
+  function generateTOC(html) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    
+    const headings = tempDiv.querySelectorAll('h2, h3');
+    if (headings.length === 0) return `<div class="main-content">${html}</div>`;
+    
+    let toc = '<div class="toc"><h4>outline</h4><ul>';
+    
+    headings.forEach((heading, index) => {
+      const id = 'heading-' + index;
+      heading.id = id;
+      
+      const level = heading.tagName === 'H2' ? 'toc-h2' : 'toc-h3';
+      toc += `<li class="${level}"><a href="#${id}">${heading.textContent}</a></li>`;
+    });
+    
+    toc += '</ul></div>';
+    
+    return `<div class="main-content">${tempDiv.innerHTML}</div>${toc}`;
+  }
+  
+  // Marked.js 설정 (Highlight 없이)
+  marked.setOptions({
+    breaks: true,
+    gfm: true
+  });
+  
+  // 컨텐츠 링크 설정
+  function setupContentLinks() {
+    document.querySelectorAll('a[data-content]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        normalContent.style.display = 'none';
+        splitContent.style.display = 'block';
+        loadContent(this.getAttribute('data-content'));
+      });
+    });
+  }
+  
+  // 컨텐츠 로드
+  function loadContent(path) {
+    contentDisplay.innerHTML = '<p>로딩 중...</p>';
+    
+    fetch(path)
+      .then(r => {
+        if (!r.ok) throw new Error('파일 없음');
+        return r.text();
+      })
+      .then(md => {
+        let content = md.replace(/^---[\s\S]*?---\n/, '');
+        
+        // Front matter에서 날짜 추출
+        const createdMatch = md.match(/created:\s*(\d{4}-\d{2}-\d{2})/);
+        const updatedMatch = md.match(/updated:\s*(\d{4}-\d{2}-\d{2})/);
+        
+        // Liquid raw 제거
+        const rawStart = String.fromCharCode(123, 37) + ' raw ' + String.fromCharCode(37, 125);
+        const rawEnd = String.fromCharCode(123, 37) + ' endraw ' + String.fromCharCode(37, 125);
+        content = content.replace(new RegExp(rawStart, 'g'), '').replace(new RegExp(rawEnd, 'g'), '');
+        
+        let html = marked.parse(content);
+        
+        // 날짜 추가
+        if (createdMatch || updatedMatch) {
+          const dateInfo = `<div style="color:#999;font-size:0.85em;margin-bottom:20px;padding:10px;background:#f8f9fa;border-radius:4px;">
+            ${createdMatch ? 'created: ' + createdMatch[1] : ''} 
+            ${updatedMatch ? 'updated: ' + updatedMatch[1] : ''}
+          </div>`;
+          html = dateInfo + html;
+        }
+        
+        html = generateTOC(html);
+        contentDisplay.innerHTML = html;
+        
+        Prism.highlightAllUnder(contentDisplay);
+      })
+      .catch(e => {
+        contentDisplay.innerHTML = `<p style="color: #e74c3c;">❌ ${e.message}</p>`;
+      });
+  }
+
+  // 닫기 버튼
+  closeButton.addEventListener('click', function() {
+    splitContent.style.display = 'none';
+    normalContent.style.display = 'block';
+  });
+  
+  // 초기화
+  setupContentLinks();
+  
+  console.log('스크립트 초기화 완료');
+}
+
+// 초기 실행
+initSplitView();
+</script>
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2025-02-15T00:00:00+09:00">February 15, 2025</time></p>
+
+
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+  </article>
+
+  
   
 </div>
 
-  </div>
-</div>
     </div>
 
     
