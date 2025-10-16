@@ -1,4 +1,4 @@
-## 제약조건
+# 제약조건 Constraints
 
 ### PRIMARY KEY (기본키)
 

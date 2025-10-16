@@ -1,5 +1,5 @@
 
-## JOIN 연산
+# JOIN 연산
 
 ### INNER JOIN (내부 조인)
 

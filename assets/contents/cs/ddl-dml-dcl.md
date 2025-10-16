@@ -1,5 +1,5 @@
 
-## DDL/DML/DCL
+# DDL/DML/DCL
 
 ### DDL (Data Definition Language)
 

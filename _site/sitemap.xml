@@ -84,6 +84,12 @@
 <loc>http://localhost:4000/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/portfolio/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/recent-posts/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/contents/algorithm/array-string/</loc>
 </url>
 <url>

@@ -81,9 +81,10 @@ include:
   - _dev
   - _language
   - _inclueds
-  - contents
+  - assets/contents
   
-
+# exclude:
+#   - assets/contents/
 
 head_scripts:
   - /assets/js/custom.js

@@ -1,0 +1,146 @@
+---
+layout: single
+sidebar:
+  nav: "categories"
+author_profile: false
+classes: wide
+---
+
+  
+  <div id="portfolio-section">
+    <h2 style="text-align: left;">Portfolio</h2>
+    <div style="display: flex; align-items: center; gap: 30px; margin-bottom: 30px;">
+        <img src="/assets/images/ProfilePicture.jpeg" alt="Profile" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
+        <div>
+          <h3 style="margin: 0 0 5px 0;">김 윤 영</h3>
+          <p style="color: #666; margin: 0;">Backend Developer</p>
+        </div>
+      </div>
+    
+      <div class="skills-section">
+        <h3>💻 Tech Stack</h3>
+        <div class="skills-grid">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Spring Boot</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">TypeScript</span>
+        </div>
+      </div>
+    
+    <div style="margin: 30px 0;">
+      <h4>주요 프로젝트</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin: 10px 0;">🗺️ <strong>FLIK</strong> - RAG 기반 AI 여행 코스 추천</li>
+        <li style="margin: 10px 0;">🎧 <strong>도르멍드르멍</strong> - 제주 오디오 스토리텔링 (구름톤 최우수상)</li>
+        <li style="margin: 10px 0;">🚶 <strong>SafeWalk</strong> - 보행자 사고 안전 관리 플랫폼</li>
+      </ul>
+    </div>
+    
+    <div style="text-align: center;">
+      <a href="/portfolio/" style="padding: 10px 20px; background: #9bd6bd; color: white; text-decoration: none; border-radius: 4px;">전체 보기 →</a>
+    </div>
+  </div>
+  
+  <style>
+    .skills-section {
+        margin: 30px 0;
+        text-align: left;
+    }
+    .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    .skill-tag {
+      padding: 4px 8px;
+      background: #f0f0f0;
+      border-radius: 20px;
+      font-size: 0.8em;
+      color: #333;
+    }
+
+    #portfolio-section {
+        margin: 50px 0;
+        padding: 30px;
+        border: 2px solid #9bd6bd;
+        border-radius: 8px;
+        }
+    #portfolio-section.hidden {
+        display: none !important;
+        }
+    
+    [data-theme="dark"] .skill-tag {
+        background: #2d2d2d;
+        color: #e0e0e0;
+    }
+    [data-theme="dark"] div[style*="border: 2px solid #9bd6bd"] {
+        background: #1a1a1a;
+    }
+    [data-theme="dark"] div[style*="border: 2px solid #9bd6bd"] span {
+        background: #2d2d2d;
+        color: #e0e0e0;
+    }
+  </style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const contentLinks = document.querySelectorAll('a[data-content]');
+      const portfolioSection = document.querySelector('div[style*="border: 2px solid #9bd6bd"]');
+      
+      contentLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (portfolioSection) {
+            portfolioSection.style.display = 'none';
+          }
+        });
+      });
+      
+      // 닫기 버튼 클릭시 다시 표시
+      const closeButton = document.getElementById('close-split');
+      if (closeButton) {
+        closeButton.addEventListener('click', function() {
+          if (portfolioSection) {
+            portfolioSection.style.display = 'block';
+          }
+        });
+      }
+    });
+    </script>
+
+<h2>Recent Posts</h2>
+<div style="margin-bottom: 30px;"></div>
+
+<ul class="posts-list" style="list-style: none; padding: 0;">
+    {% assign all_files = site.data.contents | sort: 'created' | reverse %}
+    {% for doc in all_files limit:10 %}
+      {% assign category = doc.path | split: 'contents/' | last | split: '/' | first %}
+      <li style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #dfe6e4;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="color: #999; font-size: 0.85em;">
+            {% if doc.created %}{{ doc.created | date: "%Y-%m-%d" }}{% endif %}
+          </span>
+          <span style="color: #9bd6bd; font-size: 0.75em; text-transform: uppercase;">{{ category }}</span>
+        </div>
+        <h3 style="margin: 1px 0;">
+            <a href="/recent-posts/?doc={{doc.path | relative_url}}">{{ doc.title }}</a>
+        </h3>
+        {% if doc.excerpt %}
+          <p style="color: #666; font-size: 0.9em;">{{ doc.excerpt | strip_html | truncatewords: 30 }}</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  
+  
+
+<div style="text-align: center; margin-top: 30px;">
+  <a href="/categories/" style="padding: 10px 20px; background: #9bd6bd; color: white; text-decoration: none; border-radius: 4px;">전체 카테고리 보기</a>
+</div>
+

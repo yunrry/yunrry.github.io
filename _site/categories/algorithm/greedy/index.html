@@ -986,15 +986,20 @@ function initSplitView() {
   
   // 컨텐츠 링크 설정
   function setupContentLinks() {
-    document.querySelectorAll('a[data-content]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        normalContent.style.display = 'none';
-        splitContent.style.display = 'block';
-        loadContent(this.getAttribute('data-content'));
-      });
+  document.querySelectorAll('a[data-content]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Portfolio 숨기기
+      const portfolio = document.getElementById('portfolio-section');
+      if (portfolio) portfolio.style.display = 'none';
+      
+      normalContent.style.display = 'none';
+      splitContent.style.display = 'block';
+      loadContent(this.getAttribute('data-content'));
     });
-  }
+  });
+}
   
   // 컨텐츠 로드
   function loadContent(path) {
@@ -1006,11 +1011,13 @@ function initSplitView() {
         return r.text();
       })
       .then(md => {
-        let content = md.replace(/^---[\s\S]*?---\n/, '');
-        
-        // Front matter에서 날짜 추출
+        // ✅ 먼저 front matter에서 날짜 추출
         const createdMatch = md.match(/created:\s*(\d{4}-\d{2}-\d{2})/);
         const updatedMatch = md.match(/updated:\s*(\d{4}-\d{2}-\d{2})/);
+
+        // 그 다음에 front matter 제거
+        let content = md.replace(/^---[\s\S]*?---\n/, '');
+
         
         // Liquid raw 제거
         const rawStart = String.fromCharCode(123, 37) + ' raw ' + String.fromCharCode(37, 125);
@@ -1040,18 +1047,37 @@ function initSplitView() {
 
   // 닫기 버튼
   closeButton.addEventListener('click', function() {
-    splitContent.style.display = 'none';
-    normalContent.style.display = 'block';
-  });
+  splitContent.style.display = 'none';
+  normalContent.style.display = 'block';
   
-  // 초기화
-  setupContentLinks();
+  const portfolio = document.getElementById('portfolio-section');
+  if (portfolio) portfolio.classList.remove('hidden');
+});
+// 이벤트 위임 방식으로 변경
+document.body.addEventListener('click', function(e) {
+  const link = e.target.closest('a[data-content]');
+  
+  if (link) {
+    e.preventDefault();
+    
+    const portfolio = document.getElementById('portfolio-section');
+    if (portfolio) portfolio.classList.add('hidden');
+    
+    normalContent.style.display = 'none';
+    splitContent.style.display = 'block';
+    loadContent(link.getAttribute('data-content'));
+  }
+});
   
   console.log('스크립트 초기화 완료');
 }
 
-// 초기 실행
-initSplitView();
+if (document.readyState === 'loading') {
+  document.getElementById('portfolio-section')// 초기 실행
+  document.addEventListener('DOMContentLoaded', initSplitView);
+} else {
+  initSplitView();
+}
 </script>
         
       </section>
