@@ -323,8 +323,105 @@
 
     
   
+  
+  
+  <div id="github-contributions-sidebar" style="margin-top: 20px; padding: 0 1em;">로딩 중...</div>
+  
+  
   </div>
 
+
+
+<script>
+  (async function() {
+    const CACHE_KEY = 'github-contributions-cache';
+    const CACHE_DURATION = 60 * 60 * 1000; // 1시간
+    
+    try {
+      // 캐시 확인
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const { data, timestamp } = JSON.parse(cached);
+        if (Date.now() - timestamp < CACHE_DURATION) {
+          renderContributions(data);
+          return;
+        }
+      }
+      
+      // API 호출
+      const username = 'yunrry';
+      const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}`);
+      if (!response.ok) throw new Error('API 오류');
+      
+      const data = await response.json();
+      
+      // 캐시 저장
+      localStorage.setItem(CACHE_KEY, JSON.stringify({
+        data: data,
+        timestamp: Date.now()
+      }));
+      
+      renderContributions(data);
+    } catch (error) {
+      console.error('에러:', error);
+    }
+    
+    function renderContributions(data) {
+      const today = new Date();
+      const threeMonthsAgo = new Date(today);
+      threeMonthsAgo.setDate(today.getDate() - 91);
+      
+      const recentDays = data.contributions
+        .filter(day => {
+          const dayDate = new Date(day.date);
+          return dayDate >= threeMonthsAgo && dayDate <= today;
+        })
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
+      
+      const weeks = [];
+      for (let i = 0; i < recentDays.length; i += 7) {
+        weeks.push(recentDays.slice(i, i + 7));
+      }
+      
+      let html = '<div class="contribution-graph">';
+      weeks.forEach(week => {
+        html += '<div class="week">';
+        week.forEach(day => {
+          html += `<div class="day level-${day.level}" title="${day.date}: ${day.count}"></div>`;
+        });
+        html += '</div>';
+      });
+      html += '</div>';
+      
+      document.getElementById('github-contributions-sidebar').innerHTML = html;
+    }
+  })();
+  </script>
+
+<style>
+.contribution-graph {
+  display: flex;
+  gap: 2px;
+  padding: 8px;
+  background: #f6f8fa;
+  border-radius: 4px;
+  max-width: 150px;
+  overflow-x: auto;
+}
+.week { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; }
+.day { width: 7px; height: 7px; border-radius: 2px; flex-shrink: 0; }
+.level-0 { background: #ebedf0; }
+.level-1 { background: #9be9a8; }
+.level-2 { background: #40c463; }
+.level-3 { background: #30a14e; }
+.level-4 { background: #216e39; }
+[data-theme="dark"] .contribution-graph { background: #1a1a1a; }
+[data-theme="dark"] .level-0 { background: #161b22; }
+[data-theme="dark"] .level-1 { background: #0e4429; }
+[data-theme="dark"] .level-2 { background: #006d32; }
+[data-theme="dark"] .level-3 { background: #26a641; }
+[data-theme="dark"] .level-4 { background: #39d353; }
+</style>
 
 
   <div class="archive">
