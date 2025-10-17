@@ -7,6 +7,7 @@ set -e
 
 WATCH_DIR="assets/contents"
 PYTHON_SCRIPT="watch_contents.py"
+VENV_DIR="venv"
 
 # Python 및 Ruby 환경 확인
 if ! command -v python3 &> /dev/null; then
@@ -19,6 +20,22 @@ if ! command -v bundle &> /dev/null; then
   exit 1
 fi
 
+# venv 확인 및 활성화
+if [ ! -d "$VENV_DIR" ]; then
+  echo "📦 venv가 없습니다. 생성 중..."
+  python3 -m venv "$VENV_DIR"
+  echo "✅ venv 생성 완료"
+fi
+
+echo "🐍 venv 활성화 중..."
+source "$VENV_DIR/bin/activate"
+
+# watchdog 설치 확인
+if ! python3 -c "import watchdog" 2>/dev/null; then
+  echo "📥 watchdog 설치 중..."
+  pip install watchdog
+fi
+
 echo "🚀 개발 서버 시작 중..."
 echo "   - Markdown 감시 (${WATCH_DIR})"
 echo "   - Jekyll 서버 (자동 재시작 지원)"
@@ -28,6 +45,7 @@ cleanup() {
   echo "🛑 종료 중..."
   pkill -f "jekyll" || true
   pkill -f "${PYTHON_SCRIPT}" || true
+  deactivate 2>/dev/null || true
   exit 0
 }
 trap cleanup INT TERM

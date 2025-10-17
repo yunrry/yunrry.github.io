@@ -1,3 +1,13 @@
+- path: assets/contents/algorithm/floyd-warshall-problems.md
+  title: 플로이드-워셜 유사 문제 모음
+  category: algorithm
+  created: '2025-10-17'
+  updated: '2025-10-17'
+- path: assets/contents/algorithm/floyd-warshall.md
+  title: 플로이드-워셜 (Floyd-Warshall) 알고리즘
+  category: algorithm
+  created: '2025-10-17'
+  updated: '2025-10-17'
 - path: assets/contents/cs/array-linkedlist.md
   title: 📌 배열 Array
   category: cs

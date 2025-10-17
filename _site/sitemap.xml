@@ -105,6 +105,12 @@
 <loc>http://localhost:4000/assets/contents/algorithm/dynamic/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/assets/contents/algorithm/floyd-warshall-problems/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/algorithm/floyd-warshall/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/contents/algorithm/graph/</loc>
 </url>
 <url>

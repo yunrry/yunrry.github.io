@@ -1,0 +1,412 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>플로이드-워셜 유사 문제 모음 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="플로이드-워셜 유사 문제 모음">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/floyd-warshall-problems/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/floyd-warshall-problems/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="플로이드-워셜-유사-문제-모음">플로이드-워셜 유사 문제 모음</h1>
+
+<h2 id="-프로그래머스">🔴 프로그래머스</h2>
+
+<h3 id="1-순위-level-3-">1. <strong>순위</strong> (Level 3) ⭐</h3>
+<ul>
+  <li>문제: 권투 선수 순위 결정</li>
+  <li>유형: 전이적 관계 (Transitive Closure)</li>
+  <li>링크: https://school.programmers.co.kr/learn/courses/30/lessons/49191</li>
+</ul>
+
+<h3 id="2-가장-먼-노드-level-3">2. <strong>가장 먼 노드</strong> (Level 3)</h3>
+<ul>
+  <li>문제: 1번 노드로부터 가장 먼 노드들의 개수</li>
+  <li>유형: 최단 거리 (BFS도 가능하지만 플로이드-워셜로도 풀 수 있음)</li>
+  <li>링크: https://school.programmers.co.kr/learn/courses/30/lessons/49189</li>
+</ul>
+
+<h3 id="3-합승-택시-요금-level-3--추천">3. <strong>합승 택시 요금</strong> (Level 3) ⭐ 추천</h3>
+<ul>
+  <li>문제: A, B가 중간까지 합승 후 각자 목적지로</li>
+  <li>유형: 모든 쌍 최단 경로</li>
+  <li>링크: https://school.programmers.co.kr/learn/courses/30/lessons/72413</li>
+</ul>
+
+<h3 id="4-배달-level-2">4. <strong>배달</strong> (Level 2)</h3>
+<ul>
+  <li>문제: K 이하의 시간에 배달 가능한 마을</li>
+  <li>유형: 최단 경로 (다익스트라/플로이드-워셜)</li>
+  <li>링크: https://school.programmers.co.kr/learn/courses/30/lessons/12978</li>
+</ul>
+
+<h2 id="-leetcode">🟠 LeetCode</h2>
+
+<h3 id="1-floyd-warshall-직접-구현">1. <strong>Floyd Warshall 직접 구현</strong></h3>
+
+<h4 id="1334-find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance-medium--추천"><strong>1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance</strong> (Medium) ⭐ 추천</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 거리 임계값 이내에 도달 가능한 도시가 가장 적은 도시 찾기</span>
+<span class="c1">// 전형적인 플로이드-워셜 문제</span>
+</code></pre></div></div>
+<ul>
+  <li>링크: https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/</li>
+</ul>
+
+<h4 id="399-evaluate-division-medium--추천"><strong>399. Evaluate Division</strong> (Medium) ⭐ 추천</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// a/b = 2.0, b/c = 3.0이면 a/c = 6.0 추론</span>
+<span class="c1">// 전이적 관계를 곱셈으로 계산</span>
+</code></pre></div></div>
+<ul>
+  <li>링크: https://leetcode.com/problems/evaluate-division/</li>
+</ul>
+
+<h4 id="1462-course-schedule-iv-medium"><strong>1462. Course Schedule IV</strong> (Medium)</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 선수과목 관계에서 A를 들으면 B도 들을 수 있는지 판단</span>
+<span class="c1">// 전이적 폐포 문제</span>
+</code></pre></div></div>
+<ul>
+  <li>링크: https://leetcode.com/problems/course-schedule-iv/</li>
+</ul>
+
+<h3 id="2-최단-경로-관련">2. <strong>최단 경로 관련</strong></h3>
+
+<h4 id="743-network-delay-time-medium"><strong>743. Network Delay Time</strong> (Medium)</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 모든 노드에 신호가 도달하는 최소 시간</span>
+<span class="c1">// 다익스트라 또는 플로이드-워셜</span>
+</code></pre></div></div>
+<ul>
+  <li>링크: https://leetcode.com/problems/network-delay-time/</li>
+</ul>
+
+<h4 id="1976-number-of-ways-to-arrive-at-destination-medium"><strong>1976. Number of Ways to Arrive at Destination</strong> (Medium)</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 최단 경로의 개수 구하기</span>
+</code></pre></div></div>
+<ul>
+  <li>링크: https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/</li>
+</ul>
+
+<h3 id="3-전이적-관계">3. <strong>전이적 관계</strong></h3>
+
+<h4 id="1615-maximal-network-rank-medium"><strong>1615. Maximal Network Rank</strong> (Medium)</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 두 도시를 연결하는 네트워크 랭크의 최댓값</span>
+</code></pre></div></div>
+<ul>
+  <li>링크: https://leetcode.com/problems/maximal-network-rank/</li>
+</ul>
+
+<h4 id="1391-check-if-there-is-a-valid-path-in-a-grid-medium"><strong>1391. Check if There is a Valid Path in a Grid</strong> (Medium)</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 격자에서 경로 존재 여부</span>
+</code></pre></div></div>
+<ul>
+  <li>링크: https://leetcode.com/problems/check-if-there-is-a-valid-path-in-a-grid/</li>
+</ul>
+
+<h2 id="-백준">🟢 백준</h2>
+
+<h3 id="1-플로이드-워셜-기본">1. <strong>플로이드-워셜 기본</strong></h3>
+
+<h4 id="11404-플로이드-gold-4--기본-중의-기본"><strong>11404. 플로이드</strong> (Gold 4) ⭐ 기본 중의 기본</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>모든 도시 쌍의 최단 경로 구하기
+전형적인 플로이드-워셜 템플릿 문제
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/11404</li>
+</ul>
+
+<h4 id="11403-경로-찾기-silver-1--입문용"><strong>11403. 경로 찾기</strong> (Silver 1) ⭐ 입문용</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i에서 j로 가는 경로가 있는지 판단
+boolean 배열로 전이적 폐포
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/11403</li>
+</ul>
+
+<h4 id="1389-케빈-베이컨의-6단계-법칙-silver-1"><strong>1389. 케빈 베이컨의 6단계 법칙</strong> (Silver 1)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>모든 사람 쌍의 단계 수 합이 가장 작은 사람
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/1389</li>
+</ul>
+
+<h3 id="2-응용-문제">2. <strong>응용 문제</strong></h3>
+
+<h4 id="1956-운동-gold-4--추천"><strong>1956. 운동</strong> (Gold 4) ⭐ 추천</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>최소 사이클 길이 찾기
+플로이드-워셜 + dist[i][i] 확인
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/1956</li>
+</ul>
+
+<h4 id="2458-키-순서-gold-4--권투-문제와-거의-동일"><strong>2458. 키 순서</strong> (Gold 4) ⭐⭐ 권투 문제와 거의 동일!</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>학생들의 키 순서가 확정되는 학생 수
+당신이 푼 순위 문제와 완전히 동일한 로직!
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/2458</li>
+</ul>
+
+<h4 id="1613-역사-gold-3"><strong>1613. 역사</strong> (Gold 3)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>사건의 전후 관계 판단
+전이적 관계
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/1613</li>
+</ul>
+
+<h4 id="1738-골목길-gold-2"><strong>1738. 골목길</strong> (Gold 2)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>최단 경로에서 양수 사이클 찾기
+플로이드-워셜 응용
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/1738</li>
+</ul>
+
+<h3 id="3-어려운-응용">3. <strong>어려운 응용</strong></h3>
+
+<h4 id="1507-궁금한-민호-gold-2--흥미로운-문제"><strong>1507. 궁금한 민호</strong> (Gold 2) ⭐ 흥미로운 문제</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>주어진 최단 거리 행렬에서 불필요한 간선 제거
+역발상 문제
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/1507</li>
+</ul>
+
+<h4 id="13168-내일로-여행-gold-2"><strong>13168. 내일로 여행</strong> (Gold 2)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>티켓을 샀을 때와 안 샀을 때 비교
+플로이드-워셜 두 번
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/13168</li>
+</ul>
+
+<h4 id="2660-회장뽑기-gold-5"><strong>2660. 회장뽑기</strong> (Gold 5)</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>회원 간 관계에서 회장 후보 찾기
+</code></pre></div></div>
+<ul>
+  <li>링크: https://www.acmicpc.net/problem/2660</li>
+</ul>
+
+<hr />
+
+<h2 id="-난이도별-추천-학습-순서">📚 난이도별 추천 학습 순서</h2>
+
+<h3 id="입문-플로이드-워셜-이해하기"><strong>입문 (플로이드-워셜 이해하기)</strong></h3>
+<ol>
+  <li>백준 11403 - 경로 찾기</li>
+  <li>백준 1389 - 케빈 베이컨</li>
+  <li>백준 11404 - 플로이드</li>
+</ol>
+
+<h3 id="기본-전이적-관계"><strong>기본 (전이적 관계)</strong></h3>
+<ol>
+  <li>백준 2458 - 키 순서 ⭐ 권투 문제와 동일!</li>
+  <li>백준 1613 - 역사</li>
+  <li>LeetCode 1462 - Course Schedule IV</li>
+</ol>
+
+<h3 id="응용-실전-문제"><strong>응용 (실전 문제)</strong></h3>
+<ol>
+  <li>프로그래머스 - 합승 택시 요금</li>
+  <li>LeetCode 1334 - Find the City</li>
+  <li>백준 1956 - 운동</li>
+</ol>
+
+<h3 id="심화"><strong>심화</strong></h3>
+<ol>
+  <li>LeetCode 399 - Evaluate Division (곱셈 전이)</li>
+  <li>백준 1507 - 궁금한 민호 (역발상)</li>
+</ol>
+
+<hr />
+
+<h2 id="-유형별-분류">💡 유형별 분류</h2>
+
+<h3 id="전이적-폐포-transitive-closure"><strong>전이적 폐포 (Transitive Closure)</strong></h3>
+<ul>
+  <li>프로그래머스: 순위</li>
+  <li>백준: 2458 (키 순서), 1613 (역사), 11403 (경로 찾기)</li>
+  <li>LeetCode: 1462 (Course Schedule IV)</li>
+</ul>
+
+<h3 id="모든-쌍-최단-경로"><strong>모든 쌍 최단 경로</strong></h3>
+<ul>
+  <li>프로그래머스: 합승 택시 요금</li>
+  <li>백준: 11404 (플로이드), 1389 (케빈 베이컨)</li>
+  <li>LeetCode: 1334 (Find the City)</li>
+</ul>
+
+<h3 id="사이클-탐지"><strong>사이클 탐지</strong></h3>
+<ul>
+  <li>백준: 1956 (운동), 1738 (골목길)</li>
+</ul>
+
+<h3 id="특수-응용"><strong>특수 응용</strong></h3>
+<ul>
+  <li>LeetCode: 399 (나눗셈 전이)</li>
+  <li>백준: 1507 (불필요한 간선 제거)</li>
+</ul>
+
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
