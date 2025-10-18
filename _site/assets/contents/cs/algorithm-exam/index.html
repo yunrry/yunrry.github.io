@@ -1,0 +1,726 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Algorithm 실기 기출 유형 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="Algorithm 실기 기출 유형">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/algorithm-exam/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/algorithm-exam/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+<h1 id="algorithm-실기-기출-유형">Algorithm 실기 기출 유형</h1>
+
+<h2 id="-유형-1-코드-결과-예측">🎯 유형 1: 코드 결과 예측</h2>
+
+<h3 id="버블-정렬-문제">버블 정렬 문제</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 2회전만</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+                <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+                <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 배열 출력</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>풀이:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>초기: [5, 2, 8, 1, 9]
+
+1회전:
+[2, 5, 8, 1, 9]
+[2, 5, 1, 8, 9]
+[2, 5, 1, 8, 9]
+[2, 5, 1, 8, 9]
+결과: [2, 5, 1, 8, 9] (9가 맨 뒤로)
+
+2회전:
+[2, 5, 1, 8, 9]
+[2, 1, 5, 8, 9]
+[2, 1, 5, 8, 9]
+결과: [2, 1, 5, 8, 9] (8이 뒤에서 2번째로)
+
+출력: 2 1 5 8 9
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="선택-정렬-문제">선택 정렬 문제</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">64</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">11</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 2회전만</span>
+        <span class="kt">int</span> <span class="n">minIndex</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">minIndex</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">minIndex</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">minIndex</span><span class="p">];</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">minIndex</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>풀이:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>초기: [64, 25, 12, 22, 11]
+
+1회전:
+최솟값 찾기: 11 (인덱스 4)
+교환: [11, 25, 12, 22, 64]
+출력: 11
+
+2회전:
+나머지 [25, 12, 22, 64]에서 최솟값 찾기: 12 (인덱스 2)
+교환: [11, 12, 25, 22, 64]
+출력: 12
+
+출력: 11 12
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="삽입-정렬-문제">삽입 정렬 문제</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 3회전만</span>
+        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        
+        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="n">j</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>풀이:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>초기: [5, 2, 4, 6, 1, 3]
+
+i=1, key=2:
+[2, 5, 4, 6, 1, 3]
+
+i=2, key=4:
+[2, 4, 5, 6, 1, 3]
+
+i=3, key=6:
+[2, 4, 5, 6, 1, 3] (변화 없음)
+
+출력: 2 4 5 6 1 3
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="이진-탐색-문제">이진 탐색 문제</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">binarySearch</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// 비교 횟수</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>풀이:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>arr[] = {1, 3, 5, 7, 9, 11, 13, 15}
+key = 13
+
+1회: mid=3, arr[3]=7, 13&gt;7 → left=4
+2회: mid=6, arr[6]=13 → 찾음!
+
+출력: 2
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-유형-2-빈칸-채우기">🎯 유형 2: 빈칸 채우기</h2>
+
+<h3 id="버블-정렬">버블 정렬</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">______</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 빈칸 1</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+                <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">______</span><span class="p">;</span>              <span class="c1">// 빈칸 2</span>
+                <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>정답:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">빈칸</span> <span class="mi">1</span><span class="o">:</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span>
+<span class="err">빈칸</span> <span class="mi">2</span><span class="o">:</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="선택-정렬">선택 정렬</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">minIndex</span> <span class="o">=</span> <span class="n">______</span><span class="p">;</span>  <span class="c1">// 빈칸 1</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">minIndex</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">minIndex</span> <span class="o">=</span> <span class="n">______</span><span class="p">;</span>  <span class="c1">// 빈칸 2</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">minIndex</span><span class="p">];</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">minIndex</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>정답:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">빈칸</span> <span class="mi">1</span><span class="o">:</span> <span class="n">i</span>
+<span class="err">빈칸</span> <span class="mi">2</span><span class="o">:</span> <span class="n">j</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="삽입-정렬">삽입 정렬</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        
+        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="n">______</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 빈칸 1</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="n">j______</span><span class="p">;</span>  <span class="c1">// 빈칸 2</span>
+        <span class="p">}</span>
+        
+        <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>정답:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">빈칸</span> <span class="mi">1</span><span class="o">:</span> <span class="o">&gt;</span>
+<span class="err">빈칸</span> <span class="mi">2</span><span class="o">:</span> <span class="o">--</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="이진-탐색">이진 탐색</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">binarySearch</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">______</span><span class="p">;</span>  <span class="c1">// 빈칸 1</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">______</span><span class="p">;</span>  <span class="c1">// 빈칸 2</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>정답:</strong></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">빈칸</span> <span class="mi">1</span><span class="o">:</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="err">빈칸</span> <span class="mi">2</span><span class="o">:</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-유형-3-개념-서술">🎯 유형 3: 개념 서술</h2>
+
+<h3 id="q1-버블-정렬의-동작-원리를-설명하시오">Q1: 버블 정렬의 동작 원리를 설명하시오.</h3>
+
+<p><strong>답:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>버블 정렬은 인접한 두 원소를 비교하여 
+큰 값을 뒤로 보내는 정렬 알고리즘입니다.
+
+동작:
+1. 첫 번째부터 끝까지 인접 원소 비교
+2. 큰 값을 뒤로 교환
+3. 가장 큰 값이 맨 뒤로 이동
+4. 이를 n-1회 반복
+
+시간복잡도: O(N²)
+장점: 구현이 간단, 안정 정렬
+단점: 느린 속도
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="q2-선택-정렬과-버블-정렬의-차이점을-설명하시오">Q2: 선택 정렬과 버블 정렬의 차이점을 설명하시오.</h3>
+
+<p><strong>답:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>선택 정렬:
+- 전체에서 최솟값을 찾아 맨 앞과 교환
+- 교환 횟수: 최대 n-1번
+- 불안정 정렬
+- 이미 정렬되어도 모든 비교 수행
+
+버블 정렬:
+- 인접 원소를 비교하여 교환
+- 교환 횟수: 최대 n(n-1)/2번
+- 안정 정렬
+- 최적화 시 이미 정렬된 경우 빠름
+
+공통점:
+- 둘 다 O(N²) 시간복잡도
+- 추가 메모리 O(1)
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="q3-삽입-정렬이-효율적인-경우를-설명하시오">Q3: 삽입 정렬이 효율적인 경우를 설명하시오.</h3>
+
+<p><strong>답:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>삽입 정렬이 효율적인 경우:
+
+1. 이미 정렬된 배열:
+   - 시간복잡도: O(N)
+   - 각 원소마다 1번만 비교
+
+2. 거의 정렬된 배열:
+   - 이동 횟수가 적음
+   - 다른 O(N²) 알고리즘보다 빠름
+
+3. 작은 데이터셋 (n &lt; 50):
+   - 오버헤드가 적음
+   - 구현이 간단
+
+4. 온라인 알고리즘:
+   - 데이터가 실시간으로 들어올 때
+   - 즉시 정렬 가능
+
+실무 활용:
+- TimSort (Python, Java) 등의 
+  하이브리드 정렬 알고리즘에서
+  작은 부분 배열 정렬에 사용
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="q4-퀵-정렬의-최악의-경우와-해결-방법을-설명하시오">Q4: 퀵 정렬의 최악의 경우와 해결 방법을 설명하시오.</h3>
+
+<p><strong>답:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>최악의 경우:
+
+발생 상황:
+- 이미 정렬된 배열
+- 피벗이 항상 최솟값 또는 최댓값
+- 한쪽으로만 분할
+
+시간복잡도: O(N²)
+
+해결 방법:
+
+1. Median-of-Three:
+   - 첫, 중간, 끝 원소 중 중앙값을 피벗으로
+   - 최악 확률 감소
+
+2. 무작위 피벗:
+   - 피벗을 무작위로 선택
+   - 평균 O(N log N) 보장
+
+3. 3-Way 파티션:
+   - 피벗과 같은 값들을 중간에 모음
+   - 중복 값이 많을 때 효과적
+
+4. Introsort:
+   - 깊이가 깊어지면 힙 정렬로 전환
+   - C++ STL sort()가 사용
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="q5-이진-탐색의-전제-조건과-시간복잡도를-설명하시오">Q5: 이진 탐색의 전제 조건과 시간복잡도를 설명하시오.</h3>
+
+<p><strong>답:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>전제 조건:
+- 반드시 정렬된 배열
+- 랜덤 액세스 가능 (배열)
+
+동작 원리:
+- 중간값과 비교
+- 절반씩 범위를 줄임
+- log₂N번 만에 탐색
+
+시간복잡도: O(log N)
+
+예시:
+- 1,000,000개: 최대 20번 비교
+- 선형 탐색: 최대 1,000,000번
+
+장점:
+- 매우 빠른 탐색
+- 큰 데이터에 효율적
+
+단점:
+- 정렬 필요 (O(N log N))
+- 삽입/삭제 시 정렬 유지 어려움
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-핵심-암기-사항">📝 핵심 암기 사항</h2>
+
+<h3 id="정렬-알고리즘-요약">정렬 알고리즘 요약</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>버블 정렬:
+✅ 인접 원소 비교 교환
+✅ O(N²), 안정 정렬
+✅ 구현 간단, 실무 X
+
+선택 정렬:
+✅ 최솟값 선택 교환
+✅ O(N²), 불안정 정렬
+✅ 교환 횟수 적음
+
+삽입 정렬:
+✅ 정렬된 부분에 삽입
+✅ O(N²), 최선 O(N)
+✅ 거의 정렬된 경우 빠름
+
+퀵 정렬:
+✅ 피벗 기준 분할
+✅ 평균 O(N log N)
+✅ 실무에서 가장 많이 사용
+</code></pre></div></div>
+
+<h3 id="시간복잡도-비교">시간복잡도 비교</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>정렬</th>
+      <th>최선</th>
+      <th>평균</th>
+      <th>최악</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>버블</td>
+      <td>O(N)</td>
+      <td>O(N²)</td>
+      <td>O(N²)</td>
+    </tr>
+    <tr>
+      <td>선택</td>
+      <td>O(N²)</td>
+      <td>O(N²)</td>
+      <td>O(N²)</td>
+    </tr>
+    <tr>
+      <td>삽입</td>
+      <td>O(N)</td>
+      <td>O(N²)</td>
+      <td>O(N²)</td>
+    </tr>
+    <tr>
+      <td>퀵</td>
+      <td>O(N log N)</td>
+      <td>O(N log N)</td>
+      <td>O(N²)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="탐색-알고리즘">탐색 알고리즘</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>선형 탐색:
+- 시간: O(N)
+- 정렬 불필요
+- 작은 데이터
+
+이진 탐색:
+- 시간: O(log N)
+- 정렬 필수
+- 큰 데이터 ✅
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-실기-시험-팁">🎓 실기 시험 팁</h2>
+
+<h3 id="1-정렬-알고리즘-선택">1. 정렬 알고리즘 선택</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제에서 요구하는 것:
+- "간단한 정렬" → 버블/선택
+- "효율적인 정렬" → 퀵 정렬
+- "안정 정렬" → 버블/삽입
+</code></pre></div></div>
+
+<h3 id="2-코드-추적">2. 코드 추적</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>손으로 배열 상태를 그리면서 추적!
+
+[5, 2, 8, 1]
+↓ 1회전
+[2, 5, 1, 8]
+↓ 2회전
+[2, 1, 5, 8]
+...
+</code></pre></div></div>
+
+<h3 id="3-시간복잡도-계산">3. 시간복잡도 계산</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>이중 for문 → O(N²)
+while 절반씩 → O(log N)
+재귀 분할 → O(log N)
+</code></pre></div></div>
+
+<h3 id="4-경계-조건">4. 경계 조건</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 빈 배열: n = 0
+- 단일 원소: n = 1
+- 중복 값
+- 이미 정렬됨
+</code></pre></div></div>
+
+<hr />
+
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

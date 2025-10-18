@@ -37,7 +37,8 @@
         '/categories/cs/datastructure/',
         '/categories/cs/network/',
         '/categories/cs/os/',
-        '/categories/cs/database/'
+        '/categories/cs/database/',
+        '/categories/cs/algorithmm/'
       ]
     };
     
@@ -78,7 +79,7 @@
       };
     });
   }
-  
+
   
    // ============================================
   // 2. 다크모드 토글 기능 (시스템 설정 인식)

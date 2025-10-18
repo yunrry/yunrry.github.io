@@ -42,6 +42,9 @@
 <loc>http://localhost:4000/categories/algorithm/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/categories/cs/algorithmm/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/categories/cs/database/</loc>
 </url>
 <url>
@@ -201,7 +204,16 @@
 <loc>http://localhost:4000/assets/contents/algorithm/stack-queue_deque/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/assets/contents/cs/algorithm-exam/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/cs/algorithm-sorting/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/contents/cs/array-linkedlist/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/cs/binary-search/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/contents/cs/constraints/</loc>
@@ -235,6 +247,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/assets/contents/cs/sub-query/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/cs/time-complexity/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/contents/cs/transaction/</loc>

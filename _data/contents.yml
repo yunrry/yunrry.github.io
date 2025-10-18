@@ -1,3 +1,23 @@
+- path: assets/contents/cs/algorithm-exam.md
+  title: Algorithm 실기 기출 유형
+  category: cs
+  created: '2025-10-18'
+  updated: '2025-10-18'
+- path: assets/contents/cs/time-complexity.md
+  title: 시간복잡도 기초
+  category: cs
+  created: '2025-10-18'
+  updated: '2025-10-18'
+- path: assets/contents/cs/binary-search.md
+  title: 이진 탐색 (Binary Search)
+  category: cs
+  created: '2025-10-18'
+  updated: '2025-10-18'
+- path: assets/contents/cs/algorithm-sorting.md
+  title: 정렬 알고리즘
+  category: cs
+  created: '2025-10-18'
+  updated: '2025-10-18'
 - path: assets/contents/algorithm/floyd-warshall-problems.md
   title: 플로이드-워셜 유사 문제 모음
   category: algorithm
