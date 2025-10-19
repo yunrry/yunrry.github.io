@@ -1,0 +1,426 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>TCP vs UDP - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="TCP vs UDP">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/network-udp/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/network-udp/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="3-tcp-vs-udp">3. TCP vs UDP</h1>
+
+<h2 id="-비교표">📊 비교표</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>TCP</th>
+      <th>UDP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>연결 방식</strong></td>
+      <td>연결 지향</td>
+      <td>비연결</td>
+    </tr>
+    <tr>
+      <td><strong>신뢰성</strong></td>
+      <td>보장 ✅</td>
+      <td>보장 안 함 ❌</td>
+    </tr>
+    <tr>
+      <td><strong>순서 보장</strong></td>
+      <td>보장 ✅</td>
+      <td>보장 안 함 ❌</td>
+    </tr>
+    <tr>
+      <td><strong>속도</strong></td>
+      <td>느림</td>
+      <td>빠름 ✅</td>
+    </tr>
+    <tr>
+      <td><strong>오버헤드</strong></td>
+      <td>큼 (20바이트)</td>
+      <td>작음 (8바이트) ✅</td>
+    </tr>
+    <tr>
+      <td><strong>흐름 제어</strong></td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td><strong>혼잡 제어</strong></td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td><strong>재전송</strong></td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td><strong>사용 사례</strong></td>
+      <td>웹, 이메일, 파일 전송</td>
+      <td>스트리밍, 게임, DNS</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-tcp-transmission-control-protocol">🔵 TCP (Transmission Control Protocol)</h2>
+
+<h3 id="특징">특징</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 연결 지향 (Connection-Oriented)
+✅ 신뢰성 보장
+✅ 순서 보장
+✅ 흐름 제어
+✅ 혼잡 제어
+❌ 느린 속도
+</code></pre></div></div>
+
+<h3 id="tcp-헤더-구조">TCP 헤더 구조</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0                   16                  31
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Source Port   |   Destination Port|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Sequence Number             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|        Acknowledgment Number          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|Data |R|C|E|U|A|P|R|S|F|               |
+|Offset|S|W|C|R|C|S|S|Y|I|    Window    |
+|     |V|R|E|G|K|H|T|N|N|               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|    Checksum       |  Urgent Pointer   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+주요 필드:
+- Sequence Number: 순서 번호
+- Acknowledgment Number: 확인 응답 번호
+- Flags: SYN, ACK, FIN 등 제어 플래그
+- Window: 흐름 제어 (수신 버퍼 크기)
+- Checksum: 오류 검출
+</code></pre></div></div>
+
+<h3 id="흐름-제어-flow-control">흐름 제어 (Flow Control)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>수신자의 처리 속도를 고려하여 전송 속도 조절
+
+Window Size:
+- 수신자가 받을 수 있는 데이터 크기
+- ACK에 포함하여 전달
+
+예:
+송신자: 1000 바이트 전송
+수신자: Window = 500 → 500바이트만 전송
+수신자: 처리 완료 → Window = 1000
+송신자: 1000 바이트 전송
+</code></pre></div></div>
+
+<h3 id="혼잡-제어-congestion-control">혼잡 제어 (Congestion Control)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>네트워크 혼잡을 방지하기 위한 전송 속도 조절
+
+알고리즘:
+1. Slow Start:
+   - 처음엔 천천히 시작
+   - 지수적으로 증가
+
+2. Congestion Avoidance:
+   - 임계값 도달 후 선형 증가
+
+3. Fast Retransmit:
+   - 중복 ACK 3개 수신 시 즉시 재전송
+
+4. Fast Recovery:
+   - 혼잡 발생 시 절반으로 감소
+</code></pre></div></div>
+
+<h3 id="사용-사례">사용 사례</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 웹 브라우징 (HTTP/HTTPS)
+✅ 이메일 (SMTP, POP3, IMAP)
+✅ 파일 전송 (FTP)
+✅ 원격 접속 (SSH, Telnet)
+✅ 데이터베이스 연결
+
+→ 신뢰성이 중요한 경우
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-udp-user-datagram-protocol">🟢 UDP (User Datagram Protocol)</h2>
+
+<h3 id="특징-1">특징</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 비연결 (Connectionless)
+✅ 빠른 속도
+✅ 작은 오버헤드
+❌ 신뢰성 보장 안 함
+❌ 순서 보장 안 함
+❌ 흐름 제어 없음
+</code></pre></div></div>
+
+<h3 id="udp-헤더-구조">UDP 헤더 구조</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0                   16                  31
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Source Port   |   Destination Port|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      Length       |     Checksum      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+주요 필드:
+- Source Port: 출발지 포트
+- Destination Port: 목적지 포트
+- Length: 전체 길이
+- Checksum: 오류 검출 (선택사항)
+
+크기: 8바이트 (TCP 20바이트의 40%)
+</code></pre></div></div>
+
+<h3 id="사용-사례-1">사용 사례</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 실시간 스트리밍 (동영상, 음악)
+✅ 온라인 게임
+✅ DNS (도메인 조회)
+✅ DHCP (IP 할당)
+✅ VoIP (인터넷 전화)
+✅ IoT 센서 데이터
+
+→ 속도가 중요하고 일부 손실 허용 가능
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-면접-답변-예시">💬 면접 답변 예시</h2>
+
+<h3 id="짧은-답변">짧은 답변</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TCP:
+- 연결 지향, 신뢰성 보장
+- 3-Way Handshake로 연결
+- 순서 보장, 재전송
+- 느리지만 안전
+- 웹, 이메일, 파일 전송
+
+UDP:
+- 비연결, 빠른 속도
+- 신뢰성 보장 안 함
+- 순서 보장 안 함
+- 빠르지만 손실 가능
+- 스트리밍, 게임, DNS
+</code></pre></div></div>
+
+<h3 id="상세-답변">상세 답변</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TCP (Transmission Control Protocol):
+
+연결 방식:
+- 3-Way Handshake로 연결 수립
+- 4-Way Handshake로 연결 종료
+- 연결 지향
+
+신뢰성:
+- 순서 번호로 순서 보장
+- ACK로 수신 확인
+- 타임아웃 시 재전송
+- Checksum으로 오류 검출
+
+제어:
+- 흐름 제어 (Window Size)
+- 혼잡 제어 (Slow Start 등)
+
+단점:
+- 헤더 크기 큼 (20바이트)
+- 연결 수립 시간
+- 느린 속도
+
+UDP (User Datagram Protocol):
+
+연결 방식:
+- 비연결
+- 사전 연결 없이 전송
+
+특징:
+- 헤더 작음 (8바이트)
+- 빠른 전송
+- 낮은 지연시간
+
+단점:
+- 신뢰성 보장 안 함
+- 순서 보장 안 함
+- 손실 가능
+
+선택 기준:
+- 신뢰성 중요 → TCP
+- 속도 중요 + 일부 손실 허용 → UDP
+- 실시간성 중요 → UDP
+</code></pre></div></div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

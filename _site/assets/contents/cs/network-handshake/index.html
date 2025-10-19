@@ -1,0 +1,443 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>3-Way Handshake &amp; 4-Way Handshake - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="3-Way Handshake &amp; 4-Way Handshake">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/network-handshake/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/network-handshake/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="4-3-way-handshake--4-way-handshake">4. 3-Way Handshake &amp; 4-Way Handshake</h1>
+
+<h2 id="-3-way-handshake-연결-수립">📌 3-Way Handshake (연결 수립)</h2>
+
+<h3 id="개념">개념</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TCP 연결을 수립하는 3단계 과정
+SYN → SYN+ACK → ACK
+</code></pre></div></div>
+
+<h3 id="동작-과정">동작 과정</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Client                    Server
+
+[CLOSED]                 [LISTEN]
+   |                         |
+   |  1. SYN (seq=100)      |
+   |-----------------------&gt;|
+   |                    [SYN_RCVD]
+   |                         |
+   | 2. SYN+ACK (seq=200,   |
+   |     ack=101)            |
+   |&lt;-----------------------|
+[ESTABLISHED]               |
+   |                         |
+   |  3. ACK (ack=201)      |
+   |-----------------------&gt;|
+   |                  [ESTABLISHED]
+   |                         |
+   
+연결 수립 완료! ✅
+</code></pre></div></div>
+
+<h3 id="상세-설명">상세 설명</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1단계: SYN (Client → Server)
+- Client가 연결 요청
+- SYN 플래그 = 1
+- Sequence Number = 100 (랜덤)
+- 상태: CLOSED → SYN_SENT
+
+2단계: SYN+ACK (Server → Client)
+- Server가 요청 수락
+- SYN 플래그 = 1
+- ACK 플래그 = 1
+- Sequence Number = 200 (랜덤)
+- Acknowledgment Number = 101 (100+1)
+- 상태: LISTEN → SYN_RCVD
+
+3단계: ACK (Client → Server)
+- Client가 확인 응답
+- ACK 플래그 = 1
+- Acknowledgment Number = 201 (200+1)
+- 상태: SYN_SENT → ESTABLISHED
+- Server 상태: SYN_RCVD → ESTABLISHED
+
+연결 수립 완료!
+</code></pre></div></div>
+
+<h3 id="왜-3-way인가">왜 3-Way인가?</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❌ 2-Way만으로는 부족:
+Client: "연결하자!" (SYN)
+Server: "OK!" (SYN+ACK)
+→ Client가 살아있는지 확인 불가
+
+✅ 3-Way로 양방향 확인:
+Client: "연결하자!" (SYN)
+Server: "OK, 너도 받았어?" (SYN+ACK)
+Client: "응, 받았어!" (ACK)
+→ 양쪽 모두 확인 ✅
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-4-way-handshake-연결-종료">📌 4-Way Handshake (연결 종료)</h2>
+
+<h3 id="개념-1">개념</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TCP 연결을 종료하는 4단계 과정
+FIN → ACK → FIN → ACK
+</code></pre></div></div>
+
+<h3 id="동작-과정-1">동작 과정</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Client                    Server
+
+[ESTABLISHED]         [ESTABLISHED]
+   |                         |
+   |  1. FIN (seq=300)      |
+   |-----------------------&gt;|
+[FIN_WAIT_1]                |
+   |                    [CLOSE_WAIT]
+   |                         |
+   |  2. ACK (ack=301)      |
+   |&lt;-----------------------|
+[FIN_WAIT_2]                |
+   |                         |
+   |    (Server 작업 완료)   |
+   |                         |
+   |  3. FIN (seq=400)      |
+   |&lt;-----------------------|
+   |                  [LAST_ACK]
+[TIME_WAIT]                 |
+   |                         |
+   |  4. ACK (ack=401)      |
+   |-----------------------&gt;|
+   |                   [CLOSED]
+   |                         |
+(2MSL 대기)                 |
+   |                         |
+[CLOSED]
+
+연결 종료 완료! ✅
+</code></pre></div></div>
+
+<h3 id="상세-설명-1">상세 설명</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1단계: FIN (Client → Server)
+- Client가 연결 종료 요청
+- FIN 플래그 = 1
+- Sequence Number = 300
+- 상태: ESTABLISHED → FIN_WAIT_1
+
+2단계: ACK (Server → Client)
+- Server가 종료 요청 확인
+- ACK 플래그 = 1
+- Acknowledgment Number = 301
+- 상태: ESTABLISHED → CLOSE_WAIT
+- Client 상태: FIN_WAIT_1 → FIN_WAIT_2
+
+(Server가 남은 데이터 전송 완료)
+
+3단계: FIN (Server → Client)
+- Server가 연결 종료 준비 완료
+- FIN 플래그 = 1
+- Sequence Number = 400
+- 상태: CLOSE_WAIT → LAST_ACK
+- Client 상태: FIN_WAIT_2 → TIME_WAIT
+
+4단계: ACK (Client → Server)
+- Client가 최종 확인 응답
+- ACK 플래그 = 1
+- Acknowledgment Number = 401
+- Server 상태: LAST_ACK → CLOSED
+- Client 상태: TIME_WAIT → (2MSL 대기) → CLOSED
+
+연결 종료 완료!
+</code></pre></div></div>
+
+<h3 id="time_wait-상태">TIME_WAIT 상태</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>왜 바로 종료 안 하고 대기하는가?
+
+이유 1: 지연 패킷 처리
+- 네트워크에 남아있는 패킷 처리
+- 같은 포트로 즉시 재연결 시 문제 방지
+
+이유 2: 마지막 ACK 재전송
+- Server가 ACK를 못 받으면 FIN 재전송
+- 이때 다시 ACK 전송 가능
+
+대기 시간:
+2MSL (Maximum Segment Lifetime)
+= 2 × 최대 세그먼트 생존 시간
+= 보통 1~4분
+</code></pre></div></div>
+
+<h3 id="왜-4-way인가">왜 4-Way인가?</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Server의 Half-Close 지원:
+
+Client: "나는 보낼 데이터 없어" (FIN)
+Server: "OK, 받았어" (ACK)
+        "근데 나는 아직 보낼 게 있어"
+        (데이터 전송 계속)
+        "이제 나도 끝!" (FIN)
+Client: "알았어!" (ACK)
+
+→ 양방향 독립적 종료 가능 ✅
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-면접-답변-예시">💬 면접 답변 예시</h2>
+
+<h3 id="3-way-handshake">3-Way Handshake</h3>
+
+<p><strong>짧은 답변:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TCP 연결 수립 과정입니다.
+
+1. SYN: Client → Server 연결 요청
+2. SYN+ACK: Server → Client 수락
+3. ACK: Client → Server 확인
+
+양방향 통신 가능 확인 후 연결 수립합니다.
+</code></pre></div></div>
+
+<p><strong>상세 답변:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3-Way Handshake는 TCP 연결을 수립하는 
+3단계 과정입니다.
+
+과정:
+1. SYN (Client → Server):
+   - Client가 연결 요청
+   - SYN 플래그 = 1
+   - 초기 Sequence Number 전송
+   
+2. SYN+ACK (Server → Client):
+   - Server가 요청 수락
+   - SYN, ACK 플래그 = 1
+   - 자신의 Sequence Number 전송
+   - Client의 Seq+1을 ACK로 응답
+   
+3. ACK (Client → Server):
+   - Client가 최종 확인
+   - ACK 플래그 = 1
+   - Server의 Seq+1을 ACK로 응답
+
+이유:
+- 양방향 통신 가능 확인
+- 초기 Sequence Number 교환
+- 신뢰성 있는 연결 수립
+
+2-Way로는 부족:
+- Client가 살아있는지 확인 불가
+- Server의 응답을 Client가 받았는지 미확인
+</code></pre></div></div>
+
+<h3 id="4-way-handshake">4-Way Handshake</h3>
+
+<p><strong>짧은 답변:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TCP 연결 종료 과정입니다.
+
+1. FIN: Client → Server 종료 요청
+2. ACK: Server → Client 확인
+3. FIN: Server → Client 종료 준비 완료
+4. ACK: Client → Server 최종 확인
+
+양방향 독립적 종료를 지원합니다.
+</code></pre></div></div>
+
+<p><strong>상세 답변:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4-Way Handshake는 TCP 연결을 종료하는 
+4단계 과정입니다.
+
+과정:
+1. FIN (Client → Server):
+   - Client가 연결 종료 요청
+   - 더 이상 보낼 데이터 없음
+   
+2. ACK (Server → Client):
+   - Server가 종료 요청 확인
+   - 아직 보낼 데이터가 있을 수 있음
+   
+3. FIN (Server → Client):
+   - Server도 종료 준비 완료
+   - 남은 데이터 전송 완료
+   
+4. ACK (Client → Server):
+   - Client가 최종 확인
+   - TIME_WAIT 상태로 2MSL 대기
+
+TIME_WAIT 이유:
+- 지연 패킷 처리
+- 마지막 ACK 유실 대비
+- 같은 포트 즉시 재사용 방지
+
+Half-Close:
+- 한쪽만 먼저 종료 가능
+- 상대방은 계속 데이터 전송 가능
+</code></pre></div></div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

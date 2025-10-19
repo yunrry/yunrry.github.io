@@ -1,0 +1,553 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>GET vs POST - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="GET vs POST">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/network-get-post/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/network-get-post/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="6-get-vs-post">6. GET vs POST</h1>
+
+<h2 id="-비교표">📊 비교표</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>GET</th>
+      <th>POST</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>목적</strong></td>
+      <td>데이터 조회</td>
+      <td>데이터 생성/수정</td>
+    </tr>
+    <tr>
+      <td><strong>데이터 위치</strong></td>
+      <td>URL (Query String)</td>
+      <td>Body</td>
+    </tr>
+    <tr>
+      <td><strong>보안</strong></td>
+      <td>낮음 (URL 노출) ❌</td>
+      <td>높음 (Body) ✅</td>
+    </tr>
+    <tr>
+      <td><strong>캐싱</strong></td>
+      <td>가능 ✅</td>
+      <td>불가능</td>
+    </tr>
+    <tr>
+      <td><strong>북마크</strong></td>
+      <td>가능 ✅</td>
+      <td>불가능</td>
+    </tr>
+    <tr>
+      <td><strong>히스토리</strong></td>
+      <td>남음</td>
+      <td>안 남음</td>
+    </tr>
+    <tr>
+      <td><strong>길이 제한</strong></td>
+      <td>있음 (2048자)</td>
+      <td>없음 ✅</td>
+    </tr>
+    <tr>
+      <td><strong>멱등성</strong></td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td><strong>속도</strong></td>
+      <td>빠름 ✅</td>
+      <td>약간 느림</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-get">🔵 GET</h2>
+
+<h3 id="특징">특징</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 데이터 조회
+✅ URL에 데이터 포함
+✅ 캐싱 가능
+✅ 멱등성 보장
+❌ 보안 취약
+❌ 길이 제한
+
+사용: 검색, 조회, 필터링
+</code></pre></div></div>
+
+<h3 id="요청-형식">요청 형식</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /search?q=java&amp;page=1 HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0
+
+(Body 없음)
+
+URL:
+http://www.example.com/search?q=java&amp;page=1
+                              └─────┬─────┘
+                            Query String
+</code></pre></div></div>
+
+<h3 id="query-string-구조">Query String 구조</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>?key1=value1&amp;key2=value2&amp;key3=value3
+
+예:
+/search?q=java&amp;category=book&amp;sort=price
+
+파싱:
+q = "java"
+category = "book"
+sort = "price"
+</code></pre></div></div>
+
+<h3 id="장점">장점</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 간단함:
+   - URL만으로 전달
+   - 별도 Body 불필요
+
+✅ 캐싱:
+   - 브라우저 캐시
+   - CDN 캐시
+   - 빠른 응답
+
+✅ 북마크/공유:
+   - URL 복사만으로 공유
+   - 검색 결과 공유 가능
+
+✅ 멱등성:
+   - 여러 번 요청해도 같은 결과
+   - 안전함
+</code></pre></div></div>
+
+<h3 id="단점">단점</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❌ 보안:
+   - URL에 데이터 노출
+   - 브라우저 히스토리에 남음
+   - 로그에 기록됨
+   - 비밀번호 전송 불가
+
+❌ 길이 제한:
+   - 브라우저: 약 2048자
+   - 서버마다 다름
+   - 긴 데이터 전송 불가
+
+❌ 바이너리 데이터:
+   - 파일 업로드 불가
+   - 텍스트만 가능
+</code></pre></div></div>
+
+<h3 id="사용-예시">사용 예시</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 올바른 사용:
+GET /users/123           (사용자 조회)
+GET /products?id=5       (상품 조회)
+GET /search?q=java       (검색)
+GET /posts?page=2        (페이징)
+
+❌ 잘못된 사용:
+GET /login?id=admin&amp;pw=1234  (비밀번호 노출!)
+GET /user/delete?id=5        (삭제는 DELETE 사용)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-post">🔴 POST</h2>
+
+<h3 id="특징-1">특징</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 데이터 생성/수정
+✅ Body에 데이터 포함
+✅ 보안성 높음
+✅ 길이 제한 없음
+❌ 캐싱 불가
+❌ 멱등성 없음
+
+사용: 회원가입, 로그인, 파일 업로드
+</code></pre></div></div>
+
+<h3 id="요청-형식-1">요청 형식</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /login HTTP/1.1
+Host: www.example.com
+Content-Type: application/json
+Content-Length: 52
+
+{
+  "username": "admin",
+  "password": "secret123"
+}
+
+데이터: Body에 포함 (URL에 노출 안 됨) ✅
+</code></pre></div></div>
+
+<h3 id="content-type">Content-Type</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. application/json (가장 많이 사용):
+{
+  "name": "홍길동",
+  "age": 30
+}
+
+2. application/x-www-form-urlencoded:
+name=%ED%99%8D%EA%B8%B8%EB%8F%99&amp;age=30
+
+3. multipart/form-data (파일 업로드):
+------WebKitFormBoundary
+Content-Disposition: form-data; name="file"
+
+(파일 내용)
+------WebKitFormBoundary--
+
+4. text/plain:
+name: 홍길동
+age: 30
+</code></pre></div></div>
+
+<h3 id="장점-1">장점</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 보안:
+   - Body에 데이터 숨김
+   - URL에 노출 안 됨
+   - 히스토리에 안 남음
+
+✅ 데이터 크기:
+   - 길이 제한 없음
+   - 대용량 데이터 전송 가능
+
+✅ 다양한 형식:
+   - JSON, XML, 파일 등
+   - 바이너리 데이터 가능
+</code></pre></div></div>
+
+<h3 id="단점-1">단점</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❌ 캐싱 불가:
+   - 매번 서버 요청
+   - 느릴 수 있음
+
+❌ 북마크/공유 불가:
+   - URL만으로 재현 불가
+
+❌ 멱등성 없음:
+   - 여러 번 요청 시 중복 생성 가능
+   - 주의 필요
+</code></pre></div></div>
+
+<h3 id="사용-예시-1">사용 예시</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 올바른 사용:
+POST /users              (사용자 생성)
+POST /login              (로그인)
+POST /posts              (게시글 작성)
+POST /upload             (파일 업로드)
+
+❌ 잘못된 사용:
+POST /users/123          (조회는 GET 사용)
+POST /search             (검색은 GET 사용)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-멱등성-idempotent">🎯 멱등성 (Idempotent)</h2>
+
+<h3 id="개념">개념</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>같은 요청을 여러 번 해도 결과가 같음
+
+멱등: f(f(x)) = f(x)
+</code></pre></div></div>
+
+<h3 id="get은-멱등">GET은 멱등</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /users/123
+
+1번 요청: {id: 123, name: "홍길동"}
+2번 요청: {id: 123, name: "홍길동"}
+3번 요청: {id: 123, name: "홍길동"}
+
+→ 항상 같은 결과 ✅
+</code></pre></div></div>
+
+<h3 id="post는-비멱등">POST는 비멱등</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /users
+Body: {name: "홍길동"}
+
+1번 요청: 사용자 1 생성
+2번 요청: 사용자 2 생성 (중복!)
+3번 요청: 사용자 3 생성 (중복!)
+
+→ 매번 다른 결과 ❌
+</code></pre></div></div>
+
+<h3 id="http-메서드별-멱등성">HTTP 메서드별 멱등성</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>멱등:
+- GET ✅
+- PUT ✅
+- DELETE ✅
+- HEAD ✅
+- OPTIONS ✅
+
+비멱등:
+- POST ❌
+- PATCH ❌ (경우에 따라 다름)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-면접-답변-예시">💬 면접 답변 예시</h2>
+
+<h3 id="짧은-답변">짧은 답변</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET:
+- 데이터 조회
+- URL에 데이터 (Query String)
+- 캐싱 가능, 북마크 가능
+- 보안 취약, 길이 제한
+- 멱등성 O
+
+POST:
+- 데이터 생성/수정
+- Body에 데이터
+- 캐싱 불가, 북마크 불가
+- 보안 좋음, 길이 제한 없음
+- 멱등성 X
+
+선택:
+- 조회 → GET
+- 생성/수정 → POST
+</code></pre></div></div>
+
+<h3 id="상세-답변">상세 답변</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET:
+
+특징:
+- 서버 리소스 조회
+- URL에 파라미터 포함 (Query String)
+- 브라우저 히스토리에 남음
+
+장점:
+- 캐싱 가능 (빠른 응답)
+- 북마크 가능 (URL 공유)
+- 멱등성 보장 (안전)
+
+단점:
+- URL 길이 제한 (약 2048자)
+- 보안 취약 (URL 노출)
+- 바이너리 데이터 불가
+
+사용 사례:
+- 검색: /search?q=java
+- 조회: /users/123
+- 필터링: /products?category=book
+
+POST:
+
+특징:
+- 서버 리소스 생성/수정
+- Body에 데이터 포함
+- 히스토리에 안 남음
+
+장점:
+- 보안성 (Body에 숨김)
+- 길이 제한 없음
+- 다양한 형식 (JSON, File 등)
+
+단점:
+- 캐싱 불가 (느릴 수 있음)
+- 북마크 불가
+- 멱등성 없음 (중복 주의)
+
+사용 사례:
+- 회원가입: POST /users
+- 로그인: POST /login
+- 파일 업로드: POST /upload
+
+멱등성:
+- GET: 여러 번 조회해도 같은 결과
+- POST: 여러 번 요청 시 중복 생성
+
+실무 선택 기준:
+- 데이터 조회만 → GET
+- 민감한 데이터 → POST
+- 캐싱 필요 → GET
+- 파일 업로드 → POST
+- RESTful 설계 따르기
+</code></pre></div></div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

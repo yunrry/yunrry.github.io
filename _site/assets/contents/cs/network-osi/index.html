@@ -1,0 +1,563 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>OSI 7계층 - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="OSI 7계층">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/network-osi/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/network-osi/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="1-osi-7계층">1. OSI 7계층</h1>
+
+<h2 id="-개념">📌 개념</h2>
+
+<p><strong>네트워크 통신을 7개 계층으로 표준화한 모델</strong></p>
+<ul>
+  <li>Open Systems Interconnection</li>
+  <li>각 계층은 독립적으로 동작</li>
+  <li>문제 발생 시 해당 계층만 수정</li>
+</ul>
+
+<hr />
+
+<h2 id="-7계층-구조">🔢 7계층 구조</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────────┐
+│ 7. 응용 계층 (Application) │ ← 사용자 인터페이스
+├─────────────────────────┤
+│ 6. 표현 계층 (Presentation)│ ← 데이터 형식 변환
+├─────────────────────────┤
+│ 5. 세션 계층 (Session)     │ ← 연결 관리
+├─────────────────────────┤
+│ 4. 전송 계층 (Transport)   │ ← 신뢰성 보장
+├─────────────────────────┤
+│ 3. 네트워크 계층 (Network)  │ ← 경로 설정
+├─────────────────────────┤
+│ 2. 데이터링크 계층 (Data Link)│ ← 프레임 전송
+├─────────────────────────┤
+│ 1. 물리 계층 (Physical)    │ ← 비트 전송
+└─────────────────────────┘
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-각-계층-상세">📝 각 계층 상세</h2>
+
+<h3 id="7계층-응용-계층-application-layer">7계층: 응용 계층 (Application Layer)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>역할:
+- 사용자와 직접 상호작용
+- 네트워크 서비스 제공
+- 응용 프로그램 간 데이터 교환
+
+프로토콜:
+- HTTP/HTTPS (웹)
+- FTP (파일 전송)
+- SMTP (이메일 전송)
+- POP3/IMAP (이메일 수신)
+- DNS (도메인 이름 변환)
+- Telnet (원격 접속)
+
+예시:
+- 웹 브라우저 (Chrome, Firefox)
+- 이메일 클라이언트 (Outlook)
+- FTP 클라이언트 (FileZilla)
+
+데이터 단위: 데이터(Data), 메시지(Message)
+</code></pre></div></div>
+
+<h3 id="6계층-표현-계층-presentation-layer">6계층: 표현 계층 (Presentation Layer)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>역할:
+- 데이터 형식 변환
+- 암호화/복호화
+- 압축/해제
+- 코드 변환 (ASCII ↔ EBCDIC)
+
+기능:
+- 인코딩/디코딩
+- 데이터 압축 (JPEG, MPEG)
+- 암호화 (SSL/TLS)
+
+예시:
+- JPEG, GIF, PNG (이미지 형식)
+- MPEG, AVI (비디오 형식)
+- ASCII, Unicode (문자 인코딩)
+- SSL/TLS (암호화)
+
+데이터 단위: 데이터(Data)
+</code></pre></div></div>
+
+<h3 id="5계층-세션-계층-session-layer">5계층: 세션 계층 (Session Layer)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>역할:
+- 통신 세션 연결/관리/종료
+- 동기화
+- 대화 제어 (반이중, 전이중)
+
+기능:
+- 세션 설정, 유지, 종료
+- 체크포인트 설정
+- 재연결 관리
+
+프로토콜:
+- NetBIOS
+- RPC (Remote Procedure Call)
+- SSH (Secure Shell)
+
+예시:
+- 화상 회의 (연결 유지)
+- 온라인 게임 (세션 관리)
+- 로그인 세션
+
+데이터 단위: 데이터(Data)
+</code></pre></div></div>
+
+<h3 id="4계층-전송-계층-transport-layer">4계층: 전송 계층 (Transport Layer)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>역할:
+- 종단 간(End-to-End) 신뢰성 보장
+- 흐름 제어 (Flow Control)
+- 오류 제어 (Error Control)
+- 포트 번호로 프로세스 구분
+
+프로토콜:
+- TCP (신뢰성)
+- UDP (빠른 속도)
+
+기능:
+- 세그먼테이션 (데이터 분할)
+- 재조립
+- 오류 검출 및 재전송
+- 순서 제어
+
+포트 번호:
+- HTTP: 80
+- HTTPS: 443
+- FTP: 21
+- SSH: 22
+- SMTP: 25
+- DNS: 53
+
+데이터 단위: 세그먼트(Segment)
+</code></pre></div></div>
+
+<h3 id="3계층-네트워크-계층-network-layer">3계층: 네트워크 계층 (Network Layer)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>역할:
+- 라우팅 (경로 설정)
+- 논리 주소 지정 (IP 주소)
+- 패킷 포워딩
+
+프로토콜:
+- IP (Internet Protocol)
+- ICMP (ping)
+- IGMP (멀티캐스트)
+- ARP (주소 변환)
+
+장비:
+- 라우터 (Router)
+- L3 스위치
+
+기능:
+- 패킷 라우팅
+- 혼잡 제어
+- 주소 변환
+
+데이터 단위: 패킷(Packet)
+</code></pre></div></div>
+
+<h3 id="2계층-데이터링크-계층-data-link-layer">2계층: 데이터링크 계층 (Data Link Layer)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>역할:
+- 물리 주소 지정 (MAC 주소)
+- 프레임 전송
+- 오류 검출 (CRC)
+- 흐름 제어
+
+프로토콜:
+- Ethernet
+- PPP (Point-to-Point Protocol)
+- HDLC
+
+장비:
+- 스위치 (Switch)
+- 브리지 (Bridge)
+
+기능:
+- 프레이밍
+- 물리 주소 지정
+- 오류 검출 (재전송은 안 함)
+- 접근 제어 (MAC)
+
+MAC 주소:
+- 48비트 (6바이트)
+- 예: 00:1A:2B:3C:4D:5E
+- 제조사가 할당 (고유)
+
+데이터 단위: 프레임(Frame)
+</code></pre></div></div>
+
+<h3 id="1계층-물리-계층-physical-layer">1계층: 물리 계층 (Physical Layer)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>역할:
+- 비트 스트림 전송
+- 물리적 연결
+- 전기 신호 변환
+
+장비:
+- 허브 (Hub)
+- 리피터 (Repeater)
+- 케이블 (UTP, 광케이블)
+
+기능:
+- 비트를 전기 신호로 변환
+- 전송 매체 정의
+- 토폴로지 정의
+
+전송 매체:
+- 유선: UTP, 동축케이블, 광케이블
+- 무선: WiFi, Bluetooth, 5G
+
+데이터 단위: 비트(Bit)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-계층별-요약표">📊 계층별 요약표</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>계층</th>
+      <th>이름</th>
+      <th>데이터 단위</th>
+      <th>주요 프로토콜</th>
+      <th>장비</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7</td>
+      <td>응용</td>
+      <td>데이터</td>
+      <td>HTTP, FTP, SMTP, DNS</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>표현</td>
+      <td>데이터</td>
+      <td>SSL/TLS, JPEG, MPEG</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>세션</td>
+      <td>데이터</td>
+      <td>NetBIOS, SSH</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>전송</td>
+      <td>세그먼트</td>
+      <td>TCP, UDP</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>네트워크</td>
+      <td>패킷</td>
+      <td>IP, ICMP, ARP</td>
+      <td>라우터</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>데이터링크</td>
+      <td>프레임</td>
+      <td>Ethernet, PPP</td>
+      <td>스위치</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>물리</td>
+      <td>비트</td>
+      <td>-</td>
+      <td>허브, 케이블</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-데이터-전송-과정">🔄 데이터 전송 과정</h2>
+
+<h3 id="송신-측-캡슐화">송신 측 (캡슐화)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[응용 계층] "Hello"
+     ↓ (Application Header 추가)
+[표현 계층] [AH|Hello]
+     ↓ (Presentation Header 추가)
+[세션 계층] [SH|AH|Hello]
+     ↓ (TCP/UDP Header 추가)
+[전송 계층] [TH|SH|AH|Hello] ← 세그먼트
+     ↓ (IP Header 추가)
+[네트워크 계층] [IH|TH|SH|AH|Hello] ← 패킷
+     ↓ (Ethernet Header, Trailer 추가)
+[데이터링크 계층] [EH|IH|TH|SH|AH|Hello|ET] ← 프레임
+     ↓ (전기 신호 변환)
+[물리 계층] 01001000... ← 비트
+</code></pre></div></div>
+
+<h3 id="수신-측-역캡슐화">수신 측 (역캡슐화)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[물리 계층] 01001000... (비트 수신)
+     ↓ (프레임 변환)
+[데이터링크 계층] [EH|IH|TH|SH|AH|Hello|ET]
+     ↓ (EH, ET 제거)
+[네트워크 계층] [IH|TH|SH|AH|Hello]
+     ↓ (IH 제거)
+[전송 계층] [TH|SH|AH|Hello]
+     ↓ (TH 제거)
+[세션 계층] [SH|AH|Hello]
+     ↓ (SH 제거)
+[표현 계층] [AH|Hello]
+     ↓ (AH 제거)
+[응용 계층] "Hello" ✅
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-면접-답변-예시">💬 면접 답변 예시</h2>
+
+<h3 id="짧은-답변">짧은 답변</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OSI 7계층은 네트워크 통신을 7개 계층으로 
+표준화한 모델입니다.
+
+하위 계층 (1~3): 데이터 전달
+- 물리: 비트 전송
+- 데이터링크: 프레임 전송 (MAC 주소)
+- 네트워크: 패킷 라우팅 (IP 주소)
+
+상위 계층 (4~7): 데이터 처리
+- 전송: 신뢰성 보장 (TCP/UDP)
+- 세션: 연결 관리
+- 표현: 데이터 변환
+- 응용: 사용자 인터페이스
+
+장점:
+- 계층별 독립성
+- 문제 발생 시 해당 계층만 수정
+- 표준화로 호환성 보장
+</code></pre></div></div>
+
+<h3 id="상세-답변">상세 답변</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OSI 7계층은 ISO에서 제정한 네트워크 통신 
+표준 모델입니다.
+
+각 계층의 역할:
+
+1. 물리 계층:
+   - 비트를 전기 신호로 변환
+   - 케이블, 허브 등 물리적 매체
+
+2. 데이터링크 계층:
+   - MAC 주소로 노드 간 전송
+   - 프레임 단위
+   - 스위치, 브리지
+
+3. 네트워크 계층:
+   - IP 주소로 경로 설정
+   - 패킷 라우팅
+   - 라우터
+
+4. 전송 계층:
+   - 종단 간 신뢰성 보장
+   - TCP(신뢰성) / UDP(속도)
+   - 포트 번호로 프로세스 구분
+
+5. 세션 계층:
+   - 통신 세션 관리
+   - 연결 설정, 유지, 종료
+
+6. 표현 계층:
+   - 데이터 형식 변환
+   - 암호화, 압축
+
+7. 응용 계층:
+   - 사용자 인터페이스
+   - HTTP, FTP, SMTP 등
+
+데이터 전송:
+- 송신: 캡슐화 (헤더 추가)
+- 수신: 역캡슐화 (헤더 제거)
+
+실무에서는 TCP/IP 4계층을 주로 사용하며,
+OSI 7계층은 이론적 참조 모델로 활용됩니다.
+</code></pre></div></div>
+
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
