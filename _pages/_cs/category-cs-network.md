@@ -33,6 +33,18 @@ sidebar:
 
 #### <a href="#" data-content="/assets/contents/cs/network-ip-address.md"><span style="color: #9bd6bd;">♡</span> IP 주소 </a>
 
+#### <a href="#" data-content="/assets/contents/cs/network-proxy.md"><span style="color: #9bd6bd;">♡</span> 프록시 Proxy </a>
+
+#### <a href="#" data-content="/assets/contents/cs/network-cdn.md"><span style="color: #9bd6bd;">♡</span> CDN </a>
+
+#### <a href="#" data-content="/assets/contents/cs/network-firewall.md"><span style="color: #9bd6bd;">♡</span> 방화벽 FireWall </a>
+
+#### <a href="#" data-content="/assets/contents/cs/network-vpn.md"><span style="color: #9bd6bd;">♡</span> VPN </a>
+
+#### <a href="#" data-content="/assets/contents/cs/network-websocket.md"><span style="color: #9bd6bd;">♡</span> 웹소켓 WebSocket </a>
+
+#### <a href="#" data-content="/assets/contents/cs/network-websocket.md"><span style="color: #9bd6bd;">♡</span> 웹소켓 WebSocket </a>
+
 ---
 
 

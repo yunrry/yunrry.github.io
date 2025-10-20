@@ -1,0 +1,1175 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>웹소켓 (WebSocket) - AD윤영스윗투웬티HD</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:title" content="웹소켓 (WebSocket)">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/network-websocket/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/network-websocket/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          AD윤영스윗투웬티HD
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="15-웹소켓-websocket">15. 웹소켓 (WebSocket)</h1>
+
+<h2 id="-개념">📌 개념</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>양방향 실시간 통신 프로토콜
+- 클라이언트 ↔ 서버 동시 통신
+- 지속적인 연결 유지
+- 낮은 지연시간
+</code></pre></div></div>
+
+<h3 id="http-vs-websocket">HTTP vs WebSocket</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP (요청-응답):
+Client: "데이터 주세요"
+Server: "여기 있어요"
+Client: "또 데이터 주세요"
+Server: "또 줄게요"
+(매번 새로운 연결)
+
+WebSocket (양방향):
+Client ↔ Server (연결 유지)
+Client: "메시지1"
+Server: "메시지2"
+Server: "메시지3" (서버가 먼저!)
+Client: "메시지4"
+(하나의 연결로 계속 통신)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-websocket-동작-과정">🔄 WebSocket 동작 과정</h2>
+
+<h3 id="1-핸드셰이크-handshake">1. 핸드셰이크 (Handshake)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP로 시작하여 WebSocket으로 업그레이드
+
+1. 클라이언트 요청:
+GET /chat HTTP/1.1
+Host: example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Sec-WebSocket-Version: 13
+
+2. 서버 응답:
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+
+3. WebSocket 연결 확립 ✅
+</code></pre></div></div>
+
+<h3 id="2-데이터-전송">2. 데이터 전송</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프레임 (Frame) 단위로 전송
+
+Frame 구조:
+┌─────────┬─────────┬──────────┐
+│ Header  │ Payload │          │
+│ (2-14B) │ Length  │ Payload  │
+└─────────┴─────────┴──────────┘
+
+Frame 종류:
+- 텍스트 프레임 (Text)
+- 바이너리 프레임 (Binary)
+- 제어 프레임 (Ping, Pong, Close)
+</code></pre></div></div>
+
+<h3 id="3-연결-종료">3. 연결 종료</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 클라이언트 또는 서버가 Close 프레임 전송
+2. 상대방이 Close 프레임으로 응답
+3. TCP 연결 종료
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-websocket-구현">💻 WebSocket 구현</h2>
+
+<h3 id="클라이언트-javascript">클라이언트 (JavaScript)</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// WebSocket 연결</span>
+<span class="kd">const</span> <span class="nx">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">ws://localhost:8080</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 연결 성공</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connected to WebSocket</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello Server!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// 메시지 수신</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Received:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  
+  <span class="c1">// JSON 파싱</span>
+  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// 에러 발생</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">WebSocket Error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// 연결 종료</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">onclose</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Disconnected from WebSocket</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Code:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Reason:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">reason</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// 메시지 전송</span>
+<span class="kd">function</span> <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">socket</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="nx">WebSocket</span><span class="p">.</span><span class="nx">OPEN</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">WebSocket is not open</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 연결 상태</span>
+<span class="c1">// WebSocket.CONNECTING (0): 연결 중</span>
+<span class="c1">// WebSocket.OPEN (1): 연결됨</span>
+<span class="c1">// WebSocket.CLOSING (2): 닫는 중</span>
+<span class="c1">// WebSocket.CLOSED (3): 닫힘</span>
+
+<span class="c1">// 연결 종료</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="서버-nodejs---ws-라이브러리">서버 (Node.js - ws 라이브러리)</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">WebSocket</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ws</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// WebSocket 서버 생성</span>
+<span class="kd">const</span> <span class="nx">wss</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">.</span><span class="nx">Server</span><span class="p">({</span> <span class="na">port</span><span class="p">:</span> <span class="mi">8080</span> <span class="p">});</span>
+
+<span class="c1">// 연결된 클라이언트 목록</span>
+<span class="kd">const</span> <span class="nx">clients</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+
+<span class="c1">// 클라이언트 연결</span>
+<span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ws</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Client connected</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">clients</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">ws</span><span class="p">);</span>
+  
+  <span class="c1">// 메시지 수신</span>
+  <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Received:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    
+    <span class="c1">// 모든 클라이언트에게 브로드캐스트</span>
+    <span class="nx">clients</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">client</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="nx">WebSocket</span><span class="p">.</span><span class="nx">OPEN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+  
+  <span class="c1">// 연결 종료</span>
+  <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Client disconnected</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">clients</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">ws</span><span class="p">);</span>
+  <span class="p">});</span>
+  
+  <span class="c1">// 에러 처리</span>
+  <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">WebSocket Error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">});</span>
+  
+  <span class="c1">// 환영 메시지</span>
+  <span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">welcome</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Connected to WebSocket server</span><span class="dl">'</span>
+  <span class="p">}));</span>
+<span class="p">});</span>
+
+<span class="c1">// Ping/Pong (연결 유지)</span>
+<span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">clients</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">ws</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ws</span><span class="p">.</span><span class="nx">isAlive</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">ws</span><span class="p">.</span><span class="nx">terminate</span><span class="p">();</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">ws</span><span class="p">.</span><span class="nx">isAlive</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="nx">ws</span><span class="p">.</span><span class="nx">ping</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">},</span> <span class="mi">30000</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">WebSocket server running on port 8080</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="실전-예시-채팅-애플리케이션">실전 예시: 채팅 애플리케이션</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 클라이언트</span>
+<span class="kd">const</span> <span class="nx">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">ws://localhost:8080</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">messagesDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">messages</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">input</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">messageInput</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sendButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">sendButton</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 연결 성공</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">addMessage</span><span class="p">(</span><span class="dl">'</span><span class="s1">System</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Connected to chat</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// 메시지 수신</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">:</span>
+      <span class="nx">addMessage</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">userJoined</span><span class="dl">'</span><span class="p">:</span>
+      <span class="nx">addMessage</span><span class="p">(</span><span class="dl">'</span><span class="s1">System</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">username</span><span class="p">}</span><span class="s2"> joined`</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">userLeft</span><span class="dl">'</span><span class="p">:</span>
+      <span class="nx">addMessage</span><span class="p">(</span><span class="dl">'</span><span class="s1">System</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">username</span><span class="p">}</span><span class="s2"> left`</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// 메시지 전송</span>
+<span class="nx">sendButton</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">message</span> <span class="o">&amp;&amp;</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="nx">WebSocket</span><span class="p">.</span><span class="nx">OPEN</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">text</span><span class="p">:</span> <span class="nx">message</span>
+    <span class="p">}));</span>
+    <span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// 메시지 표시</span>
+<span class="kd">function</span> <span class="nx">addMessage</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">messageEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">messageEl</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">`&lt;strong&gt;</span><span class="p">${</span><span class="nx">username</span><span class="p">}</span><span class="s2">:&lt;/strong&gt; </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="nx">messagesDiv</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">messageEl</span><span class="p">);</span>
+  <span class="nx">messagesDiv</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="nx">messagesDiv</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-websocket-vs-다른-기술">🆚 WebSocket vs 다른 기술</h2>
+
+<h3 id="1-websocket-vs-http-polling">1. WebSocket vs HTTP Polling</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP Polling (단기 폴링):
+Client: "업데이트 있어?" (요청)
+Server: "없어" (응답)
+(3초 대기)
+Client: "업데이트 있어?" (요청)
+Server: "없어" (응답)
+(3초 대기)
+Client: "업데이트 있어?" (요청)
+Server: "있어! 데이터" (응답)
+
+문제:
+❌ 불필요한 요청 많음
+❌ 서버 부하
+❌ 지연시간
+
+WebSocket:
+Client ↔ Server (연결 유지)
+Server: "데이터" (즉시 전송!)
+
+장점:
+✅ 실시간
+✅ 효율적
+✅ 낮은 지연
+</code></pre></div></div>
+
+<h3 id="2-websocket-vs-long-polling">2. WebSocket vs Long Polling</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Long Polling:
+Client: "업데이트 있으면 알려줘" (요청)
+Server: (대기... 대기...)
+Server: "있어! 데이터" (응답)
+Client: "또 업데이트 있으면 알려줘" (요청)
+Server: (대기... 대기...)
+
+장점:
+✅ Polling보다 효율적
+
+단점:
+❌ 연결 재수립 필요
+❌ WebSocket보다 복잡
+
+WebSocket이 더 나음 ✅
+</code></pre></div></div>
+
+<h3 id="3-websocket-vs-server-sent-events-sse">3. WebSocket vs Server-Sent Events (SSE)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SSE:
+- 서버 → 클라이언트 (단방향)
+- HTTP 기반
+- 텍스트만
+
+Client ← Server
+
+WebSocket:
+- 양방향
+- 자체 프로토콜
+- 텍스트/바이너리
+
+Client ↔ Server
+
+선택:
+- 서버 푸시만 필요 → SSE
+- 양방향 필요 → WebSocket ✅
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-websocket-사용-사례">🎯 WebSocket 사용 사례</h2>
+
+<h3 id="1-실시간-채팅">1. 실시간 채팅</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>카카오톡, Slack, Discord
+
+특징:
+- 즉시 메시지 전달
+- 읽음 표시
+- 타이핑 표시
+
+효과:
+✅ 실시간 소통
+✅ 낮은 지연
+</code></pre></div></div>
+
+<h3 id="2-실시간-알림">2. 실시간 알림</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Facebook, Twitter 알림
+
+특징:
+- 새 메시지
+- 좋아요
+- 댓글
+
+효과:
+✅ 즉시 알림
+✅ 사용자 참여
+</code></pre></div></div>
+
+<h3 id="3-실시간-협업-도구">3. 실시간 협업 도구</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Google Docs, Figma, Notion
+
+특징:
+- 동시 편집
+- 실시간 동기화
+- 커서 위치 공유
+
+효과:
+✅ 원활한 협업
+✅ 충돌 방지
+</code></pre></div></div>
+
+<h3 id="4-온라인-게임">4. 온라인 게임</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>멀티플레이어 게임
+
+특징:
+- 플레이어 위치
+- 게임 상태
+- 채팅
+
+효과:
+✅ 낮은 지연
+✅ 동기화
+</code></pre></div></div>
+
+<h3 id="5-주식암호화폐-거래">5. 주식/암호화폐 거래</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>실시간 가격 정보
+
+특징:
+- 가격 변동
+- 체결 내역
+- 차트 업데이트
+
+효과:
+✅ 실시간 정보
+✅ 빠른 거래
+</code></pre></div></div>
+
+<h3 id="6-iot-사물인터넷">6. IoT (사물인터넷)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>스마트홈, 센서 데이터
+
+특징:
+- 센서 값
+- 제어 명령
+- 상태 모니터링
+
+효과:
+✅ 실시간 제어
+✅ 즉각 반응
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-websocket-보안">🔐 WebSocket 보안</h2>
+
+<h3 id="1-wss-websocket-secure">1. WSS (WebSocket Secure)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTPS처럼 암호화된 WebSocket
+
+ws://  → 암호화 안 됨 ❌
+wss:// → 암호화됨 ✅
+
+사용:
+const socket = new WebSocket('wss://example.com');
+
+효과:
+- 데이터 암호화
+- 중간자 공격 방지
+</code></pre></div></div>
+
+<h3 id="2-인증-authentication">2. 인증 (Authentication)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>연결 시 토큰 전송
+
+// 클라이언트
+const token = localStorage.getItem('authToken');
+const socket = new WebSocket(`wss://example.com?token=${token}`);
+
+웹소켓 보안에 관한 이어지는 부분을 작성해드리겠습니다.
+
+</code></pre></div></div>
+<p>// 또는 연결 후 전송
+socket.onopen = () =&gt; {
+  socket.send(JSON.stringify({ 
+    type: ‘auth’, 
+    token: token 
+  }));
+};</p>
+
+<p>// 서버
+wss.on(‘connection’, (ws, req) =&gt; {
+  // URL 파라미터에서 토큰 확인
+  const url = new URL(req.url, ‘wss://example.com’);
+  const token = url.searchParams.get(‘token’);</p>
+
+<p>if (!validateToken(token)) {
+    ws.close(1008, ‘인증 실패’);
+    return;
+  }</p>
+
+<p>// 또는 메시지로 받은 토큰 확인
+  ws.on(‘message’, (message) =&gt; {
+    const data = JSON.parse(message);
+    if (data.type === ‘auth’) {
+      if (!validateToken(data.token)) {
+        ws.close(1008, ‘인증 실패’);
+      }
+    }
+  });
+});</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### 3. 입력 검증 (Input Validation)
+</code></pre></div></div>
+<p>// 클라이언트에서 전송된 데이터 검증
+ws.on(‘message’, (message) =&gt; {
+  try {
+    // JSON 형식 확인
+    const data = JSON.parse(message);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 데이터 유효성 검사
+if (!data.type || !data.message) {
+  throw new Error('잘못된 메시지 형식');
+}
+
+// XSS 방지 (특수문자 이스케이프)
+const sanitizedMessage = sanitizeHtml(data.message);
+
+// 처리 계속...   } catch (error) {
+console.error('메시지 검증 실패:', error);   } }); ```
+</code></pre></div></div>
+
+<h3 id="4-속도-제한-rate-limiting">4. 속도 제한 (Rate Limiting)</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 클라이언트별 메시지 횟수 제한
+const messageCount = new Map();
+
+wss.on('connection', (ws, req) =&gt; {
+  // 클라이언트 IP 또는 식별자
+  const clientId = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  
+  // 초기 카운트 설정
+  messageCount.set(clientId, 0);
+  
+  // 1분마다 카운트 초기화
+  const interval = setInterval(() =&gt; {
+    messageCount.set(clientId, 0);
+  }, 60000);
+  
+  ws.on('message', () =&gt; {
+    // 현재 카운트 증가
+    const count = messageCount.get(clientId) + 1;
+    messageCount.set(clientId, count);
+    
+    // 제한 초과 시 연결 종료
+    if (count &gt; 100) { // 분당 100개 제한
+      ws.close(1008, '속도 제한 초과');
+      clearInterval(interval);
+    }
+  });
+  
+  ws.on('close', () =&gt; {
+    clearInterval(interval);
+  });
+});
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-websocket-최적화">🚀 WebSocket 최적화</h2>
+
+<h3 id="1-데이터-압축">1. 데이터 압축</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 클라이언트 (압축 라이브러리 사용)
+import pako from 'pako';
+
+// 데이터 전송 시 압축
+function sendCompressed(data) {
+  const jsonString = JSON.stringify(data);
+  const compressed = pako.deflate(jsonString);
+  socket.send(compressed);
+}
+
+// 서버 (데이터 압축 해제)
+const pako = require('pako');
+
+ws.on('message', (message) =&gt; {
+  try {
+    // 바이너리 데이터 확인
+    if (message instanceof Buffer) {
+      // 압축 해제
+      const decompressed = pako.inflate(message);
+      const jsonString = Buffer.from(decompressed).toString();
+      const data = JSON.parse(jsonString);
+      
+      // 처리 계속...
+    }
+  } catch (error) {
+    console.error('압축 해제 실패:', error);
+  }
+});
+</code></pre></div></div>
+
+<h3 id="2-메시지-배치-처리">2. 메시지 배치 처리</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 클라이언트 (메시지 묶음 전송)
+const messageQueue = [];
+let sendInterval;
+
+function queueMessage(message) {
+  messageQueue.push(message);
+  
+  // 첫 메시지면 전송 타이머 시작
+  if (messageQueue.length === 1) {
+    sendInterval = setInterval(sendQueuedMessages, 50); // 50ms마다
+  }
+}
+
+function sendQueuedMessages() {
+  if (messageQueue.length &gt; 0 &amp;&amp; socket.readyState === WebSocket.OPEN) {
+    // 여러 메시지를 하나의 배열로 전송
+    socket.send(JSON.stringify({
+      type: 'batch',
+      messages: messageQueue.splice(0)
+    }));
+  }
+  
+  // 큐가 비었으면 타이머 중지
+  if (messageQueue.length === 0) {
+    clearInterval(sendInterval);
+    sendInterval = null;
+  }
+}
+
+// 서버 (배치 메시지 처리)
+ws.on('message', (message) =&gt; {
+  const data = JSON.parse(message);
+  
+  if (data.type === 'batch' &amp;&amp; Array.isArray(data.messages)) {
+    // 배치 메시지 각각 처리
+    data.messages.forEach(processMessage);
+  } else {
+    // 단일 메시지 처리
+    processMessage(data);
+  }
+});
+</code></pre></div></div>
+
+<h3 id="3-하트비트-heartbeat">3. 하트비트 (Heartbeat)</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 클라이언트 (연결 유지)
+function setupHeartbeat(socket) {
+  let pingInterval;
+  let pongTimeout;
+  
+  // 연결 시 시작
+  socket.onopen = () =&gt; {
+    pingInterval = setInterval(() =&gt; {
+      // Ping 전송
+      socket.send(JSON.stringify({ type: 'ping' }));
+      
+      // Pong 응답 타임아웃
+      pongTimeout = setTimeout(() =&gt; {
+        console.error('서버 응답 없음');
+        socket.close();
+      }, 5000);
+    }, 30000); // 30초마다
+  };
+  
+  // Pong 수신
+  socket.onmessage = (event) =&gt; {
+    const data = JSON.parse(event.data);
+    if (data.type === 'pong') {
+      clearTimeout(pongTimeout);
+    }
+  };
+  
+  // 연결 종료 시 정리
+  socket.onclose = () =&gt; {
+    clearInterval(pingInterval);
+    clearTimeout(pongTimeout);
+  };
+}
+
+// 서버 (Ping에 응답)
+ws.on('message', (message) =&gt; {
+  try {
+    const data = JSON.parse(message);
+    if (data.type === 'ping') {
+      ws.send(JSON.stringify({ type: 'pong' }));
+    }
+  } catch (error) {
+    console.error('메시지 처리 실패:', error);
+  }
+});
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-websocket-확장-기술">📱 WebSocket 확장 기술</h2>
+
+<h3 id="1-socketio">1. Socket.IO</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 클라이언트
+&lt;script src="/socket.io/socket.io.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const socket = io();
+  
+  // 이벤트 기반 통신
+  socket.on('connect', () =&gt; {
+    console.log('Connected to Socket.IO');
+  });
+  
+  // 메시지 수신
+  socket.on('chat message', (data) =&gt; {
+    console.log('Message:', data);
+  });
+  
+  // 메시지 전송
+  socket.emit('chat message', {
+    text: 'Hello!',
+    user: 'User123'
+  });
+  
+  // 네임스페이스 &amp; 룸
+  const chatRoom = io('/chat');
+  chatRoom.emit('join', 'room1');
+&lt;/script&gt;
+
+// 서버 (Node.js)
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) =&gt; {
+  console.log('New user connected');
+  
+  // 메시지 수신
+  socket.on('chat message', (data) =&gt; {
+    console.log('Message received:', data);
+    
+    // 모든 클라이언트에 브로드캐스트
+    io.emit('chat message', data);
+  });
+  
+  // 룸 기능
+  socket.on('join', (room) =&gt; {
+    socket.join(room);
+    io.to(room).emit('user joined', socket.id);
+  });
+});
+
+// 장점
+// ✅ 자동 재연결
+// ✅ 폴백 메커니즘 (WebSocket 불가 시 다른 방식)
+// ✅ 룸 &amp; 네임스페이스
+// ✅ 이벤트 기반 API
+</code></pre></div></div>
+
+<h3 id="2-sockjs">2. SockJS</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 클라이언트
+&lt;script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const socket = new SockJS('/echo');
+  
+  socket.onopen = () =&gt; {
+    console.log('Connected to SockJS');
+    socket.send('Hello!');
+  };
+  
+  socket.onmessage = (e) =&gt; {
+    console.log('Message:', e.data);
+  };
+  
+  socket.onclose = () =&gt; {
+    console.log('Disconnected from SockJS');
+  };
+&lt;/script&gt;
+
+// 서버 (Node.js)
+const http = require('http');
+const sockjs = require('sockjs');
+
+// SockJS 서버 생성
+const sockjsServer = sockjs.createServer();
+
+// 연결 핸들러
+sockjsServer.on('connection', (conn) =&gt; {
+  console.log('New connection');
+  
+  conn.on('data', (message) =&gt; {
+    console.log('Message received:', message);
+    conn.write('Echo: ' + message);
+  });
+  
+  conn.on('close', () =&gt; {
+    console.log('Connection closed');
+  });
+});
+
+// HTTP 서버에 SockJS 연결
+const server = http.createServer();
+sockjsServer.attach(server);
+server.listen(8080);
+
+// 장점
+// ✅ 크로스 브라우저 호환성
+// ✅ 폴백 옵션 (XHR, JSONP 등)
+// ✅ WebSocket API 유사
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-websocket-디버깅과-모니터링">🔍 WebSocket 디버깅과 모니터링</h2>
+
+<h3 id="1-브라우저-개발자-도구">1. 브라우저 개발자 도구</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Chrome DevTools:
+1. Network 탭
+2. WS 필터 선택
+3. 메시지 내용 보기
+
+정보:
+- 연결 상태
+- 프레임 송수신
+- 오류 확인
+</code></pre></div></div>
+
+<h3 id="2-서버-로깅">2. 서버 로깅</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 서버 로깅 설정
+wss.on('connection', (ws, req) =&gt; {
+  const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  
+  console.log(`[${new Date().toISOString()}] 새 연결: ${clientIp}`);
+  
+  ws.on('message', (message) =&gt; {
+    console.log(`[${new Date().toISOString()}] 메시지 수신: ${message}`);
+  });
+  
+  ws.on('close', (code, reason) =&gt; {
+    console.log(`[${new Date().toISOString()}] 연결 종료: ${code} ${reason}`);
+  });
+  
+  ws.on('error', (error) =&gt; {
+    console.error(`[${new Date().toISOString()}] 오류: ${error.message}`);
+  });
+});
+
+// 로그 파일 저장 (winston 사용)
+const winston = require('winston');
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'websocket-service' },
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
+
+// WebSocket 로깅
+wss.on('connection', (ws, req) =&gt; {
+  logger.info('새 연결', {
+    ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+    timestamp: new Date().toISOString()
+  });
+  
+  // 나머지 이벤트 로깅...
+});
+</code></pre></div></div>
+
+<h3 id="3-모니터링-도구">3. 모니터링 도구</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Prometheus + Grafana:
+- 연결 수 모니터링
+- 메시지 처리량
+- 오류율
+
+2. Elastic Stack (ELK):
+- 로그 분석
+- 실시간 모니터링
+- 이상 탐지
+
+3. 자체 대시보드:
+// 통계 수집
+const stats = {
+  connections: 0,
+  messages: 0,
+  errors: 0
+};
+
+wss.on('connection', (ws) =&gt; {
+  stats.connections++;
+  
+  ws.on('message', () =&gt; {
+    stats.messages++;
+  });
+  
+  ws.on('error', () =&gt; {
+    stats.errors++;
+  });
+  
+  ws.on('close', () =&gt; {
+    stats.connections--;
+  });
+});
+
+// HTTP 엔드포인트로 통계 제공
+app.get('/stats', (req, res) =&gt; {
+  res.json(stats);
+});
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-웹소켓-트러블슈팅">🌐 웹소켓 트러블슈팅</h2>
+
+<h3 id="1-일반적인-문제와-해결">1. 일반적인 문제와 해결</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제: 연결이 자주 끊김
+해결:
+- 서버 Timeout 설정 확인
+- 프록시/로드밸런서 설정 조정
+- 하트비트(Ping/Pong) 구현
+- 자동 재연결 메커니즘 구현
+
+문제: 메모리 사용량 증가
+해결:
+- 불필요한 연결 정리
+- 메시지 크기 제한
+- 비활성 클라이언트 감지 및 연결 해제
+
+문제: 메시지 전송 실패
+해결:
+- 연결 상태 확인 (readyState)
+- 오류 처리 추가
+- 메시지 큐 구현 (재연결 시 전송)
+</code></pre></div></div>
+
+<h3 id="2-스케일링-문제-해결">2. 스케일링 문제 해결</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제: 많은 동시 연결 처리
+해결:
+- 수평적 확장 (여러 서버)
+- Redis/RabbitMQ로 메시지 브로커 구현
+- 서버 간 메시지 동기화
+- 세션 어피니티 (Sticky Sessions)
+
+구현 예시:
+// Redis 사용 (Node.js)
+const Redis = require('ioredis');
+const sub = new Redis();
+const pub = new Redis();
+
+// 구독 설정
+sub.subscribe('chat');
+
+// 메시지 수신 시
+sub.on('message', (channel, message) =&gt; {
+  // 모든 클라이언트에 브로드캐스트
+  wss.clients.forEach((client) =&gt; {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(message);
+    }
+  });
+});
+
+// 메시지 발행
+wss.on('connection', (ws) =&gt; {
+  ws.on('message', (message) =&gt; {
+    // Redis 채널에 발행
+    pub.publish('chat', message);
+  });
+});
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-웹소켓-성능-측정">📊 웹소켓 성능 측정</h2>
+
+<h3 id="1-핵심-지표">1. 핵심 지표</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 지연 시간 (Latency)
+- 메시지 왕복 시간 (Round-trip time)
+- 클라이언트 → 서버 → 클라이언트
+
+2. 처리량 (Throughput)
+- 초당 메시지 수 (Messages per second)
+- 초당 데이터량 (MB/s)
+
+3. 연결 수 (Connection Count)
+- 최대 동시 연결 수
+- 연결 성공률
+
+4. 리소스 사용량
+- CPU 사용률
+- 메모리 사용량
+- 네트워크 대역폭
+</code></pre></div></div>
+
+<h3 id="2-벤치마킹-도구">2. 벤치마킹 도구</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Artillery (https://artillery.io)
+- 부하 테스트 
+- 시나리오 기반 테스트
+- WebSocket 전용 기능
+
+2. Tsung (http://tsung.erlang-projects.org)
+- 분산 부하 테스트
+- 다양한 프로토콜 지원
+
+3. K6 (https://k6.io)
+- 스크립트 기반 테스트
+- 메트릭 수집
+- WebSocket 지원
+</code></pre></div></div>
+
+<h3 id="3-성능-측정-예시">3. 성능 측정 예시</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Artillery 테스트 구성 (YAML)
+config:
+  target: "wss://example.com/socket"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 50
+      name: "Warm up"
+    - duration: 120
+      arrivalRate: 50
+      name: "Sustained load"
+  
+  ws:
+    # 재연결 시도
+    rejectUnauthorized: false
+    
+scenarios:
+  - engine: "ws"
+    name: "WebSocket chat"
+    flow:
+      # 연결
+      - think: 1
+      
+      # 메시지 전송
+      - send: '{"type":"message","text":"Hello World!"}'
+      
+      # 응답 대기
+      - think: 2
+      
+      # 10개 메시지 전송
+      - loop:
+          - send: '{"type":"message","text":"Message "}'
+          - think: 1
+        count: 10
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-주요-포인트">💡 주요 포인트</h2>
+
+<ul>
+  <li><strong>양방향 통신</strong>: 클라이언트와 서버가 자유롭게 통신</li>
+  <li><strong>낮은 지연시간</strong>: HTTP 폴링보다 효율적</li>
+  <li><strong>확장성</strong>: 적절한 최적화로 대규모 시스템 구축 가능</li>
+  <li><strong>보안</strong>: WSS, 인증, 검증으로 안전한 통신 구현</li>
+  <li><strong>생태계</strong>: Socket.IO, SockJS 등 확장 라이브러리 활용</li>
+</ul>
+
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

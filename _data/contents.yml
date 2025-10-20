@@ -3,6 +3,11 @@
   category: cs
   created: '2025-10-19'
   updated: '2025-10-19'
+- path: assets/contents/cs/network-proxy.md
+  title: 11. 프록시 (Proxy)
+  category: cs
+  created: '2025-10-19'
+  updated: '2025-10-19'
 - path: assets/contents/cs/network-osi.md
   title: 1. OSI 7계층
   category: cs
@@ -30,6 +35,16 @@
   updated: '2025-10-19'
 - path: assets/contents/cs/network-tcp-ip.md
   title: 2. TCP/IP 4계층
+  category: cs
+  created: '2025-10-19'
+  updated: '2025-10-19'
+- path: assets/contents/cs/network-firewall.md
+  title: 13. 방화벽 (Firewall)
+  category: cs
+  created: '2025-10-19'
+  updated: '2025-10-19'
+- path: assets/contents/cs/network-cdn.md
+  title: 12. CDN (Content Delivery Network)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-19'
