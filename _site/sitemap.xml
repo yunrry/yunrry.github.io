@@ -204,6 +204,12 @@
 <loc>http://localhost:4000/assets/contents/algorithm/stack-queue_deque/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/assets/contents/backend/backendtest/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/backend/flik-01/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/contents/cs/algorithm-exam/</loc>
 </url>
 <url>
@@ -301,5 +307,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/assets/contents/cs/view/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/dev/devtest/</loc>
 </url>
 </urlset>

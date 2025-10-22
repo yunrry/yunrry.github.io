@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Graph - AD윤영스윗투웬티HD</title>
+<!-- begin _includes/seo.html --><title>Graph - Second Brain</title>
 <meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
 
 
@@ -19,7 +19,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="AD윤영스윗투웬티HD">
+<meta property="og:site_name" content="Second Brain">
 <meta property="og:title" content="Graph">
 <meta property="og:url" content="http://localhost:4000/categories/algorithm/graph/">
 
@@ -63,7 +63,7 @@
 
 
 
-  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="AD윤영스윗투웬티HD Feed">
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Second Brain Feed">
 
 
 <!-- https://t.co/dKP3o1e -->
@@ -113,7 +113,7 @@
       <nav id="site-nav" class="greedy-nav">
         
         <a class="site-title" href="/">
-          AD윤영스윗투웬티HD
+          Second Brain
           <span class="site-subtitle">뇌정리노트</span>
         </a>
         <ul class="visible-links"></ul>
@@ -268,19 +268,19 @@
           
             <li><a href="/categories/dev/">💻 Dev</a></li>
           
-            <li><a href="/categories/dev/frontend/">  • Frontend</a></li>
-          
             <li><a href="/categories/dev/backend/">  • Backend</a></li>
+          
+            <li><a href="/categories/dev/frontend/">  • Frontend</a></li>
           
             <li><a href="/categories/dev/devops/">  • DevOps</a></li>
           
             <li><a href="/categories/language/">📝 Language</a></li>
           
+            <li><a href="/categories/language/java/">  • Java</a></li>
+          
             <li><a href="/categories/language/python/">  • Python</a></li>
           
             <li><a href="/categories/language/javascript/">  • JavaScript</a></li>
-          
-            <li><a href="/categories/language/java/">  • Java</a></li>
           
             <li><a href="/categories/algorithm/">🧮 Algorithm</a></li>
           
@@ -482,6 +482,17 @@
       <div class="split-header">
         <button id="close-split" class="close-button">← 돌아가기</button>
       </div>
+      
+      <div class="toc-container">
+        <div class="toc">
+          <div class="toc-header">
+            <h4>outline</h4>
+            <button class="toc-toggle">▼</button>
+          </div>
+          <div class="toc-content"></div>
+        </div>
+      </div>
+      
       <div class="left-content">
         <p>##</p>
 
@@ -515,16 +526,17 @@
 }
 
 .split-left {
-  flex: 0 0 45%;
+  flex: 0 0 40%;
   padding-right: 20px;
   border-right: 2px solid #e0e0e0;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease; 
 }
 
 .split-right {
   flex: 1;
   padding-left: 20px;
   position: relative;
+  min-width: max-content;
 }
 
 .split-header {
@@ -555,13 +567,21 @@
    ============================================ */
 
 .content-display {
-  display: flex;
-  gap: 30px;
+  display: block;
+  width: 100%;
 }
 
 .main-content {
-  flex: 1;
-  max-width: calc(100% - 250px);
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.content-display pre,
+.content-display .highlight {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .content-display h1 {
@@ -585,16 +605,40 @@
    TOC (Table of Contents)
    ============================================ */
 
-.toc {
+   .toc-container {
   position: sticky;
-  top: 150px;
-  width: 220px;
-  border-radius: 6px;
-  padding: 15px;
-  align-self: flex-start;
-  max-height: calc(100vh - 100px);
+  top: 80px;
+  margin-bottom: 20px;
+  max-height: calc(100vh - 120px);
   overflow-y: auto;
-  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.toc {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.toc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.toc-toggle {
+  background: none;
+  border: none;
+  color: #9bd6bd;
+  font-size: 0.8em;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s;
+}
+
+.toc-content.closed {
+  display: none;
 }
 
 .toc h4 {
@@ -715,6 +759,15 @@ a[data-content]:hover {
   border-right-color: #333333;
 }
 
+[data-theme="dark"] .split-right {
+  border-right-color: #333333;
+}
+
+[data-theme="dark"] .split-container {
+  border-right-color: #333333;
+}
+
+
 [data-theme="dark"] .split-header {
   border-bottom-color: #333333;
 }
@@ -746,6 +799,10 @@ a[data-content]:hover {
 [data-theme="dark"] .toc {
   background-color: #1a1a1a;
   border: 1px solid #333333;
+}
+
+[data-theme="dark"] .toc-toggle {
+  color: #9bd6bd;
 }
 
 [data-theme="dark"] .toc h4 {
@@ -845,7 +902,8 @@ a[data-content]:hover {
   }
   
   .main-content {
-    max-width: 100%;
+    min-width: max-content;
+    max-width: 200%;
   }
   
   .toc {
@@ -872,6 +930,8 @@ a[data-content]:hover {
   .split-right {
     padding-left: 0;
     padding-top: 20px;
+    min-width: max-content;
+    max-width: 200%;
   }
 }
 
@@ -959,26 +1019,32 @@ function initSplitView() {
   }
 
   function generateTOC(html) {
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = html;
-    
-    const headings = tempDiv.querySelectorAll('h2, h3');
-    if (headings.length === 0) return `<div class="main-content">${html}</div>`;
-    
-    let toc = '<div class="toc"><h4>outline</h4><ul>';
-    
-    headings.forEach((heading, index) => {
-      const id = 'heading-' + index;
-      heading.id = id;
-      
-      const level = heading.tagName === 'H2' ? 'toc-h2' : 'toc-h3';
-      toc += `<li class="${level}"><a href="#${id}">${heading.textContent}</a></li>`;
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html;
+  const headings = tempDiv.querySelectorAll('h2, h3');
+  
+  if(headings.length > 0) {
+    let tocList = '<ul>';
+    headings.forEach((h, i) => {
+      const id = 'heading-' + i;
+      h.id = id;
+      const cls = h.tagName === 'H2' ? 'toc-h2' : 'toc-h3';
+      tocList += `<li class="${cls}"><a href="#${id}">${h.textContent}</a></li>`;
     });
+    tocList += '</ul>';
     
-    toc += '</ul></div>';
+    const tocContent = document.querySelector('.toc-content');
+    tocContent.innerHTML = tocList;
     
-    return `<div class="main-content">${tempDiv.innerHTML}</div>${toc}`;
+    const tocToggle = document.querySelector('.toc-toggle');
+    tocToggle.onclick = () => {
+      tocContent.classList.toggle('closed');
+      tocToggle.textContent = tocContent.classList.contains('closed') ? '▶' : '▼';
+    };
   }
+  
+  return tempDiv.innerHTML;
+}
   
   // Marked.js 설정 (Highlight 없이)
   marked.setOptions({
@@ -1038,9 +1104,11 @@ function initSplitView() {
         }
         
         html = generateTOC(html);
-        contentDisplay.innerHTML = html;
+        contentDisplay.innerHTML = `<div class="main-content">${html}</div>`;
         
         Prism.highlightAllUnder(contentDisplay);
+            
+        setTimeout(adjustSplitLayout, 100);
       })
       .catch(e => {
         contentDisplay.innerHTML = `<p style="color: #e74c3c;">❌ ${e.message}</p>`;
@@ -1073,6 +1141,25 @@ document.body.addEventListener('click', function(e) {
   
   console.log('스크립트 초기화 완료');
 }
+
+function adjustSplitLayout() {
+  const container = document.querySelector('.split-container');
+  const left = document.querySelector('.split-left');
+  const right = document.querySelector('.split-right');
+  
+  if (!container || !left || !right) return;
+  
+  const contentWidth = right.scrollWidth;
+  const containerWidth = container.offsetWidth;
+  
+  if (contentWidth > containerWidth * 0.70) {
+    left.style.flex = '0 0 30%';
+  } else {
+    left.style.flex = '0 0 40%';
+  }
+}
+
+window.addEventListener('resize', adjustSplitLayout);
 
 if (document.readyState === 'loading') {
   document.getElementById('portfolio-section')// 초기 실행

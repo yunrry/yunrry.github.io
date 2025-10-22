@@ -4,21 +4,22 @@ categories:
     children:
       - title: "💻 Dev"
         url: /categories/dev/
-      - title: "  • Frontend"
-        url: /categories/dev/frontend/
       - title: "  • Backend"
         url: /categories/dev/backend/
+      - title: "  • Frontend"
+        url: /categories/dev/frontend/
       - title: "  • DevOps"
         url: /categories/dev/devops/
       
       - title: "📝 Language"
         url: /categories/language/
+      - title: "  • Java"
+        url: /categories/language/java/
       - title: "  • Python"
         url: /categories/language/python/
       - title: "  • JavaScript"
         url: /categories/language/javascript/
-      - title: "  • Java"
-        url: /categories/language/java/
+
       
       - title: "🧮 Algorithm"
         url: /categories/algorithm/
