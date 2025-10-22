@@ -1,16 +1,31 @@
 - path: assets/contents/dev/devtest.md
   title: devtest.md
   category: dev
-  created: '2025-10-22'
-  updated: '2025-10-22'
-- path: assets/contents/backend/backendtest.md
+  category2: devtest.md
+  created: '2025-10-23'
+  updated: '2025-10-23'
+- path: assets/contents/dev/backend/backendtest.md
   title: backendtest.md
-  category: backend
-  created: '2025-10-22'
-  updated: '2025-10-22'
-- path: assets/contents/backend/flik-01.md
-  title: 'FLIK 개발기 - 백엔드 #1'
-  category: backend
+  category: dev
+  category2: backend
+  created: '2025-10-23'
+  updated: '2025-10-23'
+- path: assets/contents/dev/backend/flik-03.md
+  title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 3편)'
+  category: dev
+  category2: backend
+  created: '2025-10-23'
+  updated: '2025-10-23'
+- path: assets/contents/dev/backend/flik-02.md
+  title: 'FLIK: 여행코스 추천 서비스 개발기 (백엔드 2편)'
+  category: dev
+  category2: backend
+  created: '2025-10-23'
+  updated: '2025-10-23'
+- path: assets/contents/dev/backend/flik-01.md
+  title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 1편)'
+  category: dev
+  category2: backend
   created: '2025-10-22'
   updated: '2025-10-22'
 - path: assets/contents/cs/network-websocket.md

@@ -33,6 +33,16 @@ def get_category_from_path(path):
     except (ValueError, IndexError):
         return "uncategorized"
 
+def get_category2_from_path(path):
+    parts = path.replace("\\", "/").split("/")
+    try:
+        idx = parts.index("contents")
+        if parts[idx + 1]=="dev":
+            return parts[idx + 2]
+        return ""
+    except (ValueError, IndexError):
+        return "uncategorized"
+
 def main():
     existing = load_existing_data()
     current_files = set()
@@ -49,11 +59,13 @@ def main():
                     title = get_title_from_md(full_path)
                     created, updated = get_file_dates(full_path)
                     category = get_category_from_path(rel_path)
+                    category2 = get_category2_from_path(rel_path)
                     
                     existing[rel_path] = {
                         "path": rel_path,
                         "title": title,
                         "category": category,
+                        "category2": category2,
                         "created": created,
                         "updated": updated,
                     }
