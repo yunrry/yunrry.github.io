@@ -1,0 +1,429 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Rasberry Pi - Second Brain</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Second Brain">
+<meta property="og:title" content="Rasberry Pi">
+<meta property="og:url" content="http://localhost:4000/assets/contents/dev/backend/raspberry-pi/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/dev/backend/raspberry-pi/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Second Brain Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Second Brain
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="rasberry-pi">Rasberry Pi</h1>
+
+<p>Rasberry Pi ARM 서버 스펙 확인</p>
+<h3 id="cpu-정보">CPU 정보</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CPU 상세 정보</span>
+<span class="nb">cat</span> /proc/cpuinfo
+
+<span class="c"># CPU 아키텍처 확인</span>
+lscpu
+
+<span class="c"># 간단한 CPU 정보</span>
+<span class="nb">nproc</span>  <span class="c"># CPU 코어 수</span>
+</code></pre></div></div>
+
+<h3 id="메모리-정보">메모리 정보</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 메모리 사용량 (사람이 읽기 쉬운 형태)</span>
+free <span class="nt">-h</span>
+
+<span class="c"># 상세 메모리 정보</span>
+<span class="nb">cat</span> /proc/meminfo
+</code></pre></div></div>
+
+<h3 id="저장장치-정보">저장장치 정보</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 디스크 사용량</span>
+<span class="nb">df</span> <span class="nt">-h</span>
+
+<span class="c"># 블록 디바이스 정보</span>
+lsblk
+
+<span class="c"># 저장장치 상세 정보</span>
+<span class="nb">sudo </span>fdisk <span class="nt">-l</span>
+</code></pre></div></div>
+
+<h3 id="시스템-전체-정보">시스템 전체 정보</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 라즈베리파이 모델 확인</span>
+<span class="nb">cat</span> /proc/device-tree/model
+
+<span class="c"># 시스템 정보 요약</span>
+<span class="nb">uname</span> <span class="nt">-a</span>
+
+<span class="c"># 하드웨어 정보 (설치되어 있다면)</span>
+<span class="nb">sudo </span>dmidecode
+
+<span class="c"># 온도 확인 (라즈베리파이 특화)</span>
+vcgencmd measure_temp
+</code></pre></div></div>
+
+<h3 id="네트워크-정보">네트워크 정보</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 네트워크 인터페이스</span>
+ip addr show
+<span class="c"># 또는</span>
+ifconfig
+</code></pre></div></div>
+
+<h3 id="종합-시스템-정보">종합 시스템 정보</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 시스템 전반적인 정보 (설치되어 있다면)</span>
+neofetch
+<span class="c"># 또는</span>
+screenfetch
+</code></pre></div></div>
+
+<p>가장 기본적으로는 <code class="language-plaintext highlighter-rouge">cat /proc/cpuinfo</code>, <code class="language-plaintext highlighter-rouge">free -h</code>, <code class="language-plaintext highlighter-rouge">df -h</code> 명령어로 CPU, 메모리, 저장공간을 빠르게 확인할 수 있다.</p>
+
+<p><strong>예시</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>processor    : 0
+BogoMIPS    : 108.00
+Features    : fp asimd evtstrm crc32 cpuid
+CPU implementer    : 0x41
+CPU architecture: 8
+CPU variant    : 0x0
+CPU part    : 0xd08
+CPU revision    : 3
+processor    : 1
+BogoMIPS    : 108.00
+Features    : fp asimd evtstrm crc32 cpuid
+CPU implementer    : 0x41
+CPU architecture: 8
+CPU variant    : 0x0
+CPU part    : 0xd08
+CPU revision    : 3
+processor    : 2
+BogoMIPS    : 108.00
+Features    : fp asimd evtstrm crc32 cpuid
+CPU implementer    : 0x41
+CPU architecture: 8
+CPU variant    : 0x0
+CPU part    : 0xd08
+CPU revision    : 3
+processor    : 3
+BogoMIPS    : 108.00
+Features    : fp asimd evtstrm crc32 cpuid
+CPU implementer    : 0x41
+CPU architecture: 8
+CPU variant    : 0x0
+CPU part    : 0xd08
+CPU revision    : 3
+Revision    : c03112
+Serial        : 1000000087363260
+Model        : Raspberry Pi 4 Model B Rev 1.2
+yoon@rasp
+</code></pre></div></div>
+
+<p>CPU 정보 분석<br />
+기본 구성:</p>
+<ul>
+  <li>코어 수: 4개 (processor 0, 1, 2, 3)</li>
+  <li>아키텍처: ARM64 (CPU architecture: 8)</li>
+  <li>CPU 타입: Cortex-A72 (CPU part: 0xd08)</li>
+</ul>
+
+<p>상세 스펙:</p>
+<ul>
+  <li>제조사: ARM Holdings (CPU implementer: 0x41)</li>
+  <li>BogoMIPS: 108.00 - 대략적인 성능 지표
+지원 기능:</li>
+  <li>fp: 부동소수점 연산</li>
+  <li>asimd: Advanced SIMD (벡터 연산)</li>
+  <li>evtstrm: 이벤트 스트림</li>
+  <li>crc32: CRC32 체크섬 하드웨어 가속</li>
+  <li>cpuid: CPU 식별</li>
+</ul>
+
+<p>하드웨어 정보:</p>
+<ul>
+  <li>모델: Raspberry Pi 4 Model B Rev 1.2</li>
+  <li>리비전: c03112 (하드웨어 버전 코드)</li>
+  <li>시리얼: 1000000087363260</li>
+</ul>
+
+<h2 id="버퍼캐시의-상세-사용-내역-확인">버퍼/캐시의 상세 사용 내역 확인</h2>
+
+<h3 id="1-상세-메모리-정보">1. 상세 메모리 정보</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /proc/meminfo
+</code></pre></div></div>
+<p>이 명령어로 버퍼, 캐시별 세부 항목을 볼 수 있다.</p>
+
+<h3 id="2-slabtop으로-커널-캐시-확인">2. slabtop으로 커널 캐시 확인</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>slabtop
+</code></pre></div></div>
+<p>커널이 사용하는 메모리 슬랩 캐시 정보를 실시간으로 보여준다.</p>
+
+<h3 id="3-vmstat으로-버퍼캐시-모니터링">3. vmstat으로 버퍼/캐시 모니터링</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmstat 1
+</code></pre></div></div>
+<p>실시간으로 버퍼/캐시 변화를 모니터링할 수 있다.</p>
+
+<h3 id="4-procslabinfo-확인">4. /proc/slabinfo 확인</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /proc/slabinfo
+</code></pre></div></div>
+<p>커널 메모리 할당 상세 정보를 보여준다.</p>
+
+<h3 id="5-페이지-캐시-상태-확인">5. 페이지 캐시 상태 확인</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 파일 시스템 캐시 정보</span>
+<span class="nb">cat</span> /proc/sys/vm/drop_caches  <span class="c"># 현재 설정값</span>
+
+<span class="c"># 캐시 사용량 상세</span>
+<span class="nb">awk</span> <span class="s1">'/^Cached|^Buffers|^MemFree|^MemTotal/ {print $1 $2}'</span> /proc/meminfo
+</code></pre></div></div>
+
+<p><strong>예시</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MemTotal:        3882436 kB
+MemFree:         3286172 kB
+MemAvailable:    3696616 kB
+Buffers:           64552 kB
+Cached:           397672 kB
+SwapCached:            0 kB
+Active:           128808 kB
+Inactive:         362904 kB
+Active(anon):      39236 kB
+Inactive(anon):        0 kB
+Active(file):      89572 kB
+Inactive(file):   362904 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:        524284 kB
+SwapFree:         524284 kB
+Zswap:                 0 kB
+Zswapped:              0 kB
+Dirty:                 4 kB
+Writeback:             0 kB
+AnonPages:         29588 kB
+Mapped:            38696 kB
+Shmem:              9740 kB
+KReclaimable:      29684 kB
+Slab:              54332 kB
+SReclaimable:      29684 kB
+SUnreclaim:        24648 kB
+KernelStack:        2672 kB
+PageTables:         1600 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     2465500 kB
+Committed_AS:     204972 kB
+VmallocTotal:   261087232 kB
+VmallocUsed:       12184 kB
+VmallocChunk:          0 kB
+Percpu:              720 kB
+CmaTotal:         524288 kB
+CmaFree:          505884 kB
+</code></pre></div></div>
+
+<p>버퍼/캐시 상세 분석<br />
+총 480MB (버퍼+캐시) 내역:<br />
+📁 파일 시스템 캐시 (397MB)</p>
+<ul>
+  <li>Cached: 397,672 kB (약 388MB) - 가장 큰 부분
+    <ul>
+      <li>Active(file): 89,572 kB (87MB) - 최근 사용된 파일 캐시</li>
+      <li>Inactive(file): 362,904 kB (354MB) - 덜 활성화된 파일 캐시</li>
+    </ul>
+  </li>
+</ul>
+
+<p>💾 디스크 버퍼 (64MB)</p>
+<ul>
+  <li>Buffers: 64,552 kB (63MB) - 블록 디바이스 I/O 버퍼</li>
+</ul>
+
+<p>🔧 커널 메모리 (54MB)</p>
+<ul>
+  <li>Slab: 54,332 kB (53MB) - 커널 객체 캐시
+    <ul>
+      <li>SReclaimable: 29,684 kB (29MB) - 회수 가능한 슬랩</li>
+      <li>SUnreclaim: 24,648 kB (24MB) - 회수 불가능한 슬랩</li>
+    </ul>
+  </li>
+</ul>
+
+<p>📋 기타 시스템 메모리</p>
+<ul>
+  <li>AnonPages: 29,588 kB (29MB) - 익명 페이지 (프로세스 메모리)</li>
+  <li>Mapped: 38,696 kB (38MB) - 메모리 매핑된 파일</li>
+  <li>Shmem: 9,740 kB (9.5MB) - 공유 메모리</li>
+</ul>
+
+<p><br /></p>
+
+<p>현재 내가 사용하고있는 RaspberryPi OS : <strong>Debian GNU/Linux</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Linux raspberrypi 6.12.34+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.12.34-1+rpt1~bookworm (2025-06-26) aarch64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Thu Oct 23 05:33:46 2025 from 59.13.106.248
+
+Wi-Fi is currently blocked by rfkill.
+Use raspi-config to set the country before use.
+</code></pre></div></div>
+
+<h2><br /><br /></h2>
+<p><code class="language-plaintext highlighter-rouge">#RaspberryPi</code> <code class="language-plaintext highlighter-rouge">#ARM</code></p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

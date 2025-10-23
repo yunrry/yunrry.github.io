@@ -1,0 +1,399 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Docker - Second Brain</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Second Brain">
+<meta property="og:title" content="Docker">
+<meta property="og:url" content="http://localhost:4000/assets/contents/dev/backend/docker/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/dev/backend/docker/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Second Brain Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Second Brain
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="docker">Docker</h1>
+
+<h2 id="dcoker-설치">Dcoker 설치</h2>
+
+<p>RaspberryPi4 ARM64 ver</p>
+
+<h3 id="1-시스템-업데이트">1. 시스템 업데이트</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt upgrade <span class="nt">-y</span>
+</code></pre></div></div>
+
+<h3 id="2-필요한-패키지-설치">2. 필요한 패키지 설치</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> <span class="se">\</span>
+    ca-certificates <span class="se">\</span>
+    curl <span class="se">\</span>
+    gnupg <span class="se">\</span>
+    lsb-release
+</code></pre></div></div>
+
+<h3 id="3-docker-gpg-키-추가">3. Docker GPG 키 추가</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> <span class="nt">-m</span> 0755 <span class="nt">-p</span> /etc/apt/keyrings
+curl <span class="nt">-fsSL</span> https://download.docker.com/linux/debian/gpg  
+<span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/docker.gpg
+</code></pre></div></div>
+
+<h3 id="4-docker-저장소-추가">4. Docker 저장소 추가</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="se">\</span>
+  <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] </span><span class="se">\</span><span class="s2">
+  https://download.docker.com/linux/debian </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span>  
+<span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
+</code></pre></div></div>
+
+<h3 id="5-docker-설치">5. Docker 설치</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</code></pre></div></div>
+
+<h3 id="6-사용자를-docker-그룹에-추가">6. 사용자를 docker 그룹에 추가</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="nv">$USER</span>
+</code></pre></div></div>
+
+<h3 id="7-docker-서비스-시작-및-활성화">7. Docker 서비스 시작 및 활성화</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl start docker
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>docker
+</code></pre></div></div>
+
+<h3 id="8-재로그인-또는-그룹-적용">8. 재로그인 또는 그룹 적용</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>newgrp docker
+</code></pre></div></div>
+
+<h3 id="9-설치-확인">9. 설치 확인</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nt">--version</span>
+docker run hello-world
+</code></pre></div></div>
+
+<h3 id="10-docker-compose-확인">10. Docker Compose 확인</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose version
+</code></pre></div></div>
+
+<h2 id="-gpg-gnu-privacy-guard-키">🔐 GPG (GNU Privacy Guard) 키</h2>
+<p>GPG (GNU Privacy Guard) 키는 디지털 서명을 위한 암호화 키이다.<br />
+왜 필요한가?<br />
+Docker GPG 키는 패키지 무결성과 보안을 보장하기 위해 사용된다:</p>
+<ol>
+  <li>패키지 검증: 다운로드하는 Docker 패키지가 정말 Docker 공식에서 만든 것인지 확인</li>
+  <li>변조 방지: 패키지가 중간에 악의적으로 수정되지 않았는지 검증</li>
+  <li>신뢰성: 가짜 패키지나 악성 소프트웨어 설치 방지</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> https://download.docker.com/linux/debian/gpg  
+<span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/docker.gpg
+</code></pre></div></div>
+<p>명령어 설명</p>
+<ol>
+  <li>Docker 공식 GPG 키 다운로드 (https://download.docker.com/linux/debian/gpg)</li>
+  <li>키를 시스템에 저장 (/etc/apt/keyrings/docker.gpg)</li>
+  <li>apt가 이 키로 패키지 서명을 검증하도록 설정</li>
+</ol>
+
+<p><strong>비유로 설명하면</strong></p>
+<ul>
+  <li>GPG 키 = 도장/인감</li>
+  <li>Docker 패키지 = 중요한 문서</li>
+  <li>서명 검증 = 문서에 찍힌 도장이 진짜인지 확인</li>
+</ul>
+
+<p><strong>보안상 중요한 이유</strong><br />
+GPG 키 없이 설치하면:</p>
+<ul>
+  <li>누구나 가짜 Docker 패키지를 만들어 배포할 수 있음</li>
+  <li>악성 코드가 포함된 패키지를 설치할 위험</li>
+  <li>시스템 보안이 크게 취약해짐</li>
+</ul>
+
+<hr />
+<p><br /><br /></p>
+<h1 id="명령어">명령어</h1>
+
+<p>컨테이너명/ID 확인</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 실행 중인 컨테이너 확인</span>
+docker ps
+
+<span class="c"># 컨테이너 중지</span>
+docker stop <span class="o">[</span>컨테이너명]
+
+<span class="c"># 컨테이너 재시작</span>
+docker restart <span class="o">[</span>컨테이너명]
+
+<span class="c"># 컨테이너 삭제</span>
+docker <span class="nb">rm</span> <span class="o">[</span>컨테이너명]
+
+<span class="c"># 컨테이너 로그 확인</span>
+docker logs <span class="o">[</span>컨테이너명]
+
+<span class="c"># MySQL 컨테이너만 필터링</span>
+docker ps | <span class="nb">grep </span>mysql
+</code></pre></div></div>
+
+<p>컨테이너 로그 출력 옵션</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 특정 컨테이너 실시간 로그</span>
+docker logs <span class="nt">-f</span> app-blue
+
+<span class="c"># 여러 컨테이너 동시 모니터링</span>
+docker compose logs <span class="nt">-f</span> app-blue app-green
+
+<span class="c"># 최근 100줄부터 실시간</span>
+docker logs <span class="nt">-f</span> <span class="nt">--tail</span> 100 app-blue
+
+<span class="c"># 타임스탬프 포함</span>
+docker logs <span class="nt">-f</span> <span class="nt">-t</span> app-blue
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h1 id="자주-사용하는-image">자주 사용하는 Image</h1>
+
+<h2 id="mysql">MySQL</h2>
+<p>docker 명령어로 생성</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">--name</span> mysql <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root_password <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">MYSQL_USER</span><span class="o">=</span>new_username <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>new_password <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>your_db <span class="se">\</span>
+  <span class="nt">-p</span> 3306:3306 mysql:latest
+
+</code></pre></div></div>
+
+<p>Docker Compose 사용 시</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># docker-compose.yml</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.8'</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">mysql</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">mysql:8.0</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">MYSQL_ROOT_PASSWORD</span><span class="pi">:</span> <span class="s">yourpassword</span>
+      <span class="na">MYSQL_DATABASE</span><span class="pi">:</span> <span class="s">testdb</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">3306:3306"</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">mysql_data:/var/lib/mysql</span>
+
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">mysql_data</span><span class="pi">:</span>
+</code></pre></div></div>
+
+<p>방법 1. 바로 접속</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> <span class="o">[</span>컨테이너명] mysql <span class="nt">-u</span> <span class="o">[</span>사용자] <span class="nt">-p</span>
+</code></pre></div></div>
+<p>방법 2. 컨테이너 bash세션 접속후 mysql접속</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 컨테이너에 bash로 접속</span>
+docker <span class="nb">exec</span> <span class="nt">-it</span> <span class="o">[</span>컨테이너명] bash
+
+<span class="c"># 컨테이너 내부에서 mysql 접속</span>
+mysql <span class="nt">-u</span> root <span class="nt">-p</span>
+</code></pre></div></div>
+
+<h2 id="docker-compose-실행-옵션">Docker Compose 실행 옵션</h2>
+
+<h3 id="전체-서비스-시작-백그라운드">전체 서비스 시작 (백그라운드)</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up <span class="nt">-d</span>
+</code></pre></div></div>
+<h3 id="특정-프로필로-시작-blue-green-배포용">특정 프로필로 시작 (Blue-Green 배포용)</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Blue 환경만 시작</span>
+docker compose <span class="nt">--profile</span> blue up <span class="nt">-d</span>
+
+<span class="c"># Green 환경만 시작  </span>
+docker compose <span class="nt">--profile</span> green up <span class="nt">-d</span>
+
+<span class="c"># 기본 인프라만 시작 (MySQL, Redis, Nginx)</span>
+docker compose up <span class="nt">-d</span> mysql redis nginx
+</code></pre></div></div>
+<h3 id="로그와-함께-포그라운드-실행">로그와 함께 포그라운드 실행</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up
+</code></pre></div></div>
+<h3 id="환경-변수-설정-필요시">환경 변수 설정 (필요시)</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 필요한 환경 변수들 설정</span>
+<span class="nb">export </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="s2">"your_password"</span>
+<span class="nb">export </span><span class="nv">MYSQL_DATABASE</span><span class="o">=</span><span class="s2">"your_database"</span>
+<span class="nb">export </span><span class="nv">MYSQL_USER</span><span class="o">=</span><span class="s2">"your_user"</span>
+<span class="nb">export </span><span class="nv">MYSQL_PASSWORD</span><span class="o">=</span><span class="s2">"your_password"</span>
+
+<span class="c"># 또는 .env 파일 생성</span>
+<span class="nb">cat</span> <span class="o">&gt;</span> .env <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+MYSQL_ROOT_PASSWORD=your_password
+MYSQL_DATABASE=your_database
+MYSQL_USER=your_user
+MYSQL_PASSWORD=your_password
+</span><span class="no">EOF
+</span></code></pre></div></div>
+<h3 id="실행-후-상태-확인">실행 후 상태 확인</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 컨테이너 상태 확인</span>
+docker compose ps
+
+<span class="c"># 또는</span>
+docker ps
+
+<span class="c"># 로그 확인</span>
+docker compose logs <span class="nt">-f</span>
+
+<span class="c"># 특정 서비스 로그만 확인</span>
+docker compose logs mysql
+docker compose logs flik-blue
+</code></pre></div></div>
+
+<h2><br /><br /></h2>
+<p><code class="language-plaintext highlighter-rouge">#Docker</code> <code class="language-plaintext highlighter-rouge">#RaspberryPi</code> <code class="language-plaintext highlighter-rouge">#ARM</code></p>
+
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

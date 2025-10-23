@@ -1,5 +1,6 @@
 import os
 import yaml
+import re
 from datetime import datetime
 
 BASE_DIR = "assets/contents"
@@ -37,11 +38,28 @@ def get_category2_from_path(path):
     parts = path.replace("\\", "/").split("/")
     try:
         idx = parts.index("contents")
-        if parts[idx + 1]=="dev":
+        if parts[idx + 1] == "dev":
             return parts[idx + 2]
         return ""
     except (ValueError, IndexError):
         return "uncategorized"
+
+def get_keywords_from_md(path):
+    """
+    파일 마지막 줄에서 백틱(`)으로 감싸진 #태그들 추출
+    예: `#ENV` `#bash` -> ["ENV", "bash"]
+    """
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            lines = [line.strip() for line in f if line.strip()]
+            if not lines:
+                return []
+            last_line = lines[-1]
+            # 백틱 안의 #단어 추출
+            matches = re.findall(r"`#([^`]+)`", last_line)
+            return [m.strip() for m in matches]
+    except Exception:
+        return []
 
 def main():
     existing = load_existing_data()
@@ -54,13 +72,13 @@ def main():
                 rel_path = os.path.relpath(full_path, ".").replace("\\", "/")
                 current_files.add(rel_path)
                 
-                # 기존 데이터가 있으면 유지, 없으면 새로 생성
+                title = get_title_from_md(full_path)
+                created, updated = get_file_dates(full_path)
+                category = get_category_from_path(rel_path)
+                category2 = get_category2_from_path(rel_path)
+                keywords = get_keywords_from_md(full_path)
+                
                 if rel_path not in existing:
-                    title = get_title_from_md(full_path)
-                    created, updated = get_file_dates(full_path)
-                    category = get_category_from_path(rel_path)
-                    category2 = get_category2_from_path(rel_path)
-                    
                     existing[rel_path] = {
                         "path": rel_path,
                         "title": title,
@@ -68,11 +86,14 @@ def main():
                         "category2": category2,
                         "created": created,
                         "updated": updated,
+                        "keywords": keywords,
                     }
                 else:
-                    # 수정일만 업데이트
+                    # 수정일과 키워드만 업데이트
                     _, updated = get_file_dates(full_path)
+                    existing[rel_path]["title"] = title
                     existing[rel_path]["updated"] = updated
+                    existing[rel_path]["keywords"] = keywords
     
     # 삭제된 파일 제거
     existing = {k: v for k, v in existing.items() if k in current_files}

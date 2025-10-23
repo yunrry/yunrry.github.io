@@ -1,0 +1,273 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>SSH - Second Brain</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Second Brain">
+<meta property="og:title" content="SSH">
+<meta property="og:url" content="http://localhost:4000/assets/contents/dev/backend/ssh/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/dev/backend/ssh/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Second Brain Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Second Brain
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="ssh">SSH</h1>
+<p>Secure Shell의 약자로, 네트워크를 통해 서버에 원격으로 안전하게 접속하고 명령을 실행하기 위한 프로토콜</p>
+
+<p>접속방식 1 : 비밀번호<br />
+접속방식 2 : 공개키key &amp; 개인key</p>
+
+<p>원격 테스트 시, 호스트의 방화벽에서 TCP 22번 포트를 개방한 상태더라도 공유기(라우터) 또는 ISP에서 TCP 22번 포트를 막아버려 
+접속이 불가한 경우가 있다. (보통 ssh 접속 포트는 22번이 고정인듯, AWS EC2 사용할때도 마찬가지로)</p>
+
+<p><strong>22번 포트가 안될때 대응방법</strong></p>
+<ol>
+  <li>sshd_config 파일을 수정하여 접속 포트를 임의의 다른 포트 번호로 변경한다.</li>
+  <li>공유기의 포트포워딩 기능을 이용, 공유기의 WAN 측 임의의 포트를 SSH 호스트가 사용하는 IP의 TCP 22번 포트와 연결한다.<br />
+DMZ 기능이나 Twin-IP 기능은 호스트를 완전히 외부로 개방하게 되므로 사설 네트워크 내부가 아닌 이상 가급적 사용하지 않는다.
+VPN을 경유하도록 구성할 수도 있겠지만 이중 암호화로 오버헤드만 늘리는 꼴이 되니 차라리 텔넷이 더 낫다.</li>
+  <li>공유기 관리자나 ISP 관리자 측에 내가 사용할 호스트의 IP에 대한 22번 포트를 개방하도록 요청한다. 
+다만 이 경우는 심각한 보안문제가 발생할 수 있으므로 대부분의 관리자가 거부할 것이다.
+    <blockquote>
+      <p>출처: 나무위키</p>
+    </blockquote>
+  </li>
+</ol>
+
+<p>내가 사용하는 서버 제공자가 같이 프로젝트 했던 팀원분이신데 서버 네트워크는 그분 집의 공유기로 라우팅되고있다. <br />
+sk브로드밴드를 사용중이신데 22번 80번 포워딩이 차단되어있었다.<br />
+그래서 2022번을 뚫어서 주셨다.</p>
+
+<p>githubAction과 같은 배포자동화 도구는<br />
+push할 서버 접속시 기본적으로 22번 포트로 접근한다.<br />
+22번 포트가 아니라면 반드시 스크립트에 지정 포트를 작성해야한다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#deploy.yml</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to Raspberry Pi</span>
+  <span class="na">uses</span><span class="pi">:</span> <span class="s">appleboy/ssh-action@v1.0.0</span>
+  <span class="na">with</span><span class="pi">:</span>
+    <span class="na">host</span><span class="pi">:</span> <span class="s">$</span>
+    <span class="na">username</span><span class="pi">:</span> <span class="s">$</span>
+    <span class="na">key</span><span class="pi">:</span> <span class="s">$</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="m">2022</span>  <span class="c1"># 이 줄 추가</span>
+</code></pre></div></div>
+<p>-&gt; 모든 SSH 단계에 port: 2022 추가</p>
+
+<p>GitHub Secrets에 ssh key(개인키) 등록시<br />
+—–BEGIN OPENSSH PRIVATE KEY—–부터 —–END OPENSSH PRIVATE KEY—–까지 <br />
+그대로 전체 복붙</p>
+
+<h3 id="키-생성한적-없을-때--새로-생성하고싶을-떄">키 생성한적 없을 때 / 새로 생성하고싶을 떄</h3>
+
+<p><strong>SSH 공개키 생성 (Linux 기반):</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096 <span class="nt">-C</span> <span class="s2">"github-actions"</span>
+</code></pre></div></div>
+<p>-C “name” 은 키를 구별하기 위해 이름 붙이는것(생략가능). 용도별로 키 여러개 생성 가능<br />
+-&gt; ~/.ssh/id_rsa.pub 생성됨</p>
+
+<p>생성한 키를 사용하기 위해서 등록이 필요하다</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> ~/.ssh/id_rsa.pub <span class="o">&gt;&gt;</span> ~/.ssh/authorized_keys 
+<span class="nb">chmod </span>600 ~/.ssh/authorized_keys
+</code></pre></div></div>
+
+<p><strong>SSH 개인키 확인</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 호스트에서</span>
+<span class="nb">cat</span> ~/.ssh/id_rsa
+</code></pre></div></div>
+
+<p><strong>SSH 설정 확인</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>nano /etc/ssh/sshd_config
+</code></pre></div></div>
+
+<pre><code class="language-nano">Include /etc/ssh/sshd_config.d/*.conf
+
+Port 2022
+PubkeyAuthentication yes # 없으면 추가
+AuthorizedKeysFile .ssh/authorized_keys #인증된 키들은 authorized_keys 에 모여있음
+PasswordAuthentication yes
+ChallengeResponseAuthentication no
+UsePAM yes
+</code></pre>
+<p>변경사항 있을 시</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl reload ssh
+</code></pre></div></div>
+
+<p><strong>quick process</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096  <span class="c"># or 이름 지정시 $ ssh-keygen -t rsa -b 4096 -C "name"</span>
+<span class="nb">cat</span> ~/.ssh/id_rsa.pub <span class="o">&gt;&gt;</span> ~/.ssh/authorized_keys 
+<span class="nb">chmod </span>600 ~/.ssh/authorized_keys
+<span class="nb">sudo </span>nano /etc/ssh/sshd_config <span class="c">#PubkeyAuthentication yes 없으면 추가-&gt; ctrl+O -&gt; ctrl+X</span>
+<span class="nb">sudo </span>systemctl reload ssh 
+<span class="nb">cat</span> ~/.ssh/id_rsa <span class="c">#키 복사</span>
+</code></pre></div></div>
+
+<h3 id="클라이언트에서-ssh-접속-개인키-저장하기-보안주의-내-pc여야함">클라이언트에서 SSH 접속 개인키 저장하기 (보안주의 내 PC여야함)</h3>
+<ol>
+  <li>텍스트 편집기에 호스트에서 복사한키 복붙</li>
+  <li>.pem 확장자로 저장</li>
+  <li>파일 권한: chmod 600 filename.pem (Mac/Linux)</li>
+</ol>
+
+<h2><br /><br /></h2>
+<p><code class="language-plaintext highlighter-rouge">#SSH</code> <code class="language-plaintext highlighter-rouge">#RaspberryPi</code> <code class="language-plaintext highlighter-rouge">#Linux</code> <code class="language-plaintext highlighter-rouge">#RSA</code></p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
