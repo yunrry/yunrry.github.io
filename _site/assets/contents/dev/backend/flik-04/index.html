@@ -141,7 +141,7 @@
 
 <hr />
 
-<h2 id="-문제-정의">🧩 문제 정의</h2>
+<h2 id="문제-정의">문제 정의</h2>
 
 <p>FLIK의 여행 코스 생성 기능은 단순한 랜덤 추천이 아니라,<br />
 <strong>사용자의 취향 + 장소 특성 + 이동 동선</strong>을 함께 고려해 코스를 구성한다.</p>
@@ -191,7 +191,7 @@
 
 <hr />
 
-<h2 id="-벡터-기반-사용자화-설계">🧠 벡터 기반 사용자화 설계</h2>
+<h2 id="벡터-기반-사용자화-설계">벡터 기반 사용자화 설계</h2>
 
 <h3 id="-개념-요약">🔹 개념 요약</h3>
 
@@ -236,7 +236,7 @@
 
 <hr />
 
-<h2 id="️-코스-생성-알고리즘-플로우">🗺️ 코스 생성 알고리즘 플로우</h2>
+<h2 id="코스-생성-알고리즘-플로우">코스 생성 알고리즘 플로우</h2>
 
 <h3 id="1️⃣-초기화-단계">1️⃣ 초기화 단계</h3>
 
@@ -299,7 +299,7 @@
 
 <hr />
 
-<h2 id="-테스트-전략">🧪 테스트 전략</h2>
+<h2 id="테스트-전략">테스트 전략</h2>
 
 <h3 id="-코스-생성-테스트케이스">✔ 코스 생성 테스트케이스</h3>
 
@@ -332,7 +332,7 @@
 
 <hr />
 
-<h3 id="-테스트-코드-예시-단위-테스트">🧩 테스트 코드 예시 (단위 테스트)</h3>
+<h3 id="테스트-코드-예시-단위-테스트">테스트 코드 예시 (단위 테스트)</h3>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
 <span class="kt">void</span> <span class="nf">shouldPlaceCafeInFirstSlot</span><span class="o">()</span> <span class="o">{</span>
@@ -346,7 +346,7 @@
 
 <hr />
 
-<h2 id="-서비스-코드-개요">🧱 서비스 코드 개요</h2>
+<h2 id="서비스-코드-개요">서비스 코드 개요</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">Course</span> <span class="nf">generateCourse</span><span class="o">(</span><span class="nc">User</span> <span class="n">user</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">selectedCategories</span><span class="o">)</span> <span class="o">{</span>
     <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;</span> <span class="n">preference</span> <span class="o">=</span> <span class="n">preferenceService</span><span class="o">.</span><span class="na">getUserVector</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
@@ -357,11 +357,9 @@
 
 <hr />
 
-<h2 id="-정리">✨ 정리</h2>
+<h2 id="정리">정리</h2>
 
-<p>이번 편에서는 <strong>“사용자 벡터 + 규칙 기반 코스 자동 생성 알고리즘”</strong> 을 설계했다.<br />
-추천은 단순 통계가 아니라,<br />
-“사용자의 취향을 학습하고 유사한 장소를 제안하는” 방향으로 진화하고 있다.</p>
+<p>이번 편에서는 <strong>“사용자 벡터 + 규칙 기반 코스 자동 생성 알고리즘”</strong> 을 설계했다.</p>
 
 <blockquote>
   <p>🔜 5편 예고: “추천은 어떻게 진화하는가 – 벡터 기반 개인화와 LLM 결합의 가능성”</p>

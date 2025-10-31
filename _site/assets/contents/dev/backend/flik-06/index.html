@@ -139,7 +139,7 @@
 
 <hr />
 
-<h2 id="-문제-상황">⚡ 문제 상황</h2>
+<h2 id="문제-상황">문제 상황</h2>
 
 <p>초기 FLIK의 코스 생성 알고리즘은
 사용자의 카테고리 선호 벡터와 장소 벡터 간의 <strong>유사도(cosine similarity)</strong> 로만 추천을 수행했다.</p>
@@ -208,7 +208,7 @@
 
 <hr />
 
-<h2 id="-목표">🎯 목표</h2>
+<h2 id="목표">목표</h2>
 
 <p><strong>Precision@5 50% 이상 달성</strong>
 <strong>코스 생성 속도 및 효율 개선</strong></p>
@@ -242,7 +242,7 @@
 
 <hr />
 
-<h2 id="-개선-액션-플랜">🧠 개선 액션 플랜</h2>
+<h2 id="개선-액션-플랜">개선 액션 플랜</h2>
 
 <h3 id="1️⃣-실험-설계">1️⃣ 실험 설계</h3>
 
@@ -271,14 +271,14 @@ W_new = W_old + α * (positive_feedback - negative_feedback)
 <h3 id="3️⃣-도메인-특화-피처-적용">3️⃣ 도메인 특화 피처 적용</h3>
 
 <ul>
-  <li>🕒 <strong>영업시간 필터링</strong>: 폐점시간 포함 장소 제외</li>
-  <li>🍂 <strong>계절성 가중치</strong>: 계절별 방문 적합도 적용</li>
-  <li>📍 <strong>지리적 접근성 필터링</strong>: Haversine 거리 기반 반경 내 검색</li>
+  <li><strong>영업시간 필터링</strong>: 폐점시간 포함 장소 제외</li>
+  <li><strong>계절성 가중치</strong>: 계절별 방문 적합도 적용</li>
+  <li><strong>지리적 접근성 필터링</strong>: Haversine 거리 기반 반경 내 검색</li>
 </ul>
 
 <hr />
 
-<h2 id="-개선된-코스-생성-알고리즘">🧩 개선된 코스 생성 알고리즘</h2>
+<h2 id="개선된-코스-생성-알고리즘">개선된 코스 생성 알고리즘</h2>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1) 사용자 선호 벡터 기반 후보 장소 추출
      └── 카테고리별 Top-K (유사도 기반)
@@ -294,7 +294,7 @@ W_new = W_old + α * (positive_feedback - negative_feedback)
 
 <hr />
 
-<h2 id="-구조-개요-ascii-다이어그램">🧩 구조 개요 (ASCII 다이어그램)</h2>
+<h2 id="구조-개요-ascii-다이어그램">구조 개요 (ASCII 다이어그램)</h2>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------+
 | User Saved Data      |
@@ -364,7 +364,7 @@ W_new = W_old + α * (positive_feedback - negative_feedback)
 
 <hr />
 
-<h2 id="-테스트-시나리오-예시">🧪 테스트 시나리오 예시</h2>
+<h2 id="테스트-시나리오-예시">테스트 시나리오 예시</h2>
 
 <table>
   <thead>
@@ -410,7 +410,7 @@ W_new = W_old + α * (positive_feedback - negative_feedback)
 
 <hr />
 
-<h2 id="-ab-테스트-결과-요약">📈 A/B 테스트 결과 요약</h2>
+<h2 id="ab-테스트-결과-요약">A/B 테스트 결과 요약</h2>
 
 <table>
   <thead>
@@ -452,7 +452,7 @@ W_new = W_old + α * (positive_feedback - negative_feedback)
 
 <hr />
 
-<h2 id="-회고">🧭 회고</h2>
+<h2 id="회고">회고</h2>
 
 <p>“추천 정확도를 높이기 위해 벡터 유사도 하나로는 부족하다.”</p>
 

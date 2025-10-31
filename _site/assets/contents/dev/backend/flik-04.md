@@ -8,7 +8,7 @@
 
 ---
 
-## 🧩 문제 정의
+## 문제 정의
 
 FLIK의 여행 코스 생성 기능은 단순한 랜덤 추천이 아니라,  
 **사용자의 취향 + 장소 특성 + 이동 동선**을 함께 고려해 코스를 구성한다.  
@@ -57,7 +57,7 @@ FLIK의 여행 코스 생성 기능은 단순한 랜덤 추천이 아니라,
 
 ---
 
-## 🧠 벡터 기반 사용자화 설계
+## 벡터 기반 사용자화 설계
 
 ### 🔹 개념 요약
 
@@ -99,7 +99,7 @@ RAG(Retrieval-Augmented Generation)를 바로 사용하지는 않았다.
 
 ---
 
-## 🗺️ 코스 생성 알고리즘 플로우
+## 코스 생성 알고리즘 플로우
 
 ### 1️⃣ 초기화 단계
 
@@ -147,7 +147,7 @@ RAG(Retrieval-Augmented Generation)를 바로 사용하지는 않았다.
 
 ---
 
-## 🧪 테스트 전략
+## 테스트 전략
 
 ### ✔ 코스 생성 테스트케이스
 
@@ -160,7 +160,7 @@ RAG(Retrieval-Augmented Generation)를 바로 사용하지는 않았다.
 
 ---
 
-### 🧩 테스트 코드 예시 (단위 테스트)
+### 테스트 코드 예시 (단위 테스트)
 
 ```java
 @Test
@@ -175,7 +175,7 @@ void shouldPlaceCafeInFirstSlot() {
 
 ---
 
-## 🧱 서비스 코드 개요
+## 서비스 코드 개요
 
 ```java
 public Course generateCourse(User user, List<String> selectedCategories) {
@@ -187,11 +187,9 @@ public Course generateCourse(User user, List<String> selectedCategories) {
 
 ---
 
-## ✨ 정리
+## 정리
 
-이번 편에서는 **“사용자 벡터 + 규칙 기반 코스 자동 생성 알고리즘”** 을 설계했다.  
-추천은 단순 통계가 아니라,  
-“사용자의 취향을 학습하고 유사한 장소를 제안하는” 방향으로 진화하고 있다.  
+이번 편에서는 **“사용자 벡터 + 규칙 기반 코스 자동 생성 알고리즘”** 을 설계했다.   
 
 > 🔜 5편 예고: “추천은 어떻게 진화하는가 – 벡터 기반 개인화와 LLM 결합의 가능성”
 
