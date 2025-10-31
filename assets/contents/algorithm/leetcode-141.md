@@ -33,12 +33,12 @@ public class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - 동작은 정확함
 - 빠른 구현 (5분)
 
-### 🔴 심각한 문제
+### ✘ 심각한 문제
 
 1. **시간복잡도: O(n²)**
     
@@ -171,5 +171,5 @@ public class Solution {
 - 공간복잡도 O(1)
 
 ---
-
-#LeetCode #LinkedList #Cycle #TwoPointer #Easy #FloydAlgorithm
+## 🏷️ Keywords
+`#LeetCode` `#LinkedList` `#Cycle` `#TwoPointer` `#Easy` `#FloydAlgorithm`

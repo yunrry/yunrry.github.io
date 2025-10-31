@@ -4,7 +4,7 @@ HashMap과 HashSet은 **해시 테이블(Hash Table)** 기반의 자료구조로
 
 ---
 
-## 🔍 해시 자료구조 이해
+## 해시 자료구조 이해
 
 ### 해시 테이블의 원리
 
@@ -124,7 +124,7 @@ public class HashMap<K, V> {
 
 ---
 
-## 🗺️ HashMap 사용법
+## HashMap 사용법
 
 ### 기본 연산
 
@@ -250,7 +250,7 @@ System.out.println(map.get("apple"));  // 212
 
 ---
 
-## 🎯 HashMap 문제 해결 패턴
+## HashMap 문제 해결 패턴
 
 ### 패턴 1: 빈도수 세기 (Frequency Count)
 
@@ -438,7 +438,7 @@ public int lengthOfLongestSubstringKDistinct(String s, int k) {
 
 ---
 
-## 🎨 HashSet 사용법
+## HashSet 사용법
 
 ### 기본 개념
 
@@ -545,7 +545,7 @@ System.out.println(set1.containsAll(subset));  // true
 
 ---
 
-## 🎯 HashSet 문제 해결 패턴
+## HashSet 문제 해결 패턴
 
 ### 패턴 1: 중복 제거
 
@@ -706,7 +706,7 @@ System.out.println(isHappy(2));   // false (사이클)
 
 ---
 
-## 📊 HashMap vs HashSet vs TreeMap vs TreeSet
+## HashMap vs HashSet vs TreeMap vs TreeSet
 
 | 특성 | HashMap | HashSet | TreeMap | TreeSet |
 |------|---------|---------|---------|---------|
@@ -725,7 +725,7 @@ System.out.println(isHappy(2));   // false (사이클)
 
 {% raw %}
 ```java
-// ❌ 잘못된 예
+// ✘ 잘못된 예
 class Person {
     String name;
     int age;
@@ -742,7 +742,7 @@ set.add(p2);
 System.out.println(set.size());  // 2 (같은 사람인데 중복!)
 
 
-// ✅ 올바른 예
+// ✔ 올바른 예
 class Person {
     String name;
     int age;
@@ -773,7 +773,7 @@ System.out.println(set.size());  // 1 (올바르게 중복 제거)
 
 {% raw %}
 ```java
-// ❌ 위험한 코드
+// ✘ 위험한 코드
 class MutableKey {
     int value;
     
@@ -822,10 +822,10 @@ Map<String, Integer> syncMap =
 
 {% raw %}
 ```java
-// ❌ 기본 용량 (16)
+// ✘ 기본 용량 (16)
 HashMap<String, Integer> map1 = new HashMap<>();
 
-// ✅ 예상 크기만큼 미리 할당
+// ✔ 예상 크기만큼 미리 할당
 HashMap<String, Integer> map2 = new HashMap<>(1000);
 
 // 재할당 횟수 감소 → 성능 향상
@@ -855,12 +855,12 @@ HashMap<String, Integer> map3 = new HashMap<>(16, 0.5f);
 
 {% raw %}
 ```java
-// ❌ O(n) - 느림
+// ✘ O(n) - 느림
 if (map.containsValue(100)) {
     // ...
 }
 
-// ✅ 값으로도 검색이 필요하면 역방향 Map 유지
+// ✔ 값으로도 검색이 필요하면 역방향 Map 유지
 HashMap<String, Integer> nameToAge = new HashMap<>();
 HashMap<Integer, String> ageToName = new HashMap<>();
 
@@ -873,7 +873,7 @@ ageToName.put(25, "John");
 
 ---
 
-## 🏆 코딩테스트 단골 문제
+## 코딩테스트 단골 문제
 
 ### HashMap 문제
 1. **Two Sum** - LeetCode 1
@@ -891,7 +891,7 @@ ageToName.put(25, "John");
 
 ---
 
-## 📝 핵심 정리
+## 핵심 정리
 
 ### 언제 사용할까?
 
@@ -917,7 +917,7 @@ ageToName.put(25, "John");
 
 ---
 
-## 🎓 실전 문제 풀이
+## 실전 문제 풀이
 
 ### 문제 1: 로마 숫자를 정수로 변환
 
@@ -1222,7 +1222,7 @@ System.out.println(wordPattern("aaaa", "dog cat cat dog"));  // false
 
 ---
 
-## 🔥 고급 패턴
+## 고급 패턴
 
 ### 패턴 1: LRU Cache 구현
 
@@ -1374,7 +1374,7 @@ class UnionFind {
 
 ---
 
-## 📈 성능 비교 실험
+## 성능 비교 실험
 
 {% raw %}
 ```java
@@ -1430,7 +1430,7 @@ ArrayList: 매우 느림 (O(n²))
 
 ---
 
-## 🎯 면접 준비 핵심 질문
+## 면접 준비 핵심 질문
 
 ### Q1: HashMap의 시간복잡도가 항상 O(1)인가요?
 
@@ -1457,7 +1457,7 @@ ArrayList: 매우 느림 (O(n²))
 
 ---
 
-## 📚 추가 학습 자료
+## 추가 학습 자료
 
 ### 관련 자료구조
 - **LinkedHashMap**: 삽입 순서 유지
@@ -1473,7 +1473,7 @@ ArrayList: 매우 느림 (O(n²))
 
 ---
 
-## 🎓 최종 체크리스트
+## 최종 체크리스트
 
 - [ ] HashMap의 내부 구조 이해
 - [ ] 해시 충돌 해결 방법 숙지
@@ -1485,5 +1485,6 @@ ArrayList: 매우 느림 (O(n²))
 - [ ] 실전 문제 10개 이상 풀이
 
 ---
-
-#Java #자료구조 #HashMap #HashSet #해시테이블 #알고리즘 #코딩테스트 #LeetCode #시간복잡도 #해시충돌 #면접준비
+## 🏷️ Keywords
+`#Java` `#자료구조` `#HashMap` `#HashSet` `#해시테이블` `#알고리즘` `#코딩테스트`  
+ `#LeetCode` `#시간복잡도` `#해시충돌` `#면접준비`

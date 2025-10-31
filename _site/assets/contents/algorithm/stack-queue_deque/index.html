@@ -132,11 +132,11 @@
     <div class="initial-content">
       <h1 id="stack-queue-deque">Stack, Queue, Deque</h1>
 
-<p>Stack, Queue, Deque는 데이터의 삽입과 삭제 순서가 정해진 <strong>선형 자료구조</strong>입니다. 각각의 특성을 이해하고 적절히 활용하는 것이 중요합니다.</p>
+<p>Stack, Queue, Deque는 데이터의 삽입과 삭제 순서가 정해진 <strong>선형 자료구조</strong>이다. 각각의 특성을 이해하고 적절히 활용하는 것이 중요하다.</p>
 
 <hr />
 
-<h2 id="-stack-스택">📦 Stack (스택)</h2>
+<h2 id="stack-스택">Stack (스택)</h2>
 
 <h3 id="lifo-last-in-first-out-구조">LIFO (Last In First Out) 구조</h3>
 
@@ -249,10 +249,10 @@
 
 <p><strong>Java의 Stack 클래스는 레거시!</strong></p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 권장하지 않음 (Vector 기반, 동기화 오버헤드)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 권장하지 않음 (Vector 기반, 동기화 오버헤드)</span>
 <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
 
-<span class="c1">// ✅ 권장: Deque 인터페이스 사용</span>
+<span class="c1">// ✔ 권장: Deque 인터페이스 사용</span>
 <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
 <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
 <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
@@ -360,7 +360,7 @@
 
 <hr />
 
-<h2 id="-queue-큐">🎯 Queue (큐)</h2>
+<h2 id="queue-큐">Queue (큐)</h2>
 
 <h3 id="fifo-first-in-first-out-구조">FIFO (First In First Out) 구조</h3>
 
@@ -576,7 +576,7 @@
 
 <hr />
 
-<h2 id="-deque-덱-double-ended-queue">🔄 Deque (덱, Double-Ended Queue)</h2>
+<h2 id="deque-덱-double-ended-queue">Deque (덱, Double-Ended Queue)</h2>
 
 <h3 id="양쪽-끝에서-삽입삭제-가능">양쪽 끝에서 삽입/삭제 가능</h3>
 
@@ -798,7 +798,7 @@
 
 <hr />
 
-<h2 id="-성능-비교">📊 성능 비교</h2>
+<h2 id="성능-비교">성능 비교</h2>
 
 <h3 id="시간복잡도">시간복잡도</h3>
 
@@ -876,7 +876,7 @@
 
 <hr />
 
-<h2 id="-자료구조-선택-가이드">🎯 자료구조 선택 가이드</h2>
+<h2 id="자료구조-선택-가이드">자료구조 선택 가이드</h2>
 
 <h3 id="언제-무엇을-사용할까">언제 무엇을 사용할까?</h3>
 
@@ -933,10 +933,10 @@
 
 <h3 id="1-stack-대신-deque-사용">1. Stack 대신 Deque 사용</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 비추천</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 비추천</span>
 <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
 
-<span class="c1">// ✅ 추천</span>
+<span class="c1">// ✔ 추천</span>
 <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
 </code></pre></div></div>
 
@@ -967,7 +967,7 @@
 
 <hr />
 
-<h2 id="-코딩테스트-단골-문제-유형">🏆 코딩테스트 단골 문제 유형</h2>
+<h2 id="코딩테스트-단골-문제-유형">코딩테스트 단골 문제 유형</h2>
 
 <h3 id="stack-문제">Stack 문제</h3>
 <ol>
@@ -997,7 +997,7 @@
 
 <hr />
 
-<h2 id="-핵심-정리">📝 핵심 정리</h2>
+<h2 id="핵심-정리">핵심 정리</h2>
 
 <h3 id="기억해야-할-것">기억해야 할 것</h3>
 
@@ -1035,7 +1035,7 @@
 
 <hr />
 
-<h2 id="-연습-문제">📚 연습 문제</h2>
+<h2 id="연습-문제">연습 문제</h2>
 
 <h3 id="문제-1-적절한-자료구조-선택">문제 1: 적절한 자료구조 선택</h3>
 <p>다음 상황에 적합한 자료구조를 선택하세요:</p>
@@ -1098,8 +1098,9 @@
 </code></pre></div></div>
 
 <hr />
-
-<p>#Java #자료구조 #Stack #Queue #Deque #LIFO #FIFO #알고리즘 #코딩테스트 #BFS #DFS #ArrayDeque</p>
+<h2 id="️-keywords">🏷️ Keywords</h2>
+<p><code class="language-plaintext highlighter-rouge">#Java</code> <code class="language-plaintext highlighter-rouge">#자료구조</code> <code class="language-plaintext highlighter-rouge">#Stack</code> <code class="language-plaintext highlighter-rouge">#Queue</code> <code class="language-plaintext highlighter-rouge">#Deque</code> <code class="language-plaintext highlighter-rouge">#LIFO</code> <code class="language-plaintext highlighter-rouge">#FIFO</code> <code class="language-plaintext highlighter-rouge">#알고리즘</code> <code class="language-plaintext highlighter-rouge">#코딩테스트</code><br />
+ <code class="language-plaintext highlighter-rouge">#BFS</code> <code class="language-plaintext highlighter-rouge">#DFS</code> <code class="language-plaintext highlighter-rouge">#ArrayDeque</code></p>
 
     </div>
 

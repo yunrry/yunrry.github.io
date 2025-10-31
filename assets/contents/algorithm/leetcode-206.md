@@ -34,12 +34,12 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - 역순 연결 개념 이해
 - 0ms 달성
 
-### 🔴 문제점
+### ✘ 문제점
 
 1. **불필요한 노드 생성**
     
@@ -157,5 +157,5 @@ class Solution {
 - prev, curr, next 3개 포인터로 해결
 
 ---
-
-#LeetCode #LinkedList #Reverse #Easy #포인터조작
+## 🏷️ Keywords
+`#LeetCode` `#LinkedList` `#Reverse` `#Easy` `#포인터조작`

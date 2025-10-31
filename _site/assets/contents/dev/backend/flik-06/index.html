@@ -1,0 +1,514 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>(6편) 코스 생성 추천정확도 고도화 여정 - Second Brain</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Second Brain">
+<meta property="og:title" content="(6편) 코스 생성 추천정확도 고도화 여정">
+<meta property="og:url" content="http://localhost:4000/assets/contents/dev/backend/flik-06/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/dev/backend/flik-06/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Second Brain Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Second Brain
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+<h1 id="6편-코스-생성-추천정확도-고도화-여정">(6편) 코스 생성 추천정확도 고도화 여정</h1>
+
+<blockquote>
+  <p><strong>“추천은 정확해야 의미가 있다.”</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="-문제-상황">⚡ 문제 상황</h2>
+
+<p>초기 FLIK의 코스 생성 알고리즘은
+사용자의 카테고리 선호 벡터와 장소 벡터 간의 <strong>유사도(cosine similarity)</strong> 로만 추천을 수행했다.</p>
+
+<p>하지만 실제 사용 테스트 결과, 다음과 같은 문제가 발생했다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제 1️⃣  같은 카테고리의 장소가 과도하게 반복 추천됨  
+문제 2️⃣  추천된 장소의 다양성 부족 → 코스 완성도 저하  
+문제 3️⃣  최종 코스의 이동 동선 비효율 → 사용자 만족도 하락
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-문제-진단-실제-데이터-기준-예시">📊 문제 진단 (실제 데이터 기준 예시)</h2>
+
+<p>10명의 사용자 데이터를 기반으로 <strong>Precision@5</strong>(Top-5 추천 중 실제로 선호한 비율)를 측정했다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>사용자 그룹</th>
+      <th>Precision@5</th>
+      <th>코스 다양도(%)</th>
+      <th>평균 이동거리(km)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A (자연 중심)</td>
+      <td>32%</td>
+      <td>48%</td>
+      <td>27.4</td>
+    </tr>
+    <tr>
+      <td>B (문화·역사 중심)</td>
+      <td>28%</td>
+      <td>52%</td>
+      <td>30.1</td>
+    </tr>
+    <tr>
+      <td>C (카페 중심)</td>
+      <td>35%</td>
+      <td>44%</td>
+      <td>21.6</td>
+    </tr>
+    <tr>
+      <td>D (액티비티 중심)</td>
+      <td>25%</td>
+      <td>46%</td>
+      <td>33.8</td>
+    </tr>
+    <tr>
+      <td><strong>평균</strong></td>
+      <td><strong>30%</strong></td>
+      <td><strong>47.5%</strong></td>
+      <td><strong>28.2</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>🚨 Precision@5 = 30%
+같은 카테고리 내 과도한 집중 → 장소 다양성 저하
+동선 효율성 또한 평균 28km로 비효율적</p>
+</blockquote>
+
+<hr />
+
+<h2 id="-목표">🎯 목표</h2>
+
+<p><strong>Precision@5 50% 이상 달성</strong>
+<strong>코스 생성 속도 및 효율 개선</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>목표 항목</th>
+      <th>세부 목표</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>정확도</td>
+      <td>Precision@5 ≥ 50%</td>
+    </tr>
+    <tr>
+      <td>학습성</td>
+      <td>사용자 피드백 기반 동적 가중치 조정</td>
+    </tr>
+    <tr>
+      <td>성능</td>
+      <td>코스 생성 속도 30% 단축</td>
+    </tr>
+    <tr>
+      <td>효율성</td>
+      <td>동선 거리 20% 단축</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-개선-액션-플랜">🧠 개선 액션 플랜</h2>
+
+<h3 id="1️⃣-실험-설계">1️⃣ 실험 설계</h3>
+
+<ul>
+  <li>10가지 <strong>페르소나(Persona)</strong> 기반으로 100개 테스트 시나리오 구성</li>
+  <li>각 페르소나별 코스 생성 결과를 통계적으로 비교</li>
+  <li>A/B 테스트 반복: baseline(기존 알고리즘) vs 개선 알고리즘</li>
+</ul>
+
+<h3 id="2️⃣-사용자-피드백-루프">2️⃣ 사용자 피드백 루프</h3>
+
+<blockquote>
+  <p>“사용자의 행동이 곧 데이터다.”</p>
+</blockquote>
+
+<ul>
+  <li>코스 <strong>수정·삭제</strong> → 부정 피드백 (-가중치)</li>
+  <li>코스 <strong>그대로 사용</strong> → 긍정 피드백 (+가중치)</li>
+  <li>피드백 데이터를 기반으로 벡터 유사도 가중치를 동적 업데이트</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>가중치 업데이트 수식 예시:
+W_new = W_old + α * (positive_feedback - negative_feedback)
+</code></pre></div></div>
+
+<h3 id="3️⃣-도메인-특화-피처-적용">3️⃣ 도메인 특화 피처 적용</h3>
+
+<ul>
+  <li>🕒 <strong>영업시간 필터링</strong>: 폐점시간 포함 장소 제외</li>
+  <li>🍂 <strong>계절성 가중치</strong>: 계절별 방문 적합도 적용</li>
+  <li>📍 <strong>지리적 접근성 필터링</strong>: Haversine 거리 기반 반경 내 검색</li>
+</ul>
+
+<hr />
+
+<h2 id="-개선된-코스-생성-알고리즘">🧩 개선된 코스 생성 알고리즘</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1) 사용자 선호 벡터 기반 후보 장소 추출
+     └── 카테고리별 Top-K (유사도 기반)
+(2) 지역 좌표 기반 반경 검색
+     └── 10km → 20km → 30km 단계적 확장
+(3) Haversine 공식으로 장소 간 거리 계산
+     └── 최적 동선 구성 (Greedy or TSP 근사)
+(4) 관광 도메인 필터 적용
+     └── 영업시간 / 계절 / 접근성
+(5) Redis 캐싱 + 사전 계산 추천 후보 활용
+     └── 속도 최적화 및 부하 감소
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-구조-개요-ascii-다이어그램">🧩 구조 개요 (ASCII 다이어그램)</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------+
+| User Saved Data      |
+|  - category vectors  |
+|  - feedback history  |
++----------+-----------+
+           |
+           v
++----------------------+
+| Recommendation Core  |
+|  (Similarity Engine) |
++----------+-----------+
+           |
+           v
++----------------------+
+|   Domain Filters     |
+|  (Time, Season, Geo) |
++----------+-----------+
+           |
+           v
++----------------------+
+|   Route Optimizer    |
+| (Haversine + Greedy) |
++----------+-----------+
+           |
+           v
++----------------------+
+|  Redis Cache Server  |
+| (Precomputed Routes) |
++----------------------+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="️-기술-스택-확장">⚙️ 기술 스택 확장</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>영역</th>
+      <th>사용 기술</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>추천 계산</td>
+      <td>Python + NumPy (벡터 연산)</td>
+    </tr>
+    <tr>
+      <td>동선 계산</td>
+      <td>Haversine formula + Greedy heuristic</td>
+    </tr>
+    <tr>
+      <td>캐싱</td>
+      <td>Redis SortedSet</td>
+    </tr>
+    <tr>
+      <td>피드백 학습</td>
+      <td>Spring Batch + Scheduler</td>
+    </tr>
+    <tr>
+      <td>통계 분석</td>
+      <td>Pandas + Jupyter (Precision, Recall, F1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-테스트-시나리오-예시">🧪 테스트 시나리오 예시</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>테스트 ID</th>
+      <th>페르소나</th>
+      <th>선택 카테고리</th>
+      <th>생성된 코스</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T001</td>
+      <td>자연 중심</td>
+      <td>자연, 카페</td>
+      <td>5일 코스 (14개 장소)</td>
+      <td>👍 유지</td>
+    </tr>
+    <tr>
+      <td>T002</td>
+      <td>실내 중심</td>
+      <td>실내, 음식</td>
+      <td>3일 코스 (9개 장소)</td>
+      <td>👎 수정</td>
+    </tr>
+    <tr>
+      <td>T003</td>
+      <td>가족여행</td>
+      <td>자연, 테마파크</td>
+      <td>2일 코스 (8개 장소)</td>
+      <td>👍 유지</td>
+    </tr>
+    <tr>
+      <td>T004</td>
+      <td>힐링 중심</td>
+      <td>카페, 문화</td>
+      <td>4일 코스 (11개 장소)</td>
+      <td>👎 삭제</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-ab-테스트-결과-요약">📈 A/B 테스트 결과 요약</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>개선 전</th>
+      <th>개선 후</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Precision@5</td>
+      <td>30%</td>
+      <td><strong>53%</strong> ✔</td>
+    </tr>
+    <tr>
+      <td>코스 다양도</td>
+      <td>47%</td>
+      <td><strong>68%</strong> ✔</td>
+    </tr>
+    <tr>
+      <td>평균 이동거리</td>
+      <td>28.2km</td>
+      <td><strong>21.3km</strong> ✔</td>
+    </tr>
+    <tr>
+      <td>평균 생성시간</td>
+      <td>4.5s</td>
+      <td><strong>2.9s</strong> ✔</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>🎉 Precision@5 목표 초과 달성
+사용자 체감 속도 35% 향상
+동선 효율성 +20% 개선</p>
+</blockquote>
+
+<hr />
+
+<h2 id="-회고">🧭 회고</h2>
+
+<p>“추천 정확도를 높이기 위해 벡터 유사도 하나로는 부족하다.”</p>
+
+<p>FLIK의 추천 엔진은 이제
+사용자의 피드백, 실제 이동 거리, 시간 제약, 계절성을 종합적으로 고려하는
+<strong>하이브리드 추천 시스템</strong>으로 진화하고 있다.</p>
+
+<hr />
+
+<blockquote>
+  <p>🔜 7편 예고:
+<strong>“숫자로 증명하다 — 개선 결과 리포트와 시스템 검증”</strong></p>
+</blockquote>
+
+<hr />
+
+<p>이 버전은 그대로 <strong>GitHub Pages, Velog, Notion, Tistory, Hugo 등 Markdown 블로그</strong>에 복붙해도
+줄바꿈·테이블·코드·ASCII 구조가 모두 정상 렌더링됩니다.</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

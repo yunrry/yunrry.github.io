@@ -86,14 +86,14 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 1. **단조 스택 접근**: 스택을 활용하려는 시도
 2. **높이와 너비 추적**: 별도 스택으로 정보 관리 시도
 3. **엣지 케이스 처리**: 길이가 1인 경우 처리
 4. **끈기**: 복잡한 문제를 끝까지 구현
 
-### 🔴 심각한 문제점
+### ✘ 심각한 문제점
 
 1. **과도한 복잡도**:
     
@@ -158,7 +158,7 @@ class Solution {
 }
 ```
 
-**시간복잡도**: O(n) **공간복잡도**: O(n) **Runtime**: 8-10ms ✅
+**시간복잡도**: O(n) **공간복잡도**: O(n) **Runtime**: 8-10ms ✔
 
 ---
 
@@ -430,10 +430,10 @@ class Solution {
 
 **개선 효과**:
 
-- ✅ 849ms → 8ms (**100배 빠름**)
-- ✅ 3개 스택 → 1개 스택
-- ✅ 복잡한 로직 → 간결한 while 루프
-- ✅ 가독성 대폭 향상
+- ✔ 849ms → 8ms (**100배 빠름**)
+- ✔ 3개 스택 → 1개 스택
+- ✔ 복잡한 로직 → 간결한 while 루프
+- ✔ 가독성 대폭 향상
 
 ---
 
@@ -561,4 +561,6 @@ for (int i = 0; i < n; i++) {
 
 ## 🏷️ Keywords
 
-#MonotonicStack #Histogram #LargestRectangle #Stack #DynamicProgramming #단조스택 #히스토그램 #면적최대화 #Deque #IndexTracking #O(n)Algorithm #Sentinel #LeetCodeHard #코딩테스트 #Hard난이도 #최적화
+`#MonotonicStack` `#Histogram` `#LargestRectangle` `#Stack` `#DynamicProgramming` 
+`#단조스택``#히스토그램` `#면적최대화` `#Deque` `#IndexTracking` `#O(n)Algorithm` `#Sentinel`  
+`#LeetCodeHard``#코딩테스트` `#Hard` `#최적화`  

@@ -155,17 +155,17 @@
     </tr>
     <tr>
       <td><strong>보안</strong></td>
-      <td>낮음 (URL 노출) ❌</td>
-      <td>높음 (Body) ✅</td>
+      <td>낮음 (URL 노출) ✘</td>
+      <td>높음 (Body) ✔</td>
     </tr>
     <tr>
       <td><strong>캐싱</strong></td>
-      <td>가능 ✅</td>
+      <td>가능 ✔</td>
       <td>불가능</td>
     </tr>
     <tr>
       <td><strong>북마크</strong></td>
-      <td>가능 ✅</td>
+      <td>가능 ✔</td>
       <td>불가능</td>
     </tr>
     <tr>
@@ -176,16 +176,16 @@
     <tr>
       <td><strong>길이 제한</strong></td>
       <td>있음 (2048자)</td>
-      <td>없음 ✅</td>
+      <td>없음 ✔</td>
     </tr>
     <tr>
       <td><strong>멱등성</strong></td>
-      <td>✅</td>
-      <td>❌</td>
+      <td>✔</td>
+      <td>✘</td>
     </tr>
     <tr>
       <td><strong>속도</strong></td>
-      <td>빠름 ✅</td>
+      <td>빠름 ✔</td>
       <td>약간 느림</td>
     </tr>
   </tbody>
@@ -197,12 +197,12 @@
 
 <h3 id="특징">특징</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 데이터 조회
-✅ URL에 데이터 포함
-✅ 캐싱 가능
-✅ 멱등성 보장
-❌ 보안 취약
-❌ 길이 제한
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 데이터 조회
+✔ URL에 데이터 포함
+✔ 캐싱 가능
+✔ 멱등성 보장
+✘ 보안 취약
+✘ 길이 제한
 
 사용: 검색, 조회, 필터링
 </code></pre></div></div>
@@ -236,51 +236,51 @@ sort = "price"
 
 <h3 id="장점">장점</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 간단함:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 간단함:
    - URL만으로 전달
    - 별도 Body 불필요
 
-✅ 캐싱:
+✔ 캐싱:
    - 브라우저 캐시
    - CDN 캐시
    - 빠른 응답
 
-✅ 북마크/공유:
+✔ 북마크/공유:
    - URL 복사만으로 공유
    - 검색 결과 공유 가능
 
-✅ 멱등성:
+✔ 멱등성:
    - 여러 번 요청해도 같은 결과
    - 안전함
 </code></pre></div></div>
 
 <h3 id="단점">단점</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❌ 보안:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✘ 보안:
    - URL에 데이터 노출
    - 브라우저 히스토리에 남음
    - 로그에 기록됨
    - 비밀번호 전송 불가
 
-❌ 길이 제한:
+✘ 길이 제한:
    - 브라우저: 약 2048자
    - 서버마다 다름
    - 긴 데이터 전송 불가
 
-❌ 바이너리 데이터:
+✘ 바이너리 데이터:
    - 파일 업로드 불가
    - 텍스트만 가능
 </code></pre></div></div>
 
 <h3 id="사용-예시">사용 예시</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 올바른 사용:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 올바른 사용:
 GET /users/123           (사용자 조회)
 GET /products?id=5       (상품 조회)
 GET /search?q=java       (검색)
 GET /posts?page=2        (페이징)
 
-❌ 잘못된 사용:
+✘ 잘못된 사용:
 GET /login?id=admin&amp;pw=1234  (비밀번호 노출!)
 GET /user/delete?id=5        (삭제는 DELETE 사용)
 </code></pre></div></div>
@@ -291,12 +291,12 @@ GET /user/delete?id=5        (삭제는 DELETE 사용)
 
 <h3 id="특징-1">특징</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 데이터 생성/수정
-✅ Body에 데이터 포함
-✅ 보안성 높음
-✅ 길이 제한 없음
-❌ 캐싱 불가
-❌ 멱등성 없음
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 데이터 생성/수정
+✔ Body에 데이터 포함
+✔ 보안성 높음
+✔ 길이 제한 없음
+✘ 캐싱 불가
+✘ 멱등성 없음
 
 사용: 회원가입, 로그인, 파일 업로드
 </code></pre></div></div>
@@ -313,7 +313,7 @@ Content-Length: 52
   "password": "secret123"
 }
 
-데이터: Body에 포함 (URL에 노출 안 됨) ✅
+데이터: Body에 포함 (URL에 노출 안 됨) ✔
 </code></pre></div></div>
 
 <h3 id="content-type">Content-Type</h3>
@@ -341,43 +341,43 @@ age: 30
 
 <h3 id="장점-1">장점</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 보안:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 보안:
    - Body에 데이터 숨김
    - URL에 노출 안 됨
    - 히스토리에 안 남음
 
-✅ 데이터 크기:
+✔ 데이터 크기:
    - 길이 제한 없음
    - 대용량 데이터 전송 가능
 
-✅ 다양한 형식:
+✔ 다양한 형식:
    - JSON, XML, 파일 등
    - 바이너리 데이터 가능
 </code></pre></div></div>
 
 <h3 id="단점-1">단점</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❌ 캐싱 불가:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✘ 캐싱 불가:
    - 매번 서버 요청
    - 느릴 수 있음
 
-❌ 북마크/공유 불가:
+✘ 북마크/공유 불가:
    - URL만으로 재현 불가
 
-❌ 멱등성 없음:
+✘ 멱등성 없음:
    - 여러 번 요청 시 중복 생성 가능
    - 주의 필요
 </code></pre></div></div>
 
 <h3 id="사용-예시-1">사용 예시</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 올바른 사용:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 올바른 사용:
 POST /users              (사용자 생성)
 POST /login              (로그인)
 POST /posts              (게시글 작성)
 POST /upload             (파일 업로드)
 
-❌ 잘못된 사용:
+✘ 잘못된 사용:
 POST /users/123          (조회는 GET 사용)
 POST /search             (검색은 GET 사용)
 </code></pre></div></div>
@@ -401,7 +401,7 @@ POST /search             (검색은 GET 사용)
 2번 요청: {id: 123, name: "홍길동"}
 3번 요청: {id: 123, name: "홍길동"}
 
-→ 항상 같은 결과 ✅
+→ 항상 같은 결과 ✔
 </code></pre></div></div>
 
 <h3 id="post는-비멱등">POST는 비멱등</h3>
@@ -413,21 +413,21 @@ Body: {name: "홍길동"}
 2번 요청: 사용자 2 생성 (중복!)
 3번 요청: 사용자 3 생성 (중복!)
 
-→ 매번 다른 결과 ❌
+→ 매번 다른 결과 ✘
 </code></pre></div></div>
 
 <h3 id="http-메서드별-멱등성">HTTP 메서드별 멱등성</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>멱등:
-- GET ✅
-- PUT ✅
-- DELETE ✅
-- HEAD ✅
-- OPTIONS ✅
+- GET ✔
+- PUT ✔
+- DELETE ✔
+- HEAD ✔
+- OPTIONS ✔
 
 비멱등:
-- POST ❌
-- PATCH ❌ (경우에 따라 다름)
+- POST ✘
+- PATCH ✘ (경우에 따라 다름)
 </code></pre></div></div>
 
 <hr />

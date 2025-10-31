@@ -1,11 +1,11 @@
 
 # 재귀와 완전탐색
 
-재귀는 자기 자신을 호출하는 함수로, 복잡한 문제를 작은 문제로 나누어 해결하는 강력한 기법입니다. 완전탐색과 백트래킹의 기초가 됩니다.
+재귀는 자기 자신을 호출하는 함수로, 복잡한 문제를 작은 문제로 나누어 해결하는 강력한 기법이다. 완전탐색과 백트래킹의 기초가 된다.
 
 ---
 
-## 🔄 재귀 (Recursion)
+## 재귀 (Recursion)
 
 ### 재귀의 원리
 
@@ -216,7 +216,7 @@ public class StringReverse {
 
 ---
 
-## 🎯 완전탐색 (Brute Force)
+## 완전탐색 (Brute Force)
 
 ### 원리
 
@@ -602,7 +602,7 @@ public class NQueen {
 
 ---
 
-## 🌳 DFS (Depth-First Search)
+## DFS (Depth-First Search)
 
 ### 원리
 
@@ -897,7 +897,7 @@ public class NumberOfIslands {
 
 ---
 
-## 🎨 실전 패턴
+## 실전 패턴
 
 ### 패턴 1: 선택/비선택 (Include/Exclude)
 
@@ -979,7 +979,7 @@ public void dfs(int[][] grid, int x, int y) {
 
 ---
 
-## 📊 복잡도 분석
+## 복잡도 분석
 
 ### 재귀 시간복잡도
 
@@ -1003,12 +1003,12 @@ public void dfs(int[][] grid, int x, int y) {
 {% raw %}
 
 ```java
-// ❌ 무한 재귀 - Base Case 없음
+// ✘ 무한 재귀 - Base Case 없음
 public int wrong(int n) {
     return n + wrong(n - 1);  // 멈추지 않음!
 }
 
-// ✅ 올바른 재귀
+// ✔ 올바른 재귀
 public int correct(int n) {
     if (n <= 0) return 0;  // Base Case
     return n + correct(n - 1);
@@ -1042,7 +1042,7 @@ public int correct(int n) {
 {% raw %}
 
 ```java
-// ❌ 잘못된 백트래킹 - 상태 복원 안 함
+// ✘ 잘못된 백트래킹 - 상태 복원 안 함
 public void wrong(List<Integer> path) {
     if (조건) {
         result.add(path);  // 위험! 같은 객체 참조
@@ -1056,7 +1056,7 @@ public void wrong(List<Integer> path) {
     }
 }
 
-// ✅ 올바른 백트래킹
+// ✔ 올바른 백트래킹
 public void correct(List<Integer> path) {
     if (조건) {
         result.add(new ArrayList<>(path));  // 복사!
@@ -1227,7 +1227,7 @@ public class DuplicateRemoval {
 
 ---
 
-## 🎯 실전 문제 풀이
+## 실전 문제 풀이
 
 ### 문제 1: 전화번호 문자 조합 (LeetCode 17)
 
@@ -1451,7 +1451,7 @@ public class SudokuSolver {
 
 ---
 
-## 🏆 추천 문제
+## 추천 문제
 
 ### 재귀 기초 (⭐)
 
@@ -1558,7 +1558,7 @@ public class SudokuSolver {
 
 ---
 
-## 📚 학습 로드맵
+## 학습 로드맵
 
 ### 1주차: 재귀 기초
 
@@ -1590,7 +1590,7 @@ public class SudokuSolver {
 
 ---
 
-## 💡 디버깅 팁
+## 디버깅 팁
 
 ### 1. 재귀 호출 추적
 
@@ -1669,7 +1669,7 @@ public void backtrackDebug(List<Integer> current, int start) {
 
 ---
 
-## 🎯 핵심 정리
+## 핵심 정리
 
 ### 재귀 체크리스트
 
@@ -1694,7 +1694,7 @@ public void backtrackDebug(List<Integer> current, int start) {
 
 ---
 
-## 📝 암기 필수 템플릿
+## 암기 필수 템플릿
 
 ### 1. 백트래킹 기본
 
@@ -1765,5 +1765,6 @@ public void dfs(int[][] grid, int x, int y) {
 {% endraw %}
 
 ---
-
-#Java #재귀 #Recursion #백트래킹 #Backtracking #DFS #완전탐색 #BruteForce #순열 #조합 #NQueen #알고리즘 #코딩테스트
+## 🏷️ Keywords
+`#Java` `#재귀` `#Recursion` `#백트래킹` `#Backtracking` `#DFS` `#완전탐색` `#BruteForce`  
+`#순열` `#조합` `#NQueen` `#알고리즘` `#코딩테스트`  

@@ -217,7 +217,7 @@ Sales      | Senior   | 12  | 50000
 ### 3. GROUP BY 사용 시 주의사항
 
 ```sql
--- ❌ 잘못된 쿼리 (에러 발생)
+-- ✘ 잘못된 쿼리 (에러 발생)
 SELECT department, name, COUNT(*)
 FROM employees
 GROUP BY department;
@@ -229,17 +229,17 @@ GROUP BY department;
 - 한 부서에 여러 직원이 있는데, 어떤 name을 출력해야 할지 모호함
 
 ```sql
--- ✅ 올바른 쿼리 1: 집계함수 사용
+-- ✔ 올바른 쿼리 1: 집계함수 사용
 SELECT department, COUNT(*) AS cnt
 FROM employees
 GROUP BY department;
 
--- ✅ 올바른 쿼리 2: GROUP BY에 포함
+-- ✔ 올바른 쿼리 2: GROUP BY에 포함
 SELECT department, name, salary
 FROM employees
 GROUP BY department, name, salary;
 
--- ✅ 올바른 쿼리 3: 서브쿼리로 최고 급여자만 선택
+-- ✔ 올바른 쿼리 3: 서브쿼리로 최고 급여자만 선택
 SELECT department, name, salary
 FROM employees e1
 WHERE salary = (
@@ -535,7 +535,7 @@ FROM employees;
 ### 3. HAVING에서 별칭(Alias) 사용 불가
 
 ```sql
--- ❌ 에러 발생
+-- ✘ 에러 발생
 SELECT 
     department, 
     AVG(salary) AS avg_sal
@@ -543,7 +543,7 @@ FROM employees
 GROUP BY department
 HAVING avg_sal > 50000;  -- 별칭 사용 불가
 
--- ✅ 올바른 방법
+-- ✔ 올바른 방법
 SELECT 
     department, 
     AVG(salary) AS avg_sal
@@ -583,11 +583,11 @@ LIMIT 3;                              -- 7. 행 수 제한
 ### 1. GROUP BY 없이 집계함수 사용
 
 ```sql
--- ❌ 에러 (MySQL 5.7 이상)
+-- ✘ 에러 (MySQL 5.7 이상)
 SELECT department, COUNT(*)
 FROM employees;
 
--- ✅ 올바른 방법
+-- ✔ 올바른 방법
 SELECT department, COUNT(*)
 FROM employees
 GROUP BY department;
@@ -596,13 +596,13 @@ GROUP BY department;
 ### 2. WHERE에서 집계함수 사용
 
 ```sql
--- ❌ 에러
+-- ✘ 에러
 SELECT department
 FROM employees
 WHERE AVG(salary) > 50000
 GROUP BY department;
 
--- ✅ HAVING 사용
+-- ✔ HAVING 사용
 SELECT department
 FROM employees
 GROUP BY department
@@ -612,12 +612,12 @@ HAVING AVG(salary) > 50000;
 ### 3. SELECT의 모든 컬럼이 GROUP BY에 없음
 
 ```sql
--- ❌ 에러
+-- ✘ 에러
 SELECT department, name, COUNT(*)
 FROM employees
 GROUP BY department;
 
--- ✅ 집계함수 사용 또는 GROUP BY에 추가
+-- ✔ 집계함수 사용 또는 GROUP BY에 추가
 SELECT department, COUNT(name) AS name_count
 FROM employees
 GROUP BY department;
@@ -686,6 +686,3 @@ GROUP BY position;
 
 </details>
 
------
-
-이 내용을 바탕으로 실제 SQL 쿼리를 많이 작성해보세요. 다음 주제(네트워크, 자료구조 등)도 필요하시면 말씀해주세요!​​​​​​​​​​​​​​​​

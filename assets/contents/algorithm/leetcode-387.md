@@ -33,13 +33,13 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - 빈도수 배열로 O(n) 해결
 - Two-pass 접근 정확
 - 공간복잡도 O(1) (고정 크기 26)
 
-### 🔴 개선점
+### ✦ 개선점
 
 - 매직넘버 97 대신 'a' 사용
 - 불필요한 (int) 캐스팅
@@ -144,5 +144,5 @@ class Solution {
 - <a href="https://leetcode.com/problems/sort-characters-by-frequency/" target="_blank">LeetCode 451: Sort Characters By Frequency</a>
 
 ---
-
-#LeetCode #HashMap #FrequencyCount #String #Easy #배열
+## 🏷️ Keywords
+`#LeetCode` `#HashMap` `#FrequencyCount` `#String` `#Easy` `#배열`

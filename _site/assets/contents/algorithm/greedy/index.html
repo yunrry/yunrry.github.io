@@ -133,22 +133,24 @@
       
 <h1 id="그리디--구현">그리디 &amp; 구현</h1>
 
-<p>그리디(Greedy)는 매 순간 최선의 선택을 하는 알고리즘이고, 구현(Implementation)은 문제에서 요구하는 대로 정확히 코드로 옮기는 능력입니다. 두 유형 모두 코딩테스트에서 자주 출제됩니다.</p>
+<p>그리디(Greedy)는 매 순간 최선의 선택을 하는 알고리즘이고, <br />
+구현(Implementation)은 문제에서 요구하는 대로 정확히 코드로 옮기는 능력이다. <br />
+두 유형 모두 코딩테스트에서 자주 출제된다.</p>
 
 <hr />
 
-<h2 id="-그리디-알고리즘">🎯 그리디 알고리즘</h2>
+<h2 id="그리디-알고리즘">그리디 알고리즘</h2>
 
 <h3 id="그리디란">그리디란?</h3>
 
 <p><strong>Greedy = 탐욕적 선택</strong></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-핵심 아이디어:
+핵심 아이디어:  
 
-- 현재 상황에서 가장 좋은 선택
-- 선택을 번복하지 않음
-- 지역 최적해 → 전역 최적해
+- 현재 상황에서 가장 좋은 선택  
+- 선택을 번복하지 않음  
+- 지역 최적해 → 전역 최적해  
 
 </code></pre></div></div>
 
@@ -222,7 +224,7 @@
 
 <hr />
 
-<h2 id="-그리디-기본-예제">🎨 그리디 기본 예제</h2>
+<h2 id="그리디-기본-예제">그리디 기본 예제</h2>
 
 <h3 id="예제-1-거스름돈">예제 1: 거스름돈</h3>
 
@@ -248,11 +250,11 @@
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><strong>⚠️ 주의</strong>: 동전 단위가 배수 관계가 아니면 그리디 실패!</p>
+<p><strong>! 주의</strong>: 동전 단위가 배수 관계가 아니면 그리디 실패!</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예: 동전 [1, 4, 6], 목표 8
-그리디: 6 + 1 + 1 = 3개 ❌
-최적: 4 + 4 = 2개 ✅
+그리디: 6 + 1 + 1 = 3개 ✘
+최적: 4 + 4 = 2개 ✔
 </code></pre></div></div>
 
 <hr />
@@ -495,7 +497,7 @@
 
 <hr />
 
-<h2 id="-그리디-문제-패턴">🎯 그리디 문제 패턴</h2>
+<h2 id="그리디-문제-패턴">그리디 문제 패턴</h2>
 
 <h3 id="패턴-1-정렬-후-선택">패턴 1: 정렬 후 선택</h3>
 
@@ -609,7 +611,7 @@
 
 <hr />
 
-<h2 id="-구현-예제">🎮 구현 예제</h2>
+<h2 id="구현-예제">구현 예제</h2>
 
 <h3 id="예제-1-상하좌우-이동">예제 1: 상하좌우 이동</h3>
 
@@ -922,7 +924,7 @@
 
 <hr />
 
-<h2 id="-실전-팁">💡 실전 팁</h2>
+<h2 id="실전-팁">실전 팁</h2>
 
 <h3 id="그리디-문제-풀이">그리디 문제 풀이</h3>
 
@@ -970,7 +972,7 @@ Step 5: 디버깅
 
 <hr />
 
-<h2 id="-추천-문제">🏆 추천 문제</h2>
+<h2 id="추천-문제">추천 문제</h2>
 
 <h3 id="그리디-">그리디 (⭐)</h3>
 
@@ -1147,7 +1149,7 @@ Step 5: 디버깅
 
 <hr />
 
-<h2 id="-학습-로드맵">📚 학습 로드맵</h2>
+<h2 id="학습-로드맵">학습 로드맵</h2>
 
 <h3 id="1주차-그리디-기초">1주차: 그리디 기초</h3>
 
@@ -1186,7 +1188,7 @@ Step 5: 디버깅
 
 <hr />
 
-<h2 id="-패턴별-템플릿">🎯 패턴별 템플릿</h2>
+<h2 id="패턴별-템플릿">패턴별 템플릿</h2>
 
 <h3 id="1-정렬-그리디">1. 정렬 그리디</h3>
 
@@ -1279,7 +1281,7 @@ Step 5: 디버깅
 
 <hr />
 
-<h2 id="-고급-예제">🎨 고급 예제</h2>
+<h2 id="고급-예제">고급 예제</h2>
 
 <h3 id="예제-1-뱀과-사다리-게임">예제 1: 뱀과 사다리 게임</h3>
 
@@ -1526,12 +1528,12 @@ Step 5: 디버깅
 
 <h3 id="1-인덱스-오류">1. 인덱스 오류</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 잘못된 코드</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 잘못된 코드</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>  <span class="c1">// n 포함 X</span>
     <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">...;</span>  <span class="c1">// ArrayIndexOutOfBoundsException</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ 올바른 코드</span>
+<span class="c1">// ✔ 올바른 코드</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
     <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">...;</span>
 <span class="o">}</span>
@@ -1541,10 +1543,10 @@ Step 5: 디버깅
 
 <h3 id="2-얕은-복사">2. 얕은 복사</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 잘못된 복사</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 잘못된 복사</span>
 <span class="kt">int</span><span class="o">[][]</span> <span class="n">copy</span> <span class="o">=</span> <span class="n">original</span><span class="o">;</span>  <span class="c1">// 같은 참조!</span>
 
-<span class="c1">// ✅ 깊은 복사</span>
+<span class="c1">// ✔ 깊은 복사</span>
 <span class="kt">int</span><span class="o">[][]</span> <span class="n">copy</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">m</span><span class="o">];</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
     <span class="n">copy</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">original</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">clone</span><span class="o">();</span>
@@ -1555,11 +1557,11 @@ Step 5: 디버깅
 
 <h3 id="3-경계-조건">3. 경계 조건</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 경계 체크 누락</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 경계 체크 누락</span>
 <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="o">;</span>
 <span class="n">grid</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>  <span class="c1">// 범위 밖일 수 있음!</span>
 
-<span class="c1">// ✅ 경계 체크</span>
+<span class="c1">// ✔ 경계 체크</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">nx</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">grid</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
 <span class="o">}</span>
@@ -1569,18 +1571,18 @@ Step 5: 디버깅
 
 <h3 id="4-정렬-실수">4. 정렬 실수</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 기본형 배열은 내림차순 불가</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 기본형 배열은 내림차순 불가</span>
 <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
 <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>  <span class="c1">// 컴파일 에러!</span>
 
-<span class="c1">// ✅ Integer 배열 사용</span>
+<span class="c1">// ✔ Integer 배열 사용</span>
 <span class="nc">Integer</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
 <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
 </code></pre></div></div>
 
 <hr />
 
-<h2 id="-핵심-체크리스트">🎯 핵심 체크리스트</h2>
+<h2 id="핵심-체크리스트">핵심 체크리스트</h2>
 
 <h3 id="그리디">그리디</h3>
 
@@ -1603,7 +1605,7 @@ Step 5: 디버깅
 
 <hr />
 
-<h2 id="-빠른-입출력-템플릿">📝 빠른 입출력 템플릿</h2>
+<h2 id="빠른-입출력-템플릿">빠른 입출력 템플릿</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
@@ -1716,7 +1718,7 @@ Step 5: 디버깅
 
 <hr />
 
-<h2 id="-마무리">🎓 마무리</h2>
+<h2 id="마무리">마무리</h2>
 
 <h3 id="그리디-핵심">그리디 핵심</h3>
 
@@ -1744,8 +1746,9 @@ Step 5: 디버깅
 </code></pre></div></div>
 
 <hr />
-
-<p>#Java #그리디 #Greedy #구현 #Implementation #시뮬레이션 #Simulation #알고리즘 #코딩테스트 #정렬 #문자열 #격자 #2D배열</p>
+<h2 id="️-keywords">🏷️ Keywords</h2>
+<p><code class="language-plaintext highlighter-rouge">#Java</code> <code class="language-plaintext highlighter-rouge">#그리디</code> <code class="language-plaintext highlighter-rouge">#Greedy</code> <code class="language-plaintext highlighter-rouge">#구현</code> <code class="language-plaintext highlighter-rouge">#Implementation</code> <code class="language-plaintext highlighter-rouge">#시뮬레이션</code> <code class="language-plaintext highlighter-rouge">#Simulation</code> <br />
+<code class="language-plaintext highlighter-rouge">#알고리즘</code> <code class="language-plaintext highlighter-rouge">#코딩테스트</code><code class="language-plaintext highlighter-rouge">#정렬</code> <code class="language-plaintext highlighter-rouge">#문자열</code> <code class="language-plaintext highlighter-rouge">#격자</code> <code class="language-plaintext highlighter-rouge">#2D배열</code></p>
 
     </div>
 

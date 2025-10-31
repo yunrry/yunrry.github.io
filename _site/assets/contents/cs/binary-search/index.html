@@ -159,7 +159,7 @@
 3단계: 좁혀진 범위
 [7]
  ↑ mid=7
-7 == 7 → 찾음! ✅
+7 == 7 → 찾음! ✔
 
 비교 횟수: 3번 (선형 탐색은 4번)
 </code></pre></div></div>
@@ -237,7 +237,7 @@
 <span class="mi">4</span><span class="err">단계</span><span class="o">:</span>
 <span class="n">left</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">mid</span><span class="o">=</span><span class="mi">6</span>
 <span class="n">arr</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">=</span><span class="mi">13</span>
-<span class="mi">13</span> <span class="o">==</span> <span class="mi">13</span> <span class="err">→</span> <span class="err">찾음</span><span class="o">!</span> <span class="err">✅</span>
+<span class="mi">13</span> <span class="o">==</span> <span class="mi">13</span> <span class="err">→</span> <span class="err">찾음</span><span class="o">!</span> <span class="err">✔</span>
 
 <span class="err">비교</span> <span class="err">횟수</span><span class="o">:</span> <span class="mi">4</span><span class="err">번</span>
 </code></pre></div></div>
@@ -262,7 +262,7 @@
 10        | 최대 10번 | 최대 4번
 100       | 최대 100번 | 최대 7번
 1,000     | 최대 1,000번 | 최대 10번
-1,000,000 | 최대 1,000,000번 | 최대 20번 ✅
+1,000,000 | 최대 1,000,000번 | 최대 20번 ✔
 
 1,000,000개 중에서 20번 비교로 찾음!
 </code></pre></div></div>
@@ -368,7 +368,7 @@ key = 3
 
 lower = 1
 upper = 4
-개수 = 4 - 1 = 3개 ✅
+개수 = 4 - 1 = 3개 ✔
 </code></pre></div></div>
 
 <hr />
@@ -377,10 +377,10 @@ upper = 4
 
 <h3 id="1-오버플로우-방지">1. 오버플로우 방지</h3>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 오버플로우 가능</span>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 오버플로우 가능</span>
 <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
 
-<span class="c1">// ✅ 안전한 방법</span>
+<span class="c1">// ✔ 안전한 방법</span>
 <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
 
 <span class="err">예</span><span class="o">:</span>
@@ -392,12 +392,12 @@ upper = 4
 
 <span class="n">left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span> <span class="o">+</span> <span class="mi">0</span>
-<span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span> <span class="err">✅</span>
+<span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span> <span class="err">✔</span>
 </code></pre></div></div>
 
 <h3 id="2-정렬-필수">2. 정렬 필수</h3>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>  <span class="c1">// 정렬 안 됨 ❌</span>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>  <span class="c1">// 정렬 안 됨 ✘</span>
 
 <span class="c1">// 반드시 정렬 후 사용</span>
 <span class="n">qsort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span> <span class="n">compare</span><span class="p">);</span>

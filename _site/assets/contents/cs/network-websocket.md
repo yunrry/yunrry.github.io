@@ -51,7 +51,7 @@ Upgrade: websocket
 Connection: Upgrade
 Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
 
-3. WebSocket 연결 확립 ✅
+3. WebSocket 연결 확립 ✔
 ```
 
 ### 2. 데이터 전송
@@ -266,18 +266,18 @@ Client: "업데이트 있어?" (요청)
 Server: "있어! 데이터" (응답)
 
 문제:
-❌ 불필요한 요청 많음
-❌ 서버 부하
-❌ 지연시간
+✘ 불필요한 요청 많음
+✘ 서버 부하
+✘ 지연시간
 
 WebSocket:
 Client ↔ Server (연결 유지)
 Server: "데이터" (즉시 전송!)
 
 장점:
-✅ 실시간
-✅ 효율적
-✅ 낮은 지연
+✔ 실시간
+✔ 효율적
+✔ 낮은 지연
 ```
 
 ### 2. WebSocket vs Long Polling
@@ -291,13 +291,13 @@ Client: "또 업데이트 있으면 알려줘" (요청)
 Server: (대기... 대기...)
 
 장점:
-✅ Polling보다 효율적
+✔ Polling보다 효율적
 
 단점:
-❌ 연결 재수립 필요
-❌ WebSocket보다 복잡
+✘ 연결 재수립 필요
+✘ WebSocket보다 복잡
 
-WebSocket이 더 나음 ✅
+WebSocket이 더 나음 ✔
 ```
 
 ### 3. WebSocket vs Server-Sent Events (SSE)
@@ -319,7 +319,7 @@ Client ↔ Server
 
 선택:
 - 서버 푸시만 필요 → SSE
-- 양방향 필요 → WebSocket ✅
+- 양방향 필요 → WebSocket ✔
 ```
 
 ---
@@ -337,8 +337,8 @@ Client ↔ Server
 - 타이핑 표시
 
 효과:
-✅ 실시간 소통
-✅ 낮은 지연
+✔ 실시간 소통
+✔ 낮은 지연
 ```
 
 ### 2. 실시간 알림
@@ -352,8 +352,8 @@ Facebook, Twitter 알림
 - 댓글
 
 효과:
-✅ 즉시 알림
-✅ 사용자 참여
+✔ 즉시 알림
+✔ 사용자 참여
 ```
 
 ### 3. 실시간 협업 도구
@@ -367,8 +367,8 @@ Google Docs, Figma, Notion
 - 커서 위치 공유
 
 효과:
-✅ 원활한 협업
-✅ 충돌 방지
+✔ 원활한 협업
+✔ 충돌 방지
 ```
 
 ### 4. 온라인 게임
@@ -382,8 +382,8 @@ Google Docs, Figma, Notion
 - 채팅
 
 효과:
-✅ 낮은 지연
-✅ 동기화
+✔ 낮은 지연
+✔ 동기화
 ```
 
 ### 5. 주식/암호화폐 거래
@@ -397,8 +397,8 @@ Google Docs, Figma, Notion
 - 차트 업데이트
 
 효과:
-✅ 실시간 정보
-✅ 빠른 거래
+✔ 실시간 정보
+✔ 빠른 거래
 ```
 
 ### 6. IoT (사물인터넷)
@@ -412,8 +412,8 @@ Google Docs, Figma, Notion
 - 상태 모니터링
 
 효과:
-✅ 실시간 제어
-✅ 즉각 반응
+✔ 실시간 제어
+✔ 즉각 반응
 ```
 
 ---
@@ -425,8 +425,8 @@ Google Docs, Figma, Notion
 ```
 HTTPS처럼 암호화된 WebSocket
 
-ws://  → 암호화 안 됨 ❌
-wss:// → 암호화됨 ✅
+ws://  → 암호화 안 됨 ✘
+wss:// → 암호화됨 ✔
 
 사용:
 const socket = new WebSocket('wss://example.com');
@@ -721,10 +721,10 @@ io.on('connection', (socket) => {
 });
 
 // 장점
-// ✅ 자동 재연결
-// ✅ 폴백 메커니즘 (WebSocket 불가 시 다른 방식)
-// ✅ 룸 & 네임스페이스
-// ✅ 이벤트 기반 API
+// ✔ 자동 재연결
+// ✔ 폴백 메커니즘 (WebSocket 불가 시 다른 방식)
+// ✔ 룸 & 네임스페이스
+// ✔ 이벤트 기반 API
 ```
 
 ### 2. SockJS
@@ -775,9 +775,9 @@ sockjsServer.attach(server);
 server.listen(8080);
 
 // 장점
-// ✅ 크로스 브라우저 호환성
-// ✅ 폴백 옵션 (XHR, JSONP 등)
-// ✅ WebSocket API 유사
+// ✔ 크로스 브라우저 호환성
+// ✔ 폴백 옵션 (XHR, JSONP 등)
+// ✔ WebSocket API 유사
 ```
 
 ---

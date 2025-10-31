@@ -133,11 +133,12 @@
       
 <h1 id="정렬과-탐색">정렬과 탐색</h1>
 
-<p>정렬과 탐색은 알고리즘의 기초이자 가장 자주 사용되는 기법입니다. 효율적인 정렬과 탐색을 통해 문제를 O(n²)에서 O(n log n) 또는 O(log n)으로 최적화할 수 있습니다.</p>
+<p>정렬과 탐색은 알고리즘의 기초이자 가장 자주 사용되는 기법이다. <br />
+효율적인 정렬과 탐색을 통해 문제를 O(n²)에서 O(n log n) 또는 O(log n)으로 최적화할 수 있다.</p>
 
 <hr />
 
-<h2 id="-정렬-sorting">📊 정렬 (Sorting)</h2>
+<h2 id="정렬-sorting">정렬 (Sorting)</h2>
 
 <h3 id="왜-정렬이-중요한가">왜 정렬이 중요한가?</h3>
 
@@ -151,7 +152,7 @@
 
 <hr />
 
-<h2 id="-java-기본-정렬">🎯 Java 기본 정렬</h2>
+<h2 id="java-기본-정렬">Java 기본 정렬</h2>
 
 <h3 id="1-arrayssort---배열-정렬">1. Arrays.sort() - 배열 정렬</h3>
 
@@ -239,7 +240,7 @@
             <span class="o">}</span>
         <span class="o">});</span>
         
-        <span class="c1">// 2. 람다식 (Java 8+) ✅ 추천</span>
+        <span class="c1">// 2. 람다식 (Java 8+) ✔ 추천</span>
         <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="o">);</span>  <span class="c1">// 내림차순</span>
         <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">);</span>  <span class="c1">// 오름차순</span>
         
@@ -293,29 +294,29 @@
 
 <h3 id="️-comparator-주의사항">⚠️ Comparator 주의사항</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 오버플로우 위험!</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 오버플로우 위험!</span>
 <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">);</span>
 <span class="c1">// a = Integer.MAX_VALUE, b = -1이면</span>
 <span class="c1">// a - b = overflow!</span>
 
-<span class="c1">// ✅ 안전한 방법</span>
+<span class="c1">// ✔ 안전한 방법</span>
 <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">));</span>
 <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="nc">Comparator</span><span class="o">.</span><span class="na">comparingInt</span><span class="o">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">));</span>
 
-<span class="c1">// ❌ 일관성 없는 비교</span>
+<span class="c1">// ✘ 일관성 없는 비교</span>
 <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
     <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>  <span class="c1">// 잘못됨! a==b일 때는 0 반환해야</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ 올바른 비교</span>
+<span class="c1">// ✔ 올바른 비교</span>
 <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span>
 </code></pre></div></div>
 
 <hr />
 
-<h2 id="-실전-정렬-예제">🎨 실전 정렬 예제</h2>
+<h2 id="실전-정렬-예제">실전 정렬 예제</h2>
 
 <h3 id="예제-1-2차원-배열-정렬">예제 1: 2차원 배열 정렬</h3>
 
@@ -446,7 +447,7 @@
 
 <hr />
 
-<h2 id="-이진-탐색-binary-search">🔍 이진 탐색 (Binary Search)</h2>
+<h2 id="이진-탐색-binary-search">이진 탐색 (Binary Search)</h2>
 
 <h3 id="원리">원리</h3>
 
@@ -707,7 +708,7 @@ Step 4: mid = 3, arr[3] = 7 = 7  →  찾음!
 
 <hr />
 
-<h2 id="-투포인터-two-pointers">👉 투포인터 (Two Pointers)</h2>
+<h2 id="투포인터-two-pointers">투포인터 (Two Pointers)</h2>
 
 <h3 id="원리-1">원리</h3>
 
@@ -792,6 +793,149 @@ left = 1, right = 7
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<hr />
+
+<h3 id="패턴-3-세-포인터">패턴 3: 세 포인터</h3>
+
+<p>{% raw %}</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThreePointers</span> <span class="o">{</span>
+    <span class="c1">// 세 수의 합이 target에 가장 가까운 값</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">threeSumClosest</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">closest</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+            
+            <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
+                
+                <span class="c1">// 더 가까운 값 갱신</span>
+                <span class="k">if</span> <span class="o">(</span><span class="nc">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">sum</span> <span class="o">-</span> <span class="n">target</span><span class="o">)</span> <span class="o">&lt;</span> <span class="nc">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">closest</span> <span class="o">-</span> <span class="n">target</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">closest</span> <span class="o">=</span> <span class="n">sum</span><span class="o">;</span>
+                <span class="o">}</span>
+                
+                <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">left</span><span class="o">++;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">right</span><span class="o">--;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="n">sum</span><span class="o">;</span>  <span class="c1">// 정확히 일치</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">closest</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">4</span><span class="o">};</span>
+        <span class="nc">ThreePointers</span> <span class="n">tp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ThreePointers</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tp</span><span class="o">.</span><span class="na">threeSumClosest</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>  <span class="c1">// 2 (-1+2+1)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="투포인터-실전-예제">투포인터 실전 예제</h3>
+
+<h4 id="1-컨테이너에-가장-많은-물-담기">1. 컨테이너에 가장 많은 물 담기</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxArea</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">height</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">height</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">maxArea</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 면적 = 너비 × 높이</span>
+        <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">height</span><span class="o">[</span><span class="n">left</span><span class="o">],</span> <span class="n">height</span><span class="o">[</span><span class="n">right</span><span class="o">]);</span>
+        <span class="n">maxArea</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxArea</span><span class="o">,</span> <span class="n">width</span> <span class="o">*</span> <span class="n">h</span><span class="o">);</span>
+        
+        <span class="c1">// 더 낮은 쪽 포인터 이동</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">height</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">height</span><span class="o">[</span><span class="n">right</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">left</span><span class="o">++;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">right</span><span class="o">--;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">maxArea</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">height</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">7</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">maxArea</span><span class="o">(</span><span class="n">height</span><span class="o">));</span>  <span class="c1">// 49</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-중복-제거">2. 중복 제거</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeDuplicates</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="kt">int</span> <span class="n">slow</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  <span class="c1">// 고유한 요소의 끝</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">fast</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">fast</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">fast</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">fast</span><span class="o">]</span> <span class="o">!=</span> <span class="n">arr</span><span class="o">[</span><span class="n">slow</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">slow</span><span class="o">++;</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">slow</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">fast</span><span class="o">];</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">slow</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>  <span class="c1">// 고유한 요소 개수</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">removeDuplicates</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">len</span><span class="o">);</span>  <span class="c1">// 5</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">len</span><span class="o">)));</span>
+<span class="c1">// [1, 2, 3, 4, 5]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="3-부분-배열의-곱이-k-미만">3. 부분 배열의 곱이 k 미만</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">numSubarrayProductLessThanK</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">product</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">right</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">product</span> <span class="o">*=</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
+        
+        <span class="c1">// 곱이 k 이상이면 left 이동</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">product</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">product</span> <span class="o">/=</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">];</span>
+            <span class="n">left</span><span class="o">++;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// [left, right] 사이의 모든 부분 배열</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 테스트</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">6</span><span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">numSubarrayProductLessThanK</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>  <span class="c1">// 8</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="성능-비교">성능 비교</h2>
+
+<h3 id="시간복잡도">시간복잡도</h3>
 
 <table>
   <thead>
@@ -921,7 +1065,7 @@ left = 1, right = 7
 
 <hr />
 
-<h2 id="-핵심-패턴-정리">🎯 핵심 패턴 정리</h2>
+<h2 id="핵심-패턴-정리">핵심 패턴 정리</h2>
 
 <h3 id="1-정렬-후-이진-탐색">1. 정렬 후 이진 탐색</h3>
 
@@ -1054,7 +1198,7 @@ left = 1, right = 7
 
 <hr />
 
-<h2 id="-코딩테스트-단골-문제-유형">🏆 코딩테스트 단골 문제 유형</h2>
+<h2 id="코딩테스트-단골-문제-유형">코딩테스트 단골 문제 유형</h2>
 
 <h3 id="정렬-문제">정렬 문제</h3>
 
@@ -1162,7 +1306,7 @@ left = 1, right = 7
 
 <hr />
 
-<h2 id="-실전-문제-풀이">🎨 실전 문제 풀이</h2>
+<h2 id="실전-문제-풀이">실전 문제 풀이</h2>
 
 <h3 id="문제-1-k개의-가장-가까운-점-leetcode-973">문제 1: K개의 가장 가까운 점 (LeetCode 973)</h3>
 
@@ -1319,13 +1463,13 @@ left = 1, right = 7
 
 <h3 id="2-이진-탐색-주의사항">2. 이진 탐색 주의사항</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 오버플로우 위험</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 오버플로우 위험</span>
 <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
 
-<span class="c1">// ✅ 안전한 방법</span>
+<span class="c1">// ✔ 안전한 방법</span>
 <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
 
-<span class="c1">// ❌ 무한 루프 위험</span>
+<span class="c1">// ✘ 무한 루프 위험</span>
 <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">check</span><span class="o">(</span><span class="n">mid</span><span class="o">))</span> <span class="o">{</span>
@@ -1335,7 +1479,7 @@ left = 1, right = 7
     <span class="o">}</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ 올바른 방법</span>
+<span class="c1">// ✔ 올바른 방법</span>
 <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>  <span class="c1">// 올림</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">check</span><span class="o">(</span><span class="n">mid</span><span class="o">))</span> <span class="o">{</span>
@@ -1368,7 +1512,7 @@ left = 1, right = 7
 
 <hr />
 
-<h2 id="-학습-순서">📚 학습 순서</h2>
+<h2 id="학습-순서">학습 순서</h2>
 
 <h3 id="초급-기초-다지기">초급 (기초 다지기)</h3>
 
@@ -1399,7 +1543,7 @@ left = 1, right = 7
 
 <hr />
 
-<h2 id="-추천-문제">🎯 추천 문제</h2>
+<h2 id="추천-문제">추천 문제</h2>
 
 <h3 id="정렬-난이도별">정렬 (난이도별)</h3>
 
@@ -1523,7 +1667,7 @@ left = 1, right = 7
 
 <hr />
 
-<h2 id="-암기-필수-코드">🔑 암기 필수 코드</h2>
+<h2 id="암기-필수-코드">암기 필수 코드</h2>
 
 <h3 id="1-정렬-템플릿">1. 정렬 템플릿</h3>
 
@@ -1593,954 +1737,9 @@ left = 1, right = 7
 <span class="o">}</span>
 </code></pre></div></div>
 
-<hr />
-
-<p>#Java #정렬 #탐색 #이진탐색 #BinarySearch #투포인터 #TwoPointers #알고리즘 #코딩테스트 #Comparator #Sliding Window #파라메트릭서치</p>
-
-<hr />
-
-<h3 id="패턴-3-세-포인터">패턴 3: 세 포인터</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThreePointers</span> <span class="o">{</span>
-    <span class="c1">// 세 수의 합이 target에 가장 가까운 값</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">threeSumClosest</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">closest</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
-        
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
-            <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-            
-            <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-                <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
-                
-                <span class="c1">// 더 가까운 값 갱신</span>
-                <span class="k">if</span> <span class="o">(</span><span class="nc">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">sum</span> <span class="o">-</span> <span class="n">target</span><span class="o">)</span> <span class="o">&lt;</span> <span class="nc">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">closest</span> <span class="o">-</span> <span class="n">target</span><span class="o">))</span> <span class="o">{</span>
-                    <span class="n">closest</span> <span class="o">=</span> <span class="n">sum</span><span class="o">;</span>
-                <span class="o">}</span>
-                
-                <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">left</span><span class="o">++;</span>
-                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">right</span><span class="o">--;</span>
-                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                    <span class="k">return</span> <span class="n">sum</span><span class="o">;</span>  <span class="c1">// 정확히 일치</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        
-        <span class="k">return</span> <span class="n">closest</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">4</span><span class="o">};</span>
-        <span class="nc">ThreePointers</span> <span class="n">tp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ThreePointers</span><span class="o">();</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tp</span><span class="o">.</span><span class="na">threeSumClosest</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>  <span class="c1">// 2 (-1+2+1)</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="투포인터-실전-예제">투포인터 실전 예제</h3>
-
-<h4 id="1-컨테이너에-가장-많은-물-담기">1. 컨테이너에 가장 많은 물 담기</h4>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxArea</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">height</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">height</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">maxArea</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    
-    <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 면적 = 너비 × 높이</span>
-        <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">height</span><span class="o">[</span><span class="n">left</span><span class="o">],</span> <span class="n">height</span><span class="o">[</span><span class="n">right</span><span class="o">]);</span>
-        <span class="n">maxArea</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxArea</span><span class="o">,</span> <span class="n">width</span> <span class="o">*</span> <span class="n">h</span><span class="o">);</span>
-        
-        <span class="c1">// 더 낮은 쪽 포인터 이동</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">height</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">height</span><span class="o">[</span><span class="n">right</span><span class="o">])</span> <span class="o">{</span>
-            <span class="n">left</span><span class="o">++;</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="n">right</span><span class="o">--;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    
-    <span class="k">return</span> <span class="n">maxArea</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="c1">// 테스트</span>
-<span class="kt">int</span><span class="o">[]</span> <span class="n">height</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">7</span><span class="o">};</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">maxArea</span><span class="o">(</span><span class="n">height</span><span class="o">));</span>  <span class="c1">// 49</span>
-</code></pre></div></div>
-
-<hr />
-
-<h4 id="2-중복-제거">2. 중복 제거</h4>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeDuplicates</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-    
-    <span class="kt">int</span> <span class="n">slow</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  <span class="c1">// 고유한 요소의 끝</span>
-    
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">fast</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">fast</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">fast</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">fast</span><span class="o">]</span> <span class="o">!=</span> <span class="n">arr</span><span class="o">[</span><span class="n">slow</span><span class="o">])</span> <span class="o">{</span>
-            <span class="n">slow</span><span class="o">++;</span>
-            <span class="n">arr</span><span class="o">[</span><span class="n">slow</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">fast</span><span class="o">];</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    
-    <span class="k">return</span> <span class="n">slow</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>  <span class="c1">// 고유한 요소 개수</span>
-<span class="o">}</span>
-
-<span class="c1">// 테스트</span>
-<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
-<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">removeDuplicates</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">len</span><span class="o">);</span>  <span class="c1">// 5</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">len</span><span class="o">)));</span>
-<span class="c1">// [1, 2, 3, 4, 5]</span>
-</code></pre></div></div>
-
-<hr />
-
-<h4 id="3-부분-배열의-곱이-k-미만">3. 부분 배열의 곱이 k 미만</h4>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">numSubarrayProductLessThanK</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-    
-    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">product</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">right</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="n">product</span> <span class="o">*=</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
-        
-        <span class="c1">// 곱이 k 이상이면 left 이동</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">product</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">product</span> <span class="o">/=</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">];</span>
-            <span class="n">left</span><span class="o">++;</span>
-        <span class="o">}</span>
-        
-        <span class="c1">// [left, right] 사이의 모든 부분 배열</span>
-        <span class="n">count</span> <span class="o">+=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="c1">// 테스트</span>
-<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">6</span><span class="o">};</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">numSubarrayProductLessThanK</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">100</span><span class="o">));</span>  <span class="c1">// 8</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="-성능-비교">📊 성능 비교</h2>
-
-<h3 id="시간복잡도">시간복잡도</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>알고리즘</th>
-      <th>시간복잡도</th>
-      <th>공간복잡도</th>
-      <th>특징</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>정렬</strong></td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Arrays.sort() (기본형)</td>
-      <td>O(n log n)</td>
-      <td>O(log n)</td>
-      <td>Dual-Pivot Quicksort</td>
-    </tr>
-    <tr>
-      <td>Arrays.sort() (객체)</td>
-      <td>O(n log n)</td>
-      <td>O(n)</td>
-      <td>Timsort</td>
-    </tr>
-    <tr>
-      <td>Collections.sort()</td>
-      <td>O(n log n)</td>
-      <td>O(n)</td>
-      <td>Timsort</td>
-    </tr>
-    <tr>
-      <td><strong>탐색</strong></td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>선형 탐색</td>
-      <td>O(n)</td>
-      <td>O(1)</td>
-      <td>정렬 불필요</td>
-    </tr>
-    <tr>
-      <td>이진 탐색</td>
-      <td>O(log n)</td>
-      <td>O(1)</td>
-      <td>정렬 필수</td>
-    </tr>
-    <tr>
-      <td><strong>투포인터</strong></td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Two Sum (정렬됨)</td>
-      <td>O(n)</td>
-      <td>O(1)</td>
-      <td>양쪽 끝에서 시작</td>
-    </tr>
-    <tr>
-      <td>Sliding Window</td>
-      <td>O(n)</td>
-      <td>O(1)</td>
-      <td>같은 방향 이동</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h2 id="-알고리즘-선택-가이드-1">💡 알고리즘 선택 가이드</h2>
-
-<h3 id="언제-무엇을-사용할까-1">언제 무엇을 사용할까?</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>상황</th>
-      <th>알고리즘</th>
-      <th>시간복잡도</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>정렬된 배열에서 값 찾기</strong></td>
-      <td>이진 탐색</td>
-      <td>O(log n)</td>
-    </tr>
-    <tr>
-      <td><strong>정렬 안 된 배열에서 값 찾기</strong></td>
-      <td>선형 탐색</td>
-      <td>O(n)</td>
-    </tr>
-    <tr>
-      <td><strong>두 수의 합 찾기 (정렬됨)</strong></td>
-      <td>투포인터</td>
-      <td>O(n)</td>
-    </tr>
-    <tr>
-      <td><strong>두 수의 합 찾기 (정렬 안 됨)</strong></td>
-      <td>HashMap</td>
-      <td>O(n)</td>
-    </tr>
-    <tr>
-      <td><strong>연속 부분 배열의 합</strong></td>
-      <td>투포인터 (슬라이딩 윈도우)</td>
-      <td>O(n)</td>
-    </tr>
-    <tr>
-      <td><strong>K번째 큰/작은 수</strong></td>
-      <td>QuickSelect 또는 Heap</td>
-      <td>O(n) avg</td>
-    </tr>
-    <tr>
-      <td><strong>정답 범위 찾기</strong></td>
-      <td>파라메트릭 서치</td>
-      <td>O(n log M)</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h2 id="-핵심-패턴-정리-1">🎯 핵심 패턴 정리</h2>
-
-<h3 id="1-정렬-후-이진-탐색-1">1. 정렬 후 이진 탐색</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 패턴: 정렬 → 이진 탐색으로 O(n²) → O(n log n) 최적화</span>
-<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasPairWithSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-    <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>  <span class="c1">// O(n log n)</span>
-    
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">complement</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-        <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">binarySearch</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">,</span> <span class="n">complement</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">idx</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-    <span class="o">}</span>
-    
-    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="2-정렬-후-투포인터-1">2. 정렬 후 투포인터</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 패턴: 정렬 → 투포인터로 효율적 탐색</span>
-<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">threeSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
-    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-    <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>  <span class="c1">// 필수!</span>
-    
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span> <span class="k">continue</span><span class="o">;</span>  <span class="c1">// 중복 제거</span>
-        
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-        
-        <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
-            
-            <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">],</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">]));</span>
-                
-                <span class="c1">// 중복 제거</span>
-                <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">==</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="n">left</span><span class="o">++;</span>
-                <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">]</span> <span class="o">==</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span> <span class="n">right</span><span class="o">--;</span>
-                
-                <span class="n">left</span><span class="o">++;</span>
-                <span class="n">right</span><span class="o">--;</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">left</span><span class="o">++;</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">right</span><span class="o">--;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    
-    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="3-슬라이딩-윈도우-투포인터-변형-1">3. 슬라이딩 윈도우 (투포인터 변형)</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 패턴: 윈도우 크기를 동적으로 조절</span>
-<span class="kd">public</span> <span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-    <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
-    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">maxLen</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">right</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="c1">// 중복 제거할 때까지 left 이동</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">right</span><span class="o">)))</span> <span class="o">{</span>
-            <span class="n">set</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">left</span><span class="o">));</span>
-            <span class="n">left</span><span class="o">++;</span>
-        <span class="o">}</span>
-        
-        <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">right</span><span class="o">));</span>
-        <span class="n">maxLen</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxLen</span><span class="o">,</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
-    <span class="o">}</span>
-    
-    <span class="k">return</span> <span class="n">maxLen</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="c1">// 테스트</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">lengthOfLongestSubstring</span><span class="o">(</span><span class="s">"abcabcbb"</span><span class="o">));</span>  <span class="c1">// 3 (abc)</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">lengthOfLongestSubstring</span><span class="o">(</span><span class="s">"bbbbb"</span><span class="o">));</span>     <span class="c1">// 1 (b)</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">lengthOfLongestSubstring</span><span class="o">(</span><span class="s">"pwwkew"</span><span class="o">));</span>    <span class="c1">// 3 (wke)</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="4-파라메트릭-서치-1">4. 파라메트릭 서치</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 패턴: 정답의 범위를 이진 탐색으로 좁히기</span>
-<span class="c1">// 예: 블루레이 만들기 - M개 이하로 나눌 수 있는 최소 크기</span>
-<span class="kd">public</span> <span class="kt">int</span> <span class="nf">minBluraySizes</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">lessons</span><span class="o">,</span> <span class="kt">int</span> <span class="n">m</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">lessons</span><span class="o">).</span><span class="na">max</span><span class="o">().</span><span class="na">getAsInt</span><span class="o">();</span>  <span class="c1">// 최소: 가장 긴 레슨</span>
-    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">lessons</span><span class="o">).</span><span class="na">sum</span><span class="o">();</span>             <span class="c1">// 최대: 전체 합</span>
-    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">right</span><span class="o">;</span>
-    
-    <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
-        
-        <span class="c1">// mid 크기로 m개 이하로 나눌 수 있는지 확인</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">canDivide</span><span class="o">(</span><span class="n">lessons</span><span class="o">,</span> <span class="n">m</span><span class="o">,</span> <span class="n">mid</span><span class="o">))</span> <span class="o">{</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
-            <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>  <span class="c1">// 더 작은 크기 시도</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    
-    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">canDivide</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">lessons</span><span class="o">,</span> <span class="kt">int</span> <span class="n">m</span><span class="o">,</span> <span class="kt">int</span> <span class="n">maxSize</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">lesson</span> <span class="o">:</span> <span class="n">lessons</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">+</span> <span class="n">lesson</span> <span class="o">&gt;</span> <span class="n">maxSize</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">count</span><span class="o">++;</span>
-            <span class="n">sum</span> <span class="o">=</span> <span class="n">lesson</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="n">m</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="n">sum</span> <span class="o">+=</span> <span class="n">lesson</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    
-    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="-코딩테스트-단골-문제-유형-1">🏆 코딩테스트 단골 문제 유형</h2>
-
-<h3 id="정렬-문제-1">정렬 문제</h3>
-
-<ol>
-  <li>
-    <p><strong>[LeetCode 56] Merge Intervals</strong> ⭐⭐</p>
-
-    <ul>
-      <li>겹치는 구간 합치기</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>[LeetCode 148] Sort List</strong> ⭐⭐</p>
-
-    <ul>
-      <li>연결 리스트 정렬</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>[LeetCode 179] Largest Number</strong> ⭐⭐</p>
-
-    <ul>
-      <li>커스텀 정렬</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>[프로그래머스] H-Index</strong> ⭐⭐</p>
-
-    <ul>
-      <li>정렬 후 조건 확인</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>[백준 11650] 좌표 정렬하기</strong> ⭐</p>
-
-    <ul>
-      <li>2차원 배열 정렬</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="이진-탐색-문제-1">이진 탐색 문제</h3>
-
-<ol>
-  <li><strong>[LeetCode 33] Search in Rotated Sorted Array</strong> ⭐⭐
-    <ul>
-      <li>회전된 배열 탐색</li>
-    </ul>
-  </li>
-  <li><strong>[LeetCode 153] Find Minimum in Rotated Sorted Array</strong> ⭐⭐
-    <ul>
-      <li>최솟값 찾기</li>
-    </ul>
-  </li>
-  <li><strong>[LeetCode 34] Find First and Last Position</strong> ⭐⭐
-    <ul>
-      <li>Lower/Upper Bound</li>
-    </ul>
-  </li>
-  <li><strong>[백준 2805] 나무 자르기</strong> ⭐⭐
-    <ul>
-      <li>파라메트릭 서치</li>
-    </ul>
-  </li>
-  <li><strong>[백준 1654] 랜선 자르기</strong> ⭐⭐
-    <ul>
-      <li>파라메트릭 서치</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="투포인터-문제-1">투포인터 문제</h3>
-
-<ol>
-  <li><strong>[LeetCode 15] 3Sum</strong> ⭐⭐
-    <ul>
-      <li>세 수의 합 = 0</li>
-    </ul>
-  </li>
-  <li><strong>[LeetCode 11] Container With Most Water</strong> ⭐⭐
-    <ul>
-      <li>최대 면적</li>
-    </ul>
-  </li>
-  <li><strong>[LeetCode 42] Trapping Rain Water</strong> ⭐⭐⭐
-    <ul>
-      <li>빗물 가두기</li>
-    </ul>
-  </li>
-  <li><strong>[LeetCode 209] Minimum Size Subarray Sum</strong> ⭐⭐
-    <ul>
-      <li>슬라이딩 윈도우</li>
-    </ul>
-  </li>
-  <li><strong>[백준 2003] 수들의 합 2</strong> ⭐⭐
-    <ul>
-      <li>부분 합</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h2 id="-실전-문제-풀이-1">🎨 실전 문제 풀이</h2>
-
-<h3 id="문제-1-k개의-가장-가까운-점-leetcode-973-1">문제 1: K개의 가장 가까운 점 (LeetCode 973)</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span><span class="o">[][]</span> <span class="nf">kClosest</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">points</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 거리로 정렬</span>
-        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">points</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">distA</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">*</span> <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">*</span> <span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
-            <span class="kt">int</span> <span class="n">distB</span> <span class="o">=</span> <span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">*</span> <span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">b</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">*</span> <span class="n">b</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
-            <span class="k">return</span> <span class="n">distA</span> <span class="o">-</span> <span class="n">distB</span><span class="o">;</span>
-        <span class="o">});</span>
-        
-        <span class="c1">// 앞에서 k개 반환</span>
-        <span class="k">return</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">points</span><span class="o">,</span> <span class="n">k</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="c1">// 테스트</span>
-<span class="kt">int</span><span class="o">[][]</span> <span class="n">points</span> <span class="o">=</span> <span class="o">{{</span><span class="mi">1</span><span class="o">,</span><span class="mi">3</span><span class="o">},</span> <span class="o">{-</span><span class="mi">2</span><span class="o">,</span><span class="mi">2</span><span class="o">},</span> <span class="o">{</span><span class="mi">5</span><span class="o">,</span><span class="mi">8</span><span class="o">},</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">}};</span>
-<span class="kt">int</span><span class="o">[][]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">kClosest</span><span class="o">(</span><span class="n">points</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
-<span class="c1">// [[0,1], [-2,2]]</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="문제-2-두-배열의-교집합-ii-leetcode-350-1">문제 2: 두 배열의 교집합 II (LeetCode 350)</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">intersect</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums1</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">nums1</span><span class="o">);</span>
-        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">nums2</span><span class="o">);</span>
-        
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        
-        <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums1</span><span class="o">.</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nums2</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">nums2</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
-                <span class="n">i</span><span class="o">++;</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">nums1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">nums2</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
-                <span class="n">j</span><span class="o">++;</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nums1</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
-                <span class="n">i</span><span class="o">++;</span>
-                <span class="n">j</span><span class="o">++;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        
-        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">).</span><span class="na">toArray</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="c1">// 테스트</span>
-<span class="kt">int</span><span class="o">[]</span> <span class="n">nums1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
-<span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">intersect</span><span class="o">(</span><span class="n">nums1</span><span class="o">,</span> <span class="n">nums2</span><span class="o">)));</span>  <span class="c1">// [2, 2]</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="문제-3-구간-합-구하기-백준-11659-1">문제 3: 구간 합 구하기 (백준 11659)</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrefixSum</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
-        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-        
-        <span class="c1">// 누적 합 배열</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">prefixSum</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
-        <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-        <span class="o">}</span>
-        
-        <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">q</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">;</span> <span class="n">q</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-            <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-            <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-            
-            <span class="c1">// [i, j] 구간 합 = prefixSum[j] - prefixSum[i-1]</span>
-            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">prefixSum</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">-</span> <span class="n">prefixSum</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
-        <span class="o">}</span>
-        
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">sb</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="문제-4-수-찾기-백준-1920-1">문제 4: 수 찾기 (백준 1920)</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchExample</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
-        
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
-        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-        <span class="o">}</span>
-        
-        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>  <span class="c1">// 정렬 필수!</span>
-        
-        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
-        
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">target</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-            <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">binarySearch</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
-            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">result</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
-        <span class="o">}</span>
-        
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">sb</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="-실전-팁-1">💡 실전 팁</h2>
-
-<h3 id="1-정렬-전략-1">1. 정렬 전략</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Tip 1: 정렬이 필요한지 판단</span>
-<span class="c1">// - 이진 탐색? → 필수</span>
-<span class="c1">// - 투포인터? → 대부분 필요</span>
-<span class="c1">// - 그리디? → 자주 필요</span>
-<span class="c1">// - DP? → 상황에 따라</span>
-
-<span class="c1">// Tip 2: 정렬 비용 고려</span>
-<span class="c1">// O(n log n) 정렬 vs O(n²) 완전 탐색</span>
-<span class="c1">// n이 작으면 정렬 안 해도 됨</span>
-
-<span class="c1">// Tip 3: 안정 정렬 필요 시</span>
-<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>  <span class="c1">// 객체는 안정 정렬 (Timsort)</span>
-<span class="c1">// 기본형은 불안정 정렬 (Quicksort)</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="2-이진-탐색-주의사항-1">2. 이진 탐색 주의사항</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 오버플로우 위험</span>
-<span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
-
-<span class="c1">// ✅ 안전한 방법</span>
-<span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
-
-<span class="c1">// ❌ 무한 루프 위험</span>
-<span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">check</span><span class="o">(</span><span class="n">mid</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>  <span class="c1">// 위험! left가 증가 안 할 수 있음</span>
-    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="c1">// ✅ 올바른 방법</span>
-<span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>  <span class="c1">// 올림</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">check</span><span class="o">(</span><span class="n">mid</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
-    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="3-투포인터-디버깅-1">3. 투포인터 디버깅</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 디버깅 팁: 포인터 움직임 출력</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">twoPointerDebug</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-    
-    <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"left=%d, right=%d, sum=%d%n"</span><span class="o">,</span> 
-            <span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">,</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">]);</span>
-        
-        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span>
-        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">)</span> <span class="n">left</span><span class="o">++;</span>
-        <span class="k">else</span> <span class="n">right</span><span class="o">--;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="-학습-순서-1">📚 학습 순서</h2>
-
-<h3 id="초급-기초-다지기-1">초급 (기초 다지기)</h3>
-
-<ol>
-  <li><strong>Arrays.sort() 사용법</strong> 익히기</li>
-  <li><strong>Comparator</strong> 람다식으로 작성</li>
-  <li><strong>이진 탐색</strong> 기본 구현</li>
-  <li><strong>투포인터</strong> Two Sum 풀기</li>
-</ol>
-
-<h3 id="중급-응용-1">중급 (응용)</h3>
-
-<ol>
-  <li><strong>2차원 배열 정렬</strong> 연습</li>
-  <li><strong>Lower/Upper Bound</strong> 구현</li>
-  <li><strong>슬라이딩 윈도우</strong> 패턴 익히기</li>
-  <li><strong>파라메트릭 서치</strong> 이해</li>
-</ol>
-
-<h3 id="고급-심화-1">고급 (심화)</h3>
-
-<ol>
-  <li><strong>커스텀 정렬</strong> 복잡한 조건</li>
-  <li><strong>회전된 배열</strong> 이진 탐색</li>
-  <li><strong>세 포인터</strong> 이상 활용</li>
-  <li><strong>정렬 + 이진 탐색 + 투포인터</strong> 조합</li>
-</ol>
-
-<hr />
-
-<h2 id="-추천-문제-1">🎯 추천 문제</h2>
-
-<h3 id="정렬-난이도별-1">정렬 (난이도별)</h3>
-
-<p><strong>⭐ Easy</strong></p>
-
-<ul>
-  <li>LeetCode 88: Merge Sorted Array</li>
-  <li>LeetCode 242: Valid Anagram</li>
-  <li>LeetCode 349: Intersection of Two Arrays</li>
-  <li>백준 2750: 수 정렬하기</li>
-</ul>
-
-<p><strong>⭐⭐ Medium</strong></p>
-
-<ul>
-  <li>LeetCode 75: Sort Colors</li>
-  <li>LeetCode 147: Insertion Sort List</li>
-  <li>LeetCode 215: Kth Largest Element</li>
-  <li>백준 11399: ATM</li>
-</ul>
-
-<p><strong>⭐⭐⭐ Hard</strong></p>
-
-<ul>
-  <li>LeetCode 315: Count of Smaller Numbers After Self</li>
-  <li>LeetCode 493: Reverse Pairs</li>
-</ul>
-
-<hr />
-
-<h3 id="이진-탐색-난이도별-1">이진 탐색 (난이도별)</h3>
-
-<p><strong>⭐ Easy</strong></p>
-
-<ul>
-  <li>LeetCode 704: Binary Search</li>
-  <li>LeetCode 35: Search Insert Position</li>
-  <li>백준 10815: 숫자 카드</li>
-  <li>백준 1920: 수 찾기</li>
-</ul>
-
-<p><strong>⭐⭐ Medium</strong></p>
-
-<ul>
-  <li>LeetCode 74: Search a 2D Matrix</li>
-  <li>LeetCode 162: Find Peak Element</li>
-  <li>백준 1654: 랜선 자르기</li>
-  <li>백준 2805: 나무 자르기</li>
-</ul>
-
-<p><strong>⭐⭐⭐ Hard</strong></p>
-
-<ul>
-  <li>LeetCode 4: Median of Two Sorted Arrays</li>
-  <li>LeetCode 410: Split Array Largest Sum</li>
-  <li>백준 1300: K번째 수</li>
-</ul>
-
-<hr />
-
-<h3 id="투포인터-난이도별-1">투포인터 (난이도별)</h3>
-
-<p><strong>⭐ Easy</strong></p>
-
-<ul>
-  <li>LeetCode 125: Valid Palindrome</li>
-  <li>LeetCode 283: Move Zeroes</li>
-  <li>백준 2470: 두 용액</li>
-</ul>
-
-<p><strong>⭐⭐ Medium</strong></p>
-
-<ul>
-  <li>LeetCode 3: Longest Substring Without Repeating Characters</li>
-  <li>LeetCode 167: Two Sum II</li>
-  <li>백준 1806: 부분합</li>
-  <li>백준 2003: 수들의 합 2</li>
-</ul>
-
-<p><strong>⭐⭐⭐ Hard</strong></p>
-
-<ul>
-  <li>LeetCode 76: Minimum Window Substring</li>
-  <li>LeetCode 42: Trapping Rain Water</li>
-  <li>백준 2143: 두 배열의 합</li>
-</ul>
-
-<hr />
-
-<h2 id="-핵심-체크리스트-1">📝 핵심 체크리스트</h2>
-
-<h3 id="정렬-1">정렬</h3>
-
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Arrays.sort() 기본 사용법</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Comparator 람다식 작성</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2차원 배열 정렬</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />여러 조건 정렬 (thenComparing)</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />안정/불안정 정렬 차이</li>
-</ul>
-
-<h3 id="이진-탐색-1">이진 탐색</h3>
-
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />기본 이진 탐색 구현</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Lower Bound 구현</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Upper Bound 구현</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />파라메트릭 서치 패턴</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />회전된 배열 탐색</li>
-</ul>
-
-<h3 id="투포인터-1">투포인터</h3>
-
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />양쪽 끝에서 시작 패턴</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />같은 방향 이동 패턴</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />슬라이딩 윈도우 패턴</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />세 포인터 이상 활용</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />중복 제거 로직</li>
-</ul>
-
-<hr />
-
-<h2 id="-암기-필수-코드-1">🔑 암기 필수 코드</h2>
-
-<h3 id="1-정렬-템플릿-1">1. 정렬 템플릿</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 오름차순</span>
-<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
-
-<span class="c1">// 내림차순</span>
-<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
-
-<span class="c1">// 커스텀</span>
-<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">.</span><span class="na">field</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="na">field</span><span class="o">);</span>
-
-<span class="c1">// 여러 조건</span>
-<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> 
-    <span class="nc">Comparator</span><span class="o">.</span><span class="na">comparing</span><span class="o">(</span><span class="nl">Obj:</span><span class="o">:</span><span class="n">getField1</span><span class="o">)</span>
-              <span class="o">.</span><span class="na">thenComparing</span><span class="o">(</span><span class="nl">Obj:</span><span class="o">:</span><span class="n">getField2</span><span class="o">));</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="2-이진-탐색-템플릿-1">2. 이진 탐색 템플릿</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 기본</span>
-<span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-<span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">mid</span><span class="o">]</span> <span class="o">==</span> <span class="n">target</span><span class="o">)</span> <span class="k">return</span> <span class="n">mid</span><span class="o">;</span>
-    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">mid</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">)</span> <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="k">else</span> <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="c1">// Lower Bound</span>
-<span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-<span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="o">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">mid</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">)</span> <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="k">else</span> <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="3-투포인터-템플릿-1">3. 투포인터 템플릿</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 양쪽 끝</span>
-<span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-<span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">check</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">],</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">]))</span> <span class="o">{</span>
-        <span class="c1">// 처리</span>
-        <span class="n">left</span><span class="o">++;</span> <span class="n">right</span><span class="o">--;</span>
-    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">need_increase</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">left</span><span class="o">++;</span>
-    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="n">right</span><span class="o">--;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="c1">// 슬라이딩 윈도우</span>
-<span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">right</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="c1">// right 추가</span>
-    <span class="k">while</span> <span class="o">(</span><span class="n">invalid_condition</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// left 제거</span>
-        <span class="n">left</span><span class="o">++;</span>
-    <span class="o">}</span>
-    <span class="c1">// 답 갱신</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<p>#Java #정렬 #탐색 #이진탐색 #BinarySearch #투포인터 #TwoPointers #알고리즘 #코딩테스트 #Comparator #SlidingWindow #파라메트릭서치</p>
+<h2 id="️-keywords">🏷️ Keywords</h2>
+<p><code class="language-plaintext highlighter-rouge">#Java</code> <code class="language-plaintext highlighter-rouge">#정렬</code> <code class="language-plaintext highlighter-rouge">#탐색</code> <code class="language-plaintext highlighter-rouge">#이진탐색</code> <code class="language-plaintext highlighter-rouge">#BinarySearch</code> <code class="language-plaintext highlighter-rouge">#투포인터</code> <code class="language-plaintext highlighter-rouge">#TwoPointers</code><br />
+ <code class="language-plaintext highlighter-rouge">#알고리즘</code> <code class="language-plaintext highlighter-rouge">#코딩테스트</code> <code class="language-plaintext highlighter-rouge">#Comparator</code> <code class="language-plaintext highlighter-rouge">#SlidingWindow</code> <code class="language-plaintext highlighter-rouge">#파라메트릭서치</code></p>
 
     </div>
 

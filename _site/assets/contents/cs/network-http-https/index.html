@@ -145,8 +145,8 @@
   <tbody>
     <tr>
       <td><strong>보안</strong></td>
-      <td>없음 ❌</td>
-      <td>암호화 ✅</td>
+      <td>없음 ✘</td>
+      <td>암호화 ✔</td>
     </tr>
     <tr>
       <td><strong>포트</strong></td>
@@ -160,13 +160,13 @@
     </tr>
     <tr>
       <td><strong>속도</strong></td>
-      <td>빠름 ✅</td>
+      <td>빠름 ✔</td>
       <td>약간 느림 (암호화)</td>
     </tr>
     <tr>
       <td><strong>인증서</strong></td>
       <td>불필요</td>
-      <td>필요 ✅</td>
+      <td>필요 ✔</td>
     </tr>
     <tr>
       <td><strong>URL</strong></td>
@@ -176,12 +176,12 @@
     <tr>
       <td><strong>SEO</strong></td>
       <td>불리</td>
-      <td>유리 ✅</td>
+      <td>유리 ✔</td>
     </tr>
     <tr>
       <td><strong>신뢰도</strong></td>
       <td>낮음</td>
-      <td>높음 ✅</td>
+      <td>높음 ✔</td>
     </tr>
   </tbody>
 </table>
@@ -192,11 +192,11 @@
 
 <h3 id="특징">특징</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 빠른 속도
-✅ 간단한 구현
-❌ 보안 없음
-❌ 데이터 평문 전송
-❌ 중간자 공격 취약
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 빠른 속도
+✔ 간단한 구현
+✘ 보안 없음
+✘ 데이터 평문 전송
+✘ 중간자 공격 취약
 
 포트: 80
 암호화: 없음
@@ -216,7 +216,7 @@
    |&lt;-----------------------|
    |                         |
 
-데이터: 평문 전송 (누구나 읽을 수 있음) ❌
+데이터: 평문 전송 (누구나 읽을 수 있음) ✘
 </code></pre></div></div>
 
 <h3 id="http-메시지-구조">HTTP 메시지 구조</h3>
@@ -281,12 +281,12 @@ OPTIONS: 지원 메서드 확인
 
 <h3 id="특징-1">특징</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 데이터 암호화
-✅ 무결성 보장
-✅ 인증서로 신원 확인
-✅ SEO 우대
-❌ 약간 느림 (암호화 오버헤드)
-❌ 인증서 비용
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 데이터 암호화
+✔ 무결성 보장
+✔ 인증서로 신원 확인
+✔ SEO 우대
+✘ 약간 느림 (암호화 오버헤드)
+✘ 인증서 비용
 
 포트: 443
 암호화: SSL/TLS
@@ -312,7 +312,7 @@ OPTIONS: 지원 메서드 확인
    |&lt;----------------------&gt;|
    |                         |
 
-데이터: 암호화 전송 (제3자가 읽을 수 없음) ✅
+데이터: 암호화 전송 (제3자가 읽을 수 없음) ✔
 </code></pre></div></div>
 
 <h3 id="ssltls-handshake-상세">SSL/TLS Handshake 상세</h3>
@@ -398,7 +398,7 @@ OPTIONS: 지원 메서드 확인
 평문: "password123"
 암호화: "3kd9fj2ksd9fj23k"
 
-→ 중간자가 가로채도 해독 불가 ✅
+→ 중간자가 가로채도 해독 불가 ✔
 </code></pre></div></div>
 
 <h3 id="2-무결성-integrity">2. 무결성 (Integrity)</h3>
@@ -408,7 +408,7 @@ OPTIONS: 지원 메서드 확인
 해시 함수 사용:
 - 데이터에서 해시 생성
 - 수신자가 해시 재계산
-- 같으면 변조 없음 ✅
+- 같으면 변조 없음 ✔
 
 예:
 원본: "Hello" → 해시: abc123
@@ -425,7 +425,7 @@ OPTIONS: 지원 메서드 확인
 - 신뢰할 수 있는 CA가 발급했는가?
 - 유효 기간 내인가?
 
-→ 피싱 사이트 방지 ✅
+→ 피싱 사이트 방지 ✔
 </code></pre></div></div>
 
 <hr />

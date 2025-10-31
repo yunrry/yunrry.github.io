@@ -1,0 +1,396 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>FLIK: 여행코스 추천 서비스 개발기 - (백엔드 5편) - Second Brain</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Second Brain">
+<meta property="og:title" content="FLIK: 여행코스 추천 서비스 개발기 - (백엔드 5편)">
+<meta property="og:url" content="http://localhost:4000/assets/contents/dev/backend/flik-05/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/dev/backend/flik-05/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Second Brain Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Second Brain
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="flik-여행코스-추천-서비스-개발기---백엔드-5편">FLIK: 여행코스 추천 서비스 개발기 - (백엔드 5편)</h1>
+<blockquote>
+  <p><strong>임베딩 프로세스 설계와 Postgres 벡터 저장 구조</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="목표">목표</h2>
+<p>사용자가 장소(Spot)를 저장할 때,
+그 장소의 <strong>설명(description)</strong> 을 OpenAI 모델로 분석하고,<br />
+핵심 키워드를 추출한 뒤 이를 <strong>벡터 임베딩(Embedding)</strong> 으로 변환하여<br />
+PostgreSQL DB에 저장하는 전체 프로세스를 설계한다.</p>
+
+<hr />
+
+<h2 id="시스템-개요">시스템 개요</h2>
+
+<blockquote>
+  <p>“사용자가 저장한 장소를 시스템이 ‘이해’하는 과정”</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[User Action]
+  ↓
+(1) Spot 저장 요청
+  ↓
+(2) description 텍스트 분석 (LLM)
+  ↓
+(3) 키워드 추출
+  ↓
+(4) Embedding API 호출
+  ↓
+(5) 임베딩 벡터 생성
+  ↓
+(6) PostgreSQL에 벡터 저장
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="임베딩-프로세스-상세">임베딩 프로세스 상세</h2>
+
+<h3 id="-키워드-추출-단계--openai-llm">➊ 키워드 추출 단계 — OpenAI LLM</h3>
+
+<ul>
+  <li>모델: <code class="language-plaintext highlighter-rouge">gpt-4o-mini</code> (텍스트 분석 전용)</li>
+  <li>입력: <code class="language-plaintext highlighter-rouge">spot.description</code></li>
+  <li>출력: 핵심 키워드 3~8개 JSON 배열 형식</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="s2">"자연"</span><span class="p">,</span><span class="w"> </span><span class="s2">"한적함"</span><span class="p">,</span><span class="w"> </span><span class="s2">"호수뷰"</span><span class="p">,</span><span class="w"> </span><span class="s2">"산책"</span><span class="p">,</span><span class="w"> </span><span class="s2">"가족여행"</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>예시 프롬프트:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>당신은 텍스트 요약 전문가입니다.
+다음 관광지 설명에서 핵심적인 의미를 대표하는 키워드 3~8개를 추출하세요.
+출력은 JSON 배열 형식으로만 반환하세요.
+
+설명:
+"맑은 호수와 산책로가 매력적인 도심 속 자연 명소입니다.
+가족 단위로 방문이 많으며, 조용한 분위기 속 힐링이 가능합니다."
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-임베딩-벡터-생성--openai-embedding-api">➋ 임베딩 벡터 생성 — OpenAI Embedding API</h3>
+
+<ul>
+  <li>모델: <code class="language-plaintext highlighter-rouge">text-embedding-3-small</code></li>
+  <li>입력: 위에서 추출된 키워드 문자열 (공백 기준 join)</li>
+  <li>출력: 1536차원 벡터 리스트</li>
+</ul>
+
+<p>예시:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"embedding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0123</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.0045</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0098</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="-데이터-저장--postgresql--pgvector">➌ 데이터 저장 — PostgreSQL + pgvector</h3>
+
+<p>FLIK에서는 MariaDB가 주요 트랜잭션 DB이지만,
+<strong>벡터 검색 최적화를 위해 PostgreSQL (pgvector 확장)</strong> 을 별도 구성한다.</p>
+
+<blockquote>
+  <p>💡 PostgreSQL의 <code class="language-plaintext highlighter-rouge">pgvector</code>는 OpenAI 임베딩 모델과 완벽 호환된다.</p>
+</blockquote>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">spot_embeddings</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="n">BIGSERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">spot_id</span> <span class="nb">BIGINT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">keywords</span> <span class="nb">TEXT</span><span class="p">[],</span>
+    <span class="n">embedding</span> <span class="n">VECTOR</span><span class="p">(</span><span class="mi">1536</span><span class="p">),</span>
+    <span class="n">created_at</span> <span class="nb">TIMESTAMP</span> <span class="k">DEFAULT</span> <span class="n">NOW</span><span class="p">(),</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">spot_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">spots</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="전체-데이터-플로우">전체 데이터 플로우</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] UserSavedSpotEventListener
+     └── spot 저장 이벤트 수신
+         └── LLMKeywordExtractor.extractKeywords(description)
+              └── ["자연", "산책", "가족여행"]
+         └── EmbeddingService.createEmbedding(keywords)
+              └── [0.0123, -0.0045, ...]
+         └── SpotEmbeddingRepository.save(spot_id, keywords, embedding)
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="서비스-코드-구조-예시">서비스 코드 구조 예시</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpotEmbeddingService</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">LLMKeywordExtractor</span> <span class="n">llmKeywordExtractor</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">EmbeddingClient</span> <span class="n">embeddingClient</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">SpotEmbeddingRepository</span> <span class="n">spotEmbeddingRepository</span><span class="o">;</span>
+
+    <span class="nd">@Async</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processEmbedding</span><span class="o">(</span><span class="nc">Spot</span> <span class="n">spot</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 1. 키워드 추출</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">keywords</span> <span class="o">=</span> <span class="n">llmKeywordExtractor</span><span class="o">.</span><span class="na">extractKeywords</span><span class="o">(</span><span class="n">spot</span><span class="o">.</span><span class="na">getDescription</span><span class="o">());</span>
+
+        <span class="c1">// 2. 벡터 임베딩 생성</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Double</span><span class="o">&gt;</span> <span class="n">vector</span> <span class="o">=</span> <span class="n">embeddingClient</span><span class="o">.</span><span class="na">embed</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="s">" "</span><span class="o">,</span> <span class="n">keywords</span><span class="o">));</span>
+
+        <span class="c1">// 3. PostgreSQL 저장</span>
+        <span class="n">spotEmbeddingRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">spot</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span> <span class="n">keywords</span><span class="o">,</span> <span class="n">vector</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="repository-예시">Repository 예시</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Repository</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpotEmbeddingRepository</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">JdbcTemplate</span> <span class="n">jdbcTemplate</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">save</span><span class="o">(</span><span class="nc">Long</span> <span class="n">spotId</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">keywords</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Double</span><span class="o">&gt;</span> <span class="n">embedding</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"INSERT INTO spot_embeddings (spot_id, keywords, embedding) VALUES (?, ?, ?)"</span><span class="o">;</span>
+        <span class="n">jdbcTemplate</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">sql</span><span class="o">,</span> <span class="n">spotId</span><span class="o">,</span> <span class="n">keywords</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="mi">0</span><span class="o">]),</span> <span class="n">embedding</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="nc">Double</span><span class="o">[</span><span class="mi">0</span><span class="o">]));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="왜-postgresql을-선택했나">왜 PostgreSQL을 선택했나</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>기준</th>
+      <th>MariaDB</th>
+      <th>PostgreSQL (pgvector)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>트랜잭션 처리</td>
+      <td>✔ 우수</td>
+      <td>✔ 우수</td>
+    </tr>
+    <tr>
+      <td>벡터 유사도 검색</td>
+      <td>✘ 미지원</td>
+      <td>✔ 지원</td>
+    </tr>
+    <tr>
+      <td>OpenAI 임베딩 호환성</td>
+      <td>낮음</td>
+      <td>매우 높음</td>
+    </tr>
+    <tr>
+      <td>확장성</td>
+      <td>높음</td>
+      <td>높음</td>
+    </tr>
+    <tr>
+      <td>운영 편의성</td>
+      <td>익숙함</td>
+      <td>다소 복잡</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>결론:</strong>
+트랜잭션 로직은 MariaDB,
+임베딩 및 추천 관련 연산은 PostgreSQL로 <strong>역할 분리 (CQRS-like 구조)</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="향후-확장-포인트">향후 확장 포인트</h2>
+
+<ul>
+  <li><strong>RAG 연계:</strong>
+사용자 검색 요청 시 임베딩 기반 벡터 검색으로
+“유사한 장소” 또는 “유사한 테마” 자동 추천</li>
+  <li><strong>주기적 벡터 리프레시:</strong>
+Spot description이 업데이트되면 embedding 자동 재생성</li>
+  <li><strong>멀티모달 확장:</strong>
+이미지 설명문(Image Caption)을 함께 임베딩하여
+텍스트 + 이미지 기반 추천 강화</li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>🔜 6편 예고: “나와 비슷한 여행자는 누구일까 — 사용자 임베딩과 추천 매칭 로직”</p>
+</blockquote>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

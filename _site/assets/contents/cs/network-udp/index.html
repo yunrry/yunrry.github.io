@@ -150,38 +150,38 @@
     </tr>
     <tr>
       <td><strong>신뢰성</strong></td>
-      <td>보장 ✅</td>
-      <td>보장 안 함 ❌</td>
+      <td>보장 ✔</td>
+      <td>보장 안 함 ✘</td>
     </tr>
     <tr>
       <td><strong>순서 보장</strong></td>
-      <td>보장 ✅</td>
-      <td>보장 안 함 ❌</td>
+      <td>보장 ✔</td>
+      <td>보장 안 함 ✘</td>
     </tr>
     <tr>
       <td><strong>속도</strong></td>
       <td>느림</td>
-      <td>빠름 ✅</td>
+      <td>빠름 ✔</td>
     </tr>
     <tr>
       <td><strong>오버헤드</strong></td>
       <td>큼 (20바이트)</td>
-      <td>작음 (8바이트) ✅</td>
+      <td>작음 (8바이트) ✔</td>
     </tr>
     <tr>
       <td><strong>흐름 제어</strong></td>
-      <td>✅</td>
-      <td>❌</td>
+      <td>✔</td>
+      <td>✘</td>
     </tr>
     <tr>
       <td><strong>혼잡 제어</strong></td>
-      <td>✅</td>
-      <td>❌</td>
+      <td>✔</td>
+      <td>✘</td>
     </tr>
     <tr>
       <td><strong>재전송</strong></td>
-      <td>✅</td>
-      <td>❌</td>
+      <td>✔</td>
+      <td>✘</td>
     </tr>
     <tr>
       <td><strong>사용 사례</strong></td>
@@ -197,12 +197,12 @@
 
 <h3 id="특징">특징</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 연결 지향 (Connection-Oriented)
-✅ 신뢰성 보장
-✅ 순서 보장
-✅ 흐름 제어
-✅ 혼잡 제어
-❌ 느린 속도
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 연결 지향 (Connection-Oriented)
+✔ 신뢰성 보장
+✔ 순서 보장
+✔ 흐름 제어
+✔ 혼잡 제어
+✘ 느린 속도
 </code></pre></div></div>
 
 <h3 id="tcp-헤더-구조">TCP 헤더 구조</h3>
@@ -266,11 +266,11 @@ Window Size:
 
 <h3 id="사용-사례">사용 사례</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 웹 브라우징 (HTTP/HTTPS)
-✅ 이메일 (SMTP, POP3, IMAP)
-✅ 파일 전송 (FTP)
-✅ 원격 접속 (SSH, Telnet)
-✅ 데이터베이스 연결
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 웹 브라우징 (HTTP/HTTPS)
+✔ 이메일 (SMTP, POP3, IMAP)
+✔ 파일 전송 (FTP)
+✔ 원격 접속 (SSH, Telnet)
+✔ 데이터베이스 연결
 
 → 신뢰성이 중요한 경우
 </code></pre></div></div>
@@ -281,12 +281,12 @@ Window Size:
 
 <h3 id="특징-1">특징</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 비연결 (Connectionless)
-✅ 빠른 속도
-✅ 작은 오버헤드
-❌ 신뢰성 보장 안 함
-❌ 순서 보장 안 함
-❌ 흐름 제어 없음
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 비연결 (Connectionless)
+✔ 빠른 속도
+✔ 작은 오버헤드
+✘ 신뢰성 보장 안 함
+✘ 순서 보장 안 함
+✘ 흐름 제어 없음
 </code></pre></div></div>
 
 <h3 id="udp-헤더-구조">UDP 헤더 구조</h3>
@@ -309,12 +309,12 @@ Window Size:
 
 <h3 id="사용-사례-1">사용 사례</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 실시간 스트리밍 (동영상, 음악)
-✅ 온라인 게임
-✅ DNS (도메인 조회)
-✅ DHCP (IP 할당)
-✅ VoIP (인터넷 전화)
-✅ IoT 센서 데이터
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 실시간 스트리밍 (동영상, 음악)
+✔ 온라인 게임
+✔ DNS (도메인 조회)
+✔ DHCP (IP 할당)
+✔ VoIP (인터넷 전화)
+✔ IoT 센서 데이터
 
 → 속도가 중요하고 일부 손실 허용 가능
 </code></pre></div></div>

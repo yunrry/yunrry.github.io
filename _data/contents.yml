@@ -1,9 +1,16 @@
-- path: assets/contents/dev/devtest.md
-  title: devtest.md
+- path: assets/contents/dev/backend/flik-06.md
+  title: (6편) 코스 생성 추천정확도 고도화 여정
   category: dev
-  category2: devtest.md
-  created: '2025-10-23'
-  updated: '2025-10-23'
+  category2: backend
+  created: '2025-10-24'
+  updated: '2025-10-24'
+  keywords: []
+- path: assets/contents/dev/backend/flik-05.md
+  title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 5편)'
+  category: dev
+  category2: backend
+  created: '2025-10-24'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/dev/backend/flik-03.md
   title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 3편)'
@@ -17,7 +24,7 @@
   category: dev
   category2: backend
   created: '2025-10-23'
-  updated: '2025-10-23'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/dev/backend/environment-variable.md
   title: environment-variable.md
@@ -81,6 +88,13 @@
   created: '2025-10-23'
   updated: '2025-10-23'
   keywords: []
+- path: assets/contents/dev/backend/flik-04.md
+  title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 4편)'
+  category: dev
+  category2: backend
+  created: '2025-10-23'
+  updated: '2025-10-24'
+  keywords: []
 - path: assets/contents/dev/backend/flik-01.md
   title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 1편)'
   category: dev
@@ -92,19 +106,19 @@
   title: 15. 웹소켓 (WebSocket)
   category: cs
   created: '2025-10-20'
-  updated: '2025-10-20'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-get-post.md
   title: 6. GET vs POST
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-proxy.md
   title: 11. 프록시 (Proxy)
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-dns.md
   title: 8. DNS (Domain Name System)
@@ -116,91 +130,91 @@
   title: 7. 쿠키 vs 세션 vs 토큰
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-handshake.md
   title: 4. 3-Way Handshake & 4-Way Handshake
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-http-https.md
   title: 5. HTTP vs HTTPS
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-tcp-ip.md
   title: 2. TCP/IP 4계층
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-firewall.md
   title: 13. 방화벽 (Firewall)
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-cdn.md
   title: 12. CDN (Content Delivery Network)
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-udp.md
   title: 3. TCP vs UDP
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-ip-address.md
   title: 10. IP 주소 (IPv4 / IPv6 & 서브넷)
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-loadbalancer.md
   title: 네트워크 완벽 정리 - 로드밸런서 & IP 주소
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/network-vpn.md
   title: 14. VPN (Virtual Private Network)
   category: cs
   created: '2025-10-19'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/algorithm-exam.md
   title: Algorithm 실기 기출 유형
   category: cs
   created: '2025-10-18'
-  updated: '2025-10-18'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/time-complexity.md
   title: 시간복잡도 기초
   category: cs
   created: '2025-10-18'
-  updated: '2025-10-18'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/binary-search.md
   title: 이진 탐색 (Binary Search)
   category: cs
   created: '2025-10-18'
-  updated: '2025-10-18'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/algorithm-sorting.md
   title: 정렬 알고리즘
   category: cs
   created: '2025-10-18'
-  updated: '2025-10-18'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/algorithm/floyd-warshall-problems.md
   title: 플로이드-워셜 유사 문제 모음
   category: algorithm
   created: '2025-10-17'
-  updated: '2025-10-17'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/algorithm/floyd-warshall.md
   title: 플로이드-워셜 (Floyd-Warshall) 알고리즘
@@ -212,13 +226,18 @@
   title: 배열과 문자열 조작
   category: algorithm
   created: '2025-10-16'
-  updated: '2025-10-22'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 입출력최적화
+  - BufferedReader
+  - 성능최적화
+  - LeetCode
+  - 백준
 - path: assets/contents/cs/array-linkedlist.md
   title: 📌 배열 Array
   category: cs
   created: '2025-10-16'
-  updated: '2025-10-16'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/sql-grammer.md
   title: SQL 기본 문법
@@ -230,7 +249,7 @@
   title: 자료구조 면접/서술
   category: cs
   created: '2025-10-16'
-  updated: '2025-10-16'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/view.md
   title: 뷰(View)
@@ -248,7 +267,7 @@
   title: 스택, 큐, 트리
   category: cs
   created: '2025-10-16'
-  updated: '2025-10-16'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/constraints.md
   title: 제약조건 Constraints
@@ -260,13 +279,13 @@
   title: GROUP BY & 집계함수
   category: cs
   created: '2025-10-16'
-  updated: '2025-10-16'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/index.md
   title: 인덱스 Index
   category: cs
   created: '2025-10-16'
-  updated: '2025-10-16'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/cs/sql-interview.md
   title: Sql & DB 면접 필수 개념
@@ -302,206 +321,378 @@
   title: 동적계획법 (Dynamic Programming)
   category: algorithm
   created: '2025-10-16'
-  updated: '2025-10-16'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 배낭문제
+  - Knapsack
+  - LCS
+  - 최장공통부분수열
+  - 알고리즘
+  - 코딩테스트
 - path: assets/contents/algorithm/arraylist-vs-linkedlist.md
   title: ArrayList vs LinkedList
   category: algorithm
   created: '2025-10-16'
-  updated: '2025-10-16'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 알고리즘
+  - 코딩테스트
+  - 면접준비
 - path: assets/contents/algorithm/graph.md
   title: 그래프 탐색
   category: algorithm
   created: '2025-10-15'
-  updated: '2025-10-15'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 큐
+  - Queue
+  - 우선순위큐
+  - PriorityQueue
+  - 알고리즘
+  - 코딩테스트
 - path: assets/contents/cs/network-osi.md
   title: 1. OSI 7계층
   category: cs
   created: '2025-10-10'
-  updated: '2025-10-19'
+  updated: '2025-10-24'
   keywords: []
 - path: assets/contents/algorithm/programmers-64063.md
   title: '프로그래머스: 호텔 방 배정 (Level 4)'
   category: algorithm
   created: '2025-10-10'
-  updated: '2025-10-10'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - UnionFind
+  - PathCompression
+  - DisjointSet
+  - HashMap
+  - 프로그래머스
+  - Level4
+  - 시간최적화
+  - 재귀
+  - 경로압축
+  - 호텔방배정
 - path: assets/contents/algorithm/recursion.md
   title: 재귀와 완전탐색
   category: algorithm
   created: '2025-10-10'
-  updated: '2025-10-10'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 순열
+  - 조합
+  - NQueen
+  - 알고리즘
+  - 코딩테스트
 - path: assets/contents/algorithm/sorting.md
   title: 정렬과 탐색
   category: algorithm
   created: '2025-10-10'
-  updated: '2025-10-10'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 알고리즘
+  - 코딩테스트
+  - Comparator
+  - SlidingWindow
+  - 파라메트릭서치
 - path: assets/contents/algorithm/greedy.md
   title: 그리디 & 구현
   category: algorithm
   created: '2025-10-10'
-  updated: '2025-10-10'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 알고리즘
+  - 코딩테스트
+  - 정렬
+  - 문자열
+  - 격자
+  - 2D배열
 - path: assets/contents/algorithm/programmers-42586.md
   title: '프로그래머스: 기능개발 (Level 2)'
   category: algorithm
   created: '2025-10-08'
-  updated: '2025-10-08'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - Queue
+  - Stack
+  - 프로그래머스
+  - 배포그룹핑
+  - Math.ceil
+  - FIFO
+  - Level2
 - path: assets/contents/algorithm/leetcode-862.md
   title: LeetCode 862. Shortest Subarray with Sum at Least K
   category: algorithm
   created: '2025-10-08'
-  updated: '2025-10-08'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - Hard
+  - 슬라이딩윈도우
+  - 음수처리
+  - LeetCodeHard
+  - 최적화
+  - O(n)알고리즘
 - path: assets/contents/algorithm/leetcode-239.md
   title: LeetCode 239. Sliding Window Maximum
   category: algorithm
   created: '2025-10-07'
-  updated: '2025-10-07'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 최적화
+  - Hard난이도
+  - 코딩테스트
+  - 자료구조응용
 - path: assets/contents/algorithm/leetcode-739.md
   title: LeetCode 739. Daily Temperatures
   category: algorithm
   created: '2025-10-05'
-  updated: '2025-10-05'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCodeMedium
+  - 코딩테스트
+  - 스택활용
+  - 패턴인식
 - path: assets/contents/algorithm/leetcode-155.md
   title: LeetCode 155. Min Stack
   category: algorithm
   created: '2025-10-05'
-  updated: '2025-10-05'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 알고리즘
+  - LeetCodeMedium
+  - 코딩테스트
+  - 자료구조
+  - 성능개선
 - path: assets/contents/algorithm/leetcode-150.md
   title: LeetCode 150. Evaluate Reverse Polish Notation
   category: algorithm
   created: '2025-10-05'
-  updated: '2025-10-05'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 알고리즘
+  - 자료구조
+  - LeetCodeMedium
+  - 코딩테스트
 - path: assets/contents/algorithm/leetcode-84.md
   title: LeetCode 84. Largest Rectangle in Histogram
   category: algorithm
   created: '2025-10-05'
-  updated: '2025-10-05'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCodeHard
+  - 코딩테스트
+  - Hard
+  - 최적화
 - path: assets/contents/algorithm/leetcode-933.md
   title: LeetCode 933. Number of Recent Calls
   category: algorithm
   created: '2025-10-05'
-  updated: '2025-10-05'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCodeEasy
+  - 코딩테스트
+  - 실시간처리
+  - 윈도우관리
 - path: assets/contents/algorithm/leetcode-20.md
   title: LeetCode 20. Valid Parentheses
   category: algorithm
   created: '2025-10-04'
-  updated: '2025-10-04'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 자료구조
 - path: assets/contents/algorithm/leetcode-707.md
   title: 'LeetCode 707: Design Linked List 풀이'
   category: algorithm
   created: '2025-10-04'
-  updated: '2025-10-04'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - LinkedList
+  - Design
+  - DataStructure
+  - Medium
+  - 포인터조작
 - path: assets/contents/algorithm/leetcode-21.md
   title: 'LeetCode 21: Merge Two Sorted Lists 풀이'
   category: algorithm
   created: '2025-10-04'
-  updated: '2025-10-04'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - LinkedList
+  - Merge
+  - TwoPointer
+  - Easy
+  - DummyNode
 - path: assets/contents/algorithm/baekjoon-11720.md
   title: '백준 11720: 숫자의 합 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 백준
+  - 문자열
+  - charAt
+  - Bronze4
+  - ASCII
 - path: assets/contents/algorithm/baekjoon-10953.md
   title: '백준 10953: A+B - 6 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - 백준
+  - 입출력
+  - BufferedReader
+  - StringBuilder
+  - Bronze3
 - path: assets/contents/algorithm/leetcode-344.md
   title: 'LeetCode 344: Reverse String 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - TwoPointer
+  - String
+  - Easy
+  - InPlace
 - path: assets/contents/algorithm/leetcode-387.md
   title: 'LeetCode 387: First Unique Character in a String 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - HashMap
+  - FrequencyCount
+  - String
+  - Easy
+  - 배열
 - path: assets/contents/algorithm/leetcode-151.md
   title: 'LeetCode 151: Reverse Words in a String 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - String
+  - StringBuilder
+  - Split
+  - Medium
+  - 정규식
 - path: assets/contents/algorithm/leetcode-141.md
   title: 'LeetCode 141: Linked List Cycle 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - LinkedList
+  - Cycle
+  - TwoPointer
+  - Easy
+  - FloydAlgorithm
 - path: assets/contents/algorithm/leetcode-242.md
   title: 'LeetCode 242: Valid Anagram 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - Anagram
+  - HashMap
+  - Sorting
+  - String
+  - Easy
 - path: assets/contents/algorithm/leetcode-121.md
   title: 'LeetCode 121: Best Time to Buy and Sell Stock 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - Easy
+  - 배열순회
+  - 최적화
 - path: assets/contents/algorithm/leetcode-19.md
   title: 'LeetCode 19: Remove Nth Node From End of List 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - LinkedList
+  - TwoPointer
+  - Medium
+  - DummyNode
 - path: assets/contents/algorithm/leetcode-206.md
   title: 'LeetCode 206: Reverse Linked List 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - LinkedList
+  - Reverse
+  - Easy
+  - 포인터조작
 - path: assets/contents/algorithm/leetcode-125.md
   title: 'LeetCode 125: Valid Palindrome 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - TwoPointer
+  - Palindrome
+  - String
+  - Easy
+  - 문자열처리
 - path: assets/contents/algorithm/leetcode-443.md
   title: 'LeetCode 443: String Compression 풀이'
   category: algorithm
   created: '2025-10-03'
-  updated: '2025-10-03'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - TwoPointer
+  - String
+  - InPlace
+  - RLE
+  - Compression
+  - Medium
+  - StringBuilder
 - path: assets/contents/algorithm/leetcode-88.md
   title: 'LeetCode 88: Merge Sorted Array'
   category: algorithm
   created: '2025-10-02'
-  updated: '2025-10-02'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - TwoPointer
+  - MergeSortedArray
+  - 알고리즘
+  - 코딩테스트
+  - Java
+  - InPlace
 - path: assets/contents/algorithm/hashmap-hashset.md
   title: HashMap, HashSet
   category: algorithm
   created: '2025-10-01'
-  updated: '2025-10-01'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - LeetCode
+  - 시간복잡도
+  - 해시충돌
+  - 면접준비
 - path: assets/contents/algorithm/stack-queue_deque.md
   title: Stack, Queue, Deque
   category: algorithm
   created: '2025-10-01'
-  updated: '2025-10-01'
-  keywords: []
+  updated: '2025-10-24'
+  keywords:
+  - BFS
+  - DFS
+  - ArrayDeque
 - path: assets/contents/algorithm/leetcode-26.md
   title: leetcode-26.md
   category: algorithm

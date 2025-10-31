@@ -16,9 +16,9 @@ sidebar:
 ---
 
 
-## 📚 알고리즘 & 시간복잡도
+## 알고리즘 & 시간복잡도
 
-### 학습 내용
+### 목록
 
 #### <a href="#" data-content="/assets/contents/cs/time-complexity.md"><span style="color: #9bd6bd;">♡</span> 시간복잡도 Big O</a>
 

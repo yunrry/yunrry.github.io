@@ -146,14 +146,14 @@
            필터링
 
 허용:
-✅ HTTP (80)
-✅ HTTPS (443)
-✅ SSH (22) - 특정 IP만
+✔ HTTP (80)
+✔ HTTPS (443)
+✔ SSH (22) - 특정 IP만
 
 차단:
-❌ 알 수 없는 포트
-❌ 의심스러운 IP
-❌ 악성 패킷
+✘ 알 수 없는 포트
+✘ 의심스러운 IP
+✘ 악성 패킷
 </code></pre></div></div>
 
 <hr />
@@ -185,33 +185,33 @@
 - 목적지: 192.168.1.10
 - 포트: 80
 - 프로토콜: TCP
-- 동작: 허용 ✅
+- 동작: 허용 ✔
 
 Rule 2:
 - 출발지: Any
 - 목적지: 192.168.1.10
 - 포트: 23 (Telnet)
 - 프로토콜: TCP
-- 동작: 차단 ❌
+- 동작: 차단 ✘
 
 Rule 3:
 - 출발지: 192.168.1.0/24
 - 목적지: Any
 - 포트: Any
 - 프로토콜: Any
-- 동작: 허용 ✅
+- 동작: 허용 ✔
 </code></pre></div></div>
 
 <h4 id="장단점">장단점</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 빠른 속도
-✅ 간단한 구조
-✅ 저렴
+✔ 빠른 속도
+✔ 간단한 구조
+✔ 저렴
 
 단점:
-❌ 상태 추적 안 함
-❌ 애플리케이션 레벨 검사 불가
-❌ 우회 공격 취약
+✘ 상태 추적 안 함
+✘ 애플리케이션 레벨 검사 불가
+✘ 우회 공격 취약
 
 사용:
 - 기본적인 네트워크 보안
@@ -264,14 +264,14 @@ Client → Server (ACK)
 
 <h4 id="장단점-1">장단점</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 연결 상태 추적
-✅ 더 안전
-✅ 정교한 제어
+✔ 연결 상태 추적
+✔ 더 안전
+✔ 정교한 제어
 
 단점:
-❌ 패킷 필터링보다 느림
-❌ 메모리 사용 (세션 테이블)
-❌ 여전히 애플리케이션 검사 불가
+✘ 패킷 필터링보다 느림
+✘ 메모리 사용 (세션 테이블)
+✘ 여전히 애플리케이션 검사 불가
 
 사용:
 - 대부분의 현대 방화벽
@@ -297,18 +297,18 @@ Host: example.com
 User-Agent: SQLMap
 
 방화벽 검사:
-1. URL 검사: /admin.php ❌ (관리자 페이지)
-2. 파라미터 검사: cmd=delete ❌ (위험한 명령)
-3. User-Agent: SQLMap ❌ (해킹 도구)
+1. URL 검사: /admin.php ✘ (관리자 페이지)
+2. 파라미터 검사: cmd=delete ✘ (위험한 명령)
+3. User-Agent: SQLMap ✘ (해킹 도구)
 
-결과: 차단 ❌
+결과: 차단 ✘
 
 정상 요청:
 GET /products HTTP/1.1
 Host: example.com
 User-Agent: Mozilla/5.0
 
-결과: 허용 ✅
+결과: 허용 ✔
 </code></pre></div></div>
 
 <h4 id="검사-항목">검사 항목</h4>
@@ -337,14 +337,14 @@ SMTP:
 
 <h4 id="장단점-2">장단점</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 가장 강력한 보안
-✅ 애플리케이션 레벨 공격 차단
-✅ 상세한 로깅
+✔ 가장 강력한 보안
+✔ 애플리케이션 레벨 공격 차단
+✔ 상세한 로깅
 
 단점:
-❌ 느린 속도 (깊은 검사)
-❌ 높은 비용
-❌ 복잡한 설정
+✘ 느린 속도 (깊은 검사)
+✘ 높은 비용
+✘ 복잡한 설정
 
 사용:
 - WAF (Web Application Firewall)
@@ -372,19 +372,19 @@ SMTP:
 5. Proxy: 검사 (내용 확인)
 6. Proxy → Client: 응답 전달
 
-직접 연결 불가 ✅
+직접 연결 불가 ✔
 </code></pre></div></div>
 
 <h4 id="장단점-3">장단점</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 완벽한 격리
-✅ 상세한 검사
-✅ 익명성
+✔ 완벽한 격리
+✔ 상세한 검사
+✔ 익명성
 
 단점:
-❌ 매우 느림
-❌ 복잡한 구성
-❌ 높은 자원 사용
+✘ 매우 느림
+✘ 복잡한 구성
+✘ 높은 자원 사용
 
 사용:
 - 고보안 환경
@@ -458,9 +458,9 @@ SMTP:
 2. HTTPS 허용 (443)
 3. SSH 허용 (22) - 관리자 IP만
 ...
-마지막. 모든 트래픽 차단 ❌
+마지막. 모든 트래픽 차단 ✘
 
-안전하지만 관리 필요 ✅
+안전하지만 관리 필요 ✔
 </code></pre></div></div>
 
 <h4 id="2-default-allow-기본-허용">2. Default Allow (기본 허용)</h4>
@@ -471,12 +471,12 @@ SMTP:
 1. Telnet 차단 (23)
 2. 악성 IP 차단
 ...
-마지막. 모든 트래픽 허용 ✅
+마지막. 모든 트래픽 허용 ✔
 
-편리하지만 위험 ❌
+편리하지만 위험 ✘
 </code></pre></div></div>
 
-<h4 id="권장-default-deny-">권장: Default Deny ✅</h4>
+<h4 id="권장-default-deny-">권장: Default Deny ✔</h4>
 
 <hr />
 
@@ -625,20 +625,20 @@ ufw delete 3
 
 규칙:
 - 인터넷 → DMZ: 허용 (제한적)
-- 인터넷 → 내부: 차단 ❌
+- 인터넷 → 내부: 차단 ✘
 - DMZ → 내부: 제한적 허용
 - 내부 → DMZ: 허용
 - 내부 → 인터넷: 허용
 </code></pre></div></div>
 
 <h3 id="장점">장점</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 내부 네트워크 보호
-✅ 공격 표면 축소
-✅ 침해 시 격리
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 내부 네트워크 보호
+✔ 공격 표면 축소
+✔ 침해 시 격리
 
 예:
 웹서버 해킹 당해도
-내부 DB는 안전 ✅
+내부 DB는 안전 ✔
 </code></pre></div></div>
 
 <hr />

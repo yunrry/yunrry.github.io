@@ -43,14 +43,14 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - Dummy Node 활용 - 깔끔한 구현
 - 남은 노드 처리 정확
 - 최적 성능 (0ms)
 - 완벽한 풀이
 
-### 🔴 개선점
+### ✦ 개선점
 
 거의 없음. 한 가지만:
 
@@ -117,5 +117,5 @@ class Solution {
 - 남은 노드 한 번에 연결
 
 ---
-
-#LeetCode #LinkedList #Merge #TwoPointer #Easy #DummyNode
+## 🏷️ Keywords
+`#LeetCode` `#LinkedList` `#Merge` `#TwoPointer` `#Easy` `#DummyNode`

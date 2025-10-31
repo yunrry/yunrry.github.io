@@ -124,13 +124,13 @@ class Node {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - Node를 별도 클래스로 분리
 - head, tail, size 관리
 - 엣지 케이스 처리 시도
 
-### 🔴 개선점
+### ✦ 개선점
 
 1. **버그: `this.head.next = this.head`**
     
@@ -288,7 +288,7 @@ class Node {
     // ❌ 순환 참조
     this.head.next = this.head;
     
-    // ✅ null로 초기화
+    // ✔ null로 초기화
     this.head = new Node(val);  // next는 기본 null
     ```
     
@@ -358,5 +358,5 @@ dummy.next = head;
 - <a href="https://leetcode.com/problems/middle-of-the-linked-list/" target="_blank">LeetCode 876: Middle of the Linked List</a>
 
 ---
-
-#LeetCode #LinkedList #Design #DataStructure #Medium #포인터조작
+## 🏷️ Keywords
+`#LeetCode` `#LinkedList` `#Design` `#DataStructure` `#Medium` `#포인터조작`

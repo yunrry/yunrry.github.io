@@ -57,13 +57,13 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - In-place 처리 (추가 배열 없음)
 - Two Pointer 개념 사용
 - 숫자가 여러 자릿수인 경우 처리
 
-### 🔴 개선점
+### ✦ 개선점
 
 1. **복잡한 로직 흐름**
     
@@ -264,5 +264,5 @@ class Solution {
 - [ ] 엣지 케이스 처리 (빈 배열, 단일 문자)
 
 ---
-
-#LeetCode #TwoPointer #String #InPlace #RLE #Compression #Medium #StringBuilder
+## 🏷️ Keywords
+`#LeetCode` `#TwoPointer` `#String` `#InPlace` `#RLE` `#Compression` `#Medium`   `#StringBuilder`

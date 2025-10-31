@@ -147,7 +147,7 @@
 인덱스  |  0   |  1   |  2   |  3   |  4   |
 값      |  10  |  20  |  30  |  40  |  50  |
 
-연속된 메모리 공간에 저장 ✅
+연속된 메모리 공간에 저장 ✔
 </code></pre></div></div>
 
 <hr />
@@ -182,7 +182,7 @@
 <span class="c1">// 쓰기</span>
 <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>  <span class="c1">// {10, 20, 100, 40, 50}</span>
 
-<span class="c1">// 시간복잡도: O(1) ✅ (인덱스로 직접 접근)</span>
+<span class="c1">// 시간복잡도: O(1) ✔ (인덱스로 직접 접근)</span>
 </code></pre></div></div>
 
 <p><strong>인덱스 계산 공식:</strong></p>
@@ -213,7 +213,7 @@ key = 30 찾기
 
 비교 1: arr[0] = 10 ≠ 30
 비교 2: arr[1] = 20 ≠ 30
-비교 3: arr[2] = 30 = 30 ✅ 찾음!
+비교 3: arr[2] = 30 = 30 ✔ 찾음!
 
 최악의 경우: N번 비교 (맨 끝 또는 없음)
 </code></pre></div></div>
@@ -229,7 +229,7 @@ key = 30 찾기
 <span class="n">size</span><span class="o">++</span><span class="p">;</span>
 
 <span class="c1">// 결과: {10, 20, 30, 40, 50, 60}</span>
-<span class="c1">// 시간복잡도: O(1) ✅</span>
+<span class="c1">// 시간복잡도: O(1) ✔</span>
 </code></pre></div></div>
 
 <h4 id="중간-삽입-느림">중간 삽입 (느림)</h4>
@@ -243,7 +243,7 @@ key = 30 찾기
     <span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// 시간복잡도: O(N) ❌</span>
+<span class="c1">// 시간복잡도: O(N) ✘</span>
 </code></pre></div></div>
 
 <p><strong>예시: 인덱스 2에 25 삽입</strong></p>
@@ -272,7 +272,7 @@ key = 30 찾기
 <span class="n">size</span><span class="o">--</span><span class="p">;</span>
 
 <span class="c1">// 결과: {10, 20, 30, 40} (50은 무시됨)</span>
-<span class="c1">// 시간복잡도: O(1) ✅</span>
+<span class="c1">// 시간복잡도: O(1) ✔</span>
 </code></pre></div></div>
 
 <h4 id="중간-삭제-느림">중간 삭제 (느림)</h4>
@@ -285,7 +285,7 @@ key = 30 찾기
     <span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">)</span><span class="o">--</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// 시간복잡도: O(N) ❌</span>
+<span class="c1">// 시간복잡도: O(N) ✘</span>
 </code></pre></div></div>
 
 <p><strong>예시: 인덱스 2 삭제</strong></p>
@@ -307,7 +307,7 @@ key = 30 찾기
 
 <h2 id="-배열의-장단점">📊 배열의 장단점</h2>
 
-<h3 id="장점-">장점 ✅</h3>
+<h3 id="장점-">장점 ✔</h3>
 
 <ol>
   <li><strong>빠른 접근 (Random Access)</strong>
@@ -330,7 +330,7 @@ int 배열: 4바이트 × N개 = 4N 바이트
   </li>
 </ol>
 
-<h3 id="단점-">단점 ❌</h3>
+<h3 id="단점-">단점 ✘</h3>
 
 <ol>
   <li><strong>고정 크기</strong>
@@ -549,7 +549,7 @@ row2 [9]   [10]  [11]  [12]
 Head → [10|●] → [20|●] → [30|●] → [40|NULL]
        1000     2000     3000     4000
 
-메모리는 비연속적! ✅
+메모리는 비연속적! ✔
 </code></pre></div></div>
 
 <hr />
@@ -592,7 +592,7 @@ Head → [10|●] → [20|●] → [30|●] → [40|NULL]
     <span class="o">*</span><span class="n">head</span> <span class="o">=</span> <span class="n">newNode</span><span class="p">;</span>         <span class="c1">// head를 새 노드로 변경</span>
 <span class="p">}</span>
 
-<span class="c1">// 시간복잡도: O(1) ✅</span>
+<span class="c1">// 시간복잡도: O(1) ✔</span>
 </code></pre></div></div>
 
 <p><strong>예시:</strong></p>
@@ -630,7 +630,7 @@ Head → [10|●] → [20|●] → [30|NULL]
     <span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">newNode</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// 시간복잡도: O(N) ❌ (마지막까지 순회)</span>
+<span class="c1">// 시간복잡도: O(N) ✘ (마지막까지 순회)</span>
 </code></pre></div></div>
 
 <p><strong>예시:</strong></p>
@@ -709,7 +709,7 @@ Head → [10|●] → [20|●] → [30|NULL]
     <span class="n">free</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// 시간복잡도: O(1) ✅</span>
+<span class="c1">// 시간복잡도: O(1) ✔</span>
 </code></pre></div></div>
 
 <p><strong>예시:</strong></p>
@@ -753,7 +753,7 @@ Head → [20|●] → [30|NULL]
     <span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// 시간복잡도: O(N) ❌</span>
+<span class="c1">// 시간복잡도: O(N) ✘</span>
 </code></pre></div></div>
 
 <h4 id="특정-값-삭제">특정 값 삭제</h4>
@@ -946,8 +946,8 @@ Head → [10|●] → [20|●] → [30|●]
     </tr>
     <tr>
       <td><strong>접근</strong></td>
-      <td>O(1) ✅</td>
-      <td>O(N) ❌</td>
+      <td>O(1) ✔</td>
+      <td>O(N) ✘</td>
     </tr>
     <tr>
       <td><strong>탐색</strong></td>
@@ -956,13 +956,13 @@ Head → [10|●] → [20|●] → [30|●]
     </tr>
     <tr>
       <td><strong>맨앞 삽입</strong></td>
-      <td>O(N) ❌</td>
-      <td>O(1) ✅</td>
+      <td>O(N) ✘</td>
+      <td>O(1) ✔</td>
     </tr>
     <tr>
       <td><strong>맨뒤 삽입</strong></td>
-      <td>O(1) ✅</td>
-      <td>O(N) ❌</td>
+      <td>O(1) ✔</td>
+      <td>O(N) ✘</td>
     </tr>
     <tr>
       <td><strong>중간 삽입</strong></td>
@@ -971,13 +971,13 @@ Head → [10|●] → [20|●] → [30|●]
     </tr>
     <tr>
       <td><strong>맨앞 삭제</strong></td>
-      <td>O(N) ❌</td>
-      <td>O(1) ✅</td>
+      <td>O(N) ✘</td>
+      <td>O(1) ✔</td>
     </tr>
     <tr>
       <td><strong>맨뒤 삭제</strong></td>
-      <td>O(1) ✅</td>
-      <td>O(N) ❌</td>
+      <td>O(1) ✔</td>
+      <td>O(N) ✘</td>
     </tr>
     <tr>
       <td><strong>중간 삭제</strong></td>
@@ -986,13 +986,13 @@ Head → [10|●] → [20|●] → [30|●]
     </tr>
     <tr>
       <td><strong>메모리 효율</strong></td>
-      <td>높음 ✅</td>
-      <td>낮음 (포인터) ❌</td>
+      <td>높음 ✔</td>
+      <td>낮음 (포인터) ✘</td>
     </tr>
     <tr>
       <td><strong>캐시 효율</strong></td>
-      <td>높음 ✅</td>
-      <td>낮음 ❌</td>
+      <td>높음 ✔</td>
+      <td>낮음 ✘</td>
     </tr>
   </tbody>
 </table>
@@ -1025,7 +1025,7 @@ Head → [10|●] → [20|●] → [30|●]
 메모리: (4바이트 + 8바이트) × 10 = 120바이트
 (64비트 시스템에서 포인터 8바이트)
 
-배열이 3배 효율적! ✅
+배열이 3배 효율적! ✔
 </code></pre></div></div>
 
 <h4 id="3-삽입삭제-비교">3. 삽입/삭제 비교</h4>
@@ -1051,18 +1051,18 @@ Head → [10|●] → [20|●] → [30|●]
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>배열:
 [10][20][30][40][50]  ← 연속 메모리
-캐시에 한 번에 로드 → 빠름 ✅
+캐시에 한 번에 로드 → 빠름 ✔
 
 링크드 리스트:
 [10] → [20] → [30] → [40] → [50]
-각 노드가 다른 위치 → 캐시 미스 → 느림 ❌
+각 노드가 다른 위치 → 캐시 미스 → 느림 ✘
 </code></pre></div></div>
 
 <hr />
 
 <h2 id="-언제-무엇을-사용할까">🎯 언제 무엇을 사용할까?</h2>
 
-<h3 id="배열을-사용해야-할-때-">배열을 사용해야 할 때 ✅</h3>
+<h3 id="배열을-사용해야-할-때-">배열을 사용해야 할 때 ✔</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 인덱스 접근이 빈번할 때
    예: arr[i], 랜덤 액세스
@@ -1077,7 +1077,7 @@ Head → [10|●] → [20|●] → [30|●]
    예: for문으로 전체 순회
 </code></pre></div></div>
 
-<h3 id="링크드-리스트를-사용해야-할-때-">링크드 리스트를 사용해야 할 때 ✅</h3>
+<h3 id="링크드-리스트를-사용해야-할-때-">링크드 리스트를 사용해야 할 때 ✔</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 크기가 동적으로 변할 때
    예: 사용자 입력에 따라 크기 변화
@@ -1390,7 +1390,7 @@ slow = [30], fast = [50]
 
 3단계:
 fast-&gt;next = NULL → 종료
-slow = [30] ✅ (중간 노드)
+slow = [30] ✔ (중간 노드)
 </code></pre></div></div>
 
 <hr />
@@ -1426,12 +1426,12 @@ slow = [30] ✅ (중간 노드)
               ↑       ↓
               └───────┘
 
-slow와 fast가 언젠가 만남 ✅
+slow와 fast가 언젠가 만남 ✔
 
 순환이 없는 경우:
 [10] → [20] → [30] → [40] → NULL
 
-fast가 NULL에 도달 → 순환 없음 ✅
+fast가 NULL에 도달 → 순환 없음 ✔
 </code></pre></div></div>
 
 <hr />
@@ -1585,7 +1585,7 @@ Tail 포인터로 마지막 노드를 바로 접근하므로
 {4, 5, 3, 2, 1}
 
 3. 나머지 역순:
-{4, 5, 1, 2, 3} ✅
+{4, 5, 1, 2, 3} ✔
 </code></pre></div></div>
 
 <hr />
@@ -1684,28 +1684,28 @@ first → NULL, second → [3]
 
 <h3 id="배열-array">배열 (Array)</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 연속된 메모리
-✅ 고정 크기
-✅ 인덱스 접근: O(1)
-✅ 탐색: O(N)
-✅ 맨뒤 삽입/삭제: O(1)
-✅ 중간 삽입/삭제: O(N)
-✅ 메모리 효율적
-✅ 캐시 친화적
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 연속된 메모리
+✔ 고정 크기
+✔ 인덱스 접근: O(1)
+✔ 탐색: O(N)
+✔ 맨뒤 삽입/삭제: O(1)
+✔ 중간 삽입/삭제: O(N)
+✔ 메모리 효율적
+✔ 캐시 친화적
 
 주소 계산: 시작주소 + (인덱스 × 데이터크기)
 </code></pre></div></div>
 
 <h3 id="링크드-리스트-linked-list">링크드 리스트 (Linked List)</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 비연속적 메모리
-✅ 동적 크기
-✅ 인덱스 접근: O(N)
-✅ 탐색: O(N)
-✅ 맨앞 삽입/삭제: O(1)
-✅ 맨뒤 삽입/삭제: O(N) (Tail 없을 때)
-✅ 중간 삽입/삭제: O(N)
-✅ 포인터 메모리 오버헤드
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 비연속적 메모리
+✔ 동적 크기
+✔ 인덱스 접근: O(N)
+✔ 탐색: O(N)
+✔ 맨앞 삽입/삭제: O(1)
+✔ 맨뒤 삽입/삭제: O(N) (Tail 없을 때)
+✔ 중간 삽입/삭제: O(N)
+✔ 포인터 메모리 오버헤드
 
 노드 구조: data + next 포인터
 </code></pre></div></div>
@@ -1766,12 +1766,12 @@ first → NULL, second → [3]
 <h3 id="1-배열-인덱스-주의">1. 배열 인덱스 주의</h3>
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>  <span class="c1">// 인덱스: 0, 1, 2, 3, 4</span>
 
-<span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// ❌ 범위 초과 (Undefined Behavior)</span>
-<span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// ✅ 올바름</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// ✘ 범위 초과 (Undefined Behavior)</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// ✔ 올바름</span>
 </code></pre></div></div>
 
 <h3 id="2-포인터-초기화">2. 포인터 초기화</h3>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span><span class="o">*</span> <span class="n">head</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>  <span class="c1">// ✅ 반드시 초기화</span>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span><span class="o">*</span> <span class="n">head</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>  <span class="c1">// ✔ 반드시 초기화</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">head</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// NULL 체크 습관화</span>
     <span class="c1">// 처리</span>
@@ -1781,7 +1781,7 @@ first → NULL, second → [3]
 <h3 id="3-메모리-해제">3. 메모리 해제</h3>
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
 <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<span class="n">free</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>  <span class="c1">// ✅ 반드시 해제</span>
+<span class="n">free</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>  <span class="c1">// ✔ 반드시 해제</span>
 </code></pre></div></div>
 
 <h3 id="4-이중-포인터-이해">4. 이중 포인터 이해</h3>

@@ -132,11 +132,11 @@
     <div class="initial-content">
       <h1 id="arraylist-vs-linkedlist">ArrayList vs LinkedList</h1>
 
-<p>Java에서 List 인터페이스를 구현하는 두 가지 주요 클래스입니다. 각각의 내부 구조와 특성이 다르므로 상황에 맞게 선택해야 합니다.</p>
+<p>Java에서 List 인터페이스를 구현하는 두 가지 주요 클래스이다. 각각의 내부 구조와 특성이 다르므로 상황에 맞게 선택해야 한다.</p>
 
 <hr />
 
-<h2 id="-내부-구조">🔍 내부 구조</h2>
+<h2 id="내부-구조">내부 구조</h2>
 
 <h3 id="arraylist">ArrayList</h3>
 <ul>
@@ -194,7 +194,7 @@
 
 <hr />
 
-<h2 id="-시간복잡도-비교">⚡ 시간복잡도 비교</h2>
+<h2 id="시간복잡도-비교">시간복잡도 비교</h2>
 
 <table>
   <thead>
@@ -255,7 +255,7 @@
 
 <hr />
 
-<h2 id="-상세-연산-분석">📊 상세 연산 분석</h2>
+<h2 id="상세-연산-분석">상세 연산 분석</h2>
 
 <h3 id="1-조회-get">1. 조회 (get)</h3>
 
@@ -432,7 +432,7 @@
 
 <h2 id="-선택-기준">🎯 선택 기준</h2>
 
-<h3 id="arraylist를-사용해야-할-때-">ArrayList를 사용해야 할 때 ✅</h3>
+<h3 id="arraylist를-사용해야-할-때">ArrayList를 사용해야 할 때</h3>
 
 <ol>
   <li><strong>인덱스 접근이 빈번한 경우</strong>
@@ -461,7 +461,7 @@
 
 <hr />
 
-<h3 id="linkedlist를-사용해야-할-때-">LinkedList를 사용해야 할 때 ✅</h3>
+<h3 id="linkedlist를-사용해야-할-때">LinkedList를 사용해야 할 때</h3>
 
 <ol>
   <li><strong>앞/뒤에서 삽입/삭제가 빈번한 경우</strong>
@@ -493,7 +493,7 @@
 
 <hr />
 
-<h2 id="-실전-예제">💻 실전 예제</h2>
+<h2 id="실전-예제">실전 예제</h2>
 
 <h3 id="예제-1-성능-비교-테스트">예제 1: 성능 비교 테스트</h3>
 
@@ -575,7 +575,7 @@ LinkedList get: 8000ms      // 매우 느림!
 
 <h3 id="예제-2-올바른-사용-사례">예제 2: 올바른 사용 사례</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ ArrayList - 조회가 많은 경우</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ArrayList - 조회가 많은 경우</span>
 <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="nf">searchProducts</span><span class="o">(</span><span class="nc">String</span> <span class="n">keyword</span><span class="o">)</span> <span class="o">{</span>
     <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>  <span class="c1">// 올바른 선택</span>
     
@@ -593,7 +593,7 @@ LinkedList get: 8000ms      // 매우 느림!
     <span class="k">return</span> <span class="n">results</span><span class="o">;</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ LinkedList - Queue로 사용</span>
+<span class="c1">// LinkedList - Queue로 사용</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">TaskQueue</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Task</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>  <span class="c1">// 올바른 선택</span>
     
@@ -606,16 +606,16 @@ LinkedList get: 8000ms      // 매우 느림!
     <span class="o">}</span>
 <span class="o">}</span>
 
-<span class="c1">// ❌ 잘못된 사용</span>
+<span class="c1">// 잘못된 사용</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processItems</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">items</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// LinkedList인데 인덱스 접근 → 비효율적!</span>
+    <span class="c1">// LinkedList인데 인덱스 접근 → 비효율적</span>
     <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">items</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
         <span class="nc">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  <span class="c1">// LinkedList면 O(n²)!</span>
         <span class="n">process</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ 올바른 수정</span>
+<span class="c1">// 올바른 수정</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">processItems</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">items</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// Iterator 또는 for-each 사용</span>
     <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">item</span> <span class="o">:</span> <span class="n">items</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// O(n)</span>
@@ -645,7 +645,7 @@ LinkedList get: 8000ms      // 매우 느림!
 
 <hr />
 
-<h2 id="-핵심-정리">🎓 핵심 정리</h2>
+<h2 id="핵심-정리">핵심 정리</h2>
 
 <h3 id="빠른-선택-가이드">빠른 선택 가이드</h3>
 
@@ -703,7 +703,7 @@ LinkedList get: 8000ms      // 매우 느림!
 
 <hr />
 
-<h2 id="-연습-문제">📚 연습 문제</h2>
+<h2 id="연습-문제">연습 문제</h2>
 
 <h3 id="문제-1-적절한-자료구조-선택">문제 1: 적절한 자료구조 선택</h3>
 <p>다음 상황에 적합한 List 구현체를 선택하세요:</p>
@@ -753,8 +753,9 @@ LinkedList get: 8000ms      // 매우 느림!
 </ul>
 
 <hr />
-
-<p>#Java #자료구조 #ArrayList #LinkedList #List #성능비교 #시간복잡도 #알고리즘 #코딩테스트 #면접준비</p>
+<h2 id="️-keywords">🏷️ Keywords</h2>
+<p><code class="language-plaintext highlighter-rouge">#Java</code> <code class="language-plaintext highlighter-rouge">#자료구조</code> <code class="language-plaintext highlighter-rouge">#ArrayList</code> <code class="language-plaintext highlighter-rouge">#LinkedList</code> <code class="language-plaintext highlighter-rouge">#List</code> <code class="language-plaintext highlighter-rouge">#성능비교</code> <code class="language-plaintext highlighter-rouge">#시간복잡도</code><br />
+ <code class="language-plaintext highlighter-rouge">#알고리즘</code> <code class="language-plaintext highlighter-rouge">#코딩테스트</code> <code class="language-plaintext highlighter-rouge">#면접준비</code></p>
 
     </div>
 

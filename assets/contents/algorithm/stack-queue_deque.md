@@ -1,10 +1,10 @@
 # Stack, Queue, Deque
 
-Stack, Queue, Deque는 데이터의 삽입과 삭제 순서가 정해진 **선형 자료구조**입니다. 각각의 특성을 이해하고 적절히 활용하는 것이 중요합니다.
+Stack, Queue, Deque는 데이터의 삽입과 삭제 순서가 정해진 **선형 자료구조**이다. 각각의 특성을 이해하고 적절히 활용하는 것이 중요하다.
 
 ---
 
-## 📦 Stack (스택)
+## Stack (스택)
 
 ### LIFO (Last In First Out) 구조
 
@@ -88,10 +88,10 @@ public class StackExample {
 
 {% raw %}
 ```java
-// ❌ 권장하지 않음 (Vector 기반, 동기화 오버헤드)
+// ✘ 권장하지 않음 (Vector 기반, 동기화 오버헤드)
 Stack<Integer> stack = new Stack<>();
 
-// ✅ 권장: Deque 인터페이스 사용
+// ✔ 권장: Deque 인터페이스 사용
 Deque<Integer> stack = new ArrayDeque<>();
 stack.push(1);
 stack.push(2);
@@ -207,7 +207,7 @@ int[] result = dailyTemperatures(temps);
 
 ---
 
-## 🎯 Queue (큐)
+## Queue (큐)
 
 ### FIFO (First In First Out) 구조
 
@@ -397,7 +397,7 @@ class MyStack {
 
 ---
 
-## 🔄 Deque (덱, Double-Ended Queue)
+## Deque (덱, Double-Ended Queue)
 
 ### 양쪽 끝에서 삽입/삭제 가능
 
@@ -614,7 +614,7 @@ System.out.println(recent.getRecent());  // [B, C, D]
 
 ---
 
-## 📊 성능 비교
+## 성능 비교
 
 ### 시간복잡도
 
@@ -655,7 +655,7 @@ LinkedList<Integer> list = new LinkedList<>();
 
 ---
 
-## 🎯 자료구조 선택 가이드
+## 자료구조 선택 가이드
 
 ### 언제 무엇을 사용할까?
 
@@ -677,10 +677,10 @@ LinkedList<Integer> list = new LinkedList<>();
 
 {% raw %}
 ```java
-// ❌ 비추천
+// ✘ 비추천
 Stack<Integer> stack = new Stack<>();
 
-// ✅ 추천
+// ✔ 추천
 Deque<Integer> stack = new ArrayDeque<>();
 ```
 {% endraw %}
@@ -718,7 +718,7 @@ Deque<Integer> deque = new ArrayDeque<>(1000);
 
 ---
 
-## 🏆 코딩테스트 단골 문제 유형
+## 코딩테스트 단골 문제 유형
 
 ### Stack 문제
 1. **괄호 검증** - LeetCode 20
@@ -742,7 +742,7 @@ Deque<Integer> deque = new ArrayDeque<>(1000);
 
 ---
 
-## 📝 핵심 정리
+## 핵심 정리
 
 ### 기억해야 할 것
 
@@ -773,7 +773,7 @@ Deque<Integer> deque = new ArrayDeque<>(1000);
 
 ---
 
-## 📚 연습 문제
+## 연습 문제
 
 ### 문제 1: 적절한 자료구조 선택
 다음 상황에 적합한 자료구조를 선택하세요:
@@ -835,5 +835,6 @@ class MyQueue {
 {% endraw %}
 
 ---
-
-#Java #자료구조 #Stack #Queue #Deque #LIFO #FIFO #알고리즘 #코딩테스트 #BFS #DFS #ArrayDeque
+## 🏷️ Keywords
+`#Java` `#자료구조` `#Stack` `#Queue` `#Deque` `#LIFO` `#FIFO` `#알고리즘` `#코딩테스트`  
+ `#BFS` `#DFS` `#ArrayDeque`

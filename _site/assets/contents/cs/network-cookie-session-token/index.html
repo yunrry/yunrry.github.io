@@ -152,8 +152,8 @@
     </tr>
     <tr>
       <td><strong>보안</strong></td>
-      <td>낮음 ❌</td>
-      <td>높음 ✅</td>
+      <td>낮음 ✘</td>
+      <td>높음 ✔</td>
       <td>중간</td>
     </tr>
     <tr>
@@ -164,15 +164,15 @@
     </tr>
     <tr>
       <td><strong>속도</strong></td>
-      <td>빠름 ✅</td>
+      <td>빠름 ✔</td>
       <td>느림 (서버 조회)</td>
-      <td>빠름 ✅</td>
+      <td>빠름 ✔</td>
     </tr>
     <tr>
       <td><strong>확장성</strong></td>
-      <td>좋음 ✅</td>
-      <td>나쁨 (서버 부하) ❌</td>
-      <td>좋음 ✅</td>
+      <td>좋음 ✔</td>
+      <td>나쁨 (서버 부하) ✘</td>
+      <td>좋음 ✔</td>
     </tr>
     <tr>
       <td><strong>만료</strong></td>
@@ -182,9 +182,9 @@
     </tr>
     <tr>
       <td><strong>자동 전송</strong></td>
-      <td>✅ (Same Origin)</td>
-      <td>✅ (Session ID)</td>
-      <td>❌ (수동)</td>
+      <td>✔ (Same Origin)</td>
+      <td>✔ (Session ID)</td>
+      <td>✘ (수동)</td>
     </tr>
   </tbody>
 </table>
@@ -282,15 +282,15 @@ Client                    Server
 <h3 id="장단점">장단점</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 자동 전송
-✅ 구현 간단
-✅ 서버 부하 없음
+✔ 자동 전송
+✔ 구현 간단
+✔ 서버 부하 없음
 
 단점:
-❌ 보안 취약 (클라이언트 저장)
-❌ 용량 제한 (4KB)
-❌ XSS 공격 위험
-❌ 모바일 앱에서 사용 어려움
+✘ 보안 취약 (클라이언트 저장)
+✘ 용량 제한 (4KB)
+✘ XSS 공격 위험
+✘ 모바일 앱에서 사용 어려움
 </code></pre></div></div>
 
 <hr />
@@ -434,15 +434,15 @@ Client                    Server
 <h3 id="장단점-1">장단점</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 보안성 높음 (서버 저장)
-✅ 용량 제한 없음
-✅ 서버에서 제어 가능
+✔ 보안성 높음 (서버 저장)
+✔ 용량 제한 없음
+✔ 서버에서 제어 가능
 
 단점:
-❌ 서버 메모리/저장소 사용
-❌ 서버 부하 증가
-❌ 확장성 낮음 (여러 서버 시)
-❌ Redis 등 추가 인프라 필요
+✘ 서버 메모리/저장소 사용
+✘ 서버 부하 증가
+✘ 확장성 낮음 (여러 서버 시)
+✘ Redis 등 추가 인프라 필요
 </code></pre></div></div>
 
 <hr />
@@ -629,17 +629,17 @@ Refresh Token:
 <h3 id="장단점-2">장단점</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ Stateless (서버 저장 불필요)
-✅ 확장성 좋음 (여러 서버)
-✅ 모바일 앱 친화적
-✅ 서버 부하 적음
-✅ CORS 문제 없음
+✔ Stateless (서버 저장 불필요)
+✔ 확장성 좋음 (여러 서버)
+✔ 모바일 앱 친화적
+✔ 서버 부하 적음
+✔ CORS 문제 없음
 
 단점:
-❌ 토큰 크기 큼 (쿠키보다)
-❌ 탈취 시 만료까지 유효
-❌ Payload 노출 (암호화 안 됨)
-❌ 강제 로그아웃 어려움
+✘ 토큰 크기 큼 (쿠키보다)
+✘ 탈취 시 만료까지 유효
+✘ Payload 노출 (암호화 안 됨)
+✘ 강제 로그아웃 어려움
 </code></pre></div></div>
 
 <hr />
@@ -652,13 +652,13 @@ Refresh Token:
 - 클라이언트 저장
 - JavaScript로 접근 가능 (HttpOnly 없으면)
 - XSS 공격 위험
-- 보안: 낮음 ❌
+- 보안: 낮음 ✘
 
 세션:
 - 서버 저장
 - Session ID만 클라이언트
 - 중요 정보는 서버에
-- 보안: 높음 ✅
+- 보안: 높음 ✔
 
 토큰:
 - 클라이언트 저장
@@ -671,12 +671,12 @@ Refresh Token:
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>쿠키:
 - 서버 상태 없음
-- 확장성: 좋음 ✅
+- 확장성: 좋음 ✔
 
 세션:
 - 서버마다 세션 다름
 - Sticky Session 또는 중앙 저장소 필요
-- 확장성: 나쁨 ❌
+- 확장성: 나쁨 ✘
 
 [Server1] ─┐
 [Server2] ─┼─ Redis (세션 저장소)
@@ -685,7 +685,7 @@ Refresh Token:
 토큰:
 - 서버 상태 없음
 - 어느 서버든 검증 가능
-- 확장성: 좋음 ✅
+- 확장성: 좋음 ✔
 </code></pre></div></div>
 
 <h3 id="성능">성능</h3>
@@ -693,7 +693,7 @@ Refresh Token:
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>쿠키:
 - 자동 전송
 - 서버 조회 없음
-- 성능: 좋음 ✅
+- 성능: 좋음 ✔
 
 세션:
 - 매 요청마다 저장소 조회
@@ -703,7 +703,7 @@ Refresh Token:
 토큰:
 - 서버 조회 없음
 - 서명 검증만
-- 성능: 좋음 ✅
+- 성능: 좋음 ✔
 </code></pre></div></div>
 
 <h3 id="만료로그아웃">만료/로그아웃</h3>
@@ -716,7 +716,7 @@ Refresh Token:
 세션:
 - 서버에서 삭제 가능
 - 강제 로그아웃 가능
-- 제어: 강함 ✅
+- 제어: 강함 ✔
 
 토큰:
 - 만료 시간 설정
@@ -1156,19 +1156,6 @@ DNS 레코드:
 </code></pre></div></div>
 
 <hr />
-
-<p>이것으로 네트워크 핵심 내용 정리가 완료되었습니다!</p>
-
-<p>다음 내용이 필요하시면 말씀해주세요:</p>
-<ul>
-  <li>로드밸런서</li>
-  <li>IP 주소 (IPv4/IPv6, 서브넷)</li>
-  <li>프록시</li>
-  <li>CDN</li>
-  <li>웹소켓</li>
-  <li>gRPC</li>
-  <li>기타 네트워크 개념</li>
-</ul>
 
     </div>
 

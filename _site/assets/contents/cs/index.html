@@ -139,8 +139,8 @@
 <p>책의 “목차” 또는 “색인”과 같은 개념이다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>책에서 특정 단어 찾기:
-❌ 인덱스 없음 → 1페이지부터 끝까지 전부 읽기 (Full Scan)
-✅ 인덱스 있음 → 색인에서 페이지 번호 찾고 바로 이동
+✘ 인덱스 없음 → 1페이지부터 끝까지 전부 읽기 (Full Scan)
+✔ 인덱스 있음 → 색인에서 페이지 번호 찾고 바로 이동
 </code></pre></div></div>
 
 <hr />
@@ -222,7 +222,7 @@ Leaf [35, 40] → 찾음! (3번 비교)
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_abc</span> <span class="k">ON</span> <span class="k">table</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="k">c</span><span class="p">);</span>
 
-<span class="c1">-- ✅ 인덱스 사용 O</span>
+<span class="c1">-- ✔ 인덱스 사용 O</span>
 <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">AND</span> <span class="k">c</span> <span class="o">=</span> <span class="mi">3</span>
@@ -230,7 +230,7 @@ Leaf [35, 40] → 찾음! (3번 비교)
 <span class="c1">-- ⚠️ 인덱스 일부만 사용</span>
 <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="k">c</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">-- a만 인덱스 사용</span>
 
-<span class="c1">-- ❌ 인덱스 사용 X (첫 컬럼 a가 없음)</span>
+<span class="c1">-- ✘ 인덱스 사용 X (첫 컬럼 a가 없음)</span>
 <span class="k">WHERE</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="k">WHERE</span> <span class="k">c</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="k">WHERE</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">AND</span> <span class="k">c</span> <span class="o">=</span> <span class="mi">3</span>
@@ -268,7 +268,7 @@ Leaf [35, 40] → 찾음! (3번 비교)
 
 <hr />
 
-<h2 id="-인덱스의-장점">✅ 인덱스의 장점</h2>
+<h2 id="-인덱스의-장점">✔ 인덱스의 장점</h2>
 
 <h3 id="1-검색-속도-대폭-향상">1. 검색 속도 대폭 향상</h3>
 
@@ -416,12 +416,12 @@ Leaf [35, 40] → 찾음! (3번 비교)
 
 <p><strong>카디널리티 (Cardinality)</strong>: 중복도가 낮은 정도</p>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 높은 카디널리티 (인덱스 효과적) ✅</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 높은 카디널리티 (인덱스 효과적) ✔</span>
 <span class="n">email</span>    <span class="err">→</span> <span class="mi">10</span><span class="p">,</span><span class="mi">000</span><span class="err">명</span> <span class="err">중</span> <span class="mi">10</span><span class="p">,</span><span class="mi">000</span><span class="err">개</span> <span class="err">고유값</span> <span class="p">(</span><span class="mi">100</span><span class="o">%</span><span class="p">)</span>
 <span class="err">주민번호</span>  <span class="err">→</span> <span class="mi">10</span><span class="p">,</span><span class="mi">000</span><span class="err">명</span> <span class="err">중</span> <span class="mi">10</span><span class="p">,</span><span class="mi">000</span><span class="err">개</span> <span class="err">고유값</span> <span class="p">(</span><span class="mi">100</span><span class="o">%</span><span class="p">)</span>
 <span class="err">전화번호</span>  <span class="err">→</span> <span class="mi">10</span><span class="p">,</span><span class="mi">000</span><span class="err">명</span> <span class="err">중</span> <span class="mi">9</span><span class="p">,</span><span class="mi">800</span><span class="err">개</span> <span class="err">고유값</span> <span class="p">(</span><span class="mi">98</span><span class="o">%</span><span class="p">)</span>
 
-<span class="c1">-- 낮은 카디널리티 (인덱스 비효율) ❌</span>
+<span class="c1">-- 낮은 카디널리티 (인덱스 비효율) ✘</span>
 <span class="err">성별</span>     <span class="err">→</span> <span class="mi">10</span><span class="p">,</span><span class="mi">000</span><span class="err">명</span> <span class="err">중</span> <span class="mi">2</span><span class="err">개</span> <span class="err">고유값</span> <span class="p">(</span><span class="err">남</span><span class="o">/</span><span class="err">여</span><span class="p">)</span>
 <span class="err">결혼여부</span>  <span class="err">→</span> <span class="mi">10</span><span class="p">,</span><span class="mi">000</span><span class="err">명</span> <span class="err">중</span> <span class="mi">2</span><span class="err">개</span> <span class="err">고유값</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
 <span class="err">등급</span>     <span class="err">→</span> <span class="mi">10</span><span class="p">,</span><span class="mi">000</span><span class="err">명</span> <span class="err">중</span> <span class="mi">5</span><span class="err">개</span> <span class="err">고유값</span> <span class="p">(</span><span class="n">VIP</span><span class="p">,</span> <span class="n">Gold</span><span class="p">,</span> <span class="n">Silver</span><span class="p">...)</span>
@@ -494,27 +494,27 @@ Leaf [35, 40] → 찾음! (3번 비교)
 
 <hr />
 
-<h2 id="-인덱스를-사용하지-못하는-경우">❌ 인덱스를 사용하지 못하는 경우</h2>
+<h2 id="-인덱스를-사용하지-못하는-경우">✘ 인덱스를 사용하지 못하는 경우</h2>
 
 <h3 id="1-인덱스-컬럼에-함수-사용">1. 인덱스 컬럼에 함수 사용</h3>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ❌ 인덱스 사용 불가</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ✘ 인덱스 사용 불가</span>
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_hire_date</span> <span class="k">ON</span> <span class="n">employees</span><span class="p">(</span><span class="n">hire_date</span><span class="p">);</span>
 
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="nb">YEAR</span><span class="p">(</span><span class="n">hire_date</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2023</span><span class="p">;</span>
 <span class="c1">-- hire_date에 함수 적용 → 인덱스 무용지물</span>
 
-<span class="c1">-- ✅ 인덱스 사용 O</span>
+<span class="c1">-- ✔ 인덱스 사용 O</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> 
 <span class="k">WHERE</span> <span class="n">hire_date</span> <span class="k">BETWEEN</span> <span class="s1">'2023-01-01'</span> <span class="k">AND</span> <span class="s1">'2023-12-31'</span><span class="p">;</span>
 </code></pre></div></div>
 
 <h3 id="2-인덱스-컬럼에-연산">2. 인덱스 컬럼에 연산</h3>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ❌ 인덱스 사용 불가</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ✘ 인덱스 사용 불가</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">salary</span> <span class="o">*</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">50000</span><span class="p">;</span>
 
-<span class="c1">-- ✅ 인덱스 사용 O</span>
+<span class="c1">-- ✔ 인덱스 사용 O</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">salary</span> <span class="o">&gt;</span> <span class="mi">50000</span> <span class="o">/</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div></div>
 
@@ -522,10 +522,10 @@ Leaf [35, 40] → 찾음! (3번 비교)
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_name</span> <span class="k">ON</span> <span class="n">employees</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
 
-<span class="c1">-- ✅ 인덱스 사용 O</span>
+<span class="c1">-- ✔ 인덱스 사용 O</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">'김%'</span><span class="p">;</span>
 
-<span class="c1">-- ❌ 인덱스 사용 불가</span>
+<span class="c1">-- ✘ 인덱스 사용 불가</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">'%길동'</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">'%길%'</span><span class="p">;</span>
 </code></pre></div></div>
@@ -539,27 +539,27 @@ Leaf [35, 40] → 찾음! (3번 비교)
 박영희
 이순신
 
-'김%' → 김철수부터 시작해서 연속 검색 가능 ✅
-'%동' → 어디서 시작할지 모름, 전체 스캔 필요 ❌
+'김%' → 김철수부터 시작해서 연속 검색 가능 ✔
+'%동' → 어디서 시작할지 모름, 전체 스캔 필요 ✘
 </code></pre></div></div>
 
 <h3 id="4-not---사용">4. NOT, !=, &lt;&gt; 사용</h3>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ❌ 인덱스 사용 불가 (대부분의 DBMS)</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ✘ 인덱스 사용 불가 (대부분의 DBMS)</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">department</span> <span class="o">!=</span> <span class="s1">'IT'</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="k">NOT</span> <span class="n">department</span> <span class="o">=</span> <span class="s1">'IT'</span><span class="p">;</span>
 
-<span class="c1">-- ✅ 인덱스 사용 O</span>
+<span class="c1">-- ✔ 인덱스 사용 O</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">department</span> <span class="o">=</span> <span class="s1">'IT'</span><span class="p">;</span>
 </code></pre></div></div>
 
 <h3 id="5-or-조건-일부-경우">5. OR 조건 (일부 경우)</h3>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ❌ 인덱스 효율 떨어짐</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ✘ 인덱스 효율 떨어짐</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> 
 <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">'홍길동'</span> <span class="k">OR</span> <span class="n">email</span> <span class="o">=</span> <span class="s1">'hong@example.com'</span><span class="p">;</span>
 
-<span class="c1">-- ✅ UNION으로 대체 (각각 인덱스 사용)</span>
+<span class="c1">-- ✔ UNION으로 대체 (각각 인덱스 사용)</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">'홍길동'</span>
 <span class="k">UNION</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">WHERE</span> <span class="n">email</span> <span class="o">=</span> <span class="s1">'hong@example.com'</span><span class="p">;</span>
@@ -567,13 +567,13 @@ Leaf [35, 40] → 찾음! (3번 비교)
 
 <h3 id="6-데이터-타입-불일치">6. 데이터 타입 불일치</h3>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ❌ 인덱스 사용 불가</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ✘ 인덱스 사용 불가</span>
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_phone</span> <span class="k">ON</span> <span class="n">users</span><span class="p">(</span><span class="n">phone</span><span class="p">);</span>  <span class="c1">-- VARCHAR 타입</span>
 
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span> <span class="k">WHERE</span> <span class="n">phone</span> <span class="o">=</span> <span class="mi">01012345678</span><span class="p">;</span>
 <span class="c1">-- 숫자를 문자와 비교 → 암시적 형변환 → 인덱스 무용지물</span>
 
-<span class="c1">-- ✅ 인덱스 사용 O</span>
+<span class="c1">-- ✔ 인덱스 사용 O</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span> <span class="k">WHERE</span> <span class="n">phone</span> <span class="o">=</span> <span class="s1">'01012345678'</span><span class="p">;</span>
 </code></pre></div></div>
 
@@ -611,7 +611,7 @@ Leaf [35, 40] → 찾음! (3번 비교)
   <li><code class="language-plaintext highlighter-rouge">system</code> &gt; <code class="language-plaintext highlighter-rouge">const</code> &gt; <code class="language-plaintext highlighter-rouge">eq_ref</code> &gt; <code class="language-plaintext highlighter-rouge">ref</code> &gt; <code class="language-plaintext highlighter-rouge">range</code> &gt; <code class="language-plaintext highlighter-rouge">index</code> &gt; <code class="language-plaintext highlighter-rouge">ALL</code></li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 좋은 성능:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 좋은 성능:
 - const: PRIMARY KEY나 UNIQUE로 1건 조회
 - eq_ref: JOIN에서 PRIMARY/UNIQUE로 매칭
 - ref: 일반 인덱스 사용
@@ -620,23 +620,23 @@ Leaf [35, 40] → 찾음! (3번 비교)
 - range: 범위 검색 (BETWEEN, &gt;, &lt;)
 - index: 인덱스 전체 스캔
 
-❌ 나쁜 성능:
+✘ 나쁜 성능:
 - ALL: 테이블 전체 스캔 (Full Scan)
 </code></pre></div></div>
 
 <p><strong>key 컬럼:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>key = idx_department  → 인덱스 사용 ✅
-key = NULL           → 인덱스 미사용 ❌
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>key = idx_department  → 인덱스 사용 ✔
+key = NULL           → 인덱스 미사용 ✘
 </code></pre></div></div>
 
 <p><strong>rows 컬럼:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rows = 1        → 매우 효율적 ✅
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rows = 1        → 매우 효율적 ✔
 rows = 100      → 적당함
-rows = 10,000   → 비효율적 ❌
+rows = 10,000   → 비효율적 ✘
 </code></pre></div></div>
 
 <p><strong>Extra 컬럼:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Using index        → 커버링 인덱스 (최고 성능) ✅
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Using index        → 커버링 인덱스 (최고 성능) ✔
 Using where        → WHERE 조건 필터링
 Using filesort     → 정렬 필요 (느림) ⚠️
 Using temporary    → 임시 테이블 사용 (느림) ⚠️
@@ -664,18 +664,18 @@ Using temporary    → 임시 테이블 사용 (느림) ⚠️
 
 <h3 id="2-선택도-높은-컬럼을-앞에">2. 선택도 높은 컬럼을 앞에</h3>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ❌ 비효율</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ✘ 비효율</span>
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_gender_email</span> <span class="k">ON</span> <span class="n">users</span><span class="p">(</span><span class="n">gender</span><span class="p">,</span> <span class="n">email</span><span class="p">);</span>
 <span class="c1">-- gender는 선택도 낮음 (M/F 2개)</span>
 
-<span class="c1">-- ✅ 효율적</span>
+<span class="c1">-- ✔ 효율적</span>
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_email_gender</span> <span class="k">ON</span> <span class="n">users</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">gender</span><span class="p">);</span>
 <span class="c1">-- email은 선택도 높음 (거의 유니크)</span>
 </code></pre></div></div>
 
 <h3 id="3-인덱스-개수-제한">3. 인덱스 개수 제한</h3>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ❌ 과도한 인덱스</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ✘ 과도한 인덱스</span>
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx1</span> <span class="k">ON</span> <span class="n">employees</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx2</span> <span class="k">ON</span> <span class="n">employees</span><span class="p">(</span><span class="n">email</span><span class="p">);</span>
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx3</span> <span class="k">ON</span> <span class="n">employees</span><span class="p">(</span><span class="n">phone</span><span class="p">);</span>
@@ -684,7 +684,7 @@ Using temporary    → 임시 테이블 사용 (느림) ⚠️
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx6</span> <span class="k">ON</span> <span class="n">employees</span><span class="p">(</span><span class="n">hire_date</span><span class="p">);</span>
 <span class="c1">-- INSERT/UPDATE 성능 급격히 저하</span>
 
-<span class="c1">-- ✅ 필요한 것만 생성 (3~5개 권장)</span>
+<span class="c1">-- ✔ 필요한 것만 생성 (3~5개 권장)</span>
 </code></pre></div></div>
 
 <h3 id="4-불필요한-인덱스-삭제">4. 불필요한 인덱스 삭제</h3>
@@ -749,13 +749,13 @@ Using temporary    → 임시 테이블 사용 (느림) ⚠️
 
 <h3 id="인덱스-생성-체크리스트">인덱스 생성 체크리스트</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ WHERE 절에 자주 사용되는가?
-✅ JOIN 조건에 사용되는가?
-✅ ORDER BY/GROUP BY에 사용되는가?
-✅ 카디널리티가 높은가? (중복 값 적은가?)
-✅ 데이터 변경이 적은가?
-❌ 테이블이 너무 작은가? (100건 미만)
-❌ 이미 비슷한 인덱스가 있는가?
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ WHERE 절에 자주 사용되는가?
+✔ JOIN 조건에 사용되는가?
+✔ ORDER BY/GROUP BY에 사용되는가?
+✔ 카디널리티가 높은가? (중복 값 적은가?)
+✔ 데이터 변경이 적은가?
+✘ 테이블이 너무 작은가? (100건 미만)
+✘ 이미 비슷한 인덱스가 있는가?
 </code></pre></div></div>
 
 <h3 id="성능-비교-요약">성능 비교 요약</h3>
@@ -772,34 +772,35 @@ Using temporary    → 임시 테이블 사용 (느림) ⚠️
     <tr>
       <td>SELECT (검색)</td>
       <td>느림 O(N)</td>
-      <td><strong>빠름 O(log N)</strong> ✅</td>
+      <td><strong>빠름 O(log N)</strong> ✔</td>
     </tr>
     <tr>
       <td>INSERT</td>
       <td>빠름</td>
-      <td>느림 ❌</td>
+      <td>느림 ✘</td>
     </tr>
     <tr>
       <td>UPDATE (인덱스 컬럼)</td>
       <td>빠름</td>
-      <td>느림 ❌</td>
+      <td>느림 ✘</td>
     </tr>
     <tr>
       <td>DELETE</td>
       <td>빠름</td>
-      <td>느림 ❌</td>
+      <td>느림 ✘</td>
     </tr>
     <tr>
       <td>ORDER BY</td>
       <td>느림 (정렬 필요)</td>
-      <td><strong>빠름 (정렬 불필요)</strong> ✅</td>
+      <td><strong>빠름 (정렬 불필요)</strong> ✔</td>
     </tr>
   </tbody>
 </table>
 
 <hr />
 
-<p><strong>핵심:</strong> 인덱스는 검색 성능 향상을 위한 도구이지만, 무분별하게 생성하면 오히려 성능 저하를 초래한다. <strong>자주 조회하고, 카디널리티가 높으며, 변경이 적은 컬럼</strong>에만 선택적으로 생성하기</p>
+<p><strong>핵심:</strong> 인덱스는 검색 성능 향상을 위한 도구이지만, 무분별하게 생성하면 오히려 성능 저하를 초래한다.<br />
+ <strong>자주 조회하고, 카디널리티가 높으며, 변경이 적은 컬럼</strong>에만 선택적으로 생성하기</p>
 
     </div>
 

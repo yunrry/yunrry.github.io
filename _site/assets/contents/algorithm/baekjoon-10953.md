@@ -34,13 +34,13 @@ class Main {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - BufferedReader로 빠른 입력 처리
 - StringBuilder로 출력 최적화
 - 정확한 로직
 
-### 🔴 개선점
+### ✦ 개선점
 
 1. **불필요한 Integer.toString()**
     
@@ -95,5 +95,5 @@ public class Main {
 - `split(",")`로 쉼표 구분 입력 처리
 
 ---
-
-#백준 #입출력 #BufferedReader #StringBuilder #Bronze3
+## 🏷️ Keywords
+`#백준` `#입출력` `#BufferedReader` `#StringBuilder` `#Bronze3`

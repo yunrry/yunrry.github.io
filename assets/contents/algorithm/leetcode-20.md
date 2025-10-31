@@ -38,7 +38,7 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 1. **스택 자료구조 선택**: 괄호 매칭 문제의 핵심인 LIFO 특성을 정확히 파악
 2. **엣지 케이스 처리**: 길이가 1인 경우 조기 리턴
@@ -46,7 +46,7 @@ class Solution {
 4. **마지막 검증**: 스택이 비어있는지 확인하여 열린 괄호가 남지 않았는지 체크
 5. **ArrayDeque 사용**: Stack 클래스보다 효율적인 Deque 사용
 
-### 🔴 개선점
+### ✦ 개선점
 
 1. **코드 중복**: 세 개의 if문이 반복적인 패턴
 2. **매직 넘버**: 괄호 문자들이 하드코딩되어 있음
@@ -219,10 +219,10 @@ class Solution {
 
 **개선 포인트**:
 
-- ✅ 홀수 길이 조기 체크
-- ✅ Switch 문으로 깔끔한 분기
-- ✅ "대응 괄호 push" 트릭으로 비교 간소화
-- ✅ 주석으로 의도 명확화
+- ✔ 홀수 길이 조기 체크
+- ✔ Switch 문으로 깔끔한 분기
+- ✔ "대응 괄호 push" 트릭으로 비교 간소화
+- ✔ 주석으로 의도 명확화
 
 ---
 
@@ -283,4 +283,7 @@ class Solution {
 
 ## 🏷️ Keywords
 
-#Stack #Deque #BracketMatching #StringValidation #LeetCodeEasy #ArrayDeque #HashMap #Switch #LIFO #DataStructures #Parsing #BalancedString #TwoPointer #FastFail #EdgeCase #코딩테스트 #알고리즘 #자료구조
+`#Stack` `#Deque` `#BracketMatching` `#StringValidation` `#LeetCodeEasy`  
+ `#ArrayDeque``#HashMap` `#Switch` `#LIFO` `#DataStructures` `#Parsing`   
+ `#BalancedString` `#TwoPointer``#FastFail` `#EdgeCase` `#코딩테스트` `#알고리즘`  
+  `#자료구조`  

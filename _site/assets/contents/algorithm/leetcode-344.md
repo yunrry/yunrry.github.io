@@ -26,15 +26,16 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - Two Pointer 정석 풀이
 - In-place 처리 (O(1) 공간)
 - 최적 성능 (0ms)
 
-### 🔴 개선점
+### ✦ 개선점
 
 없음. 완벽한 풀이.
+떙큐
 
 ---
 
@@ -94,5 +95,5 @@ class Solution {
 - 양 끝을 swap하며 중앙으로 이동
 
 ---
-
-#LeetCode #TwoPointer #String #Easy #InPlace
+## 🏷️ Keywords
+`#LeetCode` `#TwoPointer` `#String` `#Easy` `#InPlace`

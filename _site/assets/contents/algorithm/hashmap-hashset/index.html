@@ -136,7 +136,7 @@
 
 <hr />
 
-<h2 id="-해시-자료구조-이해">🔍 해시 자료구조 이해</h2>
+<h2 id="해시-자료구조-이해">해시 자료구조 이해</h2>
 
 <h3 id="해시-테이블의-원리">해시 테이블의 원리</h3>
 
@@ -257,7 +257,7 @@
 
 <hr />
 
-<h2 id="️-hashmap-사용법">🗺️ HashMap 사용법</h2>
+<h2 id="hashmap-사용법">HashMap 사용법</h2>
 
 <h3 id="기본-연산">기본 연산</h3>
 
@@ -419,7 +419,7 @@
 
 <hr />
 
-<h2 id="-hashmap-문제-해결-패턴">🎯 HashMap 문제 해결 패턴</h2>
+<h2 id="hashmap-문제-해결-패턴">HashMap 문제 해결 패턴</h2>
 
 <h3 id="패턴-1-빈도수-세기-frequency-count">패턴 1: 빈도수 세기 (Frequency Count)</h3>
 
@@ -591,7 +591,7 @@
 
 <hr />
 
-<h2 id="-hashset-사용법">🎨 HashSet 사용법</h2>
+<h2 id="hashset-사용법">HashSet 사용법</h2>
 
 <h3 id="기본-개념">기본 개념</h3>
 
@@ -722,7 +722,7 @@
 
 <hr />
 
-<h2 id="-hashset-문제-해결-패턴">🎯 HashSet 문제 해결 패턴</h2>
+<h2 id="hashset-문제-해결-패턴">HashSet 문제 해결 패턴</h2>
 
 <h3 id="패턴-1-중복-제거">패턴 1: 중복 제거</h3>
 
@@ -868,7 +868,7 @@
 
 <hr />
 
-<h2 id="-hashmap-vs-hashset-vs-treemap-vs-treeset">📊 HashMap vs HashSet vs TreeMap vs TreeSet</h2>
+<h2 id="hashmap-vs-hashset-vs-treemap-vs-treeset">HashMap vs HashSet vs TreeMap vs TreeSet</h2>
 
 <table>
   <thead>
@@ -932,7 +932,7 @@
 
 <h3 id="1-equals와-hashcode-오버라이드">1. equals()와 hashCode() 오버라이드</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 잘못된 예</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 잘못된 예</span>
 <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
     <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
@@ -949,7 +949,7 @@
 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>  <span class="c1">// 2 (같은 사람인데 중복!)</span>
 
 
-<span class="c1">// ✅ 올바른 예</span>
+<span class="c1">// ✔ 올바른 예</span>
 <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
     <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
@@ -977,7 +977,7 @@
 
 <h3 id="2-mutable-객체를-key로-사용-금지">2. Mutable 객체를 Key로 사용 금지</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 위험한 코드</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 위험한 코드</span>
 <span class="kd">class</span> <span class="nc">MutableKey</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
     
@@ -1020,10 +1020,10 @@
 
 <h3 id="1-초기-용량-지정">1. 초기 용량 지정</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 기본 용량 (16)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 기본 용량 (16)</span>
 <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
 
-<span class="c1">// ✅ 예상 크기만큼 미리 할당</span>
+<span class="c1">// ✔ 예상 크기만큼 미리 할당</span>
 <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;(</span><span class="mi">1000</span><span class="o">);</span>
 
 <span class="c1">// 재할당 횟수 감소 → 성능 향상</span>
@@ -1047,12 +1047,12 @@
 
 <h3 id="3-containsvalue-사용-주의">3. containsValue() 사용 주의</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ O(n) - 느림</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ O(n) - 느림</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsValue</span><span class="o">(</span><span class="mi">100</span><span class="o">))</span> <span class="o">{</span>
     <span class="c1">// ...</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ 값으로도 검색이 필요하면 역방향 Map 유지</span>
+<span class="c1">// ✔ 값으로도 검색이 필요하면 역방향 Map 유지</span>
 <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">nameToAge</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
 <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">ageToName</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
 
@@ -1064,7 +1064,7 @@
 
 <hr />
 
-<h2 id="-코딩테스트-단골-문제">🏆 코딩테스트 단골 문제</h2>
+<h2 id="코딩테스트-단골-문제">코딩테스트 단골 문제</h2>
 
 <h3 id="hashmap-문제">HashMap 문제</h3>
 <ol>
@@ -1086,7 +1086,7 @@
 
 <hr />
 
-<h2 id="-핵심-정리">📝 핵심 정리</h2>
+<h2 id="핵심-정리">핵심 정리</h2>
 
 <h3 id="언제-사용할까">언제 사용할까?</h3>
 
@@ -1118,7 +1118,7 @@
 
 <hr />
 
-<h2 id="-실전-문제-풀이">🎓 실전 문제 풀이</h2>
+<h2 id="실전-문제-풀이">실전 문제 풀이</h2>
 
 <h3 id="문제-1-로마-숫자를-정수로-변환">문제 1: 로마 숫자를 정수로 변환</h3>
 
@@ -1399,7 +1399,7 @@
 
 <hr />
 
-<h2 id="-고급-패턴">🔥 고급 패턴</h2>
+<h2 id="고급-패턴">고급 패턴</h2>
 
 <h3 id="패턴-1-lru-cache-구현">패턴 1: LRU Cache 구현</h3>
 
@@ -1542,7 +1542,7 @@
 
 <hr />
 
-<h2 id="-성능-비교-실험">📈 성능 비교 실험</h2>
+<h2 id="성능-비교-실험">성능 비교 실험</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashPerformanceTest</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -1595,7 +1595,7 @@ ArrayList: 매우 느림 (O(n²))
 
 <hr />
 
-<h2 id="-면접-준비-핵심-질문">🎯 면접 준비 핵심 질문</h2>
+<h2 id="면접-준비-핵심-질문">면접 준비 핵심 질문</h2>
 
 <h3 id="q1-hashmap의-시간복잡도가-항상-o1인가요">Q1: HashMap의 시간복잡도가 항상 O(1)인가요?</h3>
 
@@ -1651,7 +1651,7 @@ ArrayList: 매우 느림 (O(n²))
 
 <hr />
 
-<h2 id="-추가-학습-자료">📚 추가 학습 자료</h2>
+<h2 id="추가-학습-자료">추가 학습 자료</h2>
 
 <h3 id="관련-자료구조">관련 자료구조</h3>
 <ul>
@@ -1671,7 +1671,7 @@ ArrayList: 매우 느림 (O(n²))
 
 <hr />
 
-<h2 id="-최종-체크리스트">🎓 최종 체크리스트</h2>
+<h2 id="최종-체크리스트">최종 체크리스트</h2>
 
 <ul class="task-list">
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />HashMap의 내부 구조 이해</li>
@@ -1685,8 +1685,9 @@ ArrayList: 매우 느림 (O(n²))
 </ul>
 
 <hr />
-
-<p>#Java #자료구조 #HashMap #HashSet #해시테이블 #알고리즘 #코딩테스트 #LeetCode #시간복잡도 #해시충돌 #면접준비</p>
+<h2 id="️-keywords">🏷️ Keywords</h2>
+<p><code class="language-plaintext highlighter-rouge">#Java</code> <code class="language-plaintext highlighter-rouge">#자료구조</code> <code class="language-plaintext highlighter-rouge">#HashMap</code> <code class="language-plaintext highlighter-rouge">#HashSet</code> <code class="language-plaintext highlighter-rouge">#해시테이블</code> <code class="language-plaintext highlighter-rouge">#알고리즘</code> <code class="language-plaintext highlighter-rouge">#코딩테스트</code><br />
+ <code class="language-plaintext highlighter-rouge">#LeetCode</code> <code class="language-plaintext highlighter-rouge">#시간복잡도</code> <code class="language-plaintext highlighter-rouge">#해시충돌</code> <code class="language-plaintext highlighter-rouge">#면접준비</code></p>
 
     </div>
 

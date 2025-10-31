@@ -47,13 +47,13 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - 길이 계산 후 위치 찾기
 - head 삭제 케이스 처리
 - 0ms 달성
 
-### 🔴 문제점
+### ✘ 문제점
 
 1. **의미 없는 break**
     
@@ -175,5 +175,5 @@ class Solution {
 - 함께 이동하면 slow는 삭제 직전 위치
 
 ---
-
-#LeetCode #LinkedList #TwoPointer #Medium #DummyNode
+## 🏷️ Keywords
+`#LeetCode` `#LinkedList` `#TwoPointer` `#Medium` `#DummyNode`

@@ -40,20 +40,20 @@ class Solution {
 ## 📝 평가
 
 이거 Easy라고?? 자괴감 든다.... 
-아무 생각없이 n^n 로 풀었다가 런타임 에러나서 
-map 만들고 별짓 다해봤는데 
-난이도는 Easy라니까 맵까지는 안쓸것같고
-점점 산으로가다가 결국 클로드한테 힌트만 달라고 했다.
+아무 생각없이 n^n 로 풀었다가 런타임 에러나서   
+map 만들고 별짓 다해봤는데   
+난이도는 Easy라니까 맵까지는 안쓸것같고  
+점점 산으로가다가 결국 클로드한테 힌트만 달라고 했다.  
 
-힌트 내용
-<img src="/assets/images/스크린샷 2025-10-03 오전 12.40.03.png" alt="힌트" width="600">
-<img src="/assets/images/스크린샷 2025-10-03 오전 12.40.28.png" alt="힌트" width="600">
-힌트도 정말 잘준다 AI..
-힌트를 보자마자 5분만에 풀어버렸다
-1시간 내로 못풀겠으면 힌트라도 받자 앞으로...
+힌트 내용  
+<img src="/assets/images/스크린샷 2025-10-03 오전 12.40.03.png" alt="힌트" width="600">  
+<img src="/assets/images/스크린샷 2025-10-03 오전 12.40.28.png" alt="힌트" width="600">  
+힌트도 정말 잘준다 AI..  
+힌트를 보자마자 5분만에 풀어버렸다  
+1시간 내로 못풀겠으면 힌트라도 받자 앞으로...  
 
 
-### ✅ 잘한 점 
+### ✔ 잘한 점 
 form Ai
 
 1. **핵심 아이디어 파악**
@@ -71,7 +71,7 @@ form Ai
 
 ---
 
-## 🔴 개선점
+## ✦ 개선점
 
 ### 1. 불필요한 변수 `big`
 
@@ -85,7 +85,7 @@ if (prices[i] < small) {
 }
 max = Math.max(max, big - small);
 
-// ✅ 개선
+// ✔ 개선
 max = Math.max(max, prices[i] - small);
 // big 변수 없이 직접 계산 가능
 ```
@@ -349,5 +349,6 @@ class Solution {
 **주의:** 가독성은 떨어지고 성능도 느림. 실전에서는 비추천!
 
 ---
-
-#LeetCode #Greedy #DynamicProgramming #BestTimeToBuyAndSellStock #알고리즘 #코딩테스트 #Java #Easy #배열순회 #최적화
+## 🏷️ Keywords
+`#LeetCode` `#Greedy` `#DynamicProgramming` `#알고리즘` `#코딩테스트` `#Java`  
+ `#Easy` `#배열순회` `#최적화`

@@ -543,7 +543,7 @@ index = hash(key) % size
 또 충돌: (index + 2²) % size = (index + 4) % size
 또 충돌: (index + 3²) % size = (index + 9) % size
 
-클러스터링 완화 ✅
+클러스터링 완화 ✔
 </code></pre></div></div>
 
 <h4 id="2-3-이중-해싱-double-hashing">2-3. 이중 해싱 (Double Hashing)</h4>
@@ -554,7 +554,7 @@ index = hash1(key) % size
 충돌 시: (index + hash2(key)) % size
 또 충돌: (index + 2 * hash2(key)) % size
 
-최소 클러스터링 ✅
+최소 클러스터링 ✔
 </code></pre></div></div>
 
 <hr />
@@ -572,27 +572,27 @@ index = hash1(key) % size
   <tbody>
     <tr>
       <td><strong>구현</strong></td>
-      <td>간단 ✅</td>
+      <td>간단 ✔</td>
       <td>복잡</td>
     </tr>
     <tr>
       <td><strong>메모리</strong></td>
       <td>추가 메모리 (포인터)</td>
-      <td>배열만 사용 ✅</td>
+      <td>배열만 사용 ✔</td>
     </tr>
     <tr>
       <td><strong>캐시 효율</strong></td>
       <td>낮음 (포인터 추적)</td>
-      <td>높음 (연속 메모리) ✅</td>
+      <td>높음 (연속 메모리) ✔</td>
     </tr>
     <tr>
       <td><strong>삭제</strong></td>
-      <td>쉬움 ✅</td>
+      <td>쉬움 ✔</td>
       <td>복잡 (재배치 필요)</td>
     </tr>
     <tr>
       <td><strong>로드팩터</strong></td>
-      <td>1 이상 가능 ✅</td>
+      <td>1 이상 가능 ✔</td>
       <td>1 미만만 가능</td>
     </tr>
     <tr>
@@ -746,7 +746,7 @@ Java는 체이닝 방식을 사용하며,
     </tr>
     <tr>
       <td><strong>구현</strong></td>
-      <td>간단 ✅</td>
+      <td>간단 ✔</td>
       <td>복잡</td>
       <td>매우 복잡</td>
     </tr>
@@ -758,9 +758,9 @@ Java는 체이닝 방식을 사용하며,
 <h2 id="1️⃣-bst-binary-search-tree">1️⃣ BST (Binary Search Tree)</h2>
 
 <h3 id="특징">특징</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 왼쪽 &lt; 루트 &lt; 오른쪽
-❌ 균형 보장 없음
-❌ 편향 트리 가능
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 왼쪽 &lt; 루트 &lt; 오른쪽
+✘ 균형 보장 없음
+✘ 편향 트리 가능
 </code></pre></div></div>
 
 <h3 id="구조-예시">구조 예시</h3>
@@ -773,7 +773,7 @@ Java는 체이닝 방식을 사용하며,
    20  40 60  80
 
 높이: 3
-탐색: O(log N) ✅
+탐색: O(log N) ✔
 
 편향된 BST (최악):
     10
@@ -787,20 +787,20 @@ Java는 체이닝 방식을 사용하며,
                50
 
 높이: 5
-탐색: O(N) ❌ (연결 리스트와 동일)
+탐색: O(N) ✘ (연결 리스트와 동일)
 </code></pre></div></div>
 
 <h3 id="장단점">장단점</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 구현이 간단
-✅ 평균적으로 O(log N) 성능
-✅ 중위 순회 시 정렬된 결과
+✔ 구현이 간단
+✔ 평균적으로 O(log N) 성능
+✔ 중위 순회 시 정렬된 결과
 
 단점:
-❌ 최악의 경우 O(N)
-❌ 순차 삽입 시 편향 트리
-❌ 균형 보장 없음
+✘ 최악의 경우 O(N)
+✘ 순차 삽입 시 편향 트리
+✘ 균형 보장 없음
 </code></pre></div></div>
 
 <hr />
@@ -809,23 +809,23 @@ Java는 체이닝 방식을 사용하며,
 
 <h3 id="특징-1">특징</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 자가 균형 이진 탐색 트리
-✅ 모든 노드의 BF (Balance Factor) ∈ {-1, 0, 1}
-✅ 가장 엄격한 균형 조건
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 자가 균형 이진 탐색 트리
+✔ 모든 노드의 BF (Balance Factor) ∈ {-1, 0, 1}
+✔ 가장 엄격한 균형 조건
 
 BF = (왼쪽 서브트리 높이) - (오른쪽 서브트리 높이)
 </code></pre></div></div>
 
 <h3 id="균형-인수-예시">균형 인수 예시</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 균형 잡힌 AVL:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 균형 잡힌 AVL:
          50 (BF=0)
         /  \
       30    70 (BF=0)
      / \      \
    20  40     80
 
-❌ 불균형 (BF=2):
+✘ 불균형 (BF=2):
          50 (BF=2)
         /
       30 (BF=1)
@@ -872,21 +872,21 @@ BF = (왼쪽 서브트리 높이) - (오른쪽 서브트리 높이)
 <h3 id="장단점-1">장단점</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 항상 O(log N) 보장
-✅ 검색 성능이 가장 우수
-✅ 높이가 가장 낮음 (최대 1.44 log N)
+✔ 항상 O(log N) 보장
+✔ 검색 성능이 가장 우수
+✔ 높이가 가장 낮음 (최대 1.44 log N)
 
 단점:
-❌ 삽입/삭제 시 회전 빈번
-❌ 구현 복잡
-❌ 오버헤드 (BF 저장)
+✘ 삽입/삭제 시 회전 빈번
+✘ 구현 복잡
+✘ 오버헤드 (BF 저장)
 </code></pre></div></div>
 
 <h3 id="사용-사례">사용 사례</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 데이터베이스 인덱스 (검색 중심)
-✅ 읽기 작업이 99%
-✅ 실시간 시스템 (예측 가능한 성능)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 데이터베이스 인덱스 (검색 중심)
+✔ 읽기 작업이 99%
+✔ 실시간 시스템 (예측 가능한 성능)
 </code></pre></div></div>
 
 <hr />
@@ -895,10 +895,10 @@ BF = (왼쪽 서브트리 높이) - (오른쪽 서브트리 높이)
 
 <h3 id="특징-2">특징</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 자가 균형 이진 탐색 트리
-✅ 각 노드는 빨강 또는 검정
-✅ AVL보다 느슨한 균형
-✅ 회전 빈도 낮음
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 자가 균형 이진 탐색 트리
+✔ 각 노드는 빨강 또는 검정
+✔ AVL보다 느슨한 균형
+✔ 회전 빈도 낮음
 </code></pre></div></div>
 
 <h3 id="규칙-5가지">규칙 (5가지)</h3>
@@ -923,9 +923,9 @@ BF = (왼쪽 서브트리 높이) - (오른쪽 서브트리 높이)
 B = Black, R = Red
 
 규칙 확인:
-✅ 루트(20)는 검정
-✅ 빨강 노드(10, 25)의 자식은 검정
-✅ 모든 경로의 검정 노드 수 = 3
+✔ 루트(20)는 검정
+✔ 빨강 노드(10, 25)의 자식은 검정
+✔ 모든 경로의 검정 노드 수 = 3
 </code></pre></div></div>
 
 <h3 id="회전-및-색-변경">회전 및 색 변경</h3>
@@ -941,23 +941,23 @@ B = Black, R = Red
 <h3 id="장단점-2">장단점</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 삽입/삭제가 AVL보다 빠름
-✅ 회전 횟수 적음 (최대 3회)
-✅ 최악의 경우도 O(log N)
-✅ 실무에서 가장 많이 사용
+✔ 삽입/삭제가 AVL보다 빠름
+✔ 회전 횟수 적음 (최대 3회)
+✔ 최악의 경우도 O(log N)
+✔ 실무에서 가장 많이 사용
 
 단점:
-❌ AVL보다 높이가 높음 (최대 2 log N)
-❌ 검색이 AVL보다 약간 느림
-❌ 구현이 매우 복잡
+✘ AVL보다 높이가 높음 (최대 2 log N)
+✘ 검색이 AVL보다 약간 느림
+✘ 구현이 매우 복잡
 </code></pre></div></div>
 
 <h3 id="사용-사례-1">사용 사례</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ Java TreeMap, TreeSet
-✅ C++ STL map, set
-✅ Linux 커널 (프로세스 스케줄링)
-✅ 삽입/삭제가 빈번한 경우
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ Java TreeMap, TreeSet
+✔ C++ STL map, set
+✔ Linux 커널 (프로세스 스케줄링)
+✔ 삽입/삭제가 빈번한 경우
 </code></pre></div></div>
 
 <hr />
@@ -973,7 +973,7 @@ BST 높이:
 - 최악: N (편향 트리)
 
 AVL 높이:
-- 최대: 1.44 log N ✅ (가장 낮음)
+- 최대: 1.44 log N ✔ (가장 낮음)
 
 Red-Black 높이:
 - 최대: 2 log N
@@ -986,9 +986,9 @@ Red-Black 높이:
         | BST     | AVL      | RB-Tree
 --------|---------|----------|----------
 검색    | 평균 10 | 최대 14  | 최대 20
-        | 최악 1000| ✅       |
-삽입    | 평균 10 | 14(회전) | 20(회전적음) ✅
-삭제    | 평균 10 | 14(회전) | 20(회전적음) ✅
+        | 최악 1000| ✔       |
+삽입    | 평균 10 | 14(회전) | 20(회전적음) ✔
+삭제    | 평균 10 | 14(회전) | 20(회전적음) ✔
 </code></pre></div></div>
 
 <h3 id="3-회전-빈도">3. 회전 빈도</h3>
@@ -996,7 +996,7 @@ Red-Black 높이:
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>삽입 1000번 기준:
 
 AVL Tree: 평균 500번 회전
-Red-Black: 평균 200번 회전 ✅
+Red-Black: 평균 200번 회전 ✔
 
 → RB-Tree가 삽입/삭제에 유리
 </code></pre></div></div>
@@ -1076,9 +1076,9 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
     </tr>
     <tr>
       <td><strong>크기</strong></td>
-      <td>고정 ❌</td>
-      <td>동적 ✅</td>
-      <td>동적 ✅</td>
+      <td>고정 ✘</td>
+      <td>동적 ✔</td>
+      <td>동적 ✔</td>
     </tr>
     <tr>
       <td><strong>메모리</strong></td>
@@ -1088,9 +1088,9 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
     </tr>
     <tr>
       <td><strong>인덱스 접근</strong></td>
-      <td>O(1) ✅</td>
-      <td>O(1) ✅</td>
-      <td>O(N) ❌</td>
+      <td>O(1) ✔</td>
+      <td>O(1) ✔</td>
+      <td>O(N) ✘</td>
     </tr>
     <tr>
       <td><strong>검색</strong></td>
@@ -1101,14 +1101,14 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
     <tr>
       <td><strong>맨앞 삽입</strong></td>
       <td>-</td>
-      <td>O(N) ❌</td>
-      <td>O(1) ✅</td>
+      <td>O(N) ✘</td>
+      <td>O(1) ✔</td>
     </tr>
     <tr>
       <td><strong>맨뒤 삽입</strong></td>
       <td>-</td>
       <td>O(1) (분할상환)</td>
-      <td>O(1) ✅</td>
+      <td>O(1) ✔</td>
     </tr>
     <tr>
       <td><strong>중간 삽입</strong></td>
@@ -1119,14 +1119,14 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
     <tr>
       <td><strong>맨앞 삭제</strong></td>
       <td>-</td>
-      <td>O(N) ❌</td>
-      <td>O(1) ✅</td>
+      <td>O(N) ✘</td>
+      <td>O(1) ✔</td>
     </tr>
     <tr>
       <td><strong>맨뒤 삭제</strong></td>
       <td>-</td>
-      <td>O(1) ✅</td>
-      <td>O(1) ✅</td>
+      <td>O(1) ✔</td>
+      <td>O(1) ✔</td>
     </tr>
     <tr>
       <td><strong>중간 삭제</strong></td>
@@ -1136,21 +1136,21 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
     </tr>
     <tr>
       <td><strong>메모리 효율</strong></td>
-      <td>높음 ✅</td>
+      <td>높음 ✔</td>
       <td>중간</td>
-      <td>낮음 (포인터) ❌</td>
+      <td>낮음 (포인터) ✘</td>
     </tr>
     <tr>
       <td><strong>캐시 효율</strong></td>
-      <td>높음 ✅</td>
-      <td>높음 ✅</td>
-      <td>낮음 ❌</td>
+      <td>높음 ✔</td>
+      <td>높음 ✔</td>
+      <td>낮음 ✘</td>
     </tr>
     <tr>
       <td><strong>Null 허용</strong></td>
       <td>타입에 따라</td>
-      <td>✅</td>
-      <td>✅</td>
+      <td>✔</td>
+      <td>✔</td>
     </tr>
     <tr>
       <td><strong>초기 용량</strong></td>
@@ -1161,8 +1161,8 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
     <tr>
       <td><strong>Thread-Safe</strong></td>
       <td>-</td>
-      <td>❌</td>
-      <td>❌</td>
+      <td>✘</td>
+      <td>✘</td>
     </tr>
   </tbody>
 </table>
@@ -1178,7 +1178,7 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
 <span class="nc">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
 
 <span class="c1">// 크기 변경 불가</span>
-<span class="n">arr</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>  <span class="c1">// ❌ ArrayIndexOutOfBoundsException</span>
+<span class="n">arr</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>  <span class="c1">// ✘ ArrayIndexOutOfBoundsException</span>
 </code></pre></div></div>
 
 <h3 id="메모리-구조">메모리 구조</h3>
@@ -1191,30 +1191,30 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
 인덱스 |  0   |  1   |  2   |  3   |  4   |
 값     |  10  |  20  |  30  |  40  |  50  |
 
-연속된 메모리 공간 ✅
+연속된 메모리 공간 ✔
 </code></pre></div></div>
 
 <h3 id="장단점-3">장단점</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 인덱스로 O(1) 접근
-✅ 메모리 효율적 (오버헤드 없음)
-✅ 캐시 친화적
-✅ 원시 타입 저장 가능
-✅ 성능 최적화
+✔ 인덱스로 O(1) 접근
+✔ 메모리 효율적 (오버헤드 없음)
+✔ 캐시 친화적
+✔ 원시 타입 저장 가능
+✔ 성능 최적화
 
 단점:
-❌ 크기 고정 (변경 불가)
-❌ 삽입/삭제 시 수동 관리 필요
-❌ 크기 초과 시 새 배열 생성 필요
+✘ 크기 고정 (변경 불가)
+✘ 삽입/삭제 시 수동 관리 필요
+✘ 크기 초과 시 새 배열 생성 필요
 </code></pre></div></div>
 
 <h3 id="사용-사례-2">사용 사례</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 크기가 고정된 경우
-✅ 메모리가 제한적일 때
-✅ 고성능이 중요한 경우
-✅ 원시 타입 저장 (int, double 등)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 크기가 고정된 경우
+✔ 메모리가 제한적일 때
+✔ 고성능이 중요한 경우
+✔ 원시 타입 저장 (int, double 등)
 
 예시:
 - 고정된 학생 수 (30명)
@@ -1237,7 +1237,7 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
 <span class="c1">// 크기 자동 조절</span>
 <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>  <span class="c1">// size: 1</span>
 <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>  <span class="c1">// size: 2</span>
-<span class="c1">// 계속 추가 가능... ✅</span>
+<span class="c1">// 계속 추가 가능... ✔</span>
 </code></pre></div></div>
 
 <h3 id="내부-구조">내부 구조</h3>
@@ -1268,7 +1268,7 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
 시간복잡도:
 - 일반 add: O(1)
 - resizing 발생: O(N)
-- 분할 상환: O(1) ✅
+- 분할 상환: O(1) ✔
 </code></pre></div></div>
 
 <h3 id="주요-메서드">주요 메서드</h3>
@@ -1281,7 +1281,7 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
 <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">15</span><span class="o">);</span>        <span class="c1">// 중간: O(N)</span>
 
 <span class="c1">// 접근</span>
-<span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>  <span class="c1">// O(1) ✅</span>
+<span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>  <span class="c1">// O(1) ✔</span>
 
 <span class="c1">// 수정</span>
 <span class="n">list</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>        <span class="c1">// O(1)</span>
@@ -1332,25 +1332,25 @@ Red-Black: 느슨한 균형, 삽입/삭제 최적화
 <h3 id="장단점-4">장단점</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 동적 크기 조절
-✅ 인덱스로 O(1) 접근
-✅ 사용하기 편리 (API 풍부)
-✅ 순차 접근 시 빠름 (캐시 효율)
-✅ 메모리 연속 배치
+✔ 동적 크기 조절
+✔ 인덱스로 O(1) 접근
+✔ 사용하기 편리 (API 풍부)
+✔ 순차 접근 시 빠름 (캐시 효율)
+✔ 메모리 연속 배치
 
 단점:
-❌ 중간 삽입/삭제 느림 O(N)
-❌ Resizing 오버헤드
-❌ 초기 용량 낭비 가능
-❌ 원시 타입 저장 시 Boxing 필요
+✘ 중간 삽입/삭제 느림 O(N)
+✘ Resizing 오버헤드
+✘ 초기 용량 낭비 가능
+✘ 원시 타입 저장 시 Boxing 필요
 </code></pre></div></div>
 
 <h3 id="사용-사례-3">사용 사례</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 인덱스 접근이 빈번할 때
-✅ 순차 접근이 많을 때
-✅ 맨 뒤 삽입/삭제가 주된 작업
-✅ 크기 예측 가능할 때
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 인덱스 접근이 빈번할 때
+✔ 순차 접근이 많을 때
+✔ 맨 뒤 삽입/삭제가 주된 작업
+✔ 크기 예측 가능할 때
 
 예시:
 - 검색 결과 리스트
@@ -1417,18 +1417,18 @@ NULL ← [10|●] ⇄ [20|●] ⇄ [30|●] ⇄ [40|●] → NULL
 
 <span class="c1">// 삽입</span>
 <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>           <span class="c1">// 맨 뒤: O(1)</span>
-<span class="n">list</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>       <span class="c1">// 맨 앞: O(1) ✅</span>
+<span class="n">list</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>       <span class="c1">// 맨 앞: O(1) ✔</span>
 <span class="n">list</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="mi">15</span><span class="o">);</span>       <span class="c1">// 맨 뒤: O(1)</span>
 <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">12</span><span class="o">);</span>        <span class="c1">// 중간: O(N)</span>
 
 <span class="c1">// 접근</span>
 <span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">getFirst</span><span class="o">();</span>   <span class="c1">// O(1)</span>
 <span class="kt">int</span> <span class="n">last</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">getLast</span><span class="o">();</span>     <span class="c1">// O(1)</span>
-<span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>       <span class="c1">// O(N) ❌</span>
+<span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>       <span class="c1">// O(N) ✘</span>
 
 <span class="c1">// 삭제</span>
-<span class="n">list</span><span class="o">.</span><span class="na">removeFirst</span><span class="o">();</span>     <span class="c1">// 맨 앞: O(1) ✅</span>
-<span class="n">list</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>      <span class="c1">// 맨 뒤: O(1) ✅</span>
+<span class="n">list</span><span class="o">.</span><span class="na">removeFirst</span><span class="o">();</span>     <span class="c1">// 맨 앞: O(1) ✔</span>
+<span class="n">list</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>      <span class="c1">// 맨 뒤: O(1) ✔</span>
 <span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>         <span class="c1">// 중간: O(N)</span>
 
 <span class="c1">// 큐/스택 연산</span>
@@ -1465,25 +1465,25 @@ NULL ← [10|●] ⇄ [20|●] ⇄ [30|●] ⇄ [40|●] → NULL
 <h3 id="장단점-5">장단점</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>장점:
-✅ 맨 앞/뒤 삽입/삭제 O(1)
-✅ 크기 제한 없음
-✅ Resizing 오버헤드 없음
-✅ 메모리 단편화 방지
+✔ 맨 앞/뒤 삽입/삭제 O(1)
+✔ 크기 제한 없음
+✔ Resizing 오버헤드 없음
+✔ 메모리 단편화 방지
 
 단점:
-❌ 인덱스 접근 O(N)
-❌ 메모리 오버헤드 (포인터)
-❌ 캐시 비효율적
-❌ 순차 접근도 느림
+✘ 인덱스 접근 O(N)
+✘ 메모리 오버헤드 (포인터)
+✘ 캐시 비효율적
+✘ 순차 접근도 느림
 </code></pre></div></div>
 
 <h3 id="사용-사례-4">사용 사례</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ 맨 앞/뒤 삽입/삭제가 빈번할 때
-✅ 큐(Queue) 구현
-✅ 스택(Stack) 구현
-✅ 덱(Deque) 구현
-✅ 인덱스 접근이 없을 때
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✔ 맨 앞/뒤 삽입/삭제가 빈번할 때
+✔ 큐(Queue) 구현
+✔ 스택(Stack) 구현
+✔ 덱(Deque) 구현
+✔ 인덱스 접근이 없을 때
 
 예시:
 - 브라우저 방문 기록 (앞/뒤 이동)
@@ -1501,7 +1501,7 @@ NULL ← [10|●] ⇄ [20|●] ⇄ [30|●] ⇄ [40|●] → NULL
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1000개 Integer 저장 기준</span>
 
 <span class="nc">Array</span> <span class="o">(</span><span class="kt">int</span><span class="o">[]):</span>
-<span class="mi">4</span><span class="n">바이트</span> <span class="err">×</span> <span class="mi">1000</span> <span class="o">=</span> <span class="mi">4</span><span class="no">KB</span> <span class="err">✅</span>
+<span class="mi">4</span><span class="n">바이트</span> <span class="err">×</span> <span class="mi">1000</span> <span class="o">=</span> <span class="mi">4</span><span class="no">KB</span> <span class="err">✔</span>
 
 <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;:</span>
 <span class="o">-</span> <span class="n">내부</span> <span class="nl">배열:</span> <span class="mi">8</span><span class="n">바이트</span> <span class="err">×</span> <span class="mi">1000</span> <span class="o">=</span> <span class="mi">8</span><span class="no">KB</span> <span class="o">(</span><span class="n">참조</span><span class="o">)</span>
@@ -1511,7 +1511,7 @@ NULL ← [10|●] ⇄ [20|●] ⇄ [30|●] ⇄ [40|●] → NULL
 <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;:</span>
 <span class="o">-</span> <span class="nl">노드:</span> <span class="mi">24</span><span class="n">바이트</span> <span class="err">×</span> <span class="mi">1000</span> <span class="o">=</span> <span class="mi">24</span><span class="no">KB</span>
 <span class="o">-</span> <span class="nc">Integer</span> <span class="nl">객체:</span> <span class="mi">16</span><span class="n">바이트</span> <span class="err">×</span> <span class="mi">1000</span> <span class="o">=</span> <span class="mi">16</span><span class="no">KB</span>
-<span class="o">-</span> <span class="nl">총:</span> <span class="mi">40</span><span class="no">KB</span> <span class="err">❌</span>
+<span class="o">-</span> <span class="nl">총:</span> <span class="mi">40</span><span class="no">KB</span> <span class="err">✘</span>
 
 <span class="nc">LinkedList가</span> <span class="nc">ArrayList보다</span> <span class="mf">1.7</span><span class="n">배</span> <span class="n">많은</span> <span class="n">메모리</span> <span class="n">사용</span>
 </code></pre></div></div>
@@ -1521,21 +1521,21 @@ NULL ← [10|●] ⇄ [20|●] ⇄ [30|●] ⇄ [40|●] → NULL
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10,000개 원소 기준:
 
 1. 순차 접근 (0부터 9999까지):
-   Array:      0.1ms ✅
+   Array:      0.1ms ✔
    ArrayList:  0.2ms
-   LinkedList: 1500ms ❌ (15,000배 느림!)
+   LinkedList: 1500ms ✘ (15,000배 느림!)
 
 2. 랜덤 접근 (무작위 인덱스):
-   Array:      0.5ms ✅
+   Array:      0.5ms ✔
    ArrayList:  0.6ms
-   LinkedList: 750ms ❌
+   LinkedList: 750ms ✘
 
 3. 맨 앞 삽입 1000번:
    ArrayList:  150ms (매번 이동)
-   LinkedList: 0.1ms ✅
+   LinkedList: 0.1ms ✔
 
 4. 맨 뒤 삽입 10,000번:
-   ArrayList:  1ms ✅
+   ArrayList:  1ms ✔
    LinkedList: 2ms
 
 5. 중간 삽입 1000번:
@@ -1552,22 +1552,22 @@ NULL ← [10|●] ⇄ [20|●] ⇄ [30|●] ⇄ [40|●] → NULL
 <span class="k">for</span> <span class="o">(</span><span class="nc">Integer</span> <span class="n">value</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// ...</span>
 <span class="o">}</span>
-<span class="c1">// ArrayList: 1ms ✅</span>
+<span class="c1">// ArrayList: 1ms ✔</span>
 <span class="c1">// LinkedList: 2ms (노드 탐색)</span>
 
 <span class="c1">// 2. 인덱스 접근</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
 <span class="o">}</span>
-<span class="c1">// ArrayList: 1ms ✅</span>
-<span class="c1">// LinkedList: 1500ms ❌ (절대 사용하지 말 것!)</span>
+<span class="c1">// ArrayList: 1ms ✔</span>
+<span class="c1">// LinkedList: 1500ms ✘ (절대 사용하지 말 것!)</span>
 
 <span class="c1">// 3. Iterator 직접 사용</span>
 <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
 <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
 <span class="o">}</span>
-<span class="c1">// ArrayList: 1ms ✅</span>
+<span class="c1">// ArrayList: 1ms ✔</span>
 <span class="c1">// LinkedList: 2ms</span>
 </code></pre></div></div>
 
@@ -1610,9 +1610,9 @@ LinkedList:
    - 원시 타입(int, double) 직접 저장 가능
    
    성능:
-   - 접근: O(1) ✅
-   - 메모리: 가장 효율적 ✅
-   - 캐시: 가장 효율적 ✅
+   - 접근: O(1) ✔
+   - 메모리: 가장 효율적 ✔
+   - 캐시: 가장 효율적 ✔
    
    사용:
    - 크기 고정 (요일, RGB 값 등)
@@ -1627,7 +1627,7 @@ LinkedList:
    - 기본 용량 10, 1.5배씩 증가
    
    성능:
-   - 접근: O(1) ✅
+   - 접근: O(1) ✔
    - 맨 뒤 삽입: O(1) 분할상환
    - 중간 삽입/삭제: O(N) (원소 이동)
    - 메모리: 연속 배치로 캐시 효율 높음
@@ -1649,8 +1649,8 @@ LinkedList:
    - first, last 포인터로 양 끝 관리
    
    성능:
-   - 접근: O(N) ❌ (순차 탐색)
-   - 맨 앞/뒤 삽입/삭제: O(1) ✅
+   - 접근: O(N) ✘ (순차 탐색)
+   - 맨 앞/뒤 삽입/삭제: O(1) ✔
    - 중간 삽입/삭제: O(N) (위치 찾기)
    - 메모리: 포인터 오버헤드 (노드당 24바이트)
    
@@ -1666,8 +1666,8 @@ LinkedList:
 성능 비교 (10,000개 기준):
                   | ArrayList | LinkedList
 ------------------|-----------|------------
-순차 접근         | 0.2ms ✅  | 1500ms ❌
-맨 앞 삽입 1000번 | 150ms     | 0.1ms ✅
+순차 접근         | 0.2ms ✔  | 1500ms ✘
+맨 앞 삽입 1000번 | 150ms     | 0.1ms ✔
 메모리 (Integer)  | 24KB      | 40KB
 
 선택 기준:
@@ -1683,13 +1683,13 @@ LinkedList:
 
 <h3 id="arraylist-최적화">ArrayList 최적화</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 비효율적</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 비효율적</span>
 <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
     <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  <span class="c1">// 여러 번 resizing</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ 효율적</span>
+<span class="c1">// ✔ 효율적</span>
 <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="mi">10000</span><span class="o">);</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
     <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  <span class="c1">// resizing 없음</span>
@@ -1700,17 +1700,17 @@ LinkedList:
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="o">...;</span>
 
-<span class="c1">// ❌ 절대 금지! O(N²)</span>
+<span class="c1">// ✘ 절대 금지! O(N²)</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  <span class="c1">// 매번 O(N)</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ 올바른 방법 O(N)</span>
+<span class="c1">// ✔ 올바른 방법 O(N)</span>
 <span class="k">for</span> <span class="o">(</span><span class="nc">Integer</span> <span class="n">value</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// ...</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ Iterator 사용</span>
+<span class="c1">// ✔ Iterator 사용</span>
 <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
 <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
@@ -1739,8 +1739,6 @@ LinkedList:
   <li><strong>실무에서는 대부분 ArrayList 사용</strong></li>
   <li><strong>LinkedList는 get(index) 절대 사용 금지!</strong></li>
 </ol>
-
-<p>모든 자료구조 정리가 완료되었습니다! 다른 주제 (알고리즘, 네트워크, OS 등)가 필요하시면 말씀해주세요! 🎉</p>
 
     </div>
 

@@ -44,13 +44,13 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - StringBuilder로 전처리 (알파벳+숫자만 추출)
 - Two Pointer로 O(n) 해결
 - 로직 명확하고 정확
 
-### 🔴 개선점
+### ✦ 개선점
 
 - **불필요한 메모리 사용**: O(n) 추가 공간
 - **불필요한 변수**: `answer` 대신 직접 return
@@ -170,5 +170,5 @@ class Solution {
 - <a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank">LeetCode 234: Palindrome Linked List</a>
 
 ---
-
-#LeetCode #TwoPointer #Palindrome #String #Easy #문자열처리
+## 🏷️ Keywords
+`#LeetCode` `#TwoPointer` `#Palindrome` `#String` `#Easy` `#문자열처리`

@@ -57,7 +57,7 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 1. **정확한 동작**
     
@@ -74,12 +74,12 @@ class Solution {
 
 ---
 
-## 🔴 개선점
+## ✦ 개선점
 
 ### 1. 불필요한 복잡성
 
 ```java
-// ❌ while(true) + 복잡한 break 조건
+// ✘ while(true) + 복잡한 break 조건
 while (true) {
     if (index == m + n) break;
     if (nIndex >= n && mIndex < m) { ... break; }
@@ -87,7 +87,7 @@ while (true) {
     // ...
 }
 
-// ✅ 명확한 조건문
+// ✔ 명확한 조건문
 while (mIndex < m && nIndex < n) {
     // 메인 로직
 }
@@ -265,5 +265,5 @@ class Solution {
 - [ ] Two Pointer 다양한 패턴 학습
 
 ---
-
-#LeetCode #TwoPointer #MergeSortedArray #알고리즘 #코딩테스트 #Java #InPlace
+## 🏷️ Keywords
+`#LeetCode` `#TwoPointer` `#MergeSortedArray` `#알고리즘` `#코딩테스트` `#Java` `#InPlace`

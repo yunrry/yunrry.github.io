@@ -17,7 +17,7 @@ sidebar:
 ---
 
 
-### 학습 내용
+### 목록
 
 #### <a href="#" data-content="/assets/contents/cs/stack-queue-tree.md"><span style="color: #9bd6bd;">♡</span> Stack, Queue, Tree</a>
 

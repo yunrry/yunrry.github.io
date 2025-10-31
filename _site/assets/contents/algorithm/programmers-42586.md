@@ -59,14 +59,14 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 1. **올림 처리 정확**: `if((100-progresses[i])%speeds[i]>0) day++`
 2. **배포일 조정**: 앞 작업이 늦으면 뒤 작업도 같은 날 배포
 3. **그룹핑 로직**: 같은 날 배포되는 기능 카운트
 4. **모든 테스트 통과**
 
-### 🔴 개선점
+### ✦ 개선점
 
 1. **Stack 남용**: 문제는 Queue 개념인데 Stack 사용
 2. **불필요한 역순 처리**: Stack에 넣었다가 다시 pop
@@ -296,4 +296,4 @@ class Solution {
 
 ## 🏷️ Keywords
 
-#Queue #Stack #프로그래머스 #배포그룹핑 #Math.ceil #FIFO #Level2
+`#Queue` `#Stack` `#프로그래머스` `#배포그룹핑` `#Math.ceil` `#FIFO` `#Level2`

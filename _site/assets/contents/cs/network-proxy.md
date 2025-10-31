@@ -62,7 +62,7 @@ Client ──> Proxy ──> Server
 4. Forward Proxy → Client
    응답 전달
 
-Client는 Server와 직접 통신 안 함 ✅
+Client는 Server와 직접 통신 안 함 ✔
 ```
 
 ### 주요 기능
@@ -79,7 +79,7 @@ Proxy (203.0.113.5)
 Server
 
 Server가 보는 IP: 203.0.113.5 (프록시)
-실제 Client IP: 192.168.1.10 (숨겨짐) ✅
+실제 Client IP: 192.168.1.10 (숨겨짐) ✔
 
 사용:
 - 익명 브라우징
@@ -96,7 +96,7 @@ Client → Proxy → Server (느림)
         └─ 응답 저장
 
 이후 요청:
-Client → Proxy (캐시에서 즉시 응답) ✅
+Client → Proxy (캐시에서 즉시 응답) ✔
         X Server (요청 안 함)
 
 장점:
@@ -111,9 +111,9 @@ Client → Proxy (캐시에서 즉시 응답) ✅
 특정 사이트 차단
 
 예: 회사 네트워크
-- facebook.com 차단 ❌
-- youtube.com 차단 ❌
-- 업무 사이트만 허용 ✅
+- facebook.com 차단 ✘
+- youtube.com 차단 ✘
+- 업무 사이트만 허용 ✔
 
 프록시가 URL 필터링
 ```
@@ -177,7 +177,7 @@ Client → Proxy (캐시에서 즉시 응답) ✅
 4. Reverse Proxy → Client
    응답 전달
 
-Client는 실제 Server를 모름 ✅
+Client는 실제 Server를 모름 ✔
 ```
 
 ### 주요 기능
@@ -231,7 +231,7 @@ Client → Reverse Proxy → Server
         └─ 이미지, CSS, JS 저장
 
 이후 요청:
-Client → Reverse Proxy (캐시 응답) ✅
+Client → Reverse Proxy (캐시 응답) ✔
         X Server
 
 효과:
@@ -253,7 +253,7 @@ Client는 Reverse Proxy만 봄
 공격:
 - 프록시가 먼저 받음
 - 필터링 후 서버 전달
-- 서버 직접 노출 안 됨 ✅
+- 서버 직접 노출 안 됨 ✔
 ```
 
 #### 5. 압축
@@ -553,11 +553,11 @@ Client → Forward Proxy → Reverse Proxy → Server
 
 ```
 CDN 없이:
-한국 사용자 → 미국 서버 (느림) ❌
+한국 사용자 → 미국 서버 (느림) ✘
         14,000km 거리
 
 CDN 사용:
-한국 사용자 → 한국 CDN 서버 (빠름) ✅
+한국 사용자 → 한국 CDN 서버 (빠름) ✔
         근거리
 ```
 
@@ -581,7 +581,7 @@ Edge Servers (엣지 서버):
 - 시드니
 ...전 세계 수백 곳
 
-사용자는 가장 가까운 Edge Server 접속 ✅
+사용자는 가장 가까운 Edge Server 접속 ✔
 ```
 
 ### 계층 구조
@@ -639,13 +639,13 @@ Edge Servers (엣지 서버):
    서울 CDN 서버
 
 3. 서울 CDN 확인:
-   image.jpg 있음! (Cache Hit) ✅
+   image.jpg 있음! (Cache Hit) ✔
 
 4. 즉시 응답:
    서울 CDN → 사용자
    (Origin 접속 불필요)
 
-이후 요청: 매우 빠름 ✅
+이후 요청: 매우 빠름 ✔
 ```
 
 ---
@@ -718,7 +718,7 @@ Geo-Routing (지역 기반 라우팅):
 CDN:
 - 전 세계 서버에 분산
 - 각 서버: 10만 개/초
-- 감당 가능 ✅
+- 감당 가능 ✔
 
 Origin Server:
 - 직접 공격 안 받음
@@ -815,7 +815,7 @@ User: 2MB 전송
 - 첫 요청 느림
 
 사용:
-- 대부분의 웹사이트 (일반적) ✅
+- 대부분의 웹사이트 (일반적) ✔
 ```
 
 ---
@@ -1006,7 +1006,7 @@ CDN (Content Delivery Network):
 
 2. Cache Hit (캐시 있음):
    - Edge Server에 콘텐츠 있음
-   - 즉시 응답 (매우 빠름) ✅
+   - 즉시 응답 (매우 빠름) ✔
    - Origin 접속 불필요
 
 3. Cache Miss (캐시 없음):
@@ -1044,17 +1044,17 @@ CDN (Content Delivery Network):
    - 자동 크기 조정
 
 장점:
-✅ 빠른 로딩 속도 (물리적 거리 감소)
-✅ 서버 부하 감소 (Origin 보호)
-✅ 대역폭 절약 (캐싱)
-✅ 고가용성 (분산 구조)
-✅ DDoS 방어
-✅ 글로벌 확장 용이
+✔ 빠른 로딩 속도 (물리적 거리 감소)
+✔ 서버 부하 감소 (Origin 보호)
+✔ 대역폭 절약 (캐싱)
+✔ 고가용성 (분산 구조)
+✔ DDoS 방어
+✔ 글로벌 확장 용이
 
 단점:
-❌ 비용 (트래픽 기반 과금)
-❌ 캐시 무효화 복잡
-❌ 동적 콘텐츠에는 효과 적음
+✘ 비용 (트래픽 기반 과금)
+✘ 캐시 무효화 복잡
+✘ 동적 콘텐츠에는 효과 적음
 
 CDN 종류:
 

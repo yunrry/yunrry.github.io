@@ -9,9 +9,7 @@ sidebar:
   nav: "categories"
 ---
 
-## 📚 네트워크
-
-### 학습 내용
+### 목록
 
 #### <a href="#" data-content="/assets/contents/cs/network-osi.md"><span style="color: #9bd6bd;">♡</span> OSI 7계층</a>
 

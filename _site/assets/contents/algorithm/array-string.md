@@ -1,6 +1,6 @@
 # 배열과 문자열 조작
 
-## 📦 배열의 기본 연산
+## 배열의 기본 연산
 
 ### 1. 배열 선언 및 초기화
 
@@ -221,7 +221,7 @@ int sum = prefixSum[4] - prefixSum[1];  // arr[1]~arr[3]의 합
 
 ---
 
-## 📝 문자열 조작
+## 문자열 조작
 
 ### 1. String 기본 메서드
 
@@ -269,13 +269,13 @@ char[] charArray = str.toCharArray();
 #### 왜 StringBuilder를 사용하는가?
 
 ```java
-// ❌ String 연결 (비효율적 - O(n²))
+// String 연결 (비효율적 - O(n²))
 String result = "";
 for (int i = 0; i < 1000; i++) {
     result += i;  // 매번 새로운 String 객체 생성
 }
 
-// ✅ StringBuilder 사용 (효율적 - O(n))
+// StringBuilder 사용 (효율적 - O(n))
 StringBuilder sb = new StringBuilder();
 for (int i = 0; i < 1000; i++) {
     sb.append(i);  // 내부 버퍼에 추가만
@@ -518,7 +518,7 @@ public int strStr(String haystack, String needle) {
 
 ---
 
-## 🎯 성능 비교
+## 성능 비교
 
 ### String 연결 성능 테스트
 
@@ -560,7 +560,7 @@ StringBuffer: 3ms
 
 ---
 
-## 💡 코딩테스트 꿀팁
+## 코딩테스트 꿀팁
 
 ### 1. 입력 처리
 
@@ -622,7 +622,7 @@ String str = new String(chars);
 
 ---
 
-## 📚 연습 문제
+## 연습 문제
 
 ### 배열
 - LeetCode 1: Two Sum
@@ -644,7 +644,7 @@ String str = new String(chars);
 
 ---
 
-## 🔑 핵심 정리
+## 핵심 정리
 
 ### 배열
 - `Arrays.sort()`, `Arrays.binarySearch()` 자주 사용
@@ -662,6 +662,6 @@ String str = new String(chars);
 - 코딩테스트 출력 최적화에 활용
 
 ---
-
-#Java #알고리즘 #코딩테스트 #배열 #문자열 #StringBuilder #Arrays #String #자료구조   
-#입출력최적화 #BufferedReader #성능최적화 #LeetCode #백준
+## 🏷️ Keywords
+`#Java` `#알고리즘` `#코딩테스트` `#배열` `#문자열` `#StringBuilder` `#Arrays` `#String` `#자료구조`   
+`#입출력최적화` `#BufferedReader` `#성능최적화` `#LeetCode` `#백준`

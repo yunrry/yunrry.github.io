@@ -61,7 +61,7 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 1. **후위 표기법 이해**: 스택을 활용한 전형적인 패턴 정확히 파악
 2. **함수 분리**: `isOperator`, `calculator`로 역할 분리하여 가독성 향상
@@ -69,7 +69,7 @@ class Solution {
 4. **Switch 문 활용**: 연산자별 분기 처리가 깔끔함
 5. **정확한 구현**: 모든 테스트 케이스 통과
 
-### 🔴 개선점
+### ✦ 개선점
 
 1. **불필요한 타입 변환**: String ↔ Integer 변환이 과도함
     - 스택에 String 대신 Integer 저장 가능
@@ -119,10 +119,10 @@ class Solution {
 
 **개선 포인트**:
 
-- ✅ String → Integer 스택으로 변환 오버헤드 제거
-- ✅ 함수 호출 최소화
-- ✅ Switch의 default로 숫자 처리
-- ✅ 덧셈/곱셈은 순서 무관하므로 간결하게 처리
+- ✔ String → Integer 스택으로 변환 오버헤드 제거
+- ✔ 함수 호출 최소화
+- ✔ Switch의 default로 숫자 처리
+- ✔ 덧셈/곱셈은 순서 무관하므로 간결하게 처리
 
 ### 방법 2: 함수형 접근 (가독성 중시)
 
@@ -301,10 +301,10 @@ class Solution {
 
 **개선 포인트**:
 
-- ✅ Integer 스택으로 변환 오버헤드 제거
-- ✅ 의미 있는 변수명 (subtrahend, divisor 등)
-- ✅ 주석으로 의도 명확화
-- ✅ 간결하면서도 명확한 로직
+- ✔ Integer 스택으로 변환 오버헤드 제거
+- ✔ 의미 있는 변수명 (subtrahend, divisor 등)
+- ✔ 주석으로 의도 명확화
+- ✔ 간결하면서도 명확한 로직
 
 ---
 
@@ -382,4 +382,6 @@ class Solution {
 
 ## 🏷️ Keywords
 
-#Stack #RPN #ReversePolishNotation #PostfixNotation #Calculator #수식평가 #Deque #Switch #IntegerStack #ShuntingYard #ExpressionEvaluation #컴파일러 #알고리즘 #자료구조 #LeetCodeMedium #코딩테스트
+`#Stack` `#RPN` `#ReversePolishNotation` `#PostfixNotation` `#Calculator` `#수식평가`  
+`#Deque` `#Switch` `#IntegerStack` `#ShuntingYard` `#ExpressionEvaluation` `#컴파일러`
+`#알고리즘` `#자료구조` `#LeetCodeMedium` `#코딩테스트`  

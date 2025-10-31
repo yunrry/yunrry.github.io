@@ -1,11 +1,13 @@
 
 # 그리디 & 구현
 
-그리디(Greedy)는 매 순간 최선의 선택을 하는 알고리즘이고, 구현(Implementation)은 문제에서 요구하는 대로 정확히 코드로 옮기는 능력입니다. 두 유형 모두 코딩테스트에서 자주 출제됩니다.
+그리디(Greedy)는 매 순간 최선의 선택을 하는 알고리즘이고,   
+구현(Implementation)은 문제에서 요구하는 대로 정확히 코드로 옮기는 능력이다.   
+두 유형 모두 코딩테스트에서 자주 출제된다.
 
 ---
 
-## 🎯 그리디 알고리즘
+## 그리디 알고리즘
 
 ### 그리디란?
 
@@ -13,11 +15,11 @@
 
 ```
 
-핵심 아이디어:
+핵심 아이디어:  
 
-- 현재 상황에서 가장 좋은 선택
-- 선택을 번복하지 않음
-- 지역 최적해 → 전역 최적해
+- 현재 상황에서 가장 좋은 선택  
+- 선택을 번복하지 않음  
+- 지역 최적해 → 전역 최적해  
 
 ```
 
@@ -62,7 +64,7 @@
 
 ---
 
-## 🎨 그리디 기본 예제
+## 그리디 기본 예제
 
 ### 예제 1: 거스름돈
 
@@ -92,12 +94,12 @@ public class ChangeMaking {
 
 {% endraw %}
 
-**⚠️ 주의**: 동전 단위가 배수 관계가 아니면 그리디 실패!
+**! 주의**: 동전 단위가 배수 관계가 아니면 그리디 실패!
 
 ```
 예: 동전 [1, 4, 6], 목표 8
-그리디: 6 + 1 + 1 = 3개 ❌
-최적: 4 + 4 = 2개 ✅
+그리디: 6 + 1 + 1 = 3개 ✘
+최적: 4 + 4 = 2개 ✔
 ```
 
 ---
@@ -360,7 +362,7 @@ public class ConnectIslands {
 
 ---
 
-## 🎯 그리디 문제 패턴
+## 그리디 문제 패턴
 
 ### 패턴 1: 정렬 후 선택
 
@@ -499,7 +501,7 @@ for (char c : s.toCharArray()) {
 
 ---
 
-## 🎮 구현 예제
+## 구현 예제
 
 ### 예제 1: 상하좌우 이동
 
@@ -837,7 +839,7 @@ public class SnakeGame {
 
 ---
 
-## 💡 실전 팁
+## 실전 팁
 
 ### 그리디 문제 풀이
 
@@ -892,7 +894,7 @@ System.out.println("조건 만족: " + (condition));
 
 ---
 
-## 🏆 추천 문제
+## 추천 문제
 
 ### 그리디 (⭐)
 
@@ -975,7 +977,7 @@ System.out.println("조건 만족: " + (condition));
 
 ---
 
-## 📚 학습 로드맵
+## 학습 로드맵
 
 ### 1주차: 그리디 기초
 
@@ -1006,7 +1008,7 @@ System.out.println("조건 만족: " + (condition));
 
 ---
 
-## 🎯 패턴별 템플릿
+## 패턴별 템플릿
 
 ### 1. 정렬 그리디
 
@@ -1124,7 +1126,7 @@ public void rotate90(int[][] matrix) {
 
 ---
 
-## 🎨 고급 예제
+## 고급 예제
 
 ### 예제 1: 뱀과 사다리 게임
 
@@ -1389,12 +1391,12 @@ public class ConveyorBelt {
 {% raw %}
 
 ```java
-// ❌ 잘못된 코드
+// ✘ 잘못된 코드
 for (int i = 0; i <= n; i++) {  // n 포함 X
     arr[i] = ...;  // ArrayIndexOutOfBoundsException
 }
 
-// ✅ 올바른 코드
+// ✔ 올바른 코드
 for (int i = 0; i < n; i++) {
     arr[i] = ...;
 }
@@ -1409,10 +1411,10 @@ for (int i = 0; i < n; i++) {
 {% raw %}
 
 ```java
-// ❌ 잘못된 복사
+// ✘ 잘못된 복사
 int[][] copy = original;  // 같은 참조!
 
-// ✅ 깊은 복사
+// ✔ 깊은 복사
 int[][] copy = new int[n][m];
 for (int i = 0; i < n; i++) {
     copy[i] = original[i].clone();
@@ -1428,11 +1430,11 @@ for (int i = 0; i < n; i++) {
 {% raw %}
 
 ```java
-// ❌ 경계 체크 누락
+// ✘ 경계 체크 누락
 int nx = x + dx;
 grid[nx][ny] = 1;  // 범위 밖일 수 있음!
 
-// ✅ 경계 체크
+// ✔ 경계 체크
 if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
     grid[nx][ny] = 1;
 }
@@ -1447,11 +1449,11 @@ if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
 {% raw %}
 
 ```java
-// ❌ 기본형 배열은 내림차순 불가
+// ✘ 기본형 배열은 내림차순 불가
 int[] arr = {3, 1, 2};
 Arrays.sort(arr, Collections.reverseOrder());  // 컴파일 에러!
 
-// ✅ Integer 배열 사용
+// ✔ Integer 배열 사용
 Integer[] arr = {3, 1, 2};
 Arrays.sort(arr, Collections.reverseOrder());
 ```
@@ -1460,7 +1462,7 @@ Arrays.sort(arr, Collections.reverseOrder());
 
 ---
 
-## 🎯 핵심 체크리스트
+## 핵심 체크리스트
 
 ### 그리디
 
@@ -1479,7 +1481,7 @@ Arrays.sort(arr, Collections.reverseOrder());
 
 ---
 
-## 📝 빠른 입출력 템플릿
+## 빠른 입출력 템플릿
 
 {% raw %}
 
@@ -1595,7 +1597,7 @@ public class Utils {
 
 ---
 
-## 🎓 마무리
+## 마무리
 
 ### 그리디 핵심
 
@@ -1626,5 +1628,6 @@ public class Utils {
 ```
 
 ---
-
-#Java #그리디 #Greedy #구현 #Implementation #시뮬레이션 #Simulation #알고리즘 #코딩테스트 #정렬 #문자열 #격자 #2D배열
+## 🏷️ Keywords
+`#Java` `#그리디` `#Greedy` `#구현` `#Implementation` `#시뮬레이션` `#Simulation`   
+`#알고리즘` `#코딩테스트``#정렬` `#문자열` `#격자` `#2D배열`  

@@ -8,8 +8,8 @@
 
 ```
 책에서 특정 단어 찾기:
-❌ 인덱스 없음 → 1페이지부터 끝까지 전부 읽기 (Full Scan)
-✅ 인덱스 있음 → 색인에서 페이지 번호 찾고 바로 이동
+✘ 인덱스 없음 → 1페이지부터 끝까지 전부 읽기 (Full Scan)
+✔ 인덱스 있음 → 색인에서 페이지 번호 찾고 바로 이동
 ```
 
 ---
@@ -97,7 +97,7 @@ CREATE INDEX idx_dept_salary ON employees(department, salary);
 ```sql
 CREATE INDEX idx_abc ON table(a, b, c);
 
--- ✅ 인덱스 사용 O
+-- ✔ 인덱스 사용 O
 WHERE a = 1
 WHERE a = 1 AND b = 2
 WHERE a = 1 AND b = 2 AND c = 3
@@ -105,7 +105,7 @@ WHERE a = 1 AND b = 2 AND c = 3
 -- ⚠️ 인덱스 일부만 사용
 WHERE a = 1 AND c = 3  -- a만 인덱스 사용
 
--- ❌ 인덱스 사용 X (첫 컬럼 a가 없음)
+-- ✘ 인덱스 사용 X (첫 컬럼 a가 없음)
 WHERE b = 2
 WHERE c = 3
 WHERE b = 2 AND c = 3
@@ -146,7 +146,7 @@ ALTER TABLE employees DROP INDEX idx_name;
 
 ---
 
-## ✅ 인덱스의 장점
+## ✔ 인덱스의 장점
 
 ### 1. 검색 속도 대폭 향상
 
@@ -303,12 +303,12 @@ CREATE INDEX idx_email ON users(email);
 **카디널리티 (Cardinality)**: 중복도가 낮은 정도
 
 ```sql
--- 높은 카디널리티 (인덱스 효과적) ✅
+-- 높은 카디널리티 (인덱스 효과적) ✔
 email    → 10,000명 중 10,000개 고유값 (100%)
 주민번호  → 10,000명 중 10,000개 고유값 (100%)
 전화번호  → 10,000명 중 9,800개 고유값 (98%)
 
--- 낮은 카디널리티 (인덱스 비효율) ❌
+-- 낮은 카디널리티 (인덱스 비효율) ✘
 성별     → 10,000명 중 2개 고유값 (남/여)
 결혼여부  → 10,000명 중 2개 고유값 (Y/N)
 등급     → 10,000명 중 5개 고유값 (VIP, Gold, Silver...)
@@ -389,18 +389,18 @@ SELECT * FROM employees WHERE salary > 30000;
 
 ---
 
-## ❌ 인덱스를 사용하지 못하는 경우
+## ✘ 인덱스를 사용하지 못하는 경우
 
 ### 1. 인덱스 컬럼에 함수 사용
 
 ```sql
--- ❌ 인덱스 사용 불가
+-- ✘ 인덱스 사용 불가
 CREATE INDEX idx_hire_date ON employees(hire_date);
 
 SELECT * FROM employees WHERE YEAR(hire_date) = 2023;
 -- hire_date에 함수 적용 → 인덱스 무용지물
 
--- ✅ 인덱스 사용 O
+-- ✔ 인덱스 사용 O
 SELECT * FROM employees 
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-31';
 ```
@@ -408,10 +408,10 @@ WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-31';
 ### 2. 인덱스 컬럼에 연산
 
 ```sql
--- ❌ 인덱스 사용 불가
+-- ✘ 인덱스 사용 불가
 SELECT * FROM employees WHERE salary * 1.1 > 50000;
 
--- ✅ 인덱스 사용 O
+-- ✔ 인덱스 사용 O
 SELECT * FROM employees WHERE salary > 50000 / 1.1;
 ```
 
@@ -420,10 +420,10 @@ SELECT * FROM employees WHERE salary > 50000 / 1.1;
 ```sql
 CREATE INDEX idx_name ON employees(name);
 
--- ✅ 인덱스 사용 O
+-- ✔ 인덱스 사용 O
 SELECT * FROM employees WHERE name LIKE '김%';
 
--- ❌ 인덱스 사용 불가
+-- ✘ 인덱스 사용 불가
 SELECT * FROM employees WHERE name LIKE '%길동';
 SELECT * FROM employees WHERE name LIKE '%길%';
 ```
@@ -438,29 +438,29 @@ SELECT * FROM employees WHERE name LIKE '%길%';
 박영희
 이순신
 
-'김%' → 김철수부터 시작해서 연속 검색 가능 ✅
-'%동' → 어디서 시작할지 모름, 전체 스캔 필요 ❌
+'김%' → 김철수부터 시작해서 연속 검색 가능 ✔
+'%동' → 어디서 시작할지 모름, 전체 스캔 필요 ✘
 ```
 
 ### 4. NOT, !=, <> 사용
 
 ```sql
--- ❌ 인덱스 사용 불가 (대부분의 DBMS)
+-- ✘ 인덱스 사용 불가 (대부분의 DBMS)
 SELECT * FROM employees WHERE department != 'IT';
 SELECT * FROM employees WHERE NOT department = 'IT';
 
--- ✅ 인덱스 사용 O
+-- ✔ 인덱스 사용 O
 SELECT * FROM employees WHERE department = 'IT';
 ```
 
 ### 5. OR 조건 (일부 경우)
 
 ```sql
--- ❌ 인덱스 효율 떨어짐
+-- ✘ 인덱스 효율 떨어짐
 SELECT * FROM employees 
 WHERE name = '홍길동' OR email = 'hong@example.com';
 
--- ✅ UNION으로 대체 (각각 인덱스 사용)
+-- ✔ UNION으로 대체 (각각 인덱스 사용)
 SELECT * FROM employees WHERE name = '홍길동'
 UNION
 SELECT * FROM employees WHERE email = 'hong@example.com';
@@ -469,13 +469,13 @@ SELECT * FROM employees WHERE email = 'hong@example.com';
 ### 6. 데이터 타입 불일치
 
 ```sql
--- ❌ 인덱스 사용 불가
+-- ✘ 인덱스 사용 불가
 CREATE INDEX idx_phone ON users(phone);  -- VARCHAR 타입
 
 SELECT * FROM users WHERE phone = 01012345678;
 -- 숫자를 문자와 비교 → 암시적 형변환 → 인덱스 무용지물
 
--- ✅ 인덱스 사용 O
+-- ✔ 인덱스 사용 O
 SELECT * FROM users WHERE phone = '01012345678';
 ```
 
@@ -515,7 +515,7 @@ id | select_type | table     | type  | key           | rows | Extra
 - `system` > `const` > `eq_ref` > `ref` > `range` > `index` > `ALL`
 
 ```
-✅ 좋은 성능:
+✔ 좋은 성능:
 - const: PRIMARY KEY나 UNIQUE로 1건 조회
 - eq_ref: JOIN에서 PRIMARY/UNIQUE로 매칭
 - ref: 일반 인덱스 사용
@@ -524,26 +524,26 @@ id | select_type | table     | type  | key           | rows | Extra
 - range: 범위 검색 (BETWEEN, >, <)
 - index: 인덱스 전체 스캔
 
-❌ 나쁜 성능:
+✘ 나쁜 성능:
 - ALL: 테이블 전체 스캔 (Full Scan)
 ```
 
 **key 컬럼:**
 ```
-key = idx_department  → 인덱스 사용 ✅
-key = NULL           → 인덱스 미사용 ❌
+key = idx_department  → 인덱스 사용 ✔
+key = NULL           → 인덱스 미사용 ✘
 ```
 
 **rows 컬럼:**
 ```
-rows = 1        → 매우 효율적 ✅
+rows = 1        → 매우 효율적 ✔
 rows = 100      → 적당함
-rows = 10,000   → 비효율적 ❌
+rows = 10,000   → 비효율적 ✘
 ```
 
 **Extra 컬럼:**
 ```
-Using index        → 커버링 인덱스 (최고 성능) ✅
+Using index        → 커버링 인덱스 (최고 성능) ✔
 Using where        → WHERE 조건 필터링
 Using filesort     → 정렬 필요 (느림) ⚠️
 Using temporary    → 임시 테이블 사용 (느림) ⚠️
@@ -573,11 +573,11 @@ WHERE department = 'IT';
 ### 2. 선택도 높은 컬럼을 앞에
 
 ```sql
--- ❌ 비효율
+-- ✘ 비효율
 CREATE INDEX idx_gender_email ON users(gender, email);
 -- gender는 선택도 낮음 (M/F 2개)
 
--- ✅ 효율적
+-- ✔ 효율적
 CREATE INDEX idx_email_gender ON users(email, gender);
 -- email은 선택도 높음 (거의 유니크)
 ```
@@ -585,7 +585,7 @@ CREATE INDEX idx_email_gender ON users(email, gender);
 ### 3. 인덱스 개수 제한
 
 ```sql
--- ❌ 과도한 인덱스
+-- ✘ 과도한 인덱스
 CREATE INDEX idx1 ON employees(name);
 CREATE INDEX idx2 ON employees(email);
 CREATE INDEX idx3 ON employees(phone);
@@ -594,7 +594,7 @@ CREATE INDEX idx5 ON employees(salary);
 CREATE INDEX idx6 ON employees(hire_date);
 -- INSERT/UPDATE 성능 급격히 저하
 
--- ✅ 필요한 것만 생성 (3~5개 권장)
+-- ✔ 필요한 것만 생성 (3~5개 권장)
 ```
 
 ### 4. 불필요한 인덱스 삭제
@@ -664,25 +664,26 @@ ON products(category, price, stock);
 ### 인덱스 생성 체크리스트
 
 ```
-✅ WHERE 절에 자주 사용되는가?
-✅ JOIN 조건에 사용되는가?
-✅ ORDER BY/GROUP BY에 사용되는가?
-✅ 카디널리티가 높은가? (중복 값 적은가?)
-✅ 데이터 변경이 적은가?
-❌ 테이블이 너무 작은가? (100건 미만)
-❌ 이미 비슷한 인덱스가 있는가?
+✔ WHERE 절에 자주 사용되는가?
+✔ JOIN 조건에 사용되는가?
+✔ ORDER BY/GROUP BY에 사용되는가?
+✔ 카디널리티가 높은가? (중복 값 적은가?)
+✔ 데이터 변경이 적은가?
+✘ 테이블이 너무 작은가? (100건 미만)
+✘ 이미 비슷한 인덱스가 있는가?
 ```
 
 ### 성능 비교 요약
 
 | 작업 | 인덱스 없음 | 인덱스 있음 |
 |------|------------|------------|
-| SELECT (검색) | 느림 O(N) | **빠름 O(log N)** ✅ |
-| INSERT | 빠름 | 느림 ❌ |
-| UPDATE (인덱스 컬럼) | 빠름 | 느림 ❌ |
-| DELETE | 빠름 | 느림 ❌ |
-| ORDER BY | 느림 (정렬 필요) | **빠름 (정렬 불필요)** ✅ |
+| SELECT (검색) | 느림 O(N) | **빠름 O(log N)** ✔ |
+| INSERT | 빠름 | 느림 ✘ |
+| UPDATE (인덱스 컬럼) | 빠름 | 느림 ✘ |
+| DELETE | 빠름 | 느림 ✘ |
+| ORDER BY | 느림 (정렬 필요) | **빠름 (정렬 불필요)** ✔ |
 
 ---
 
-**핵심:** 인덱스는 검색 성능 향상을 위한 도구이지만, 무분별하게 생성하면 오히려 성능 저하를 초래한다. **자주 조회하고, 카디널리티가 높으며, 변경이 적은 컬럼**에만 선택적으로 생성하기
+**핵심:** 인덱스는 검색 성능 향상을 위한 도구이지만, 무분별하게 생성하면 오히려 성능 저하를 초래한다.  
+ **자주 조회하고, 카디널리티가 높으며, 변경이 적은 컬럼**에만 선택적으로 생성하기

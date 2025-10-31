@@ -30,13 +30,13 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - 길이 체크로 조기 종료
 - 정렬 접근법 - 가장 직관적
 - 간결하고 명확한 코드
 
-### 🔴 개선점
+### ✦ 개선점
 
 - 정렬 시간복잡도: O(n log n)
 - HashMap 사용 시 O(n) 가능
@@ -145,5 +145,5 @@ class Solution {
 - <a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/" target="_blank">LeetCode 438: Find All Anagrams in a String</a>
 
 ---
-
-#LeetCode #Anagram #HashMap #Sorting #String #Easy
+## 🏷️ Keywords
+`#LeetCode` `#Anagram` `#HashMap` `#Sorting` `#String` `#Easy`

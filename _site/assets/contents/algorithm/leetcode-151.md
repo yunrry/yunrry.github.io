@@ -36,13 +36,13 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 - split으로 단어 분리 후 역순 처리
 - StringBuilder 사용
 - 빈 문자열 필터링
 
-### 🔴 개선점
+### ✦ 개선점
 
 1. **불필요한 strip() 중복**
     
@@ -177,11 +177,12 @@ class Solution {
 
 ---
 
-## 🎓 다음 단계
+## 다음 단계
 
 - <a href="https://leetcode.com/problems/reverse-words-in-a-string-ii/" target="_blank">LeetCode 186: Reverse Words in a String II</a>
 - <a href="https://leetcode.com/problems/reverse-words-in-a-string-iii/" target="_blank">LeetCode 557: Reverse Words in a String III</a>
 
 ---
+## 🏷️ Keywords
 
-#LeetCode #String #StringBuilder #Split #Medium #정규식
+`#LeetCode` `#String` `#StringBuilder` `#Split` `#Medium` `#정규식`

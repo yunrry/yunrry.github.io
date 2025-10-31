@@ -1,11 +1,11 @@
 # ArrayList vs LinkedList                                
 
 
-Java에서 List 인터페이스를 구현하는 두 가지 주요 클래스입니다. 각각의 내부 구조와 특성이 다르므로 상황에 맞게 선택해야 합니다.
+Java에서 List 인터페이스를 구현하는 두 가지 주요 클래스이다. 각각의 내부 구조와 특성이 다르므로 상황에 맞게 선택해야 한다.
 
 ---
 
-## 🔍 내부 구조
+## 내부 구조
 
 ### ArrayList
 - **동적 배열(Dynamic Array)** 기반
@@ -67,7 +67,7 @@ public class LinkedList<E> {
 
 ---
 
-## ⚡ 시간복잡도 비교
+## 시간복잡도 비교
 
 | 연산 | ArrayList | LinkedList | 설명 |
 |------|-----------|------------|------|
@@ -83,7 +83,7 @@ public class LinkedList<E> {
 
 ---
 
-## 📊 상세 연산 분석
+## 상세 연산 분석
 
 ### 1. 조회 (get)
 
@@ -278,7 +278,7 @@ public E remove(int index) {
 
 ## 🎯 선택 기준
 
-### ArrayList를 사용해야 할 때 ✅
+### ArrayList를 사용해야 할 때
 
 1. **인덱스 접근이 빈번한 경우**
    ```java
@@ -304,7 +304,7 @@ public E remove(int index) {
 
 ---
 
-### LinkedList를 사용해야 할 때 ✅
+### LinkedList를 사용해야 할 때
 
 1. **앞/뒤에서 삽입/삭제가 빈번한 경우**
    ```java
@@ -334,7 +334,7 @@ public E remove(int index) {
 
 ---
 
-## 💻 실전 예제
+## 실전 예제
 
 ### 예제 1: 성능 비교 테스트
 
@@ -421,7 +421,7 @@ LinkedList get: 8000ms      // 매우 느림!
 
 {% raw %}
 ```java
-// ✅ ArrayList - 조회가 많은 경우
+// ArrayList - 조회가 많은 경우
 public List<Product> searchProducts(String keyword) {
     List<Product> results = new ArrayList<>();  // 올바른 선택
     
@@ -439,7 +439,7 @@ public List<Product> searchProducts(String keyword) {
     return results;
 }
 
-// ✅ LinkedList - Queue로 사용
+// LinkedList - Queue로 사용
 public class TaskQueue {
     private Deque<Task> queue = new LinkedList<>();  // 올바른 선택
     
@@ -452,16 +452,16 @@ public class TaskQueue {
     }
 }
 
-// ❌ 잘못된 사용
+// 잘못된 사용
 public void processItems(List<String> items) {
-    // LinkedList인데 인덱스 접근 → 비효율적!
+    // LinkedList인데 인덱스 접근 → 비효율적
     for (int i = 0; i < items.size(); i++) {
         String item = items.get(i);  // LinkedList면 O(n²)!
         process(item);
     }
 }
 
-// ✅ 올바른 수정
+// 올바른 수정
 public void processItems(List<String> items) {
     // Iterator 또는 for-each 사용
     for (String item : items) {  // O(n)
@@ -495,7 +495,7 @@ LinkedList<Integer>: 40KB
 
 ---
 
-## 🎓 핵심 정리
+## 핵심 정리
 
 ### 빠른 선택 가이드
 
@@ -519,7 +519,7 @@ LinkedList<Integer>: 40KB
 
 ---
 
-## 📚 연습 문제
+## 연습 문제
 
 ### 문제 1: 적절한 자료구조 선택
 다음 상황에 적합한 List 구현체를 선택하세요:
@@ -563,5 +563,6 @@ ArrayList와 LinkedList 중 어느 것이 더 빠를까요?
 - **Stack**: Vector 기반 (대신 Deque 사용 권장)
 
 ---
-
-#Java #자료구조 #ArrayList #LinkedList #List #성능비교 #시간복잡도 #알고리즘 #코딩테스트 #면접준비
+## 🏷️ Keywords
+`#Java` `#자료구조` `#ArrayList` `#LinkedList` `#List` `#성능비교` `#시간복잡도`  
+ `#알고리즘` `#코딩테스트` `#면접준비`

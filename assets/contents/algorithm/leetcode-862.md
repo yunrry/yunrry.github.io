@@ -198,7 +198,7 @@ i=5: prefixSum[5]=214
 
 ---
 
-## 🎨 시각적 이해
+## 시각적 이해
 
 ### 왜 단조 증가 Deque?
 
@@ -231,7 +231,7 @@ i=3일 때:
 
 ---
 
-## 📊 다른 접근법 비교
+## 다른 접근법 비교
 
 ### 방법 2: Brute Force (시간 초과)
 
@@ -444,7 +444,7 @@ while (...) {
 
 ---
 
-## 🎓 연습 문제
+## 연습 문제
 
 ### 비슷한 문제
 
@@ -462,4 +462,5 @@ while (...) {
 
 ## 🏷️ Keywords
 
-#MonotonicDeque #PrefixSum #ShortestSubarray #단조큐 #누적합 #Deque #SubarraySum #Hard난이도 #슬라이딩윈도우 #음수처리 #LeetCodeHard #최적화 #O(n)알고리즘
+`#MonotonicDeque` `#PrefixSum` `#ShortestSubarray` `#단조큐` `#누적합` `#Deque` `#SubarraySum`   
+`#Hard` `#슬라이딩윈도우` `#음수처리` `#LeetCodeHard` `#최적화` `#O(n)알고리즘`  

@@ -75,14 +75,14 @@ class MinStack {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 1. **문제 의도 파악**: 최솟값을 O(1)에 찾아야 한다는 핵심 이해
 2. **별도 자료구조 시도**: minDeque를 통해 최솟값 추적 시도
 3. **정답 도출**: 느리지만 모든 테스트 케이스 통과
 4. **끈기**: 40분간 복잡한 로직을 완성
 
-### 🔴 개선점
+### ✦ 개선점
 
 1. **심각한 성능 문제**: 732ms (하위 5%)
     
@@ -169,7 +169,7 @@ pop():
 getMin() → -2
 ```
 
-**시간복잡도**: 모든 연산 O(1) ✅ **공간복잡도**: O(n)
+**시간복잡도**: 모든 연산 O(1) ✔ **공간복잡도**: O(n)
 
 ---
 
@@ -438,10 +438,10 @@ class MinStack {
 
 **개선 효과**:
 
-- ✅ 732ms → 4ms (약 **183배 빠름**)
-- ✅ 모든 연산 O(1) 보장
-- ✅ 코드 간결성 (40줄 → 20줄)
-- ✅ 가독성 향상
+- ✔ 732ms → 4ms (약 **183배 빠름**)
+- ✔ 모든 연산 O(1) 보장
+- ✔ 코드 간결성 (40줄 → 20줄)
+- ✔ 가독성 향상
 
 ---
 
@@ -538,4 +538,6 @@ class MinStack {
 
 ## 🏷️ Keywords
 
-#MinStack #Stack #Design #TwoStack #AuxiliaryDataStructure #O1Time #MetadataTracking #SynchronizedStack #SpaceTimeTradeoff #MonotonicStack #DataStructureDesign #알고리즘최적화 #LeetCodeMedium #코딩테스트 #자료구조설계 #성능개선
+`#MinStack` `#Stack` `#Design` `#TwoStack` `#AuxiliaryDataStructure` `#MetadataTracking`   
+`#SynchronizedStack` `#SpaceTimeTradeoff` `#MonotonicStack` `#DataStructureDesign`  
+ `#알고리즘``#LeetCodeMedium` `#코딩테스트` `#자료구조` `#성능개선`

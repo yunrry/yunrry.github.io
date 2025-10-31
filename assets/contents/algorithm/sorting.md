@@ -1,11 +1,12 @@
 
 # 정렬과 탐색
 
-정렬과 탐색은 알고리즘의 기초이자 가장 자주 사용되는 기법입니다. 효율적인 정렬과 탐색을 통해 문제를 O(n²)에서 O(n log n) 또는 O(log n)으로 최적화할 수 있습니다.
+정렬과 탐색은 알고리즘의 기초이자 가장 자주 사용되는 기법이다.   
+효율적인 정렬과 탐색을 통해 문제를 O(n²)에서 O(n log n) 또는 O(log n)으로 최적화할 수 있다.
 
 ---
 
-## 📊 정렬 (Sorting)
+## 정렬 (Sorting)
 
 ### 왜 정렬이 중요한가?
 
@@ -17,7 +18,7 @@
 
 ---
 
-## 🎯 Java 기본 정렬
+## Java 기본 정렬
 
 ### 1. Arrays.sort() - 배열 정렬
 
@@ -115,7 +116,7 @@ public class ComparatorExample {
             }
         });
         
-        // 2. 람다식 (Java 8+) ✅ 추천
+        // 2. 람다식 (Java 8+) ✔ 추천
         Arrays.sort(arr, (a, b) -> b - a);  // 내림차순
         Arrays.sort(arr, (a, b) -> a - b);  // 오름차순
         
@@ -179,23 +180,23 @@ Comparator.nullsLast(Comparator.naturalOrder())
 {% raw %}
 
 ```java
-// ❌ 오버플로우 위험!
+// ✘ 오버플로우 위험!
 Arrays.sort(arr, (a, b) -> a - b);
 // a = Integer.MAX_VALUE, b = -1이면
 // a - b = overflow!
 
-// ✅ 안전한 방법
+// ✔ 안전한 방법
 Arrays.sort(arr, (a, b) -> Integer.compare(a, b));
 Arrays.sort(arr, Comparator.comparingInt(x -> x));
 
-// ❌ 일관성 없는 비교
+// ✘ 일관성 없는 비교
 (a, b) -> {
     if (a > b) return 1;
     if (a < b) return -1;
     return 1;  // 잘못됨! a==b일 때는 0 반환해야
 }
 
-// ✅ 올바른 비교
+// ✔ 올바른 비교
 (a, b) -> Integer.compare(a, b)
 ```
 
@@ -203,7 +204,7 @@ Arrays.sort(arr, Comparator.comparingInt(x -> x));
 
 ---
 
-## 🎨 실전 정렬 예제
+## 실전 정렬 예제
 
 ### 예제 1: 2차원 배열 정렬
 
@@ -349,7 +350,7 @@ public class StringSorting {
 
 ---
 
-## 🔍 이진 탐색 (Binary Search)
+## 이진 탐색 (Binary Search)
 
 ### 원리
 
@@ -646,7 +647,7 @@ public int cutTrees(int[] trees, long target) {
 
 ---
 
-## 👉 투포인터 (Two Pointers)
+## 투포인터 (Two Pointers)
 
 ### 원리
 
@@ -740,697 +741,6 @@ public class TwoPointers2 {
     }
 }
 ```
-
-{% endraw %}|알고리즘|시간복잡도|공간복잡도|특징|
-|---|---|---|---|
-|**정렬**||||
-|Arrays.sort() (기본형)|O(n log n)|O(log n)|Dual-Pivot Quicksort|
-|Arrays.sort() (객체)|O(n log n)|O(n)|Timsort|
-|Collections.sort()|O(n log n)|O(n)|Timsort|
-|**탐색**||||
-|선형 탐색|O(n)|O(1)|정렬 불필요|
-|이진 탐색|O(log n)|O(1)|정렬 필수|
-|**투포인터**||||
-|Two Sum (정렬됨)|O(n)|O(1)|양쪽 끝에서 시작|
-|Sliding Window|O(n)|O(1)|같은 방향 이동|
-
----
-
-## 💡 알고리즘 선택 가이드
-
-### 언제 무엇을 사용할까?
-
-|상황|알고리즘|시간복잡도|
-|---|---|---|
-|**정렬된 배열에서 값 찾기**|이진 탐색|O(log n)|
-|**정렬 안 된 배열에서 값 찾기**|선형 탐색|O(n)|
-|**두 수의 합 찾기 (정렬됨)**|투포인터|O(n)|
-|**두 수의 합 찾기 (정렬 안 됨)**|HashMap|O(n)|
-|**연속 부분 배열의 합**|투포인터 (슬라이딩 윈도우)|O(n)|
-|**K번째 큰/작은 수**|QuickSelect 또는 Heap|O(n) avg|
-|**정답 범위 찾기**|파라메트릭 서치|O(n log M)|
-
----
-
-## 🎯 핵심 패턴 정리
-
-### 1. 정렬 후 이진 탐색
-
-{% raw %}
-
-```java
-// 패턴: 정렬 → 이진 탐색으로 O(n²) → O(n log n) 최적화
-public boolean hasPairWithSum(int[] arr, int target) {
-    Arrays.sort(arr);  // O(n log n)
-    
-    for (int i = 0; i < arr.length; i++) {
-        int complement = target - arr[i];
-        int idx = Arrays.binarySearch(arr, i + 1, arr.length, complement);
-        if (idx >= 0) return true;
-    }
-    
-    return false;
-}
-```
-
-{% endraw %}
-
----
-
-### 2. 정렬 후 투포인터
-
-{% raw %}
-
-```java
-// 패턴: 정렬 → 투포인터로 효율적 탐색
-public List<List<Integer>> threeSum(int[] arr) {
-    List<List<Integer>> result = new ArrayList<>();
-    Arrays.sort(arr);  // 필수!
-    
-    for (int i = 0; i < arr.length - 2; i++) {
-        if (i > 0 && arr[i] == arr[i-1]) continue;  // 중복 제거
-        
-        int left = i + 1;
-        int right = arr.length - 1;
-        
-        while (left < right) {
-            int sum = arr[i] + arr[left] + arr[right];
-            
-            if (sum == 0) {
-                result.add(Arrays.asList(arr[i], arr[left], arr[right]));
-                
-                // 중복 제거
-                while (left < right && arr[left] == arr[left+1]) left++;
-                while (left < right && arr[right] == arr[right-1]) right--;
-                
-                left++;
-                right--;
-            } else if (sum < 0) {
-                left++;
-            } else {
-                right--;
-            }
-        }
-    }
-    
-    return result;
-}
-```
-
-{% endraw %}
-
----
-
-### 3. 슬라이딩 윈도우 (투포인터 변형)
-
-{% raw %}
-
-```java
-// 패턴: 윈도우 크기를 동적으로 조절
-public int lengthOfLongestSubstring(String s) {
-    Set<Character> set = new HashSet<>();
-    int left = 0;
-    int maxLen = 0;
-    
-    for (int right = 0; right < s.length(); right++) {
-        // 중복 제거할 때까지 left 이동
-        while (set.contains(s.charAt(right))) {
-            set.remove(s.charAt(left));
-            left++;
-        }
-        
-        set.add(s.charAt(right));
-        maxLen = Math.max(maxLen, right - left + 1);
-    }
-    
-    return maxLen;
-}
-
-// 테스트
-System.out.println(lengthOfLongestSubstring("abcabcbb"));  // 3 (abc)
-System.out.println(lengthOfLongestSubstring("bbbbb"));     // 1 (b)
-System.out.println(lengthOfLongestSubstring("pwwkew"));    // 3 (wke)
-```
-
-{% endraw %}
-
----
-
-### 4. 파라메트릭 서치
-
-{% raw %}
-
-```java
-// 패턴: 정답의 범위를 이진 탐색으로 좁히기
-// 예: 블루레이 만들기 - M개 이하로 나눌 수 있는 최소 크기
-public int minBluraySizes(int[] lessons, int m) {
-    int left = Arrays.stream(lessons).max().getAsInt();  // 최소: 가장 긴 레슨
-    int right = Arrays.stream(lessons).sum();             // 최대: 전체 합
-    int result = right;
-    
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        
-        // mid 크기로 m개 이하로 나눌 수 있는지 확인
-        if (canDivide(lessons, m, mid)) {
-            result = mid;
-            right = mid - 1;  // 더 작은 크기 시도
-        } else {
-            left = mid + 1;
-        }
-    }
-    
-    return result;
-}
-
-private boolean canDivide(int[] lessons, int m, int maxSize) {
-    int count = 1;
-    int sum = 0;
-    
-    for (int lesson : lessons) {
-        if (sum + lesson > maxSize) {
-            count++;
-            sum = lesson;
-            if (count > m) return false;
-        } else {
-            sum += lesson;
-        }
-    }
-    
-    return true;
-}
-```
-
-{% endraw %}
-
----
-
-## 🏆 코딩테스트 단골 문제 유형
-
-### 정렬 문제
-
-1. **[LeetCode 56] Merge Intervals** ⭐⭐
-    
-    - 겹치는 구간 합치기
-2. **[LeetCode 148] Sort List** ⭐⭐
-    
-    - 연결 리스트 정렬
-3. **[LeetCode 179] Largest Number** ⭐⭐
-    
-    - 커스텀 정렬
-4. **[프로그래머스] H-Index** ⭐⭐
-    
-    - 정렬 후 조건 확인
-5. **[백준 11650] 좌표 정렬하기** ⭐
-    
-    - 2차원 배열 정렬
-
----
-
-### 이진 탐색 문제
-
-1. **[LeetCode 33] Search in Rotated Sorted Array** ⭐⭐
-    - 회전된 배열 탐색
-2. **[LeetCode 153] Find Minimum in Rotated Sorted Array** ⭐⭐
-    - 최솟값 찾기
-3. **[LeetCode 34] Find First and Last Position** ⭐⭐
-    - Lower/Upper Bound
-4. **[백준 2805] 나무 자르기** ⭐⭐
-    - 파라메트릭 서치
-5. **[백준 1654] 랜선 자르기** ⭐⭐
-    - 파라메트릭 서치
-
----
-
-### 투포인터 문제
-
-1. **[LeetCode 15] 3Sum** ⭐⭐
-    - 세 수의 합 = 0
-2. **[LeetCode 11] Container With Most Water** ⭐⭐
-    - 최대 면적
-3. **[LeetCode 42] Trapping Rain Water** ⭐⭐⭐
-    - 빗물 가두기
-4. **[LeetCode 209] Minimum Size Subarray Sum** ⭐⭐
-    - 슬라이딩 윈도우
-5. **[백준 2003] 수들의 합 2** ⭐⭐
-    - 부분 합
-
----
-
-## 🎨 실전 문제 풀이
-
-### 문제 1: K개의 가장 가까운 점 (LeetCode 973)
-
-{% raw %}
-
-```java
-class Solution {
-    public int[][] kClosest(int[][] points, int k) {
-        // 거리로 정렬
-        Arrays.sort(points, (a, b) -> {
-            int distA = a[0] * a[0] + a[1] * a[1];
-            int distB = b[0] * b[0] + b[1] * b[1];
-            return distA - distB;
-        });
-        
-        // 앞에서 k개 반환
-        return Arrays.copyOf(points, k);
-    }
-}
-
-// 테스트
-int[][] points = {{1,3}, {-2,2}, {5,8}, {0,1}};
-int[][] result = kClosest(points, 2);
-// [[0,1], [-2,2]]
-```
-
-{% endraw %}
-
----
-
-### 문제 2: 두 배열의 교집합 II (LeetCode 350)
-
-{% raw %}
-
-```java
-class Solution {
-    public int[] intersect(int[] nums1, int[] nums2) {
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        
-        List<Integer> result = new ArrayList<>();
-        int i = 0, j = 0;
-        
-        while (i < nums1.length && j < nums2.length) {
-            if (nums1[i] < nums2[j]) {
-                i++;
-            } else if (nums1[i] > nums2[j]) {
-                j++;
-            } else {
-                result.add(nums1[i]);
-                i++;
-                j++;
-            }
-        }
-        
-        return result.stream().mapToInt(x -> x).toArray();
-    }
-}
-
-// 테스트
-int[] nums1 = {1, 2, 2, 1};
-int[] nums2 = {2, 2};
-System.out.println(Arrays.toString(intersect(nums1, nums2)));  // [2, 2]
-```
-
-{% endraw %}
-
----
-
-### 문제 3: 구간 합 구하기 (백준 11659)
-
-{% raw %}
-
-```java
-import java.io.*;
-import java.util.*;
-
-public class PrefixSum {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-        
-        // 누적 합 배열
-        int[] prefixSum = new int[n + 1];
-        st = new StringTokenizer(br.readLine());
-        
-        for (int i = 1; i <= n; i++) {
-            prefixSum[i] = prefixSum[i-1] + Integer.parseInt(st.nextToken());
-        }
-        
-        StringBuilder sb = new StringBuilder();
-        for (int q = 0; q < m; q++) {
-            st = new StringTokenizer(br.readLine());
-            int i = Integer.parseInt(st.nextToken());
-            int j = Integer.parseInt(st.nextToken());
-            
-            // [i, j] 구간 합 = prefixSum[j] - prefixSum[i-1]
-            sb.append(prefixSum[j] - prefixSum[i-1]).append("\n");
-        }
-        
-        System.out.print(sb);
-    }
-}
-```
-
-{% endraw %}
-
----
-
-### 문제 4: 수 찾기 (백준 1920)
-
-{% raw %}
-
-```java
-import java.io.*;
-import java.util.*;
-
-public class BinarySearchExample {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
-        int n = Integer.parseInt(br.readLine());
-        int[] arr = new int[n];
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        
-        for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
-        }
-        
-        Arrays.sort(arr);  // 정렬 필수!
-        
-        int m = Integer.parseInt(br.readLine());
-        st = new StringTokenizer(br.readLine());
-        StringBuilder sb = new StringBuilder();
-        
-        for (int i = 0; i < m; i++) {
-            int target = Integer.parseInt(st.nextToken());
-            int result = Arrays.binarySearch(arr, target);
-            sb.append(result >= 0 ? 1 : 0).append("\n");
-        }
-        
-        System.out.print(sb);
-    }
-}
-```
-
-{% endraw %}
-
----
-
-## 💡 실전 팁
-
-### 1. 정렬 전략
-
-{% raw %}
-
-```java
-// Tip 1: 정렬이 필요한지 판단
-// - 이진 탐색? → 필수
-// - 투포인터? → 대부분 필요
-// - 그리디? → 자주 필요
-// - DP? → 상황에 따라
-
-// Tip 2: 정렬 비용 고려
-// O(n log n) 정렬 vs O(n²) 완전 탐색
-// n이 작으면 정렬 안 해도 됨
-
-// Tip 3: 안정 정렬 필요 시
-Arrays.sort(arr);  // 객체는 안정 정렬 (Timsort)
-// 기본형은 불안정 정렬 (Quicksort)
-```
-
-{% endraw %}
-
----
-
-### 2. 이진 탐색 주의사항
-
-{% raw %}
-
-```java
-// ❌ 오버플로우 위험
-int mid = (left + right) / 2;
-
-// ✅ 안전한 방법
-int mid = left + (right - left) / 2;
-
-// ❌ 무한 루프 위험
-while (left < right) {
-    int mid = (left + right) / 2;
-    if (check(mid)) {
-        left = mid;  // 위험! left가 증가 안 할 수 있음
-    } else {
-        right = mid - 1;
-    }
-}
-
-// ✅ 올바른 방법
-while (left < right) {
-    int mid = (left + right + 1) / 2;  // 올림
-    if (check(mid)) {
-        left = mid;
-    } else {
-        right = mid - 1;
-    }
-}
-```
-
-{% endraw %}
-
----
-
-### 3. 투포인터 디버깅
-
-{% raw %}
-
-```java
-// 디버깅 팁: 포인터 움직임 출력
-public void twoPointerDebug(int[] arr, int target) {
-    int left = 0, right = arr.length - 1;
-    
-    while (left < right) {
-        System.out.printf("left=%d, right=%d, sum=%d%n", 
-            left, right, arr[left] + arr[right]);
-        
-        int sum = arr[left] + arr[right];
-        if (sum == target) return;
-        else if (sum < target) left++;
-        else right--;
-    }
-}
-```
-
-{% endraw %}
-
----
-
-## 📚 학습 순서
-
-### 초급 (기초 다지기)
-
-1. **Arrays.sort() 사용법** 익히기
-2. **Comparator** 람다식으로 작성
-3. **이진 탐색** 기본 구현
-4. **투포인터** Two Sum 풀기
-
-### 중급 (응용)
-
-1. **2차원 배열 정렬** 연습
-2. **Lower/Upper Bound** 구현
-3. **슬라이딩 윈도우** 패턴 익히기
-4. **파라메트릭 서치** 이해
-
-### 고급 (심화)
-
-1. **커스텀 정렬** 복잡한 조건
-2. **회전된 배열** 이진 탐색
-3. **세 포인터** 이상 활용
-4. **정렬 + 이진 탐색 + 투포인터** 조합
-
----
-
-## 🎯 추천 문제
-
-### 정렬 (난이도별)
-
-**⭐ Easy**
-
-- LeetCode 88: Merge Sorted Array
-- LeetCode 242: Valid Anagram
-- LeetCode 349: Intersection of Two Arrays
-- 백준 2750: 수 정렬하기
-
-**⭐⭐ Medium**
-
-- LeetCode 75: Sort Colors
-- LeetCode 147: Insertion Sort List
-- LeetCode 215: Kth Largest Element
-- 백준 11399: ATM
-
-**⭐⭐⭐ Hard**
-
-- LeetCode 315: Count of Smaller Numbers After Self
-- LeetCode 493: Reverse Pairs
-
----
-
-### 이진 탐색 (난이도별)
-
-**⭐ Easy**
-
-- LeetCode 704: Binary Search
-- LeetCode 35: Search Insert Position
-- 백준 10815: 숫자 카드
-- 백준 1920: 수 찾기
-
-**⭐⭐ Medium**
-
-- LeetCode 74: Search a 2D Matrix
-- LeetCode 162: Find Peak Element
-- 백준 1654: 랜선 자르기
-- 백준 2805: 나무 자르기
-
-**⭐⭐⭐ Hard**
-
-- LeetCode 4: Median of Two Sorted Arrays
-- LeetCode 410: Split Array Largest Sum
-- 백준 1300: K번째 수
-
----
-
-### 투포인터 (난이도별)
-
-**⭐ Easy**
-
-- LeetCode 125: Valid Palindrome
-- LeetCode 283: Move Zeroes
-- 백준 2470: 두 용액
-
-**⭐⭐ Medium**
-
-- LeetCode 3: Longest Substring Without Repeating Characters
-- LeetCode 167: Two Sum II
-- 백준 1806: 부분합
-- 백준 2003: 수들의 합 2
-
-**⭐⭐⭐ Hard**
-
-- LeetCode 76: Minimum Window Substring
-- LeetCode 42: Trapping Rain Water
-- 백준 2143: 두 배열의 합
-
----
-
-## 📝 핵심 체크리스트
-
-### 정렬
-
-- [ ] Arrays.sort() 기본 사용법
-- [ ] Comparator 람다식 작성
-- [ ] 2차원 배열 정렬
-- [ ] 여러 조건 정렬 (thenComparing)
-- [ ] 안정/불안정 정렬 차이
-
-### 이진 탐색
-
-- [ ] 기본 이진 탐색 구현
-- [ ] Lower Bound 구현
-- [ ] Upper Bound 구현
-- [ ] 파라메트릭 서치 패턴
-- [ ] 회전된 배열 탐색
-
-### 투포인터
-
-- [ ] 양쪽 끝에서 시작 패턴
-- [ ] 같은 방향 이동 패턴
-- [ ] 슬라이딩 윈도우 패턴
-- [ ] 세 포인터 이상 활용
-- [ ] 중복 제거 로직
-
----
-
-## 🔑 암기 필수 코드
-
-### 1. 정렬 템플릿
-
-{% raw %}
-
-```java
-// 오름차순
-Arrays.sort(arr);
-
-// 내림차순
-Arrays.sort(arr, Collections.reverseOrder());
-
-// 커스텀
-Arrays.sort(arr, (a, b) -> a.field - b.field);
-
-// 여러 조건
-Arrays.sort(arr, 
-    Comparator.comparing(Obj::getField1)
-              .thenComparing(Obj::getField2));
-```
-
-{% endraw %}
-
----
-
-### 2. 이진 탐색 템플릿
-
-{% raw %}
-
-```java
-// 기본
-int left = 0, right = arr.length - 1;
-while (left <= right) {
-    int mid = left + (right - left) / 2;
-    if (arr[mid] == target) return mid;
-    else if (arr[mid] < target) left = mid + 1;
-    else right = mid - 1;
-}
-
-// Lower Bound
-int left = 0, right = arr.length;
-while (left < right) {
-    int mid = left + (right - left) / 2;
-    if (arr[mid] < target) left = mid + 1;
-    else right = mid;
-}
-```
-
-{% endraw %}
-
----
-
-### 3. 투포인터 템플릿
-
-{% raw %}
-
-```java
-// 양쪽 끝
-int left = 0, right = arr.length - 1;
-while (left < right) {
-    if (check(arr[left], arr[right])) {
-        // 처리
-        left++; right--;
-    } else if (need_increase) {
-        left++;
-    } else {
-        right--;
-    }
-}
-
-// 슬라이딩 윈도우
-int left = 0;
-for (int right = 0; right < arr.length; right++) {
-    // right 추가
-    while (invalid_condition) {
-        // left 제거
-        left++;
-    }
-    // 답 갱신
-}
-```
-
-{% endraw %}
-
----
-
-#Java #정렬 #탐색 #이진탐색 #BinarySearch #투포인터 #TwoPointers #알고리즘 #코딩테스트 #Comparator #Sliding Window #파라메트릭서치
 
 ---
 
@@ -1589,7 +899,7 @@ System.out.println(numSubarrayProductLessThanK(arr, 100));  // 8
 
 ---
 
-## 📊 성능 비교
+## 성능 비교
 
 ### 시간복잡도
 
@@ -1608,6 +918,7 @@ System.out.println(numSubarrayProductLessThanK(arr, 100));  // 8
 
 ---
 
+
 ## 💡 알고리즘 선택 가이드
 
 ### 언제 무엇을 사용할까?
@@ -1624,7 +935,7 @@ System.out.println(numSubarrayProductLessThanK(arr, 100));  // 8
 
 ---
 
-## 🎯 핵심 패턴 정리
+## 핵심 패턴 정리
 
 ### 1. 정렬 후 이진 탐색
 
@@ -1777,7 +1088,7 @@ private boolean canDivide(int[] lessons, int m, int maxSize) {
 
 ---
 
-## 🏆 코딩테스트 단골 문제 유형
+## 코딩테스트 단골 문제 유형
 
 ### 정렬 문제
 
@@ -1829,7 +1140,7 @@ private boolean canDivide(int[] lessons, int m, int maxSize) {
 
 ---
 
-## 🎨 실전 문제 풀이
+## 실전 문제 풀이
 
 ### 문제 1: K개의 가장 가까운 점 (LeetCode 973)
 
@@ -2014,13 +1325,13 @@ Arrays.sort(arr);  // 객체는 안정 정렬 (Timsort)
 {% raw %}
 
 ```java
-// ❌ 오버플로우 위험
+// ✘ 오버플로우 위험
 int mid = (left + right) / 2;
 
-// ✅ 안전한 방법
+// ✔ 안전한 방법
 int mid = left + (right - left) / 2;
 
-// ❌ 무한 루프 위험
+// ✘ 무한 루프 위험
 while (left < right) {
     int mid = (left + right) / 2;
     if (check(mid)) {
@@ -2030,7 +1341,7 @@ while (left < right) {
     }
 }
 
-// ✅ 올바른 방법
+// ✔ 올바른 방법
 while (left < right) {
     int mid = (left + right + 1) / 2;  // 올림
     if (check(mid)) {
@@ -2070,7 +1381,7 @@ public void twoPointerDebug(int[] arr, int target) {
 
 ---
 
-## 📚 학습 순서
+## 학습 순서
 
 ### 초급 (기초 다지기)
 
@@ -2095,7 +1406,7 @@ public void twoPointerDebug(int[] arr, int target) {
 
 ---
 
-## 🎯 추천 문제
+## 추천 문제
 
 ### 정렬 (난이도별)
 
@@ -2195,7 +1506,7 @@ public void twoPointerDebug(int[] arr, int target) {
 
 ---
 
-## 🔑 암기 필수 코드
+## 암기 필수 코드
 
 ### 1. 정렬 템플릿
 
@@ -2280,6 +1591,8 @@ for (int right = 0; right < arr.length; right++) {
 
 {% endraw %}
 
----
 
-#Java #정렬 #탐색 #이진탐색 #BinarySearch #투포인터 #TwoPointers #알고리즘 #코딩테스트 #Comparator #SlidingWindow #파라메트릭서치
+
+## 🏷️ Keywords
+`#Java` `#정렬` `#탐색` `#이진탐색` `#BinarySearch` `#투포인터` `#TwoPointers`  
+ `#알고리즘` `#코딩테스트` `#Comparator` `#SlidingWindow` `#파라메트릭서치`

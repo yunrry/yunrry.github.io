@@ -29,7 +29,7 @@ Client                    Server
    |                  [ESTABLISHED]
    |                         |
    
-연결 수립 완료! ✅
+연결 수립 완료! ✔
 ```
 
 ### 상세 설명
@@ -62,16 +62,16 @@ Client                    Server
 ### 왜 3-Way인가?
 
 ```
-❌ 2-Way만으로는 부족:
+✘ 2-Way만으로는 부족:
 Client: "연결하자!" (SYN)
 Server: "OK!" (SYN+ACK)
 → Client가 살아있는지 확인 불가
 
-✅ 3-Way로 양방향 확인:
+✔ 3-Way로 양방향 확인:
 Client: "연결하자!" (SYN)
 Server: "OK, 너도 받았어?" (SYN+ACK)
 Client: "응, 받았어!" (ACK)
-→ 양쪽 모두 확인 ✅
+→ 양쪽 모두 확인 ✔
 ```
 
 ---
@@ -115,7 +115,7 @@ Client                    Server
    |                         |
 [CLOSED]
 
-연결 종료 완료! ✅
+연결 종료 완료! ✔
 ```
 
 ### 상세 설명
@@ -184,7 +184,7 @@ Server: "OK, 받았어" (ACK)
         "이제 나도 끝!" (FIN)
 Client: "알았어!" (ACK)
 
-→ 양방향 독립적 종료 가능 ✅
+→ 양방향 독립적 종료 가능 ✔
 ```
 
 ---

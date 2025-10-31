@@ -133,11 +133,11 @@
       
 <h1 id="재귀와-완전탐색">재귀와 완전탐색</h1>
 
-<p>재귀는 자기 자신을 호출하는 함수로, 복잡한 문제를 작은 문제로 나누어 해결하는 강력한 기법입니다. 완전탐색과 백트래킹의 기초가 됩니다.</p>
+<p>재귀는 자기 자신을 호출하는 함수로, 복잡한 문제를 작은 문제로 나누어 해결하는 강력한 기법이다. 완전탐색과 백트래킹의 기초가 된다.</p>
 
 <hr />
 
-<h2 id="-재귀-recursion">🔄 재귀 (Recursion)</h2>
+<h2 id="재귀-recursion">재귀 (Recursion)</h2>
 
 <h3 id="재귀의-원리">재귀의 원리</h3>
 
@@ -324,7 +324,7 @@
 
 <hr />
 
-<h2 id="-완전탐색-brute-force">🎯 완전탐색 (Brute Force)</h2>
+<h2 id="완전탐색-brute-force">완전탐색 (Brute Force)</h2>
 
 <h3 id="원리">원리</h3>
 
@@ -674,7 +674,7 @@
 
 <hr />
 
-<h2 id="-dfs-depth-first-search">🌳 DFS (Depth-First Search)</h2>
+<h2 id="dfs-depth-first-search">DFS (Depth-First Search)</h2>
 
 <h3 id="원리-2">원리</h3>
 
@@ -943,7 +943,7 @@
 
 <hr />
 
-<h2 id="-실전-패턴">🎨 실전 패턴</h2>
+<h2 id="실전-패턴">실전 패턴</h2>
 
 <h3 id="패턴-1-선택비선택-includeexclude">패턴 1: 선택/비선택 (Include/Exclude)</h3>
 
@@ -1010,7 +1010,7 @@
 
 <hr />
 
-<h2 id="-복잡도-분석">📊 복잡도 분석</h2>
+<h2 id="복잡도-분석">복잡도 분석</h2>
 
 <h3 id="재귀-시간복잡도">재귀 시간복잡도</h3>
 
@@ -1072,12 +1072,12 @@
 
 <h3 id="1-base-case-필수">1. Base Case 필수!</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 무한 재귀 - Base Case 없음</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 무한 재귀 - Base Case 없음</span>
 <span class="kd">public</span> <span class="kt">int</span> <span class="nf">wrong</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">wrong</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>  <span class="c1">// 멈추지 않음!</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ 올바른 재귀</span>
+<span class="c1">// ✔ 올바른 재귀</span>
 <span class="kd">public</span> <span class="kt">int</span> <span class="nf">correct</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>  <span class="c1">// Base Case</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">correct</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
@@ -1101,7 +1101,7 @@
 
 <h3 id="3-상태-복원-backtrack-필수">3. 상태 복원 (Backtrack) 필수!</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ 잘못된 백트래킹 - 상태 복원 안 함</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 잘못된 백트래킹 - 상태 복원 안 함</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">wrong</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">조건</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>  <span class="c1">// 위험! 같은 객체 참조</span>
@@ -1115,7 +1115,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 
-<span class="c1">// ✅ 올바른 백트래킹</span>
+<span class="c1">// ✔ 올바른 백트래킹</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">correct</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">path</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">조건</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">path</span><span class="o">));</span>  <span class="c1">// 복사!</span>
@@ -1264,7 +1264,7 @@
 
 <hr />
 
-<h2 id="-실전-문제-풀이">🎯 실전 문제 풀이</h2>
+<h2 id="실전-문제-풀이">실전 문제 풀이</h2>
 
 <h3 id="문제-1-전화번호-문자-조합-leetcode-17">문제 1: 전화번호 문자 조합 (LeetCode 17)</h3>
 
@@ -1468,7 +1468,7 @@
 
 <hr />
 
-<h2 id="-추천-문제">🏆 추천 문제</h2>
+<h2 id="추천-문제">추천 문제</h2>
 
 <h3 id="재귀-기초-">재귀 기초 (⭐)</h3>
 
@@ -1698,7 +1698,7 @@
 
 <hr />
 
-<h2 id="-학습-로드맵">📚 학습 로드맵</h2>
+<h2 id="학습-로드맵">학습 로드맵</h2>
 
 <h3 id="1주차-재귀-기초">1주차: 재귀 기초</h3>
 
@@ -1738,7 +1738,7 @@
 
 <hr />
 
-<h2 id="-디버깅-팁">💡 디버깅 팁</h2>
+<h2 id="디버깅-팁">디버깅 팁</h2>
 
 <h3 id="1-재귀-호출-추적">1. 재귀 호출 추적</h3>
 
@@ -1807,7 +1807,7 @@
 
 <hr />
 
-<h2 id="-핵심-정리">🎯 핵심 정리</h2>
+<h2 id="핵심-정리">핵심 정리</h2>
 
 <h3 id="재귀-체크리스트">재귀 체크리스트</h3>
 
@@ -1838,7 +1838,7 @@
 
 <hr />
 
-<h2 id="-암기-필수-템플릿">📝 암기 필수 템플릿</h2>
+<h2 id="암기-필수-템플릿">암기 필수 템플릿</h2>
 
 <h3 id="1-백트래킹-기본">1. 백트래킹 기본</h3>
 
@@ -1894,8 +1894,9 @@
 </code></pre></div></div>
 
 <hr />
-
-<p>#Java #재귀 #Recursion #백트래킹 #Backtracking #DFS #완전탐색 #BruteForce #순열 #조합 #NQueen #알고리즘 #코딩테스트</p>
+<h2 id="️-keywords">🏷️ Keywords</h2>
+<p><code class="language-plaintext highlighter-rouge">#Java</code> <code class="language-plaintext highlighter-rouge">#재귀</code> <code class="language-plaintext highlighter-rouge">#Recursion</code> <code class="language-plaintext highlighter-rouge">#백트래킹</code> <code class="language-plaintext highlighter-rouge">#Backtracking</code> <code class="language-plaintext highlighter-rouge">#DFS</code> <code class="language-plaintext highlighter-rouge">#완전탐색</code> <code class="language-plaintext highlighter-rouge">#BruteForce</code><br />
+<code class="language-plaintext highlighter-rouge">#순열</code> <code class="language-plaintext highlighter-rouge">#조합</code> <code class="language-plaintext highlighter-rouge">#NQueen</code> <code class="language-plaintext highlighter-rouge">#알고리즘</code> <code class="language-plaintext highlighter-rouge">#코딩테스트</code></p>
 
     </div>
 

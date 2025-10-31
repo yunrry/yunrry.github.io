@@ -45,7 +45,7 @@ class Solution {
 
 ## 📝 평가
 
-### ✅ 잘한 점
+### ✔ 잘한 점
 
 1. **단조 스택 패턴 적용**: 핵심 알고리즘을 정확히 파악
 2. **인덱스 저장**: 온도가 아닌 인덱스를 스택에 저장하여 거리 계산 가능
@@ -53,7 +53,7 @@ class Solution {
 4. **거리 계산**: `i - index`로 정확한 일수 계산
 5. **정답 도출**: 모든 테스트 케이스 통과
 
-### 🔴 개선점
+### ✦ 개선점
 
 1. **불필요한 초기화**: `deque.addFirst(0)` → 루프 내에서 처리 가능
     
@@ -106,10 +106,10 @@ class Solution {
 
 **개선 포인트**:
 
-- ✅ 불필요한 초기화 제거
-- ✅ 마지막 while 루프 제거 (0은 기본값)
-- ✅ `push`/`pop`/`peek` 일관성 있게 사용
-- ✅ 변수명 명확화 (`deque` → `stack`)
+- ✔ 불필요한 초기화 제거
+- ✔ 마지막 while 루프 제거 (0은 기본값)
+- ✔ `push`/`pop`/`peek` 일관성 있게 사용
+- ✔ 변수명 명확화 (`deque` → `stack`)
 
 ---
 
@@ -345,10 +345,10 @@ class Solution {
 
 **개선 효과**:
 
-- ✅ 24ms → 18ms (약 **25% 빠름**)
-- ✅ 불필요한 코드 제거
-- ✅ 가독성 향상
-- ✅ 일관된 메소드 사용
+- ✔ 24ms → 18ms (약 **25% 빠름**)
+- ✔ 불필요한 코드 제거
+- ✔ 가독성 향상
+- ✔ 일관된 메소드 사용
 
 ---
 
@@ -503,4 +503,6 @@ for (int i = 0; i < n; i++) {
 
 ## 🏷️ Keywords
 
-#MonotonicStack #Stack #NextGreaterElement #NGE #단조스택 #Deque #TimeSeriesAnalysis #SlidingWindow #온도분석 #ArrayTraversal #O(n)Algorithm #SpaceOptimization #LeetCodeMedium #코딩테스트 #스택활용 #패턴인식
+`#MonotonicStack` `#Stack` `#NextGreaterElement` `#NGE` `#단조스택` `#Deque` `#TimeSeriesAnalysis`   
+`#SlidingWindow` `#온도분석` `#ArrayTraversal` `#O(n)Algorithm` `#SpaceOptimization`  
+`#LeetCodeMedium` `#코딩테스트` `#스택활용` `#패턴인식`  
