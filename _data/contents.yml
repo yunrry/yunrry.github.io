@@ -1,9 +1,16 @@
+- path: assets/contents/cs/network-header.md
+  title: network-header.md
+  category: cs
+  category2: ''
+  created: '2025-11-01'
+  updated: '2025-11-01'
+  keywords: []
 - path: assets/contents/dev/backend/flik-06.md
   title: (6편) 코스 생성 추천정확도 고도화 여정
   category: dev
   category2: backend
   created: '2025-10-24'
-  updated: '2025-10-24'
+  updated: '2025-10-29'
   keywords: []
 - path: assets/contents/dev/backend/flik-05.md
   title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 5편)'
@@ -24,7 +31,7 @@
   category: dev
   category2: backend
   created: '2025-10-23'
-  updated: '2025-10-24'
+  updated: '2025-10-29'
   keywords: []
 - path: assets/contents/dev/backend/environment-variable.md
   title: environment-variable.md
@@ -93,14 +100,14 @@
   category: dev
   category2: backend
   created: '2025-10-23'
-  updated: '2025-10-24'
+  updated: '2025-10-29'
   keywords: []
 - path: assets/contents/dev/backend/flik-01.md
   title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 1편)'
   category: dev
   category2: backend
   created: '2025-10-22'
-  updated: '2025-10-22'
+  updated: '2025-10-29'
   keywords: []
 - path: assets/contents/cs/network-websocket.md
   title: 15. 웹소켓 (WebSocket)

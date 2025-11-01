@@ -1,0 +1,277 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>헤더(Header)란? - Second Brain</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Second Brain">
+<meta property="og:title" content="헤더(Header)란?">
+<meta property="og:url" content="http://localhost:4000/assets/contents/cs/network-header/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/cs/network-header/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Second Brain Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Second Brain
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h2 id="헤더header란">헤더(Header)란?</h2>
+
+<p>헤더는 네트워크 통신에서 데이터 패킷의 앞부분에 붙는 <strong>제어 정보(control information)</strong>이다.  <br />
+실제 전송하려는 데이터(페이로드)와 함께 전송되며, 데이터를 올바른 목적지로 전달하고 처리하는 데 필요한 메타데이터를 포함한다.</p>
+
+<h2 id="osi-7계층별-주요-헤더">OSI 7계층별 주요 헤더</h2>
+
+<h3 id="1-데이터-링크-계층-layer-2---이더넷-헤더">1. <strong>데이터 링크 계층 (Layer 2) - 이더넷 헤더</strong></h3>
+<ul>
+  <li><strong>출처</strong>: IEEE 802.3 표준</li>
+  <li><strong>주요 필드</strong>:
+    <ul>
+      <li>목적지 MAC 주소 (6 bytes)</li>
+      <li>출발지 MAC 주소 (6 bytes)</li>
+      <li>타입/길이 (2 bytes)</li>
+      <li>FCS (Frame Check Sequence)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-네트워크-계층-layer-3---ip-헤더">2. <strong>네트워크 계층 (Layer 3) - IP 헤더</strong></h3>
+
+<p><strong>IPv4 헤더</strong> (RFC 791):</p>
+<ul>
+  <li>Version (4 bits): IP 버전</li>
+  <li>IHL (4 bits): 헤더 길이</li>
+  <li>Type of Service (8 bits): QoS</li>
+  <li>Total Length (16 bits): 전체 패킷 크기</li>
+  <li>Identification, Flags, Fragment Offset: 단편화 관련</li>
+  <li>TTL (Time To Live, 8 bits): 패킷 생존 시간</li>
+  <li>Protocol (8 bits): 상위 프로토콜 (TCP=6, UDP=17)</li>
+  <li>Header Checksum: 오류 검출</li>
+  <li><strong>출발지 IP 주소 (32 bits)</strong></li>
+  <li><strong>목적지 IP 주소 (32 bits)</strong></li>
+</ul>
+
+<p><strong>IPv6 헤더</strong> (RFC 2460):</p>
+<ul>
+  <li>더 단순화된 구조 (40 bytes 고정)</li>
+  <li>128비트 주소 체계</li>
+</ul>
+
+<h3 id="3-전송-계층-layer-4">3. <strong>전송 계층 (Layer 4)</strong></h3>
+
+<p><strong>TCP 헤더</strong> (RFC 793):</p>
+<ul>
+  <li>출발지 포트 (16 bits)</li>
+  <li>목적지 포트 (16 bits)</li>
+  <li>Sequence Number (32 bits): 순서 번호</li>
+  <li>Acknowledgment Number (32 bits): 확인 응답 번호</li>
+  <li>Flags: SYN, ACK, FIN, RST 등</li>
+  <li>Window Size: 흐름 제어</li>
+  <li>Checksum: 오류 검출</li>
+</ul>
+
+<p><strong>UDP 헤더</strong> (RFC 768):</p>
+<ul>
+  <li>출발지 포트 (16 bits)</li>
+  <li>목적지 포트 (16 bits)</li>
+  <li>Length (16 bits)</li>
+  <li>Checksum (16 bits)</li>
+  <li>TCP보다 훨씬 단순 (8 bytes만)</li>
+</ul>
+
+<h3 id="4-응용-계층-layer-7">4. <strong>응용 계층 (Layer 7)</strong></h3>
+
+<p><strong>HTTP 헤더</strong> (RFC 7230-7235):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0
+Accept: text/html
+</code></pre></div></div>
+
+<h2 id="헤더의-역할">헤더의 역할</h2>
+
+<ol>
+  <li><strong>주소 지정</strong>: 출발지와 목적지 식별</li>
+  <li><strong>라우팅</strong>: 패킷 경로 결정</li>
+  <li><strong>오류 검출</strong>: Checksum을 통한 데이터 무결성 검증</li>
+  <li><strong>흐름 제어</strong>: 네트워크 혼잡 관리</li>
+  <li><strong>프로토콜 식별</strong>: 상위 계층 프로토콜 구분</li>
+</ol>
+
+<h2 id="캡슐화-encapsulation">캡슐화 (Encapsulation)</h2>
+
+<p>데이터가 각 계층을 거치며 해당 계층의 헤더가 추가되는 과정:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[응용 계층 데이터]
+↓
+[TCP 헤더][데이터]
+↓
+[IP 헤더][TCP 헤더][데이터]
+↓
+[이더넷 헤더][IP 헤더][TCP 헤더][데이터][이더넷 트레일러]
+</code></pre></div></div>
+
+<h2 id="참고-문헌">참고 문헌</h2>
+<ul>
+  <li><strong>Tanenbaum, A. S., &amp; Wetherall, D. J.</strong>  <br />
+(2010). <em>Computer Networks</em> (5th ed.). Pearson - 네트워크 기초 이론</li>
+  <li><strong>Stevens, W. R.</strong>  <br />
+(1994). <em>TCP/IP Illustrated, Volume 1: The Protocols</em>. Addison-Wesley - TCP/IP 프로토콜 상세 설명</li>
+  <li><strong>IETF RFCs</strong>: RFC 791 (IPv4), RFC 793 (TCP), RFC 768 (UDP), RFC 2460 (IPv6)</li>
+</ul>
+
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

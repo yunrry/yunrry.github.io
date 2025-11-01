@@ -41,15 +41,9 @@ sidebar:
 
 #### <a href="#" data-content="/assets/contents/cs/network-websocket.md"><span style="color: #9bd6bd;">♡</span> 웹소켓 WebSocket </a>
 
-#### <a href="#" data-content="/assets/contents/cs/network-websocket.md"><span style="color: #9bd6bd;">♡</span> 웹소켓 WebSocket </a>
+#### <a href="#" data-content="/assets/contents/cs/network-header.md"><span style="color: #9bd6bd;">♡</span> 헤더 Header </a>
 
 ---
 
 
 ## CheckList
-
-- [ ] 각 알고리즘을 종이에 그려가며 이해하기  
-- [ ] 직접 손으로 코드를 작성해보기  
-- [ ] 시간복잡도를 항상 함께 생각하기  
-- [ ] 기출문제를 반복해서 풀어보기  
-- [ ] 정렬 전후 배열 상태를 비교하기  
