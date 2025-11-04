@@ -1,0 +1,589 @@
+
+# DML (Data Manipulation Language) 
+
+>데이터 조작 언어  
+테이블의 데이터를 조회, 삽입, 수정, 삭제  
+트랜잭션 제어 가능 (COMMIT, ROLLBACK)  
+DDL과 달리 롤백 가능  
+
+
+### `SELECT` `INSERT` `UPDATE` `DELETE`
+
+
+
+## 1. SELECT (데이터 조회)
+
+### 기본 구문
+```sql
+SELECT 컬럼1, 컬럼2, ...
+FROM 테이블명
+WHERE 조건
+GROUP BY 그룹컬럼
+HAVING 그룹조건
+ORDER BY 정렬컬럼;
+```
+
+### 전체 조회
+```sql
+-- 모든 컬럼
+SELECT * FROM EMPLOYEE;
+
+-- 특정 컬럼
+SELECT EMP_ID, EMP_NAME FROM EMPLOYEE;
+
+-- 중복 제거
+SELECT DISTINCT DEPT_ID FROM EMPLOYEE;
+```
+
+### WHERE 조건
+```sql
+-- 비교 연산자
+SELECT * FROM EMPLOYEE WHERE SALARY > 5000000;
+SELECT * FROM EMPLOYEE WHERE DEPT_ID = 10;
+SELECT * FROM EMPLOYEE WHERE EMP_NAME = 'Kim';
+
+-- 논리 연산자
+SELECT * FROM EMPLOYEE 
+WHERE SALARY >= 3000000 AND DEPT_ID = 10;
+
+SELECT * FROM EMPLOYEE 
+WHERE DEPT_ID = 10 OR DEPT_ID = 20;
+
+SELECT * FROM EMPLOYEE 
+WHERE NOT DEPT_ID = 10;
+
+-- 범위 조건
+SELECT * FROM EMPLOYEE 
+WHERE SALARY BETWEEN 3000000 AND 5000000;
+
+-- IN 연산자
+SELECT * FROM EMPLOYEE 
+WHERE DEPT_ID IN (10, 20, 30);
+
+-- 패턴 매칭
+SELECT * FROM EMPLOYEE 
+WHERE EMP_NAME LIKE 'Kim%';        -- Kim으로 시작
+
+SELECT * FROM EMPLOYEE 
+WHERE EMP_NAME LIKE '%son';        -- son으로 끝
+
+SELECT * FROM EMPLOYEE 
+WHERE EMP_NAME LIKE '%a%';         -- a 포함
+
+SELECT * FROM EMPLOYEE 
+WHERE EMP_NAME LIKE '_im';         -- 세 글자, 마지막 두 글자가 im
+
+-- NULL 체크
+SELECT * FROM EMPLOYEE WHERE MANAGER_ID IS NULL;
+SELECT * FROM EMPLOYEE WHERE MANAGER_ID IS NOT NULL;
+```
+
+### ORDER BY (정렬)
+```sql
+-- 오름차순 (기본값)
+SELECT * FROM EMPLOYEE ORDER BY SALARY;
+SELECT * FROM EMPLOYEE ORDER BY SALARY ASC;
+
+-- 내림차순
+SELECT * FROM EMPLOYEE ORDER BY SALARY DESC;
+
+-- 다중 정렬
+SELECT * FROM EMPLOYEE 
+ORDER BY DEPT_ID ASC, SALARY DESC;
+```
+
+### 집계 함수
+```sql
+-- COUNT: 개수
+SELECT COUNT(*) FROM EMPLOYEE;
+SELECT COUNT(DISTINCT DEPT_ID) FROM EMPLOYEE;
+
+-- SUM: 합계
+SELECT SUM(SALARY) FROM EMPLOYEE;
+
+-- AVG: 평균
+SELECT AVG(SALARY) FROM EMPLOYEE;
+
+-- MAX/MIN: 최대/최소
+SELECT MAX(SALARY), MIN(SALARY) FROM EMPLOYEE;
+```
+
+### GROUP BY (그룹화)
+```sql
+-- 부서별 집계
+SELECT DEPT_ID, COUNT(*) AS EMP_COUNT
+FROM EMPLOYEE
+GROUP BY DEPT_ID;
+
+-- 부서별 평균 급여
+SELECT DEPT_ID, AVG(SALARY) AS AVG_SALARY
+FROM EMPLOYEE
+GROUP BY DEPT_ID;
+
+-- HAVING: 그룹 조건
+SELECT DEPT_ID, COUNT(*) AS EMP_COUNT
+FROM EMPLOYEE
+GROUP BY DEPT_ID
+HAVING COUNT(*) >= 5;
+
+-- WHERE와 HAVING 함께 사용
+SELECT DEPT_ID, AVG(SALARY) AS AVG_SALARY
+FROM EMPLOYEE
+WHERE SALARY >= 3000000
+GROUP BY DEPT_ID
+HAVING AVG(SALARY) >= 4000000;
+```
+
+### JOIN (테이블 결합)
+```sql
+-- INNER JOIN
+SELECT E.EMP_NAME, D.DEPT_NAME
+FROM EMPLOYEE E
+INNER JOIN DEPARTMENT D ON E.DEPT_ID = D.DEPT_ID;
+
+-- LEFT JOIN
+SELECT E.EMP_NAME, D.DEPT_NAME
+FROM EMPLOYEE E
+LEFT JOIN DEPARTMENT D ON E.DEPT_ID = D.DEPT_ID;
+
+-- RIGHT JOIN
+SELECT E.EMP_NAME, D.DEPT_NAME
+FROM EMPLOYEE E
+RIGHT JOIN DEPARTMENT D ON E.DEPT_ID = D.DEPT_ID;
+
+-- FULL OUTER JOIN
+SELECT E.EMP_NAME, D.DEPT_NAME
+FROM EMPLOYEE E
+FULL OUTER JOIN DEPARTMENT D ON E.DEPT_ID = D.DEPT_ID;
+
+-- 자기 참조 조인 (상사-부하 관계)
+SELECT E.EMP_NAME AS EMPLOYEE, M.EMP_NAME AS MANAGER
+FROM EMPLOYEE E
+LEFT JOIN EMPLOYEE M ON E.MANAGER_ID = M.EMP_ID;
+```
+
+### 서브쿼리
+```sql
+-- WHERE 절 서브쿼리
+SELECT * FROM EMPLOYEE
+WHERE SALARY > (SELECT AVG(SALARY) FROM EMPLOYEE);
+
+-- IN 서브쿼리
+SELECT * FROM EMPLOYEE
+WHERE DEPT_ID IN (
+    SELECT DEPT_ID FROM DEPARTMENT WHERE LOCATION = 'Seoul'
+);
+
+-- FROM 절 서브쿼리
+SELECT AVG(DEPT_AVG) AS COMPANY_AVG
+FROM (
+    SELECT DEPT_ID, AVG(SALARY) AS DEPT_AVG
+    FROM EMPLOYEE
+    GROUP BY DEPT_ID
+) AS DEPT_SALARY;
+
+-- EXISTS 서브쿼리
+SELECT * FROM DEPARTMENT D
+WHERE EXISTS (
+    SELECT 1 FROM EMPLOYEE E WHERE E.DEPT_ID = D.DEPT_ID
+);
+```
+
+---
+
+## 2. INSERT (데이터 삽입)
+
+### 기본 구문
+```sql
+INSERT INTO 테이블명 (컬럼1, 컬럼2, ...)
+VALUES (값1, 값2, ...);
+```
+
+### 단일 행 삽입
+```sql
+-- 모든 컬럼 지정
+INSERT INTO EMPLOYEE (EMP_ID, EMP_NAME, DEPT_ID, SALARY)
+VALUES (1, 'Kim', 10, 5000000);
+
+-- 컬럼 순서대로 (컬럼명 생략)
+INSERT INTO EMPLOYEE
+VALUES (2, 'Lee', 20, 4500000);
+
+-- 일부 컬럼만 (나머지는 NULL 또는 DEFAULT)
+INSERT INTO EMPLOYEE (EMP_ID, EMP_NAME)
+VALUES (3, 'Park');
+```
+
+### 다중 행 삽입
+```sql
+INSERT INTO EMPLOYEE (EMP_ID, EMP_NAME, DEPT_ID, SALARY)
+VALUES 
+    (4, 'Choi', 10, 4000000),
+    (5, 'Jung', 20, 4500000),
+    (6, 'Kang', 30, 5000000);
+```
+
+### SELECT 결과 삽입
+```sql
+-- 다른 테이블에서 데이터 복사
+INSERT INTO EMPLOYEE_BACKUP
+SELECT * FROM EMPLOYEE WHERE DEPT_ID = 10;
+
+-- 특정 컬럼만 복사
+INSERT INTO EMPLOYEE_SUMMARY (EMP_ID, EMP_NAME)
+SELECT EMP_ID, EMP_NAME FROM EMPLOYEE;
+```
+
+---
+
+## 3. UPDATE (데이터 수정)
+
+### 기본 구문
+```sql
+UPDATE 테이블명
+SET 컬럼1 = 값1, 컬럼2 = 값2, ...
+WHERE 조건;
+```
+
+### 단일 컬럼 수정
+```sql
+-- 특정 직원 급여 수정
+UPDATE EMPLOYEE
+SET SALARY = 6000000
+WHERE EMP_ID = 1;
+
+-- 부서 전체 급여 인상
+UPDATE EMPLOYEE
+SET SALARY = SALARY * 1.1
+WHERE DEPT_ID = 10;
+```
+
+### 다중 컬럼 수정
+```sql
+UPDATE EMPLOYEE
+SET SALARY = 5500000, DEPT_ID = 20
+WHERE EMP_ID = 3;
+
+-- 계산식 사용
+UPDATE EMPLOYEE
+SET SALARY = SALARY + 500000, 
+    BONUS = SALARY * 0.1
+WHERE DEPT_ID = 10;
+```
+
+### 서브쿼리를 이용한 수정
+```sql
+-- 평균보다 낮은 급여를 평균으로 조정
+UPDATE EMPLOYEE
+SET SALARY = (SELECT AVG(SALARY) FROM EMPLOYEE)
+WHERE SALARY < (SELECT AVG(SALARY) FROM EMPLOYEE);
+
+-- 다른 테이블 참조
+UPDATE EMPLOYEE E
+SET SALARY = (
+    SELECT AVG(SALARY) 
+    FROM EMPLOYEE 
+    WHERE DEPT_ID = E.DEPT_ID
+)
+WHERE EMP_ID = 10;
+```
+
+### CASE를 이용한 조건부 수정
+```sql
+UPDATE EMPLOYEE
+SET SALARY = CASE
+    WHEN DEPT_ID = 10 THEN SALARY * 1.1
+    WHEN DEPT_ID = 20 THEN SALARY * 1.15
+    WHEN DEPT_ID = 30 THEN SALARY * 1.2
+    ELSE SALARY
+END;
+```
+
+### ⚠️ WHERE 없는 UPDATE (주의!)
+```sql
+-- 모든 행이 수정됨!
+UPDATE EMPLOYEE
+SET SALARY = 5000000;
+-- 전체 직원 급여가 5000000으로 변경
+```
+
+---
+
+## 4. DELETE (데이터 삭제)
+
+### 기본 구문
+```sql
+DELETE FROM 테이블명
+WHERE 조건;
+```
+
+### 조건부 삭제
+```sql
+-- 특정 직원 삭제
+DELETE FROM EMPLOYEE WHERE EMP_ID = 1;
+
+-- 특정 부서 전체 삭제
+DELETE FROM EMPLOYEE WHERE DEPT_ID = 10;
+
+-- 조건에 맞는 행만 삭제
+DELETE FROM EMPLOYEE 
+WHERE SALARY < 3000000 AND DEPT_ID = 20;
+```
+
+### 서브쿼리를 이용한 삭제
+```sql
+-- 평균보다 낮은 급여 직원 삭제
+DELETE FROM EMPLOYEE
+WHERE SALARY < (SELECT AVG(SALARY) FROM EMPLOYEE);
+
+-- 특정 부서에 속한 직원 삭제
+DELETE FROM EMPLOYEE
+WHERE DEPT_ID IN (
+    SELECT DEPT_ID FROM DEPARTMENT WHERE LOCATION = 'Busan'
+);
+```
+
+### ⚠️ WHERE 없는 DELETE (주의!)
+```sql
+-- 모든 행이 삭제됨!
+DELETE FROM EMPLOYEE;
+-- 테이블 구조는 남고 모든 데이터 삭제
+```
+
+---
+
+## 5. DML vs DDL vs DCL
+
+| 분류 | 명령어 | 대상 | 롤백 | 예시 |
+|------|--------|------|------|------|
+| **DML** | SELECT, INSERT, UPDATE, DELETE | 데이터 | 가능 | INSERT INTO ... |
+| **DDL** | CREATE, ALTER, DROP | 구조 | 가능* | CREATE TABLE ... |
+| **DCL** | GRANT, REVOKE | 권한 | 가능* | GRANT SELECT ... |
+| **TCL** | COMMIT, ROLLBACK | 트랜잭션 | - | COMMIT; |
+
+*대부분의 DBMS에서 DDL/DCL은 자동 커밋
+
+---
+
+## 6. 트랜잭션 제어
+
+### 기본 트랜잭션
+```sql
+-- 트랜잭션 시작 (자동 시작)
+INSERT INTO EMPLOYEE VALUES (100, 'Kim', 10, 5000000);
+UPDATE EMPLOYEE SET SALARY = 5500000 WHERE EMP_ID = 100;
+
+-- 커밋 (영구 저장)
+COMMIT;
+
+-- 또는 롤백 (취소)
+ROLLBACK;
+```
+
+### 실무 예시
+```sql
+-- 계좌 이체 트랜잭션
+BEGIN;  -- 트랜잭션 시작 (일부 DBMS)
+
+-- A 계좌에서 출금
+UPDATE ACCOUNT 
+SET BALANCE = BALANCE - 100000 
+WHERE ACCOUNT_ID = 'A001';
+
+-- B 계좌에 입금
+UPDATE ACCOUNT 
+SET BALANCE = BALANCE + 100000 
+WHERE ACCOUNT_ID = 'B001';
+
+-- 성공 시 커밋
+COMMIT;
+
+-- 실패 시 롤백
+-- ROLLBACK;
+```
+
+### SAVEPOINT
+```sql
+INSERT INTO EMPLOYEE VALUES (101, 'Lee', 10, 4000000);
+SAVEPOINT SP1;
+
+INSERT INTO EMPLOYEE VALUES (102, 'Park', 20, 4500000);
+SAVEPOINT SP2;
+
+INSERT INTO EMPLOYEE VALUES (103, 'Choi', 30, 5000000);
+
+-- SP2까지만 취소 (103 삭제, 101,102 유지)
+ROLLBACK TO SP2;
+
+-- 전체 커밋
+COMMIT;
+```
+
+---
+
+## 7. 실무 예시
+
+### 데이터 마이그레이션
+```sql
+-- 1. 백업
+INSERT INTO EMPLOYEE_BACKUP
+SELECT * FROM EMPLOYEE;
+
+-- 2. 조건부 삭제
+DELETE FROM EMPLOYEE WHERE HIRE_DATE < '2010-01-01';
+
+-- 3. 대량 업데이트
+UPDATE EMPLOYEE
+SET DEPT_ID = 99
+WHERE DEPT_ID IS NULL;
+
+-- 4. 확인
+SELECT COUNT(*) FROM EMPLOYEE;
+
+-- 5. 커밋
+COMMIT;
+```
+
+### 배치 작업
+```sql
+-- 월말 급여 정산
+BEGIN;
+
+-- 1. 모든 직원 보너스 계산
+UPDATE EMPLOYEE
+SET BONUS = SALARY * 0.1
+WHERE PERFORMANCE_RATING >= 4;
+
+-- 2. 부서별 예산 차감
+UPDATE DEPARTMENT D
+SET BUDGET = BUDGET - (
+    SELECT SUM(BONUS) 
+    FROM EMPLOYEE E 
+    WHERE E.DEPT_ID = D.DEPT_ID
+);
+
+-- 3. 로그 기록
+INSERT INTO SALARY_LOG (PROCESS_DATE, TOTAL_BONUS)
+SELECT CURRENT_DATE, SUM(BONUS) FROM EMPLOYEE;
+
+COMMIT;
+```
+
+### 데이터 정리
+```sql
+-- 임시 데이터 정리
+DELETE FROM TEMP_DATA 
+WHERE CREATED_AT < CURRENT_DATE - INTERVAL '7' DAY;
+
+-- 중복 데이터 제거
+DELETE FROM EMPLOYEE E1
+WHERE E1.EMP_ID NOT IN (
+    SELECT MIN(E2.EMP_ID)
+    FROM EMPLOYEE E2
+    WHERE E1.EMAIL = E2.EMAIL
+);
+
+COMMIT;
+```
+
+---
+
+## 8. 성능 최적화 팁
+
+### SELECT 최적화
+```sql
+-- ❌ 비효율적
+SELECT * FROM EMPLOYEE;
+
+-- ✅ 효율적 (필요한 컬럼만)
+SELECT EMP_ID, EMP_NAME FROM EMPLOYEE;
+
+-- ❌ 서브쿼리 중복 실행
+SELECT * FROM EMPLOYEE
+WHERE SALARY > (SELECT AVG(SALARY) FROM EMPLOYEE)
+AND DEPT_ID IN (SELECT DEPT_ID FROM DEPARTMENT);
+
+-- ✅ JOIN 사용
+SELECT E.*
+FROM EMPLOYEE E
+CROSS JOIN (SELECT AVG(SALARY) AS AVG_SAL FROM EMPLOYEE) A
+INNER JOIN DEPARTMENT D ON E.DEPT_ID = D.DEPT_ID
+WHERE E.SALARY > A.AVG_SAL;
+```
+
+### UPDATE/DELETE 최적화
+```sql
+-- ❌ 전체 스캔
+UPDATE EMPLOYEE SET SALARY = SALARY * 1.1;
+
+-- ✅ WHERE 조건 사용
+UPDATE EMPLOYEE 
+SET SALARY = SALARY * 1.1
+WHERE DEPT_ID = 10;
+
+-- ✅ 인덱스 활용
+DELETE FROM EMPLOYEE WHERE EMP_ID = 100;  -- PK 인덱스 사용
+```
+
+---
+
+## 9. 주의사항 ⚠️
+
+### WHERE 절 필수
+```sql
+-- 위험! 모든 데이터 삭제
+DELETE FROM EMPLOYEE;
+
+-- 위험! 모든 데이터 동일하게 수정
+UPDATE EMPLOYEE SET SALARY = 5000000;
+
+-- 안전: 항상 WHERE 사용
+DELETE FROM EMPLOYEE WHERE EMP_ID = 1;
+UPDATE EMPLOYEE SET SALARY = 5000000 WHERE EMP_ID = 1;
+```
+
+### 트랜잭션 관리
+```sql
+-- 대량 작업은 트랜잭션으로 묶기
+BEGIN;
+UPDATE EMPLOYEE SET SALARY = SALARY * 1.1 WHERE DEPT_ID = 10;
+-- 확인 후 COMMIT 또는 ROLLBACK
+COMMIT;
+```
+
+### 백업
+```sql
+-- 중요 작업 전 백업
+CREATE TABLE EMPLOYEE_BACKUP AS
+SELECT * FROM EMPLOYEE;
+
+-- 작업 수행
+DELETE FROM EMPLOYEE WHERE DEPT_ID = 10;
+
+-- 문제 발생 시 복구
+INSERT INTO EMPLOYEE SELECT * FROM EMPLOYEE_BACKUP;
+```
+
+---
+
+## 10. 빠른 참조
+
+```sql
+-- SELECT: 조회
+SELECT 컬럼 FROM 테이블 WHERE 조건;
+
+-- INSERT: 삽입
+INSERT INTO 테이블 (컬럼) VALUES (값);
+
+-- UPDATE: 수정
+UPDATE 테이블 SET 컬럼=값 WHERE 조건;
+
+-- DELETE: 삭제
+DELETE FROM 테이블 WHERE 조건;
+
+-- 트랜잭션
+COMMIT;    -- 확정
+ROLLBACK;  -- 취소
+```
+
+**핵심**: DML은 데이터 조작, 항상 WHERE 조건 확인, 트랜잭션 관리!

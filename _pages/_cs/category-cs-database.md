@@ -26,7 +26,11 @@ sidebar:
 
 #### <a href="#" data-content="/assets/contents/cs/sub-query.md"><span style="color: #9bd6bd;">♡</span> 서브쿼리</a>
 
-#### <a href="#" data-content="/assets/contents/cs/ddl-dml-dcl.md"><span style="color: #9bd6bd;">♡</span> DDL/DML/DCL</a>
+#### <a href="#" data-content="/assets/contents/cs/sql-ddl.md"><span style="color: #9bd6bd;">♡</span> DDL</a>
+
+#### <a href="#" data-content="/assets/contents/cs/sql-dml.md"><span style="color: #9bd6bd;">♡</span> DML</a>
+
+#### <a href="#" data-content="/assets/contents/cs/sql-dcl.md"><span style="color: #9bd6bd;">♡</span> DCL</a>
 
 #### <a href="#" data-content="/assets/contents/cs/constraints.md"><span style="color: #9bd6bd;">♡</span> 제약조건</a>
 

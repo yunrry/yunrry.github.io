@@ -1,3 +1,31 @@
+- path: assets/contents/cs/sql-ddl.md
+  title: DDL/DML/DCL
+  category: cs
+  category2: ''
+  created: '2025-11-04'
+  updated: '2025-11-04'
+  keywords: []
+- path: assets/contents/cs/sql-dml.md
+  title: DML (Data Manipulation Language)
+  category: cs
+  category2: ''
+  created: '2025-11-04'
+  updated: '2025-11-04'
+  keywords: []
+- path: assets/contents/cs/sql-dcl.md
+  title: DCL (Data Control Language)
+  category: cs
+  category2: ''
+  created: '2025-11-04'
+  updated: '2025-11-04'
+  keywords: []
+- path: assets/contents/cs/sql-domain.md
+  title: SQL-DOMAIN
+  category: cs
+  category2: ''
+  created: '2025-11-03'
+  updated: '2025-11-03'
+  keywords: []
 - path: assets/contents/cs/network-header.md
   title: network-header.md
   category: cs
@@ -250,7 +278,7 @@
   title: SQL 기본 문법
   category: cs
   created: '2025-10-16'
-  updated: '2025-10-16'
+  updated: '2025-11-03'
   keywords: []
 - path: assets/contents/cs/data-structure-interview.md
   title: 자료구조 면접/서술
@@ -308,12 +336,6 @@
   keywords: []
 - path: assets/contents/cs/transaction.md
   title: 트랜잭션
-  category: cs
-  created: '2025-10-16'
-  updated: '2025-10-16'
-  keywords: []
-- path: assets/contents/cs/ddl-dml-dcl.md
-  title: DDL/DML/DCL
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
