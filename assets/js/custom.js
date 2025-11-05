@@ -39,6 +39,12 @@
         '/categories/cs/os/',
         '/categories/cs/database/',
         '/categories/cs/algorithmm/'
+      ],
+      '/categories/tools/': [
+        '/categories/tools/ai/',
+        '/categories/tools/management/',
+        '/categories/tools/browser/',
+        '/categories/tools/test/'
       ]
     };
     

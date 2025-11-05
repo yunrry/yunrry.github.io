@@ -54,6 +54,18 @@ categories:
         url: /categories/cs/database/
       - title: "  • 알고리즘"
         url: /categories/cs/algorithmm/
+
+      - title: "🛠 Tools"
+        url: /categories/tools/
+      - title: "  • AI"
+        url: /categories/tools/ai/
+      - title: "  • Management"
+        url: /categories/tools/management/
+      - title: "  • Browser"
+        url: /categories/tools/browser/
+      - title: "  • Test"
+        url: /categories/tools/test/
+        
       
       - title: "📊 All"
         url: /categories/

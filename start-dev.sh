@@ -31,7 +31,7 @@ stop_jekyll() {
 run_jekyll() {
   stop_jekyll
   echo "🔧 Jekyll 서버 실행 중..."
-  bundle exec jekyll serve --livereload > /tmp/jekyll.log 2>&1 &
+  bundle exec jekyll serve --livereload --port 4000 --host 0.0.0.0 > /tmp/jekyll.log 2>&1 &
   local jekyll_pid=$!
   echo $jekyll_pid > "$JEKYLL_PID_FILE"
   echo "✅ Jekyll 서버 시작됨 (PID: $jekyll_pid)"

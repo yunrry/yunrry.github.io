@@ -1,3 +1,24 @@
+- path: assets/contents/algorithm/baekjoon/2579-dp.md
+  title: '백준 2579: 계단 오르기'
+  category: algorithm
+  category2: baekjoon
+  created: '2025-11-05'
+  updated: '2025-11-05'
+  keywords:
+  - 백준
+  - DP
+  - 계단오르기
+  - 동적계획법
+  - 알고리즘
+  - Java
+  - BOJ2579
+- path: assets/contents/tools/ai/algorithm-problem-write-up-prompt.md
+  title: 알고리즘 문제풀이 정리 프롬프트
+  category: tools
+  category2: ''
+  created: '2025-11-05'
+  updated: '2025-11-05'
+  keywords: []
 - path: assets/contents/cs/sql-ddl.md
   title: DDL/DML/DCL
   category: cs
@@ -278,7 +299,7 @@
   title: SQL 기본 문법
   category: cs
   created: '2025-10-16'
-  updated: '2025-11-03'
+  updated: '2025-11-05'
   keywords: []
 - path: assets/contents/cs/data-structure-interview.md
   title: 자료구조 면접/서술

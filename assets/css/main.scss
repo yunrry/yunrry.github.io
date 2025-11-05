@@ -137,6 +137,7 @@ pre,
 [data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/language/"],
 [data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/algorithm/"],
 [data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/cs/"],
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/tools/"],
 [data-theme="dark"] .sidebar .nav__list .nav__items li a[href="/categories/"] {
   color: var(--category-color) !important;
 }
@@ -145,6 +146,7 @@ pre,
 [data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/dev/"],
 [data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/language/"],
 [data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/algorithm/"],
+[data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/categories/tools/"],
 [data-theme="dark"] .sidebar .nav__list .nav__items li a[href*="/cs/"] {
   color: var(--subcategory-color) !important;
 }
@@ -360,6 +362,7 @@ table {
 .sidebar .nav__list .nav__items li a[href="/categories/language/"],
 .sidebar .nav__list .nav__items li a[href="/categories/algorithm/"],
 .sidebar .nav__list .nav__items li a[href="/categories/cs/"],
+.sidebar .nav__list .nav__items li a[href="/categories/tools/"],
 .sidebar .nav__list .nav__items li a[href="/categories/"] {
   font-weight: 600 !important;
   font-size: 1.8em !important;
@@ -392,7 +395,12 @@ table {
 .sidebar .nav__list .nav__items li a[href*="/cs/network"],
 .sidebar .nav__list .nav__items li a[href*="/cs/os"],
 .sidebar .nav__list .nav__items li a[href*="/cs/database"],
-.sidebar .nav__list .nav__items li a[href*="/cs/algorithmm"]{
+.sidebar .nav__list .nav__items li a[href*="/cs/algorithmm"],
+.sidebar .nav__list .nav__items li a[href*="/tools/ai"],
+.sidebar .nav__list .nav__items li a[href*="/tools/management"],
+.sidebar .nav__list .nav__items li a[href*="/tools/browser"],
+.sidebar .nav__list .nav__items li a[href*="/tools/test"]
+{
   font-size: 1.8em !important;
   color: #666 !important;
   font-weight: 400 !important;
@@ -409,7 +417,9 @@ table {
 .sidebar .nav__list .nav__items li a[href*="/dev/"]:not([href="/categories/dev/"]):hover,
 .sidebar .nav__list .nav__items li a[href*="/language/"]:not([href="/categories/language/"]):hover,
 .sidebar .nav__list .nav__items li a[href*="/algorithm/"]:not([href="/categories/algorithm/"]):hover,
-.sidebar .nav__list .nav__items li a[href*="/cs/"]:not([href="/categories/cs/"]):hover {
+.sidebar .nav__list .nav__items li a[href*="/cs/"]:not([href="/categories/cs/"]):hover,
+.sidebar .nav__list .nav__items li a[href*="/tools/"]:not([href="/categories/tools/"]):hover
+ {
   padding-left: 10px !important;
 }
 
