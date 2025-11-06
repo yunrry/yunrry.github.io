@@ -172,3 +172,69 @@
     init();
   }
 })();
+
+
+(function(){
+  function highlightSymbols(container){
+    if (!container) return;
+    const forbidden = new Set(['STYLE','INPUT','BUTTON','SVG']);
+    const walker = document.createTreeWalker(
+      container,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node){
+          const val = node.nodeValue;
+          if (!val || (!val.includes('✔') && !val.includes('✘'))) return NodeFilter.FILTER_REJECT;
+          let p = node.parentElement;
+          while (p){
+            if (forbidden.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+            p = p.parentElement;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      },
+      false
+    );
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(textNode=>{
+      const parent = textNode.parentNode;
+      const parts = textNode.nodeValue.split(/(✔|✘|✓|✗)/g);
+      if (parts.length === 1) return;
+      const frag = document.createDocumentFragment();
+      parts.forEach(part=>{
+        if (part === '✔' || part === '✘'){
+          const span = document.createElement('span');
+          span.className = part === '✔' ? 'check' : 'cross';
+          span.textContent = part;
+          frag.appendChild(span);
+        } else if (part.length > 0){
+          frag.appendChild(document.createTextNode(part));
+        }
+      });
+      parent.replaceChild(frag, textNode);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    // 일반 페이지/포스트 본문
+    highlightSymbols(document.querySelector('.page__content'));
+    // 카테고리 스플릿 우측 본문(동적 로드 후에도 안전망)
+    const right = document.querySelector('.content-display');
+    if (right) highlightSymbols(right);
+  });
+      // 동적 변경 감시: 컨텐츠가 바뀔 때마다 재적용
+      const targets = [
+        document.querySelector('.content-display'),
+        document.querySelector('.page__content'),
+        document.body // 단일 페이지에서 누락 방지
+      ].filter(Boolean);
+  
+      targets.forEach(el => highlightSymbols(el));
+
+      targets.forEach(el => {
+        const mo = new MutationObserver(() => highlightSymbols(el));
+        mo.observe(el, { childList: true, subtree: true });
+      });
+})();
+

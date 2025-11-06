@@ -92,6 +92,8 @@ def main():
                     # 수정일과 키워드만 업데이트
                     _, updated = get_file_dates(full_path)
                     existing[rel_path]["title"] = title
+                    existing[rel_path]["category"] = category
+                    existing[rel_path]["category2"] = category2
                     existing[rel_path]["updated"] = updated
                     existing[rel_path]["keywords"] = keywords
     

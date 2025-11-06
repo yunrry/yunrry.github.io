@@ -627,3 +627,20 @@ body nav.pagination {
       padding-right: 50px;
     }
   }
+
+
+  /* ✔/✘ 전역 스타일 */
+.check {
+  color: #9bd6bd;
+  font-weight: 700;
+  padding: 0 0.5em;
+  background: rgba(155,214,189,0.08);
+  border-radius: 3px;
+}
+.cross {
+  color: #ff6b6b;
+  font-weight: 700;
+  padding: 0 0.1em;
+  background: rgba(250, 88, 96, 0.08);
+  border-radius: 3px;
+}

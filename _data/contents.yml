@@ -1,3 +1,41 @@
+- path: assets/contents/algorithm/leetcode/300-dp.md
+  title: 'LeetCode 300: Longest Increasing Subsequence'
+  category: algorithm
+  category2: leetcode
+  created: '2025-11-06'
+  updated: '2025-11-06'
+  keywords:
+  - LeetCode
+  - DP
+  - BinarySearch
+  - LIS
+  - Java
+  - 최적화
+- path: assets/contents/algorithm/leetcode/322-dp.md
+  title: 'LeetCode 322: Coin Change'
+  category: algorithm
+  category2: leetcode
+  created: '2025-11-06'
+  updated: '2025-11-06'
+  keywords:
+  - LeetCode
+  - DP
+  - CoinChange
+  - UnboundedKnapsack
+  - Java
+- path: assets/contents/algorithm/leetcode/322.md
+  title: 'LeetCode 518: Coin Change II'
+  category: algorithm
+  category2: leetcode
+  created: '2025-11-06'
+  updated: '2025-11-06'
+  keywords:
+  - LeetCode
+  - DP
+  - CoinChange
+  - 조합
+  - Java
+  - 중복제거
 - path: assets/contents/algorithm/baekjoon/2579-dp.md
   title: '백준 2579: 계단 오르기'
   category: algorithm
@@ -15,10 +53,36 @@
 - path: assets/contents/tools/ai/algorithm-problem-write-up-prompt.md
   title: 알고리즘 문제풀이 정리 프롬프트
   category: tools
-  category2: ''
+  category2: ai
   created: '2025-11-05'
   updated: '2025-11-05'
   keywords: []
+- path: assets/contents/algorithm/baekjoon/1463-dp.md
+  title: '백준 1463: 1로 만들기'
+  category: algorithm
+  category2: baekjoon
+  created: '2025-11-05'
+  updated: '2025-11-05'
+  keywords:
+  - 백준
+  - DP
+  - 동적계획법
+  - BOJ1463
+  - Java
+  - 알고리즘
+- path: assets/contents/algorithm/baekjoon/9095-dp.md
+  title: '백준 9095: 1, 2, 3 더하기'
+  category: algorithm
+  category2: baekjoon
+  created: '2025-11-05'
+  updated: '2025-11-05'
+  keywords:
+  - 백준
+  - DP
+  - 동적계획법
+  - BOJ9095
+  - Java
+  - 조합론
 - path: assets/contents/cs/sql-ddl.md
   title: DDL/DML/DCL
   category: cs
@@ -164,120 +228,140 @@
   created: '2025-10-20'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-get-post.md
   title: 6. GET vs POST
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-proxy.md
   title: 11. 프록시 (Proxy)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-dns.md
   title: 8. DNS (Domain Name System)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-19'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-cookie-session-token.md
   title: 7. 쿠키 vs 세션 vs 토큰
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-handshake.md
   title: 4. 3-Way Handshake & 4-Way Handshake
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-http-https.md
   title: 5. HTTP vs HTTPS
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-tcp-ip.md
   title: 2. TCP/IP 4계층
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-firewall.md
   title: 13. 방화벽 (Firewall)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-cdn.md
   title: 12. CDN (Content Delivery Network)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-udp.md
   title: 3. TCP vs UDP
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-ip-address.md
   title: 10. IP 주소 (IPv4 / IPv6 & 서브넷)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-loadbalancer.md
   title: 네트워크 완벽 정리 - 로드밸런서 & IP 주소
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/network-vpn.md
   title: 14. VPN (Virtual Private Network)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/algorithm-exam.md
   title: Algorithm 실기 기출 유형
   category: cs
   created: '2025-10-18'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/time-complexity.md
   title: 시간복잡도 기초
   category: cs
   created: '2025-10-18'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/binary-search.md
   title: 이진 탐색 (Binary Search)
   category: cs
   created: '2025-10-18'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/algorithm-sorting.md
   title: 정렬 알고리즘
   category: cs
   created: '2025-10-18'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/algorithm/floyd-warshall-problems.md
   title: 플로이드-워셜 유사 문제 모음
   category: algorithm
   created: '2025-10-17'
   updated: '2025-10-24'
   keywords: []
+  category2: floyd-warshall-problems.md
 - path: assets/contents/algorithm/floyd-warshall.md
   title: 플로이드-워셜 (Floyd-Warshall) 알고리즘
   category: algorithm
   created: '2025-10-17'
   updated: '2025-10-17'
   keywords: []
+  category2: floyd-warshall.md
 - path: assets/contents/algorithm/array-string.md
   title: 배열과 문자열 조작
   category: algorithm
@@ -289,84 +373,98 @@
   - 성능최적화
   - LeetCode
   - 백준
+  category2: array-string.md
 - path: assets/contents/cs/array-linkedlist.md
   title: 📌 배열 Array
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/sql-grammer.md
   title: SQL 기본 문법
   category: cs
   created: '2025-10-16'
   updated: '2025-11-05'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/data-structure-interview.md
   title: 자료구조 면접/서술
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/view.md
   title: 뷰(View)
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/sub-query.md
   title: 서브쿼리
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/stack-queue-tree.md
   title: 스택, 큐, 트리
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/constraints.md
   title: 제약조건 Constraints
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/group-by.md
   title: GROUP BY & 집계함수
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/index.md
   title: 인덱스 Index
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/sql-interview.md
   title: Sql & DB 면접 필수 개념
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/join.md
   title: JOIN 연산
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/transaction.md
   title: 트랜잭션
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
+  category2: ''
 - path: assets/contents/cs/normalize.md
   title: 정규화
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
+  category2: ''
 - path: assets/contents/algorithm/dynamic.md
   title: 동적계획법 (Dynamic Programming)
   category: algorithm
@@ -379,6 +477,7 @@
   - 최장공통부분수열
   - 알고리즘
   - 코딩테스트
+  category2: dynamic.md
 - path: assets/contents/algorithm/arraylist-vs-linkedlist.md
   title: ArrayList vs LinkedList
   category: algorithm
@@ -388,6 +487,7 @@
   - 알고리즘
   - 코딩테스트
   - 면접준비
+  category2: arraylist-vs-linkedlist.md
 - path: assets/contents/algorithm/graph.md
   title: 그래프 탐색
   category: algorithm
@@ -400,17 +500,19 @@
   - PriorityQueue
   - 알고리즘
   - 코딩테스트
+  category2: graph.md
 - path: assets/contents/cs/network-osi.md
   title: 1. OSI 7계층
   category: cs
   created: '2025-10-10'
   updated: '2025-10-24'
   keywords: []
+  category2: ''
 - path: assets/contents/algorithm/programmers-64063.md
   title: '프로그래머스: 호텔 방 배정 (Level 4)'
   category: algorithm
   created: '2025-10-10'
-  updated: '2025-10-24'
+  updated: '2025-11-05'
   keywords:
   - UnionFind
   - PathCompression
@@ -422,6 +524,7 @@
   - 재귀
   - 경로압축
   - 호텔방배정
+  category2: programmers-64063.md
 - path: assets/contents/algorithm/recursion.md
   title: 재귀와 완전탐색
   category: algorithm
@@ -433,6 +536,7 @@
   - NQueen
   - 알고리즘
   - 코딩테스트
+  category2: recursion.md
 - path: assets/contents/algorithm/sorting.md
   title: 정렬과 탐색
   category: algorithm
@@ -444,6 +548,7 @@
   - Comparator
   - SlidingWindow
   - 파라메트릭서치
+  category2: sorting.md
 - path: assets/contents/algorithm/greedy.md
   title: 그리디 & 구현
   category: algorithm
@@ -456,6 +561,7 @@
   - 문자열
   - 격자
   - 2D배열
+  category2: greedy.md
 - path: assets/contents/algorithm/programmers-42586.md
   title: '프로그래머스: 기능개발 (Level 2)'
   category: algorithm
@@ -469,6 +575,7 @@
   - Math.ceil
   - FIFO
   - Level2
+  category2: programmers-42586.md
 - path: assets/contents/algorithm/leetcode-862.md
   title: LeetCode 862. Shortest Subarray with Sum at Least K
   category: algorithm
@@ -481,6 +588,7 @@
   - LeetCodeHard
   - 최적화
   - O(n)알고리즘
+  category2: leetcode-862.md
 - path: assets/contents/algorithm/leetcode-239.md
   title: LeetCode 239. Sliding Window Maximum
   category: algorithm
@@ -491,6 +599,7 @@
   - Hard난이도
   - 코딩테스트
   - 자료구조응용
+  category2: leetcode-239.md
 - path: assets/contents/algorithm/leetcode-739.md
   title: LeetCode 739. Daily Temperatures
   category: algorithm
@@ -501,6 +610,7 @@
   - 코딩테스트
   - 스택활용
   - 패턴인식
+  category2: leetcode-739.md
 - path: assets/contents/algorithm/leetcode-155.md
   title: LeetCode 155. Min Stack
   category: algorithm
@@ -512,6 +622,7 @@
   - 코딩테스트
   - 자료구조
   - 성능개선
+  category2: leetcode-155.md
 - path: assets/contents/algorithm/leetcode-150.md
   title: LeetCode 150. Evaluate Reverse Polish Notation
   category: algorithm
@@ -522,6 +633,7 @@
   - 자료구조
   - LeetCodeMedium
   - 코딩테스트
+  category2: leetcode-150.md
 - path: assets/contents/algorithm/leetcode-84.md
   title: LeetCode 84. Largest Rectangle in Histogram
   category: algorithm
@@ -532,6 +644,7 @@
   - 코딩테스트
   - Hard
   - 최적화
+  category2: leetcode-84.md
 - path: assets/contents/algorithm/leetcode-933.md
   title: LeetCode 933. Number of Recent Calls
   category: algorithm
@@ -542,6 +655,7 @@
   - 코딩테스트
   - 실시간처리
   - 윈도우관리
+  category2: leetcode-933.md
 - path: assets/contents/algorithm/leetcode-20.md
   title: LeetCode 20. Valid Parentheses
   category: algorithm
@@ -549,6 +663,7 @@
   updated: '2025-10-24'
   keywords:
   - 자료구조
+  category2: leetcode-20.md
 - path: assets/contents/algorithm/leetcode-707.md
   title: 'LeetCode 707: Design Linked List 풀이'
   category: algorithm
@@ -561,6 +676,7 @@
   - DataStructure
   - Medium
   - 포인터조작
+  category2: leetcode-707.md
 - path: assets/contents/algorithm/leetcode-21.md
   title: 'LeetCode 21: Merge Two Sorted Lists 풀이'
   category: algorithm
@@ -573,6 +689,7 @@
   - TwoPointer
   - Easy
   - DummyNode
+  category2: leetcode-21.md
 - path: assets/contents/algorithm/baekjoon-11720.md
   title: '백준 11720: 숫자의 합 풀이'
   category: algorithm
@@ -584,6 +701,7 @@
   - charAt
   - Bronze4
   - ASCII
+  category2: baekjoon-11720.md
 - path: assets/contents/algorithm/baekjoon-10953.md
   title: '백준 10953: A+B - 6 풀이'
   category: algorithm
@@ -595,6 +713,7 @@
   - BufferedReader
   - StringBuilder
   - Bronze3
+  category2: baekjoon-10953.md
 - path: assets/contents/algorithm/leetcode-344.md
   title: 'LeetCode 344: Reverse String 풀이'
   category: algorithm
@@ -606,6 +725,7 @@
   - String
   - Easy
   - InPlace
+  category2: leetcode-344.md
 - path: assets/contents/algorithm/leetcode-387.md
   title: 'LeetCode 387: First Unique Character in a String 풀이'
   category: algorithm
@@ -618,6 +738,7 @@
   - String
   - Easy
   - 배열
+  category2: leetcode-387.md
 - path: assets/contents/algorithm/leetcode-151.md
   title: 'LeetCode 151: Reverse Words in a String 풀이'
   category: algorithm
@@ -630,6 +751,7 @@
   - Split
   - Medium
   - 정규식
+  category2: leetcode-151.md
 - path: assets/contents/algorithm/leetcode-141.md
   title: 'LeetCode 141: Linked List Cycle 풀이'
   category: algorithm
@@ -642,6 +764,7 @@
   - TwoPointer
   - Easy
   - FloydAlgorithm
+  category2: leetcode-141.md
 - path: assets/contents/algorithm/leetcode-242.md
   title: 'LeetCode 242: Valid Anagram 풀이'
   category: algorithm
@@ -654,6 +777,7 @@
   - Sorting
   - String
   - Easy
+  category2: leetcode-242.md
 - path: assets/contents/algorithm/leetcode-121.md
   title: 'LeetCode 121: Best Time to Buy and Sell Stock 풀이'
   category: algorithm
@@ -663,6 +787,7 @@
   - Easy
   - 배열순회
   - 최적화
+  category2: leetcode-121.md
 - path: assets/contents/algorithm/leetcode-19.md
   title: 'LeetCode 19: Remove Nth Node From End of List 풀이'
   category: algorithm
@@ -674,6 +799,7 @@
   - TwoPointer
   - Medium
   - DummyNode
+  category2: leetcode-19.md
 - path: assets/contents/algorithm/leetcode-206.md
   title: 'LeetCode 206: Reverse Linked List 풀이'
   category: algorithm
@@ -685,6 +811,7 @@
   - Reverse
   - Easy
   - 포인터조작
+  category2: leetcode-206.md
 - path: assets/contents/algorithm/leetcode-125.md
   title: 'LeetCode 125: Valid Palindrome 풀이'
   category: algorithm
@@ -697,6 +824,7 @@
   - String
   - Easy
   - 문자열처리
+  category2: leetcode-125.md
 - path: assets/contents/algorithm/leetcode-443.md
   title: 'LeetCode 443: String Compression 풀이'
   category: algorithm
@@ -711,6 +839,7 @@
   - Compression
   - Medium
   - StringBuilder
+  category2: leetcode-443.md
 - path: assets/contents/algorithm/leetcode-88.md
   title: 'LeetCode 88: Merge Sorted Array'
   category: algorithm
@@ -724,6 +853,7 @@
   - 코딩테스트
   - Java
   - InPlace
+  category2: leetcode-88.md
 - path: assets/contents/algorithm/hashmap-hashset.md
   title: HashMap, HashSet
   category: algorithm
@@ -734,6 +864,7 @@
   - 시간복잡도
   - 해시충돌
   - 면접준비
+  category2: hashmap-hashset.md
 - path: assets/contents/algorithm/stack-queue_deque.md
   title: Stack, Queue, Deque
   category: algorithm
@@ -743,9 +874,11 @@
   - BFS
   - DFS
   - ArrayDeque
+  category2: stack-queue_deque.md
 - path: assets/contents/algorithm/leetcode-26.md
   title: leetcode-26.md
   category: algorithm
   created: '2025-10-01'
   updated: '2025-10-01'
   keywords: []
+  category2: leetcode-26.md

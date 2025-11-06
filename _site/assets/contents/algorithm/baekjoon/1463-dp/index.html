@@ -1,0 +1,403 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>백준 1463: 1로 만들기 - Second Brain</title>
+<meta name="description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+  <meta name="author" content="yunYoung e">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Second Brain">
+<meta property="og:title" content="백준 1463: 1로 만들기">
+<meta property="og:url" content="http://localhost:4000/assets/contents/algorithm/baekjoon/1463-dp/">
+
+
+  <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/assets/contents/algorithm/baekjoon/1463-dp/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "yunYoung e",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Second Brain Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+  
+    <script src="/assets/js/custom.js"></script>
+  
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Second Brain
+          <span class="site-subtitle">뇌정리노트</span>
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="백준-1463-1로-만들기">백준 1463: 1로 만들기</h1>
+
+<h2 id="-결과">📊 결과</h2>
+<ul>
+  <li><strong>소요시간:</strong> (기록 필요)</li>
+  <li><strong>결과:</strong> 통과</li>
+  <li><strong>메모리:</strong> 18140 KB</li>
+  <li><strong>시간:</strong> 120 ms</li>
+</ul>
+
+<h2 id="-내-코드-try-1">💻 내 코드 (Try 1)</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        <span class="n">dp</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">%</span><span class="mi">3</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
+                <span class="kt">int</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">/</span><span class="mi">3</span><span class="o">];</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
+                    <span class="n">prev</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">/</span><span class="mi">3</span><span class="o">],</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">/</span><span class="mi">2</span><span class="o">]);</span>
+                <span class="o">}</span>
+                <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">prev</span><span class="o">,</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
+                <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">/</span><span class="mi">2</span><span class="o">],</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="no">N</span><span class="o">]);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="-평가">📝 평가</h2>
+
+<h3 id="-잘한-점">✔ 잘한 점</h3>
+
+<ol>
+  <li><strong>Bottom-up DP 접근</strong>
+    <ul>
+      <li>1부터 N까지 순차적으로 최솟값 계산</li>
+      <li>메모이제이션으로 중복 계산 방지</li>
+    </ul>
+  </li>
+  <li><strong>세 가지 연산 모두 고려</strong>
+    <ul>
+      <li>3으로 나누기, 2로 나누기, 1 빼기</li>
+      <li>각 경우의 최솟값 선택</li>
+    </ul>
+  </li>
+  <li><strong>조건 분기 처리</strong>
+    <ul>
+      <li>나눗셈 가능 여부 체크</li>
+      <li>6의 배수(2와 3 모두) 처리</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="-개선점">✦ 개선점</h2>
+
+<h3 id="1-과도한-조건-분기">1. 과도한 조건 분기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✘ 복잡한 if-else 체인</span>
+<span class="k">if</span><span class="o">(</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">%</span><span class="mi">3</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
+    <span class="kt">int</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">/</span><span class="mi">3</span><span class="o">];</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">/</span><span class="mi">3</span><span class="o">],</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">/</span><span class="mi">2</span><span class="o">]);</span>
+    <span class="o">}</span>
+    <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">prev</span><span class="o">,</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
+    <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">/</span><span class="mi">2</span><span class="o">],</span> <span class="n">dp</span><span class="o">[</span><span class="n">cur</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>모든 경우를 통합하면 더 간결하다.</p>
+
+<h3 id="2-불필요한-변수">2. 불필요한 변수</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>  <span class="c1">// i를 그대로 사용 가능</span>
+</code></pre></div></div>
+
+<h3 id="3-가독성">3. 가독성</h3>
+
+<p>중첩된 조건문으로 로직 파악이 어렵다.</p>
+
+<hr />
+
+<h2 id="-최적화된-풀이">✨ 최적화된 풀이</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="c1">// 기본: 1 빼기</span>
+            <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+            
+            <span class="c1">// 2로 나누기</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+                <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+            
+            <span class="c1">// 3으로 나누기</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+                <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">/</span><span class="mi">3</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="no">N</span><span class="o">]);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>변경 사항:</strong></p>
+<ul>
+  <li>✔ 기본값을 <code class="language-plaintext highlighter-rouge">dp[i-1] + 1</code>로 설정</li>
+  <li>✔ 나눗셈 가능할 때만 비교</li>
+  <li>✔ 중첩 조건문 제거</li>
+  <li>✔ 코드 길이 50% 감소</li>
+</ul>
+
+<hr />
+
+<h2 id="성능-비교">성능 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방법</th>
+      <th>시간복잡도</th>
+      <th>공간복잡도</th>
+      <th>코드 길이</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>원본</strong></td>
+      <td>O(N)</td>
+      <td>O(N)</td>
+      <td>25줄</td>
+    </tr>
+    <tr>
+      <td><strong>개선</strong></td>
+      <td>O(N)</td>
+      <td>O(N)</td>
+      <td>15줄</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-핵심-인사이트">💡 핵심 인사이트</h2>
+
+<h3 id="dp-점화식">DP 점화식</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dp[i] = 1 + min(
+    dp[i-1],           // 1 빼기
+    dp[i/2] (i%2==0),  // 2로 나누기
+    dp[i/3] (i%3==0)   // 3으로 나누기
+)
+</code></pre></div></div>
+
+<h3 id="greedy가-안-되는-이유">Greedy가 안 되는 이유</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10 → 9 → 3 → 1 (3번)  ✔
+10 → 5 → 4 → 2 → 1 (4번)  ✘
+</code></pre></div></div>
+
+<p>항상 나누기가 최선은 아니다. 모든 경로를 고려해야 한다.</p>
+
+<h3 id="설계-원칙">설계 원칙</h3>
+
+<ol>
+  <li>기본 연산(1 빼기)을 초기값으로</li>
+  <li>추가 연산 가능 시 최솟값 갱신</li>
+  <li>조건 독립적으로 처리</li>
+</ol>
+
+<hr />
+
+<h2 id="-관련-개념">📚 관련 개념</h2>
+
+<ul>
+  <li><strong>동적 계획법 (DP)</strong>: Bottom-up 방식</li>
+  <li><strong>최적 부분 구조</strong>: 작은 문제의 최적해가 큰 문제의 최적해에 포함</li>
+  <li><strong>메모이제이션</strong>: 중복 계산 방지</li>
+</ul>
+
+<hr />
+
+<h2 id="-다음-단계">🎓 다음 단계</h2>
+
+<h3 id="유사-문제">유사 문제</h3>
+<ol>
+  <li><a href="https://www.acmicpc.net/problem/2579">백준 2579: 계단 오르기</a></li>
+  <li><a href="https://www.acmicpc.net/problem/1003">백준 1003: 피보나치 함수</a></li>
+  <li><a href="https://www.acmicpc.net/problem/9095">백준 9095: 1, 2, 3 더하기</a></li>
+</ol>
+
+<h3 id="연습-포인트">연습 포인트</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />조건 분기 최소화 연습</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />DP 점화식 명확히 정의</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Greedy vs DP 구분</li>
+</ul>
+
+<hr />
+
+<h2 id="️-keywords">🏷️ Keywords</h2>
+<p><code class="language-plaintext highlighter-rouge">#백준</code> <code class="language-plaintext highlighter-rouge">#DP</code> <code class="language-plaintext highlighter-rouge">#동적계획법</code> <code class="language-plaintext highlighter-rouge">#BOJ1463</code> <code class="language-plaintext highlighter-rouge">#Java</code> <code class="language-plaintext highlighter-rouge">#알고리즘</code></p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 yunYoung e. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

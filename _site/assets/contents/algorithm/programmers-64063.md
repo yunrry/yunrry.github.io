@@ -36,7 +36,7 @@ class Solution {
         return room_number;
     }
 }
-````
+```
 
 ---
 

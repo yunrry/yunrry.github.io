@@ -21,7 +21,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Second Brain">
 <meta property="og:title" content="Backend">
-<meta property="og:url" content="http://0.0.0.0:4000/categories/dev/backend/">
+<meta property="og:url" content="http://localhost:4000/categories/dev/backend/">
 
 
   <meta property="og:description" content="2026년 목표: 개발로 월급받기추가 정보 없음">
@@ -37,7 +37,7 @@
 
 
 
-<link rel="canonical" href="http://0.0.0.0:4000/categories/dev/backend/">
+<link rel="canonical" href="http://localhost:4000/categories/dev/backend/">
 
 
 
@@ -48,7 +48,7 @@
     
       "@type": "Person",
       "name": "yunYoung e",
-      "url": "http://0.0.0.0:4000/"
+      "url": "http://localhost:4000/"
     
   }
 </script>
@@ -978,6 +978,7 @@
   transition: border-color 0.3s ease, color 0.3s ease;
 }
 
+
 .content-display h2 {
   font-size: 1.6em;
   margin-top: 40px;
@@ -1345,7 +1346,7 @@ a[data-content]:hover {
 .cross {
   color: #ff6b6b;
   font-weight: 700;
-  margin: 0 0.5em; /* 좌우 여백 */
+  margin: 0 0.2em; /* 좌우 여백 */
   background: rgba(250, 88, 96, 0.08);
   border-radius: 3px;
 }
@@ -1564,7 +1565,7 @@ document.body.addEventListener('click', function(e) {
 
 function highlightSymbols(container) {
   if (!container) return;
-  const forbiddenTags = new Set(['SCRIPT', 'STYLE', 'A', 'TEXTAREA', 'INPUT', 'BUTTON', 'SVG']);
+  const forbiddenTags = new Set(['STYLE', 'INPUT', 'BUTTON', 'SVG']);
 
   const walker = document.createTreeWalker(
     container,
