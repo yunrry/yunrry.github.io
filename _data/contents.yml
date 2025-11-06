@@ -36,6 +36,13 @@
   - 조합
   - Java
   - 중복제거
+- path: assets/contents/cs/ITexam.md
+  title: 정보처리기사 키워드 130
+  category: cs
+  category2: ''
+  created: '2025-11-06'
+  updated: '2025-11-06'
+  keywords: []
 - path: assets/contents/algorithm/baekjoon/2579-dp.md
   title: '백준 2579: 계단 오르기'
   category: algorithm
@@ -649,7 +656,7 @@
   title: LeetCode 933. Number of Recent Calls
   category: algorithm
   created: '2025-10-05'
-  updated: '2025-10-24'
+  updated: '2025-11-06'
   keywords:
   - LeetCodeEasy
   - 코딩테스트

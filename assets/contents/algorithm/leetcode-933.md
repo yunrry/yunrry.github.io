@@ -532,4 +532,4 @@ return deque.size();  // 자동 관리!
 
 `#Queue` `#SlidingWindow` `#TimeWindow` `#DataStream` `#FIFO` `#Deque` `#슬라이딩윈도우`
 `#시계열데이터` `#RateLimiting` `#RecentCounter` `#AmortizedO1` `#EventProcessing`  
-`#LeetCodeEasy` `#코딩테스트` `#실시간처리` `#윈도우관리`  
+`#LeetCodeEasy` `#코딩테스트` `#실시간처리` `#윈도우관리`   
