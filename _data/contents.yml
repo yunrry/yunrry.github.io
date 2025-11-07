@@ -33,12 +33,54 @@
   created: '2025-11-08'
   updated: '2025-11-08'
   keywords: []
+- path: assets/contents/cs/ITctf/join.md
+  title: 조인(JOIN) 종류
+  category: cs
+  category2: ITctf
+  created: '2025-11-08'
+  updated: '2025-11-08'
+  keywords: []
+- path: assets/contents/cs/ITctf/attacks.md
+  title: 사이버 공격 기법 암기
+  category: cs
+  category2: ITctf
+  created: '2025-11-08'
+  updated: '2025-11-08'
+  keywords: []
+- path: assets/contents/cs/ITctf/os.md
+  title: OS 운영체제
+  category: cs
+  category2: ITctf
+  created: '2025-11-08'
+  updated: '2025-11-08'
+  keywords: []
+- path: assets/contents/cs/ITctf/db-tech.md
+  title: db-tech.md
+  category: cs
+  category2: ITctf
+  created: '2025-11-08'
+  updated: '2025-11-08'
+  keywords: []
+- path: assets/contents/cs/ITctf/hardware.md
+  title: hardware.md
+  category: cs
+  category2: ITctf
+  created: '2025-11-08'
+  updated: '2025-11-08'
+  keywords: []
+- path: assets/contents/cs/ITctf/software-tech.md
+  title: software-tech.md
+  category: cs
+  category2: ITctf
+  created: '2025-11-08'
+  updated: '2025-11-08'
+  keywords: []
 - path: assets/contents/cs/ITctf/python.md
-  title: Python List 파싱 문법 정리
+  title: Python
   category: cs
   category2: ITctf
   created: '2025-11-07'
-  updated: '2025-11-07'
+  updated: '2025-11-08'
   keywords: []
 - path: assets/contents/cs/ITctf/terminology.md
   title: 용어모음
