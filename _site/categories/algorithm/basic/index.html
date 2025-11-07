@@ -1336,7 +1336,7 @@
   flex: 1;
   padding-left: 20px;
   position: relative;
-  min-width: max-content;
+  min-width: 100%;
 }
 
 .split-header {
@@ -1374,8 +1374,9 @@
 .main-content {
   width: 100%;
   max-width: 100%;
+  min-width: 100%;       
   word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .content-display pre,
@@ -1401,6 +1402,12 @@
   padding-left: 12px;
   transition: border-color 0.3s ease, color 0.3s ease;
 }
+
+.content-display img,
+.main-content img { max-width: 100%; height: auto; }
+
+.content-display table,
+.main-content table { display: block; max-width: 100%; overflow-x: auto; }
 
 /* ============================================
    TOC (Table of Contents)

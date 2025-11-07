@@ -151,9 +151,18 @@
 </script>
 
 <style>
-.inline-answer{ margin:4px 0; display:flex; gap:2px; align-items:center; }
+.inline-answer{ margin:2px; display:flex; gap:2px; align-items:center; min-width:50px; max-width:410px; }
 .inline-answer input{ padding:6px 10px; min-width:40px; max-width:400px;}
 .inline-answer button{ padding:6px 10px; }
+.answer-box{
+  width: 100%;
+  max-width: 500px;   /* 원하는 가로길이 */
+  margin: 8px 0;
+}
+.answer-box > div[markdown="1"]{
+  box-sizing: border-box;
+  width: 100%;
+}
 </style>
 
 <h1 id="정보처리기사-키워드-130">정보처리기사 키워드 130</h1>
@@ -163,7 +172,7 @@
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -180,7 +189,7 @@ ___ <br />
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -195,16 +204,14 @@ ___ <br />
 
 <p><strong>3. 요구사항 확인에 대한 다음 설명에서 괄호 1, 2 에 들어갈 알맞은 용어를 쓰시오</strong></p>
 <ul>
-  <li>(1) 요구사항은 시스템이 무엇을 하는지, 어떤 기능을 하는지 등 사용자가 시스템을 통해 제공받기를 원하는 <br />
-기능이나 시스템이 반드시 수행해야 하는 기능을 의미한다.</li>
-  <li>(2) 요구사항은 품질이나 제약사항과 관련된 요구사항으로, 시스템의 장비 구성, 성능 인터페이스, 테스트,<br />
-보안 등의 요구사항을 말한다.</li>
+  <li>(1) 요구사항은 시스템이 무엇을 하는지, 어떤 기능을 하는지 등 사용자가 시스템을 통해 제공받기를 원하는 기능이나 시스템이 반드시 수행해야 하는 기능을 의미한다.</li>
+  <li>(2) 요구사항은 품질이나 제약사항과 관련된 요구사항으로, 시스템의 장비 구성, 성능 인터페이스, 테스트, 보안 등의 요구사항을 말한다.</li>
 </ul>
 <form class="inline-answer">
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -217,15 +224,16 @@ ___ <br />
 <hr />
 <p><br /> <br /></p>
 
-<p><strong>4. UML(Unified Modeling Language)에 관한 다음 설명에서 괄호에 공통으로<br /> 들어갈 알맞은 용어를 쓰시오.</strong>
-( )다이어그램은 UML 다이어그램 중 객체(Object)들을 (  )로 추상화하여 표현하는 다이어그램으로<br />
-대표적인 구조적 다이어그램이다. (  )는 각각의 객체들이 갖는 속성과 메소드를 표현한 것으로 3개의<br />
-구획으로 나눠 이름, 속성, 메소드를 표기한다.</p>
+<p><strong>4. UML(Unified Modeling Language)에 관한 다음 설명에서 괄호에 공통으로 들어갈 알맞은 용어를 쓰시오.</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>( )다이어그램은 UML 다이어그램 중 객체(Object)들을 (  )로 추상화하여 표현하는 다이어그램으로   
+대표적인 구조적 다이어그램이다. (  )는 각각의 객체들이 갖는 속성과 메소드를 표현한 것으로 3개의   
+구획으로 나눠 이름, 속성, 메소드를 표기한다.   
+</code></pre></div></div>
 <form class="inline-answer">
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -238,22 +246,22 @@ ___ <br />
 
 <hr />
 <p><strong>5. UML에 대한 다음 설명에서 괄호(1)~(3)에 들어갈 알맞은 용어를 쓰시오.</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UML은 시스템 분석, 설계, 구현 등 시스템 개발 과정에서 시스템 개발자와 고객 또는 개발자 상호 간의  
- 의사소통이 원활하게 이루어지도록 표준화한 대표적인 객체지향 모델링 언어로, 사물, (1),  
-다이어그램으로 이루어져 있다.  
-- ( 1 )는 사물과 사물 사이의 연관성을 표현하는 것으로, 연관, 집합, 포함, 일반화 등 다양한 형태의 
-( 1 ) 가 존재한다.
--  ( 2 )는 UML에 표현되는 사물의 하나로, 객체가 갖는 속성과 동작을 표현한다. 일반적으로  
- 직사각형으로 표현하며, 직사각형 안에 이름, 속성, 동작을 표기한다.
--  ( 3 )는 ( 2 )와 같은 UML에 표현되는 사물의 하나로, ( 2 )나 컴포넌트의 동작을 모아놓은   
-것이며, 외부적으로 가시화되는 행동을 표현한다. 단독으로 사용하는 경우는 없으며 ( 3 )구현을 위한   
-( 2 )또는 컴포넌트와 함께 사용된다.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UML은 시스템 분석, 설계, 구현 등 시스템 개발 과정에서 시스템 개발자와 고객 또는 개발자 상호 간의    
+ 의사소통이 원활하게 이루어지도록 표준화한 대표적인 객체지향 모델링 언어로, 사물, (1),    
+다이어그램으로 이루어져 있다.    
+- ( 1 )는 사물과 사물 사이의 연관성을 표현하는 것으로, 연관, 집합, 포함, 일반화 등 다양한 형태의   
+( 1 ) 가 존재한다.  
+-  ( 2 )는 UML에 표현되는 사물의 하나로, 객체가 갖는 속성과 동작을 표현한다. 일반적으로    
+ 직사각형으로 표현하며, 직사각형 안에 이름, 속성, 동작을 표기한다.  
+-  ( 3 )는 ( 2 )와 같은 UML에 표현되는 사물의 하나로, ( 2 )나 컴포넌트의 동작을 모아놓은     
+것이며, 외부적으로 가시화되는 행동을 표현한다. 단독으로 사용하는 경우는 없으며 ( 3 )구현을 위한    
+( 2 )또는 컴포넌트와 함께 사용된다.  
 </code></pre></div></div>
 <form class="inline-answer">
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -266,7 +274,7 @@ ___ <br />
 
 <hr />
 
-<p><strong>6. UML의 관계(Relationships)에 관한 다음 설명에서 각 번호 1, 2 에 들어갈<br />알맞은 용어를 찾아 쓰시오.</strong></p>
+<p><strong>6. UML의 관계(Relationships)에 관한 다음 설명에서 각 번호 1, 2 에 들어갈 알맞은 용어를 찾아 쓰시오.</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>관계(Relationships)는 사물과 사물 사이의 연관성을 표현하는 것이다.
 (1) - 하나의 사물이 다른 사물에 포함되어 있는 관계로, 전체와 부분으로 구분되어지며 서로 독립적이다.
 (2) - 상위 모듈이 하위 모듈보다 더 일반적인 개념을 가지고 있으며, 하위 모듈이 상위 모듈보다 더  
@@ -281,7 +289,7 @@ ___ <br />
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -296,11 +304,12 @@ ___
 **7. UML을 이용한 다이어그램 중 다음 그림에 해당하는 다이어그램을 쓰시오**
 
 ![ITexam-7](/assets/images/ITexam-7.png)
+<!-- <img src="/assets/images/ITexam-7.png" alt="ITexam-7" style="width:60%;"> -->
 <form class="inline-answer">
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -312,12 +321,12 @@ ___
 <br /> <br />
 ___   
 
-**8. LOC 기법에 의하여 예측된 총 라인 수가 30,000라인, 개발에 참여할 프로그래머가 5명<br />프로그래머들의 평균 생산성이 월간 300라인일 때 개발에 소요되는 기간을 계산식과 함께 쓰시오 **
+**8. LOC 기법에 의하여 예측된 총 라인 수가 30,000라인, 개발에 참여할 프로그래머가 5명 프로그래머들의 평균 생산성이 월간 300라인일 때 개발에 소요되는 기간을 계산식과 함께 쓰시오.**
 <form class="inline-answer">
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -334,7 +343,7 @@ ___
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -359,7 +368,7 @@ ___
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -373,12 +382,13 @@ ___
 
 
 **11. 다음은 데이터베이스 구축까지의 과정을 나열한 것이다. 괄호에 들어갈 알맞은 용어를 쓰시오.**
-![ITexam-7](/assets/images/ITexam-11.png)
+
+![ITexam-11](/assets/images/ITexam-11.png)
 <form class="inline-answer">
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -401,7 +411,7 @@ ___
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -427,7 +437,7 @@ ___
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -438,19 +448,20 @@ ___
 </details>
 <br /> <br />
 
-'#카디널리티' '#Table'
+`#카디널리티` `#Table`
 
 ___   
 
-**14. 다음 E-R 다이어그램을 참고하여 괄호(1~5)의 설명의 적합한 요소를 찾아 기호(ㄱ~ㅁ)으로 쓰시오.**
+**14. 다음 E-R 다이어그램을 참고하여 괄호(1\~5)의 설명의 적합한 요소를 찾아 기호(ㄱ\~ㅁ)으로 쓰시오.**
 
-![ITexam-7](/assets/images/ITexam-14.png)
+![ITexam-14](/assets/images/ITexam-14.png)
+
 
 <form class="inline-answer">
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -461,7 +472,7 @@ ___
 </details>
 <br /> <br />
 
-'#E-R'
+`#E-R`
 
 ___   
 
@@ -479,7 +490,7 @@ ___
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -490,7 +501,7 @@ ___
 </details>
 <br /> <br />
 
-'#슈퍼키' '#후보키'
+`#슈퍼키` `#후보키`
 
 ___   
 
@@ -514,7 +525,7 @@ ___
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -525,7 +536,7 @@ ___
 </details>
 <br /> <br />
 
-'#관계대수'
+`#관계대수`
 
 ___   
 
@@ -538,7 +549,7 @@ ___
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -549,7 +560,7 @@ ___
 </details>
 <br /> <br />
 
-'#관계대수'
+`#관계대수`
 
 ___   
 
@@ -566,7 +577,7 @@ ___
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -581,13 +592,13 @@ ___
 ___   
 
 
-**19. 데이터의 중복으로 인해 테이블 조작 시 문제가 발생하는 현상을 이상(Anomaly)이라고 한다.<br />이상 중 삭제이상(Deletion Anomaly)에 대해 간략히 서술하시오.**
+**19. 데이터의 중복으로 인해 테이블 조작 시 문제가 발생하는 현상을 이상(Anomaly)이라고 한다. 이상 중 삭제이상(Deletion Anomaly)에 대해 간략히 서술하시오.**
 
 <form class="inline-answer">
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -601,13 +612,13 @@ ___
 
 ___   
 
-**19. 데이터베이스의 이상(Anomaly)의 종류 3가지를 쓰시오.**
+**20. 데이터베이스의 이상(Anomaly)의 종류 3가지를 쓰시오.**
 
 <form class="inline-answer">
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -621,7 +632,7 @@ ___
 
 ___   
 
-**21. 함수적 종속(Functional Dependency)에 대한 다음 설명에서 괄호(1~3)에 들어갈 알맞은<br />용어를 <보기>에서 찾아 기호(ㄱ~ㅁ)로 쓰시오 (단, 테이블 <R>의 속성 '학생'과 '학과'의 밑줄은 키(Key)임을 <br />의미한다.)**
+**21. 함수적 종속(Functional Dependency)에 대한 다음 설명에서 괄호(1\~3)에 들어갈 알맞은 용어를 <보기>에서 찾아 기호(ㄱ\~ㅁ)로 쓰시오 (단, 테이블 <R>의 속성 '학생'과 '학과'의 밑줄은 키(Key)임을 의미한다.)**
 | 학생 | 학과 | 성적 | 학년 |
 |---|---|---|---|
 | 이순신 | 컴퓨터공학 | A+ | 2 |
@@ -647,7 +658,7 @@ Functional Dependency이다.
   <input type="text" placeholder="내 답 입력…" />
 
 </form>
-<details>
+<details class="answer-box">
 <summary>정답</summary>
 <div>
 
@@ -658,10 +669,839 @@ Functional Dependency이다.
 </details>
 <br /> <br />
 
-'#함수적종속' '#FunctionalDependency'
+`#함수적종속` `#FunctionalDependency`
 
 ___   
-</보기></R></R></R></보기></보기>
+
+
+**22. 데이터베이스에 대한 다음 설명에서 괄호에 공통으로 들어갈 알맞은 답을 쓰시오.**
+
+테이블을 만들 때는 이상(Anomaly)을 방지하기 위해 데이터들의 중복성 및 종속성을 배제하는 정규화를 수행한다. 아래 그림은 부분 함수적 종속을 제거하여 제 (  )정규형을 만드는 과정이다.
+
+![ITexam-22](/assets/images/ITexam-22.png)
+
+\<table r="">의 경우, C는 key에 해당하는 A와 B중 A에만 종속되는 부분 함수적 종속이다. 이 문제 해결을 위해 \<table r1="">에서 C를 분리하여 \<table r1="">과 \<table r2="">로 만들면 제 (  )정규형에 해당하는 테이블이 완성된다.
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                        <blockquote>
+                          <p>2</p>
+                        </blockquote>
+                      </div>
+</details>
+<br /> <br />
+
+`#이상` `#정규형`
+
+
+___   
+
+**23. 시스템의 성능을 향상시키고 개발 및 운영의 편의성 등을 높이기 위해 정규화된 데이터 모델을 의도적으로 통합, 중복, 분리하여 정규화 원칙을 위배하는 행위를 가리키는 용어를 쓰시오.**
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                        <blockquote>
+                          <p>반정규화(Denormalization)</p>
+                        </blockquote>
+                      </div>
+</details>
+<br /> <br />
+
+`#데이터베이스`
+___   
+
+**24. 데이터베이스에서 비정규화(Denormalization)의 개념을 서술하시오.**
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                        <blockquote>
+                          <p>시스템의 성능을 향상시키거나 개발 및 운영 편의성 등을 높이기 위해서 정규화된 데이터 모델을 의도적으로 통합, 중복, 분리하여 정규화 원칙을 위배하는 행위이다.</p>
+                        </blockquote>
+                      </div>
+</details>
+<br /> <br />
+
+`#데이터베이스`
+
+___   
+
+**25. 데이터베이스의 상태 변화를 일으키는 트랜잭션(Transaction)의 특성 중 원자성(Atomicity)에 대해 간략히 서술하시오.**
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                        <blockquote>
+                          <p>원자성은 트랜잭션의 연산은 데이터베이스에 반영이 모두 완료되거나 전혀 반영되지 않도록 복구되어야 한다는 특성이다.</p>
+                        </blockquote>
+                      </div>
+</details>
+<br /> <br />
+
+`#데이터베이스` `#트랜잭션`
+___   
+
+**26. 다음은 트랜잭션(Transaction)의 특징이다. 괄호(1,2)에 들어갈 알맍은 특징을 쓰시오.**
+| | |
+|---|---|
+| (1) | 트랜잭션의 연산은 데이터베이스에 모두 반영되도록 완료(Commit)되든지 아니면 전혀 반영되지 않도록 복구(Rollback)되어야 한다. (All or Nothing) |
+| 일관성 | 트랜잭션이 그 실행을 성공적으로 완료하려면 언제나 일관성 있는 데이터베이스 상태로 변환한다.|
+| (2) | 둘 이상의 트랜잭션이 동시에 병행 실행되는 경우 어느 하나의 트랜잭션 실행중에 다른 트랜잭션의 연산이 끼어들 수 없다.|
+| 지속성 | 성공적으로 완료된 트랜잭션의 결과는 시스템이 고장나더라도 영구적으로 반영되어야 한다. |  
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                        <blockquote>
+                          <p>(1): 원자성(Atomicity) (2): 독립성(Isolation)</p>
+                        </blockquote>
+                      </div>
+</details>
+<br /> <br />
+
+`#데이터베이스` `#트랜잭션`
+___   
+
+**27. 다음 설명에서 괄호에 공통으로 들어갈 알맞은 용어를 쓰시오.**
+```
+파일의 구조는 파일을 구성하는 레코드들이 보조기억장치에 편성되는 방식을 의미하는 것으로,
+크게 순차, ( ), 해싱으로 구분한다. ( )파일 구조는 &lt;값, 주소&gt; 쌍으로 구성되는 데이터
+구조를 활용하여 데이터에 접근하는 방식으로, 자기 디스크에서 주로 활용된다.
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                        <blockquote>
+                          <p>색인(Index)</p>
+                        </blockquote>
+                      </div>
+</details>
+<br /> <br />
+
+`#파일구조`
+___   
+
+**28. 시스템 관리와 관련하여 다음의 설명이 의미하는 용어를 쓰시오.**
+```
+A는 한국 IT 보안관제실에서 근무하게 되었다. A는 서비스 운용 중 외부 공격으로 인한 서버다운,
+자연 재해, 시스템 장애 등의 비상 상황에도 고객 응대 서비스를 정상적으로 수행하기 위해 구축한
+시스템을 관리하는 업무를 수행한다. 이 용어는 위와 같은 비상 상황이 발생한 경우 "비상사태 또는
+업무중단 시점부터 업무가 복구되어 다시 정상 가동 될 때까지의 시간"을 의미한다.
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                        <blockquote>
+                          <p>RTO(목표복구시간)</p>
+                        </blockquote>
+                      </div>
+</details>
+<br /> <br />
+
+`#시스템관리`
+___   
+
+**29. 데이터베이스 보안에 관련된 다음 설명에 해당하는 용어를 쓰시오.**
+```
+접근통제는 데이터가 저장된 객체와 이를 사용하려는 주체 사이의 정보 흐름을 제한하는 것이다.
+이러한 접근통제에 관한 기술 중 ( )는 데이터에 접근하는 사용자의 신원에 따라 접근 권한을
+부여하여 제어하는 방식으로, 데이터 소유자가 접근통제 권한을 지정하고 제어한다. 객체를 생성한
+사용자가 생성된 객체에 대한 모든 권한을 부여받고, 부여된 권한을 다른 사용자에게 허가할 수도 있다.
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                        <blockquote>
+                          <p>DAC(임의 접근통제)</p>
+                        </blockquote>
+                      </div>
+</details>
+<br /> <br />
+
+`#데이터베이스` `#보안`
+___   
+
+**30. 다음 설명에 해당하는 DB의 트랜잭션 연산을 <보기>에서 찾아 쓰시오.**
+```
+DBMS는 데이터베이스에 치명적인 손실이 발생했을 때 이를 복구하기 위해 데이터베이스의
+처리 내용이나 이용 상황 등 상태 변화를 시간의 흐름에 따라 기록한 로그를 생성한다.
+- ( 1 ): 데이터베이스가 비정상적으로 종료되었을 때, 디스크에 저장된 로그를 분석하여
+트랜잭션의 시작(start)과 완료(commit)에 대한 기록이 있는 트랜잭션의 작업을 재작업한다. 
+즉 로그를 이용하여 해당 데이터 항목에 대해 이전 값을 이후 값으로 변경하는 연산이다.
+- ( 2 ): 데이터베이스가 비정상적으로 종료되었을 떄, 디스크에 저장된 로그를 분석하여
+트랜잭션의 시작(start)과 완료(commit)에 대한 기록이 없는 트랜잭션들이 작업한
+내용들을 모두 취소한다. 즉 로그를 이용하여 해당 데이터 항목에 대해 이후 값을 예전 값으로
+변경한다.
+```
+<보기>
+```
+- ROLLBACK      - UNDO        - LOG       - COMMIT
+- REDO          - RECOVERY    - BACKUP    - CHECK       
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                            <blockquote>
+                              <p>(1): REDO  (2): UNDO</p>
+                            </blockquote>
+                          </div>
+</details>
+<br /> <br />
+
+`#데이터베이스` `#트랜잭션` `#DB복구` 
+
+___   
+
+**31. SW 인터페이스 구현에 관련된 다음 설명에서 괄호에 공통으로 들어갈 알맞은 용어를 쓰시오.**
+
+웹 페이지의 기본 형식인 HTML의 문법이 각 웹 브라우저에서 상호 호환적이지 못하다는 문제와 SGML의 복잡함을 해결하기 위하여 개발된 ( )은 다른 특수한 목적을 갖는 마크업 언어이다. 원활한 데이터의 연계를 위해 송.수신 시스템 간에 전송되는 데이터가 동일한 구조로 구성될 수 있도록 형태를 정의하는 역할을 수행하며, 다음과 같은 특징이 있다.
+| | |
+|---|---|
+| 유니코드 문자<br />(Unicode Text) | 텍스트 데이터 형식으로 유니코드를 사용하여 전 세계 언어를 지원한다. |
+| (  ) 파서(Parser) | 대다수의 웹 브라우저가 해석을 위한 번역기(Parser)를 내장하고 있다. |
+| 마크업(Markup)과<br />내용(Content) | - ( ) 문서의 문자들은 마크업과 내용으로 구분된다. <br />- 일반적으로 마크업은 "&lt;"로 시작하여 "&gt;"로 끝나는 태그(Tag)를 의미하고, 그 외의 문자열은 내용에 해당한다. |
+| 엘리먼트(Element) | 마크업과 내용으로 이루어지는 하나의 요소를 의미한다. |  
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                            <blockquote>
+                              <p>XML(eXtensible Markup Language)</p>
+                            </blockquote>
+                          </div>
+</details>
+<br /> <br />
+
+`#SW인터페이스` `#마크업`
+
+___   
+
+**32. 통합 구현과 관련하여 다음 설명의 괄호에 공통으로 들어갈 알맞은 용어를 쓰시오.**
+
+```
+(  )는 HTTP, HTTPS, SMTP 등을 사용하여 xml 기반의 메시지를 네트워크 상에서 교환하는
+프로토콜로, (  ) envelope, 헤더(header), 바디(body) 등이 추가된 xml 문서이다. 
+(  )는 복잡하고 무거운 구조로 구성되어 있어 (  )보다는 restul 프로토콜을 이용하기도 한다.
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                            <blockquote>
+                              <p>SOAP(Simple Object Access Protocol)</p>
+                            </blockquote>
+                          </div>
+</details>
+
+`#프로토콜` `#메시지` `#웹통신`
+
+<br /> <br />
+
+
+
+
+___   
+
+**33. 웹 서비스(Web Service)와 관련된 다음 설명에 해당하는 용어를 쓰시오.**
+
+```
+웹 서비스와 관련된 서식이나 프로토콜 등을 표준적인 방법으로 기술하고 게시하기 위한 언어로,
+XML로 작성되며 UDDI의 기초가 된다. SOAP, XML 스키마와 결합하여 인터넷에서 웹 서비스를
+제공하기 위해 사용되며, 클라이언트는 이것을 통해 서버에서 어떠한 조작이 가능한지를 파악할
+수 있다.
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                            <blockquote>
+                              <p>WSDL(Web Service Description Language)</p>
+                            </blockquote>
+                          </div>
+</details>
+
+`#웹서비스` `#언어` `#XML` `#UDDI` `#SOAP`
+
+<br /> <br />
+
+
+___   
+
+**34. 럼바우(Rumbaugh) 데이터 모델링에 대한 다음 설명에서 각 지문(1\~3)에 해당하는 모델링을 <보기>에서 찾아 기호 (ㄱ\~ㅁ)로 쓰시오.**
+
+```
+(1) 다수의 프로세스들 간의 자료 흐름을 중심으로 처리 과정을 표현한 모델링 [예]자료흐름도(DFD)
+(2) 시간의 흐름에 따른 객체들 간의 제어 흐름, 상호 작용, 동작 순서 등의 동적인 행위를 표현하는
+    모델링 [예]상태 변화도(STD), 사건 추적도
+(3) 시스템에서 요구되는 객체를 찾아내어 속성과 연산 식별 및 객체들 간의 관계를 규정하여 표시하는
+    모델링 [예]ER다이어그램(ERD)
+```
+<보기>
+```
+ㄱ. Operation        ㄴ. Sequence        ㄷ. Information     ㄹ. Transaction
+ㅁ. Function         ㅂ. I/O             ㅅ. Dynamic         ㅇ. Cause-Effect
+```
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                <blockquote>
+                                  <p>(1): ㅁ  (2): ㅅ  (3): ㄷ</p>
+                                </blockquote>
+                              </div>
+</details>
+
+`#럼바우` `#데이터모델링` `#자료흐름도` `#상태변화도` `#ERD`
+
+<br /> <br />
+
+
+___   
+
+**35. 객체지향에 대한 다음 설명에 해당하는 용어를 <보기>에서 찾아 쓰시오**
+
+```
+- 자신이 사용하지 않는 인터페이스와 의존 관계를 맺거나 영향을 받지 않아야 한다는
+객체지향 설계 원칙 중 하나이다.
+- 예를 들어 프린터, 팩스, 복사 기능을 가진 복합기의 경우 3가지 기능을 모두 가진
+범용 인터페이스보다는 프린터 인터페이서, 팩스 인터페이스, 복사 인터페이스로 분리함으로써
+하나의 기능 변경으로 인해 다른 기능이 영향을 받지 않도록 해야 한다. 
+```
+<보기>
+```
+- SRP       - SOLID     - OCP       - LSP       - ISP
+- DIP       - OTP       - PNP
+```
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                    <blockquote>
+                                      <p>ISP</p>
+                                    </blockquote>
+                                  </div>
+</details>
+
+`#객체지향`
+
+<br /> <br />
+
+___   
+
+**36. 결합도(Coupling)의 종류 중 단순 처리 대상인 데이터만 전달되는 것이 아니라 어떻게 처리해야 하는지를 결정하는 제어 요소가 전달되는 경우의 결합도를 영문으로 쓰시오.**
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                    <blockquote>
+                                      <p>Control Coupling</p>
+                                    </blockquote>
+                                  </div>
+</details>
+
+`#결합도` `#Coupling`
+
+<br /> <br />
+
+___   
+
+**37. 데이터 모델의 구성 요소에 대한 다음 설명에서 괄호(1\~3)에 들어갈 알맞은 용어를 <보기>에서 찾아 기호(ㄱ\~ㅂ)으로 쓰시오.**
+
+```
+1. ( 1 )는 모듈 간의 인터페이스로 데이터, 지역 변수 등을 직접 참조하거나 수정할 때의 결합도다.
+2. ( 2 )는 모듈 간의 인터페이스로 배열이나 레코드 등의 자료 구조가 전달될 때의 결합도다.
+3. ( 3 )는 모듈 간의 인터페이스로 파라미터가 아닌 모듈 밖에 선언된 전역 변수를 사용하여 전역
+    변수를 갱신하는 방식으로 상호작용하는 떄의 결합도다
+```
+<보기>
+```
+ㄱ. 자료결합도        ㄴ. 스탬프 결합도     ㄷ. 제어 결합도     ㄹ. 공통 결합도
+ㅁ. 내용 결합도       ㅂ. 외부 결합도
+```
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                        <blockquote>
+                                          <p>(1):ㅁ (2):ㄴ (3):ㄹ</p>
+                                        </blockquote>
+                                      </div>
+</details>
+
+`#결합도`
+
+<br /> <br />
+
+
+___   
+
+**38. 소프트웨어 패키징이란 모듈별로 생성한 실행 파일들을 묶어 배포용 설치 파일을 만드는 것을 말한다. 소스 코드는 향후 관리를 고려하여 모듈화하여 패키징한다. 모듈화는 모듈 간 ( 1 ) 의 최소화와 모듈 내 요소들의 ( 2 )를 최대화 하는 것이 목표이다. 괄호(1, 2)에 들어갈 알맞은 용어를 쓰시오.**
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                        <blockquote>
+                                          <p>(1):결합도(Coupling) (2):응집도(Cohesion)</p>
+                                        </blockquote>
+                                      </div>
+</details>
+
+`#SW패키징` `#모듈화`
+
+<br /> <br />
+
+___   
+
+**39. 모듈에 대한 다음 설명에서 각 지문 (1\~3)에 해당하는 응집도(Cohesion)를 <보기>에서 찾아 기호(ㄱ\~ㅂ)으로 쓰시오.**
+
+```
+(1) 내부의 요소들이 기능적으로 연관성은 없으나, 순차적으로 실행될 떄의 응집도
+(2) 서로 다른 기능을 수행하지만 동일한 입력과 출력을 사용할 떄의 응집도
+(3) 하나의 기능에 밀접하게 관련되어 있거나 연관되어 있을 떄의 응집도
+```
+<보기>
+```
+ㄱ. 기능적 응집도        ㄴ. 순차적 응집도     ㄷ. 교환적 응집도     ㄹ. 절차적 응집도
+ㅁ. 시간적 응집도        ㅂ. 논리적 응집도     ㅅ. 우연적 응집도
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                            <blockquote>
+                                              <p>(1):ㄹ-절차적 응집도 (2):ㄷ-교환적 응집도 (3):ㄱ-기능적 응집도</p>
+                                            </blockquote>
+                                          </div>
+</details>
+
+`#패키징` `#모듈화`
+
+<br /> <br />
+
+
+
+___   
+
+**40. 다음의 모듈 관계를 표현한 시스템 구조도를 참고하여 모듈의 F의 팬인(Fan-In)과 팬 아웃(Fan-Out)을 구하시오.**
+
+![ITexam-40](/assets/images/ITexam-40.png)
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                            <blockquote>
+                                              <p>팬인 : 3, 팬 아웃: 2</p>
+                                            </blockquote>
+                                          </div>
+</details>
+
+`#팬인` `#팬아웃` `#Fan-In` `#Fan-Out`
+
+<br /> <br />
+
+
+___   
+
+**41. 네트워크에 관련된 다음 설명에 해당하는 용어를 쓰시오.**
+
+```
+모듈 간 통신 방식을 구현하기 위해 사용되는 대표적인 프로그래밍 인터페이스 집합으로,
+복수의 프로세스를 수행하며 이뤄지는 프로세스 간 통신까지 구현이 가능하다. 대표적인
+메소드에는 공유 메모리(Shared Memory), 소켓(Socket), 세마포어(Semaphores),
+파이프와 네임드 파이프(Pipes&amp;namedPipes), 메시지 큐잉(Message Queueing)이 있다.
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                            <blockquote>
+                                              <p>IPC(Inter-Process Communication)</p>
+                                            </blockquote>
+                                          </div>
+</details>
+
+`#모듈통신` `#공유메모리` `#소켓` `#세마포어` `#파이프와네임드파이프` `#메시지큐잉`
+
+<br /> <br />
+
+
+___   
+
+**42. 다음 테스트 케이스를 참조하여 괄호에 들어갈 테스트 케이스의 구성 요소를 <보기>에서 찾아 쓰시오.**
+
+
+| 식별자_ID | 테스트 항목 | ( 1 ) | ( 2 ) | ( 3 ) |
+|---|---|---|---|---|
+| LS_W10_35 | 로그인 기능 | 사용자 초기 화면 | 아이디(test_a01)<br />비밀번호(203a!d5%ffa1) | 로그인 성공 |
+| LS_W10_36 | 로그인 기능 | 사용자 초기 화면 | 아이디(test_a01)<br />비밀번호(1234) |로그인 실패(1)<br />- 비밀번호 불일치
+| LS_W10_37| 로그인 기능 |  사용자 초기 화면 | 아이디("")<br />비밀번호("") | 로그인 실패(2)<br />미입력 |
+
+<보기>
+```
+- 요구 절차         - 의존성 여부       - 테스트 데이터         - 테스트 조건       
+- 하드웨어 환경      - 예상 결과         - 소프트웨어 환경       - 성공/실패 기준
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                                <blockquote>
+                                                  <p>(1):테스트 조건 (2):테스트 데이터  (3): 예상 결과</p>
+                                                </blockquote>
+                                              </div>
+</details>
+
+`#테스트` `#테스트케이스`
+
+<br /> <br />
+
+
+___   
+
+**43. 디자인 패턴에 관한 다음 설명에서 괄호에 들어갈 알맞은 용어를 <보기>에서 찾아 쓰시오.**
+
+```
+(  )패턴은 객체 생성을 서브 클래스에서 처리하도록 분리하여 캡슐화한 패턴으로, 상위 클래스에서
+인터페이스만 정의하고 실제 생성은 서브클래스가 담당한다. 다른 이름으로 가상 생성자(Virtual
+Constructor) 패턴이라고도 불린다.
+```
+<보기>
+```
+- Singleton   - Abstract Factory    - Factory Method    - Prototype       
+- Facade      - Composite           - Template Method   - Builder
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                                    <blockquote>
+                                                      <p>Factory Method</p>
+                                                    </blockquote>
+                                                  </div>
+</details>
+
+`#디자인패턴` `#캡슐화` `#VirtualConstructor`
+
+<br /> <br />
+
+
+___   
+
+**44. 디자인 패턴에 관한 다음 설명에서 괄호(1, 2)에 들어갈 알맞은 용어를 <보기>에서 찾아 쓰시오.**
+
+```
+- ( 1 )패턴은 구현부에서 추상층을 분리하여, 서로가 독립적으로 확장할 수 있도록 구성한 패턴으로,
+기능과 구현을 두 개의 별도 클래스로 구현한다는 특징이 있다.
+- ( 2 )패턴은 한 객체의 상태가 변화하면 객체에 상속된 다른 객체들에게 변화된 상태를 전달하는
+패턴으로, 일대다의 의존성을 정의한다. 주로 분산된 시스템 간의 이벤트를 생성.발행(Publish)하고,
+이를 수신(Subscribe)해야 할 때 이용한다.
+```
+<보기>
+```
+- Builder    - Factory Method    - Adapter       - Bridge   
+- Facade     - Proxy             - Observer      - Mediator
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                                        <blockquote>
+                                                          <p>(1):Bridge (2): Observer</p>
+                                                        </blockquote>
+                                                      </div>
+</details>
+
+`#디자인패턴`
+
+<br /> <br />
+
+___   
+
+**45. 디자인 패턴에 관한 다음 설명에서 괄호에 들어갈 알맞은 용어를 쓰시오.**
+
+```
+디자인 패턴은 모듈 간의 관계 및 인터페이스를 설계할 때 참조할 수 있는 전형적인
+해결 방식 또는 예제를 의미한다. 그 중 (  )패턴은 클래스나 객체들이 서로 상호작용하는
+방법이나 책임 분배 방법을 정의하는 패턴으로, interpretrer, Observer, Command
+등이 그 예에 해당한다.
+```
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                                        <blockquote>
+                                                          <p>행위(Behavioral)</p>
+                                                        </blockquote>
+                                                      </div>
+</details>
+
+`#디자인패턴` `#interpretrer` `#Observer` `#Command`
+
+<br /> <br />
+
+___   
+
+**46. 기업 내 각종 애플리케이션 및 플랫폼 간의 정보 전달, 연계, 통합 등 상호 연동이 가능하게 해주는 솔루션으로, Point-to-Point, Hub&amp;Spoke, Message Bus, Hybrid등의 다양한 방식으로 구축이 가능한 모듈 연계 방법을 쓰시오.**
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                                        <blockquote>
+                                                          <p>EAI(Enterprise Application Integration)</p>
+                                                        </blockquote>
+                                                      </div>
+</details>
+
+`#모듈연계방법`
+
+<br /> <br />
+
+___   
+
+
+**47. EAI(Enterprise Application Integration)의 구축 유형에 대한 설명이다. 괄호(1,2) 안에 각각 들어갈 알맞은 유형을 쓰시오.**
+
+EAI(Enterprise Application Integration)는 기업 내 각종 애플리케이션 및 플랫폼 간의 정보 전달, 연계, 통합 등 상호 연동이 가능하게 해주는 솔루션이다. 비즈니스 간 통합 및 연계성을 증대시켜 효율성 및 각 시스템 간의 확정성(Determinancy)를 높여 준다. EAI의 구축 유형은 다음과 같다. 
+
+![ITexam-47](/assets/images/ITexam-47.png)
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                                        <blockquote>
+                                                          <p>(1): Point to Point   (2): Hub &amp; Spoke</p>
+                                                        </blockquote>
+                                                      </div>
+</details>
+
+`#EAI`
+
+<br /> <br />
+
+___   
+
+
+**48. 소프트웨어 인터페이스 구현에 관련된 다음 설명에서 괄호에 공통으로 들어갈 알맞은 용어를 쓰시오.**
+
+(  )은 속성-값 쌍(Attribute-Value Pairs)으로 이루어진 데이터 객체를 전달하기 위해 사람이 읽을 수 있는 텍스트를 사용하는 개방형 표준 포맷이다. 비동기 처리에 사용되는 AjAX에서 XML을 대체하여 사용되고 있다. 다음은 (  )이 가질 수 있는 자료 기본형이다.
+
+| | |
+|---|---|
+|숫자| 정수와 실수를 표현한다 |
+| 문자열 | 유니코드 문자로 표현하며, 큰따옴표(" ")로 묶는다.|
+| 참/거짓 | 참(True) 또는 거짓(False)을 표현한다.|
+| 배열 | 다양한 요소들을 쉼표로 구분하여 표현하며, 대괄호([ ])로 묶는다.|  
+| 객체 | 이름/값 쌍으로 표현하며, 중괄호({})로 묶는다.|  
+| NULL |아직 알려지지 않거나 모르는 값을 표현하기 위한 자료형이다.|  
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                                        <blockquote>
+                                                          <p>JSON(JavaScript Object Notation)</p>
+                                                        </blockquote>
+                                                      </div>
+</details>
+
+`#AjAX`
+
+<br /> <br />
+
+___   
+
+
+**49. 클라이언트와 서버 간 자바스크립트 및 XML을 비동기 방식으로 처리하며, 전체 페이지를 새로 고치지 않고도 웹페이지 일부 영역많을 업데이트 할 수 있도록 하는 기술을 의미하는 용어를 쓰시오.**
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                                        <blockquote>
+                                                          <p>AjAX(Asynchronous JavaScript and XML)</p>
+                                                        </blockquote>
+                                                      </div>
+</details>
+
+<br /> <br />
+
+___   
+
+
+**50. 네트워크 트래픽에 대해 IP(Internet Protocol) 계층에서 IP 패킷 단위의 데이터 변조 방지 및 은닉 기능을 제공하는 네트워크 계층에서의 보안 통신 규약을 쓰시오.**
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div>
+
+                                                        <blockquote>
+                                                          <p>IPSec(Internet Protocol Security)</p>
+                                                        </blockquote>
+                                                      </div>
+</details>
+
+<br /> <br />
+
+
+</보기></보기></보기></보기></보기></보기></보기></보기></보기></보기></보기></보기></보기></보기></보기></보기></table></table></table></table></보기></R></R></R></보기></보기>
 
     </div>
 
