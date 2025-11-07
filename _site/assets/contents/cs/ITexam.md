@@ -1,37 +1,3 @@
-<script>
-(function(){
-  function handleSubmit(e){
-    e.preventDefault();
-    const form = e.currentTarget;
-    const details = form.nextElementSibling;
-    if (details && details.tagName === 'DETAILS') details.open = true;
-  }
-  document.addEventListener('DOMContentLoaded', function(){
-    document.querySelectorAll('form.inline-answer').forEach(f=>{
-      f.addEventListener('submit', handleSubmit);
-      const btn = f.querySelector('button[data-action="show"]');
-      const clr = f.querySelector('button[data-action="clear"]');
-      if (btn) btn.addEventListener('click', ()=>f.dispatchEvent(new Event('submit')));
-      if (clr) clr.addEventListener('click', ()=>{ f.querySelector('input').value=''; });
-    });
-  });
-})();
-</script>
-<style>
-.inline-answer{ margin:2px; display:flex; gap:2px; align-items:center; min-width:50px; max-width:410px; }
-.inline-answer input{ padding:6px 10px; min-width:40px; max-width:400px;}
-.inline-answer button{ padding:6px 10px; }
-.answer-box{
-  width: 100%;
-  max-width: 500px;   /* 원하는 가로길이 */
-  margin: 8px 0;
-}
-.answer-box > div[markdown="1"]{
-  box-sizing: border-box;
-  width: 100%;
-}
-</style>
-
 # 정보처리기사 키워드 130 
 
 **1. 시제품을 끊임없이 제작하며 사이클을 반복하는 개발방법론으로,<br/>워터폴과 대조적이며, 소프트웨어 개발을 넘어 기업 경영 전반에서 사용되고 있다. <br/>고객의 변화하는 요구사항과 환경 변화에 능동적인 이 소프트웨어 개발 방법론을 쓰시오.**
@@ -1705,3 +1671,4 @@ ___
 </details>
 
 <br/> <br/>
+

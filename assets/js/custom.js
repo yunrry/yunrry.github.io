@@ -238,3 +238,24 @@
       });
 })();
 
+// ============================================
+// 4. 인라인 답변 폼 기능 (ITexam.md 등)
+// ============================================
+(function(){
+  function handleSubmit(e){
+    e.preventDefault();
+    const form = e.currentTarget;
+    const details = form.nextElementSibling;
+    if (details && details.tagName === 'DETAILS') details.open = true;
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('form.inline-answer').forEach(f=>{
+      f.addEventListener('submit', handleSubmit);
+      const btn = f.querySelector('button[data-action="show"]');
+      const clr = f.querySelector('button[data-action="clear"]');
+      if (btn) btn.addEventListener('click', ()=>f.dispatchEvent(new Event('submit')));
+      if (clr) clr.addEventListener('click', ()=>{ f.querySelector('input').value=''; });
+    });
+  });
+})();
+

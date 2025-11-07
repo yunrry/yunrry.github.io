@@ -644,3 +644,30 @@ body nav.pagination {
   background: rgba(250, 88, 96, 0.08);
   border-radius: 3px;
 }
+
+/* 인라인 답변 폼 스타일 (ITexam.md 등) */
+.inline-answer{ 
+  margin:2px; 
+  display:flex; 
+  gap:2px; 
+  align-items:center; 
+  min-width:50px; 
+  max-width:410px; 
+}
+.inline-answer input{ 
+  padding:6px 10px; 
+  min-width:40px; 
+  max-width:400px;
+}
+.inline-answer button{ 
+  padding:6px 10px; 
+}
+.answer-box{
+  width: 100%;
+  max-width: 500px;
+  margin: 8px 0;
+}
+.answer-box > div[markdown="1"]{
+  box-sizing: border-box;
+  width: 100%;
+}
