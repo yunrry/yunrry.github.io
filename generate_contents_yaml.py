@@ -38,9 +38,9 @@ def get_category2_from_path(path):
     parts = path.replace("\\", "/").split("/")
     try:
         idx = parts.index("contents")
-        if parts[idx + 1] == "dev" or parts[idx + 1] == "algorithm" or parts[idx + 1] == "tools":
-            return parts[idx + 2]
-        return ""
+        # if parts[idx + 1] == "dev" or parts[idx + 1] == "algorithm" or parts[idx + 1] == "tools":
+        #     return parts[idx + 2]
+        return parts[idx + 2]
     except (ValueError, IndexError):
         return "uncategorized"
 

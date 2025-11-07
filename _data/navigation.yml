@@ -53,7 +53,9 @@ categories:
       - title: "  • 데이터베이스"
         url: /categories/cs/database/
       - title: "  • 알고리즘"
-        url: /categories/cs/algorithmm/
+        url: /categories/cs/algorithm/
+      - title: "  • 정처기"
+        url: /categories/cs/ITctf/
 
       - title: "🛠 Tools"
         url: /categories/tools/

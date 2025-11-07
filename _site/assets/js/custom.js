@@ -38,7 +38,8 @@
         '/categories/cs/network/',
         '/categories/cs/os/',
         '/categories/cs/database/',
-        '/categories/cs/algorithmm/'
+        '/categories/cs/algorithm/',
+        '/categories/cs/ITctf/'
       ],
       '/categories/tools/': [
         '/categories/tools/ai/',
