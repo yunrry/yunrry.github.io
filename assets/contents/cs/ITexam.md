@@ -965,7 +965,7 @@ ___
 </div>
 </details>
 
-`#패키징` `#모듈화`
+`#응집도` `#모듈화`
 
 <br/> <br/>
 
@@ -1269,3 +1269,439 @@ ___
 <br/> <br/>
 
 
+___   
+
+
+**51. 인터페이스 구현 검증 도구에 대한 다음 설명에 해당하는 용어를 영문으로 쓰시오.**
+
+```
+Kent Beck과 Erich Gamma 등이 개발한 자바 프로그래밍 언어용 유닛 테스트 프레임워크로,
+xUnit계읠의 한 종류다. 같은 코드를 여러 번작성하지 않게 도와주며, 테스트 마다 예상 결과를
+기억할 필요가 없는 자동화된 해법을 제공한다는 특징이 있다.
+```
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> JUnit
+</div>
+</details>
+
+<br/> <br/>
+
+___   
+
+
+**52. 사용자 인터페이스(UI)에 대한 다음 설명에 해당하는 용어를 영문 약어로 쓰시오.**
+
+```
+사용자의 자연스러운 움직임을 통해 시스템과 상호작용하는 인터페이스(UI)로,
+키보드나 마우스와 같이 조작을 배워야 하는 인공 제어 장치를 사용하는 인터페이스와 
+구분하기 위해 '자연스러운'이라는 표현을 사용한다. 시리(Siri), 빅스비(Bixby)등과 
+같은 음성 비서에게 사용하는 자연어 명령이나 휴대폰이나 테블릿에서의 터치 등이
+여기에 해당한다.
+```
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> NUI
+</div>
+</details>
+
+<br/> <br/>
+
+___   
+
+
+**53. Windows, MacOS 등에서 사용하는 인터페이스로, 사용자가 명령어를 직접 입력하지 않고 키보드와 마우스 등을 이용하여 아이콘이나 메뉴를 선택하여 모든 작업을 수행하는 사용자 인터페이스를 쓰시오.**
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> GUI(그래픽 사용자 인터페이스)
+</div>
+</details>
+
+<br/> <br/>
+
+
+
+___   
+
+
+**54. UI(User Interface)의 설계 원칙 중 직관성에 대해 간략히 서술하시오.**
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> 직관성은 누구나 쉽게 이해하고 사용할 수 있어야 한다는 설계 원칙이다.
+</div>
+</details>
+
+<br/> <br/>
+
+
+
+___   
+
+
+**55. 사용자 인터페이스에 대한 다음 설명에서 괄호에 들어갈 알맞은 용어를 쓰시오.**
+
+
+| | |
+|---|---|
+| ( 1 )| 누구나 쉽게 이해하고 사용할 수 있어야 한다. |
+| ( 2 ) | 사용자의 목적을 정확하고 완벽하게 달성해야 한다.|
+| ( 3 ) | 누구나 쉽게 배우고 익힐 수 있어야 한다.|
+| ( 4 ) | 사용자의 요구사항을 최대한 수용하고 실수를 최소화해야 한다.|  
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> (1): 직관성   (2): 유효성    (3): 학습성    (4): 유연성
+</div>
+</details>
+
+<br/> <br/>
+
+___   
+
+
+**56. 인터페이스에 관련된 다음 설명에서 괄호(1, 2)에 들어갈 알맞은 용어를 쓰시오.**
+
+
+| | |
+|---|---|
+| ( 1 )| 사용자가 시스템이나 서비스를 이용하면서 느끼고 생각하게 되는 총체적인 감정 및 경험. |
+| ( 2 ) | 사용자와 시스템 간의 상호작용이 원활하게 이뤄지도록 도와주는 장치나 소프트웨어 [예]CLI, GUI등|
+
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> (1): UX(사용자경험)   (2): UI(사용자 인터페이스)
+</div>
+</details>
+
+<br/> <br/>
+
+___   
+
+
+**57. 애플리케이션 테스트에서 사용되는 살충제 패러독스(Pesticide Paradox)의 개념을 간략히 설명하시오.**
+
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> 살충제 패러독스는 동일한 테스트 케이스로 동일한 테스트를 반복하면 더 이상 결함이 발견되지 않는 현상을 의미한다.
+</div>
+</details>
+
+<br/> <br/>
+
+
+___   
+
+
+**58. 애플리케이션을 실행하지 않고, 소스 코드에 대한 코딩 표준, 코딩 스타일, 코드 복잡도 및 남은 결함을 발견하기 위하여 사용하는 테스트를 쓰시오.**
+
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> 정적 분석(정적 테스트)
+</div>
+</details>
+
+<br/> <br/>
+
+
+___   
+
+
+**59. 테스트에 대한 다음 설명에서 각 지문(1\~3)에 해당하는 커버리지(Coverage)를 <보기>에서 찾아 기호(ㄱ\~ㅁ)으로 쓰시오.**
+```
+(1) 최소 한번은 모든 문장이 수행되도록 구성하는 검증 기준
+(2) 조건식이 참(True)/거짓(False)일 때 수행되도록 구성하는 검증 기준
+(3) (2)번과 달리 조건식에 상관없이 개별 조건이 참(True)/거짓(False)일 때 수행되도록
+    구성하는 검증 기준
+```
+<보기>
+```
+ㄱ. 다중 조건 검증 기준     ㄴ. 선택 검증 기준              ㄷ. 조건 검증 기준
+ㄹ 결정(분기) 검증 기준     ㅁ. 결정(분기)/조건 검증 기준     ㅂ. 구문(문장) 검증 기준
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> (1): ㅂ   (2): ㄹ     (3): ㄷ
+</div>
+</details>
+
+<br/> <br/>
+
+
+___   
+
+
+**60. 다음은 화이트박스 테스트의 프로그램 제어흐름이다. 다음의 순서도를 참고하여 분기 커버리지로 구성할 테스트 케이스를 작성하시오.**
+
+![ITexam-60](/assets/images/ITexam-60.png)
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> 1 -> 2-> 3 -> 4 -> 5 -> 6 -> 7 <br> > 1 -> 2 -> 4 -> 5 -> 6 -> 1
+
+</div>
+</details>
+
+<details class="answer-box">
+<summary>해설</summary>
+<div markdown="1">
+
+![ITexamEx-60](/assets/images/ITexamEx-60.png)
+
+</div>
+</details>
+
+<br/> <br/>
+
+
+
+___   
+
+
+**61. 소프트웨어가 수행할 특정 기능을 알기 위해서 각 기능이 완전히 작동되는 것을 입증하는 테스트로, 동치 클래스 분해 및 경계값 분석을 이용하는 테스트 기법을 쓰시오**
+
+
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> 블랙박스 테스트(Black Box Test)
+</div>
+</details>
+
+<br/> <br/>
+
+___   
+
+
+**62. 테스트 기법 중 다음과 같아 '평가 점수표'를 미리 정해 놓은 후 각 영역의 경계에 해당하는 입력값을 넣고, 예상되는 출력값이 나오는지 실제 값과 비교하는 명세 기반 테스트 기법을 <보기> 에서 찾아 쓰시오.**
+
+![ITexam-62](/assets/images/ITexam-62.png)
+
+<보기>
+```
+- Equivalence Partition   - Boundary Value Analysis     - Condition Test
+- Cause-Effect Graph      - Error Guess                 - Comparison Test
+- Base Path Test          - Loop Test                   - Data Flow Test
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> Boundary Value Analysis
+</div>
+</details>
+
+<br/> <br/>
+
+
+___   
+
+
+**63. 다음 중 블랙 박스 테스트 기법에 해당하는 것을 모두 골라 기호(ㄱ~ㅈ)로 쓰시오.**
+
+
+<보기>
+```
+ㄱ. Base Path Testing           ㄴ. Condition Testing
+ㄷ. Boundary Value Analysis     ㄹ. Equivalence Partitioning
+ㅁ. Data Flow Testing           ㅂ. Cause-Effect Graph
+ㅅ. Branch Coverage Testing     ㅇ. Statement Coverate Testing
+ㅈ. Boundary Division Analysis 
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> ㄷ, ㄹ, ㅂ
+</div>
+</details>
+
+<br/> <br/>
+
+___   
+
+
+**64. 테스트 기법 중 그래프를 활용하여 입력 데이터 간의 관계와 출력에 영향을 미치는 상황을 체계적으로 분석한 다음 효용성이 높은 테스트 케이스를 선정하여 검사하는 기법을 <보기>에서 찾아 쓰시오.**
+
+
+<보기>
+```
+- Equivalence Partition     - Boundary Value Analysis      - Condition Test
+- Cause-Effect Graph        - Error Guess                  - Comparision Test
+- Base Path Testing         - Loop Test                    - Data Flow Test
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> Cause-Effect Graph
+</div>
+</details>
+
+<br/> <br/>
+
+___   
+
+
+**65. 테스트 기법 중 다음과 같이 '평가 점수표'를 미리 정해 놓은 후 각 영역에 해당하는 입력 값을 넣고, 예상되는 출력값이 나오는지 실제 값과 비교하는 명세 기반 테스트 기법을 쓰시오.**
+
+![ITexam-65](/assets/images/ITexam-65.png)
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> 동치 분할 검사 (Equivalence Partitioning Testing)
+</div>
+</details>
+
+<br/> <br/>
+
+
+___   
+
+
+**66. 개발 단계에 따른 애플리케이션 테스트에 대한 다음 V-모델에서 괄호 (1~4)에 들어갈 알맞은 테스트를 쓰시오.**
+
+![ITexam-66](/assets/images/ITexam-66.png)
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> (1): 단위 테스트 (2): 통합 테스트 (3): 시스템 테스트 (4): 인수 테스트
+</div>
+</details>
+
+<br/> <br/>
+
+
+___   
+
+
+**67. 애플리케이션 테스트에 대한 다음 설명에서 각 지문(1, 2)에 해당하는 용어를 <보기>에서 찾아 기호(ㄱ~ㅁ)으로 쓰시오.**
+
+```
+(1) 코딩 직후 소프트웨어 설계의 최소 단위인 모듈이나 컴포넌트에 초점을 맞춰 수행하는 테스트로,
+모듈 테스트라고도 불린다. 사용자의 요구사항을 기반으로 한 기능성 테스트를 최우선으로 인터페이스,
+외부적 I/O, 자료구조, 독립적 기초 경로, 오류 처리 경로, 경계 조건 등을 검사한다.
+(2) 모듈들을 결합하여 하나의 시스템으로 완성시키느 ㄴ과정에서의 테스트를 의미하며, 모듈 간 또는
+컴포넌트 간의 인터페이스가 정상적으로 실행되는지 검사한다.
+```
+<보기>
+```
+ㄱ. 시스템 테스트      ㄴ. 인수 테스트        ㄷ. 알파 테스트        ㄹ. 단위 테스트
+ㅁ. 통합 테스트        ㅂ. 회귀 테스트
+```
+
+<form class="inline-answer">
+  <input type="text" placeholder="내 답 입력…" />
+
+</form>
+<details class="answer-box">
+<summary>정답</summary>
+<div markdown="1">
+
+> (1): 단위 테스트 (2): 통합 테스트
+</div>
+</details>
+
+<br/> <br/>
