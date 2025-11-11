@@ -222,6 +222,9 @@
 <loc>http://localhost:4000/assets/contents/algorithm/programmers-64063/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/assets/contents/algorithm/programmers/42586/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/contents/algorithm/recursion/</loc>
 </url>
 <url>
@@ -441,10 +444,16 @@
 <loc>http://localhost:4000/assets/contents/dev/backend/ssh/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/assets/contents/language/python/basic/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/contents/language/python/zip/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/contents/tools/ai/algorithm-problem-write-up-prompt/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/portfolio-ko.pdf</loc>
-<lastmod>2025-10-31T22:12:06+09:00</lastmod>
+<lastmod>2025-11-10T15:33:30+09:00</lastmod>
 </url>
 </urlset>
