@@ -82,6 +82,7 @@ include:
   - _language
   - _inclueds
   - _tools
+  - _record
   - assets/contents
   
 # exclude:

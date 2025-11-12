@@ -1,17 +1,16 @@
 ---
-title: "Dev"
+title: "Record"
 layout: category-split
-permalink: /categories/dev/
-taxonomy: dev
+permalink: /categories/record/
+taxonomy: record
 author_profile: true
 sidebar:
   nav: "categories"
 ---
 
-
 <div id="normal-content">
   <div class="category-tabs">
-    {% assign categories = "dev" | split: "," %}
+    {% assign categories = "record" | split: "," %}
     {% for cat in categories %}
 
     {% endfor %}

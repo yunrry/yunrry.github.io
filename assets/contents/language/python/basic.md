@@ -174,7 +174,7 @@ dic = defaultdict(list)
 
 ### Level 2: 핵심 자료구조 (15문제)
 **스택/큐**
-1. [기능개발](https://school.programmers.co.kr/learn/courses/30/lessons/42586) ⭐ | <a href="#" data-content="/assets/contents/algorithm/programmers/42586.md">풀이</a>
+1. [기능개발](https://school.programmers.co.kr/learn/courses/30/lessons/42586) ⭐ | <a href="#" data-content="/assets/contents/algorithm/programmers/queque-42586.md">풀이</a>
 2. [프린터](https://school.programmers.co.kr/learn/courses/30/lessons/42587)
 3. [다리를 지나는 트럭](https://school.programmers.co.kr/learn/courses/30/lessons/42583)
 4. [주식가격](https://school.programmers.co.kr/learn/courses/30/lessons/42584)

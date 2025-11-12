@@ -68,6 +68,19 @@ categories:
       - title: "  • Test"
         url: /categories/tools/test/
         
+      - title: "📼 Record"
+        url: /categories/record/
+      - title: "  • Journal"
+        url: /categories/record/journal/
+      - title: "  • Internship"
+        url: /categories/record/internship/
+      - title: "  • Abroad"
+        url: /categories/record/abroad/
+      - title: "  • Contest"
+        url: /categories/record/contest/
+      - title: "  • UNI"
+        url: /categories/record/university/
+
       
       - title: "📊 All"
         url: /categories/

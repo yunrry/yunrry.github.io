@@ -46,6 +46,13 @@
         '/categories/tools/management/',
         '/categories/tools/browser/',
         '/categories/tools/test/'
+      ],
+      '/categories/record/': [
+        '/categories/record/journal/',
+        '/categories/record/internship/',
+        '/categories/record/abroad/',
+        '/categories/record/contest/',
+        '/categories/record/university/'
       ]
     };
     
@@ -63,9 +70,12 @@
       
       // 화살표 추가
       const arrow = document.createElement('span');
-      arrow.innerHTML = ' ▼';
-      arrow.style.cssText = 'font-size:0.7em;margin-left:5px;display:inline-block;transition:transform 0.3s ease';
+      arrow.textContent = '▼';
+      arrow.style.cssText = 'margin-left:2px;padding:4px;display:inline-block;font-size:0.7em;transition:transform 0.3s ease;cursor:pointer';
       arrow.className = 'toggle-arrow';
+      arrow.setAttribute('role', 'button');
+      arrow.setAttribute('aria-expanded', 'false');
+      arrow.tabIndex = 0;
       parentLink.appendChild(arrow);
       
       // 하위 항목 찾기
@@ -78,12 +88,24 @@
       
       // 클릭 이벤트
       let isOpen = false;
-      parentLink.onclick = e => {
-        e.preventDefault();
+
+      const toggleChildren = () => {
         isOpen = !isOpen;
         childrenItems.forEach(child => child.style.display = isOpen ? 'block' : 'none');
         arrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+        arrow.setAttribute('aria-expanded', String(isOpen));
       };
+
+      const handleArrowActivate = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleChildren();
+      };
+
+      arrow.addEventListener('click', handleArrowActivate);
+      arrow.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') handleArrowActivate(e);
+      });
     });
   }
 

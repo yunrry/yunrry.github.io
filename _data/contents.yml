@@ -1,3 +1,10 @@
+- path: assets/contents/record/internship/kakao-1.md
+  title: 카카오 현장실습 Day1
+  category: record
+  category2: internship
+  created: '2025-11-12'
+  updated: '2025-11-13'
+  keywords: []
 - path: assets/contents/language/python/basic.md
   title: Python 필수 문법
   category: language
@@ -5,7 +12,30 @@
   created: '2025-11-11'
   updated: '2025-11-11'
   keywords: []
-- path: assets/contents/algorithm/programmers/42586.md
+- path: assets/contents/language/python/zip.md
+  title: zip() 메소드
+  category: language
+  category2: python
+  created: '2025-11-11'
+  updated: '2025-11-11'
+  keywords: []
+- path: assets/contents/algorithm/programmers/queque-42587.md
+  title: 프린터 [python]
+  category: algorithm
+  category2: programmers
+  created: '2025-11-11'
+  updated: '2025-11-11'
+  keywords:
+  - 프로그래머스
+  - 프린터
+  - 큐
+  - 스택/큐
+  - 우선순위큐
+  - Level2
+  - 시뮬레이션
+  - deque
+  - Python
+- path: assets/contents/algorithm/programmers/queque-42586.md
   title: 프로그래머스 - 기능개발 [Python]
   category: algorithm
   category2: programmers
@@ -20,13 +50,6 @@
   - Level2
   - 시뮬레이션
   - Python
-- path: assets/contents/language/python/zip.md
-  title: zip() 메소드
-  category: language
-  category2: python
-  created: '2025-11-11'
-  updated: '2025-11-11'
-  keywords: []
 - path: assets/contents/cs/ITctf/network.md
   title: 네트워크
   category: cs
