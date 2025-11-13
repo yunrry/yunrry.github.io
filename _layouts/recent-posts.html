@@ -72,6 +72,7 @@ closeButton.addEventListener('click', function() {
   flex: 1;
   padding-left: 20px;
   position: relative;
+  min-width: 100%;
 }
 
 .split-header {
@@ -102,14 +103,24 @@ closeButton.addEventListener('click', function() {
    ============================================ */
 
 .content-display {
-  display: flex;
-  gap: 30px;
+  display: block;
+  width: 100%;
 }
 
 .main-content {
-  flex: 1;
-  max-width: calc(100% - 250px);
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;       
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
+
+.content-display pre,
+.content-display .highlight {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 
 .content-display h1 {
   font-size: 2em;
@@ -118,6 +129,7 @@ closeButton.addEventListener('click', function() {
   margin-bottom: 30px;
   transition: border-color 0.3s ease, color 0.3s ease;
 }
+
 
 .content-display h2 {
   font-size: 1.6em;
@@ -128,20 +140,49 @@ closeButton.addEventListener('click', function() {
   transition: border-color 0.3s ease, color 0.3s ease;
 }
 
+.content-display img,
+.main-content img { max-width: 100%; height: auto; }
+
+.content-display table,
+.main-content table { display: block; max-width: 100%; overflow-x: auto; }
 /* ============================================
    TOC (Table of Contents)
    ============================================ */
 
-.toc {
+   .toc-container {
   position: sticky;
-  top: 150px;
-  width: 220px;
-  border-radius: 6px;
-  padding: 15px;
-  align-self: flex-start;
-  max-height: calc(100vh - 100px);
+  top: 80px;
+  margin-bottom: 20px;
+  max-height: calc(100vh - 120px);
   overflow-y: auto;
-  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.toc {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.toc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.toc-toggle {
+  background: none;
+  border: none;
+  color: #9bd6bd;
+  font-size: 0.8em;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s;
+}
+
+.toc-content.closed {
+  display: none;
 }
 
 .toc h4 {
@@ -262,6 +303,15 @@ a[data-content]:hover {
   border-right-color: #333333;
 }
 
+[data-theme="dark"] .split-right {
+  border-right-color: #333333;
+}
+
+[data-theme="dark"] .split-container {
+  border-right-color: #333333;
+}
+
+
 [data-theme="dark"] .split-header {
   border-bottom-color: #333333;
 }
@@ -293,6 +343,10 @@ a[data-content]:hover {
 [data-theme="dark"] .toc {
   background-color: #1a1a1a;
   border: 1px solid #333333;
+}
+
+[data-theme="dark"] .toc-toggle {
+  color: #9bd6bd;
 }
 
 [data-theme="dark"] .toc h4 {
@@ -392,7 +446,8 @@ a[data-content]:hover {
   }
   
   .main-content {
-    max-width: 100%;
+    min-width: max-content;
+    max-width: 200%;
   }
   
   .toc {
@@ -419,6 +474,8 @@ a[data-content]:hover {
   .split-right {
     padding-left: 0;
     padding-top: 20px;
+    min-width: max-content;
+    max-width: 200%;
   }
 }
 
@@ -430,6 +487,25 @@ a[data-content]:hover {
 .content-display .highlight,
 .content-display pre[class*="language-"] {
   box-shadow: none !important;
+}
+
+/* 체크 심볼 스타일 */
+.check {
+  color: #9bd6bd;         /* 체크 색상 (원하시면 변경) */
+  font-weight: 700;
+  padding: 0 0.5em; /* 좌우 0.3em */
+  /* optional: 약간의 배경/라운드 */
+  background: rgba(155,214,189,0.08);
+  border-radius: 3px;
+ 
+}
+
+.cross {
+  color: #ff6b6b;
+  font-weight: 700;
+  margin: 0 0.2em; /* 좌우 여백 */
+  background: rgba(250, 88, 96, 0.08);
+  border-radius: 3px;
 }
 </style>
 
