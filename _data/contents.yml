@@ -1,3 +1,10 @@
+- path: assets/contents/dev/backend/flik-persona.md
+  title: 페르소나 만들기
+  category: dev
+  category2: backend
+  created: '2025-11-13'
+  updated: '2025-11-13'
+  keywords: []
 - path: assets/contents/record/internship/kakao-1.md
   title: 카카오 현장실습 Day1
   category: record
