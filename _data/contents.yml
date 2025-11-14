@@ -1,9 +1,23 @@
+- path: assets/contents/record/internship/kakao-2.md
+  title: 카카오 현장실습 Day2~
+  category: record
+  category2: internship
+  created: '2025-11-15'
+  updated: '2025-11-15'
+  keywords: []
 - path: assets/contents/dev/backend/flik-persona.md
   title: 페르소나 만들기
   category: dev
   category2: backend
   created: '2025-11-13'
   updated: '2025-11-13'
+  keywords: []
+- path: assets/contents/draft/flik-06.md
+  title: (6편) 코스 생성 추천정확도 고도화 여정
+  category: draft
+  category2: flik-06.md
+  created: '2025-11-13'
+  updated: '2025-10-29'
   keywords: []
 - path: assets/contents/record/internship/kakao-1.md
   title: 카카오 현장실습 Day1
@@ -316,13 +330,6 @@
   category2: network-header.md
   created: '2025-11-01'
   updated: '2025-11-01'
-  keywords: []
-- path: assets/contents/dev/backend/flik-06.md
-  title: (6편) 코스 생성 추천정확도 고도화 여정
-  category: dev
-  category2: backend
-  created: '2025-10-24'
-  updated: '2025-10-29'
   keywords: []
 - path: assets/contents/dev/backend/flik-05.md
   title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 5편)'
