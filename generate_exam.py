@@ -1,6 +1,6 @@
 import csv
 
-input_csv = "algorithm_interview.csv"     # 입력 CSV 파일명
+input_csv = "interview.csv"     # 입력 CSV 파일명
 output_md = "interview.md"      # 출력 Markdown 파일명
 
 # 난이도별 색상 지정

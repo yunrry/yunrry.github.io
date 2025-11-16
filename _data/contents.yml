@@ -1,7 +1,21 @@
 - path: assets/contents/algorithm/interview.md
-  title: Interview
+  title: Algorithm Interview
   category: algorithm
   category2: interview.md
+  created: '2025-11-16'
+  updated: '2025-11-16'
+  keywords: []
+- path: assets/contents/cs/structure-interview.md
+  title: Structure Interview
+  category: cs
+  category2: structure-interview.md
+  created: '2025-11-16'
+  updated: '2025-11-16'
+  keywords: []
+- path: assets/contents/cs/infra-interview.md
+  title: Infra Interview
+  category: cs
+  category2: infra-interview.md
   created: '2025-11-16'
   updated: '2025-11-16'
   keywords: []
