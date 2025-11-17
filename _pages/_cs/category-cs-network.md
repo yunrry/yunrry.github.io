@@ -9,41 +9,40 @@ sidebar:
   nav: "categories"
 ---
 
-### 목록
 
-#### <a href="#" data-content="/assets/contents/cs/network-osi.md"><span style="color: #9bd6bd;">♡</span> OSI 7계층</a>
+<div id="normal-content">
+  <div class="category-tabs">
+    {% assign categories = "network" | split: "," %}
+    {% for cat in categories %}
 
-#### <a href="#" data-content="/assets/contents/cs/network-tcp-ip.md"><span style="color: #9bd6bd;">♡</span> TCP/IP 4계층</a>
+    {% endfor %}
+  </div>
 
-#### <a href="#" data-content="/assets/contents/cs/network-udp.md"><span style="color: #9bd6bd;">♡</span> TCP vs UDP </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-handshake.md"><span style="color: #9bd6bd;">♡</span> 3-Way Handshake & 4-Way Handshake </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-http-https.md"><span style="color: #9bd6bd;">♡</span> HTTP vs HTTPS</a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-get-post.md"><span style="color: #9bd6bd;">♡</span> GET vs POST</a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-cookie-session-token.md"><span style="color: #9bd6bd;">♡</span> 쿠키 vs 세션 vs 토큰 </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-dns.md"><span style="color: #9bd6bd;">♡</span> DNS </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-loadbalancer.md"><span style="color: #9bd6bd;">♡</span> 로드밸런서 </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-ip-address.md"><span style="color: #9bd6bd;">♡</span> IP 주소 </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-proxy.md"><span style="color: #9bd6bd;">♡</span> 프록시 Proxy </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-cdn.md"><span style="color: #9bd6bd;">♡</span> CDN </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-firewall.md"><span style="color: #9bd6bd;">♡</span> 방화벽 FireWall </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-vpn.md"><span style="color: #9bd6bd;">♡</span> VPN </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-websocket.md"><span style="color: #9bd6bd;">♡</span> 웹소켓 WebSocket </a>
-
-#### <a href="#" data-content="/assets/contents/cs/network-header.md"><span style="color: #9bd6bd;">♡</span> 헤더 Header </a>
-
----
+  {% for cat in categories %}
+    {% assign cat_files = site.data.contents | where: "category2", cat | sort: "created" | reverse %}
+    <div class="category-section {% if forloop.first %}active{% endif %}" data-category="{{ cat }}">
+      <ul class="posts-list" style="list-style:none; padding:0;">
+        {% for doc in cat_files %}
+          <li style="margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid #dfe6e4;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="color:#999; font-size:0.85em;">
+                {% if doc.created %}📅 {{ doc.created }}{% endif %}
+                {% if doc.updated %} (updated: {{ doc.updated }}){% endif %}
+              </span>
+              <span style="color:#9bd6bd; font-size:0.75em; text-transform:uppercase;">{{ doc.category }}</span>
+            </div>
+            <h3 style="margin:1px 0;">
+              <a href="#" data-content="{{ doc.path | relative_url }}">{{ doc.title }}</a>
+            </h3>
+            {% if doc.excerpt %}
+              <p style="color:#666; font-size:0.9em;">{{ doc.excerpt | strip_html | truncatewords:30 }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>
 
 
-## CheckList
+

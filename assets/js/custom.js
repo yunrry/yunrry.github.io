@@ -34,6 +34,7 @@
         '/categories/algorithm/leetcode/'
       ],
       '/categories/cs/': [
+        '/categories/cs/ai/',
         '/categories/cs/datastructure/',
         '/categories/cs/network/',
         '/categories/cs/os/',

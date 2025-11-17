@@ -17,7 +17,7 @@ sidebar:
   </div>
 
   {% for cat in categories %}
-    {% assign cat_files = site.data.contents | where: "category2", cat | sort: "created" | reverse %}
+    {% assign cat_files = site.data.contents | where: "category", "tools" | where: "category2", cat | sort: "created" | reverse %}
     <div class="category-section {% if forloop.first %}active{% endif %}" data-category="{{ cat }}">
       <ul class="posts-list" style="list-style:none; padding:0;">
         {% for doc in cat_files %}

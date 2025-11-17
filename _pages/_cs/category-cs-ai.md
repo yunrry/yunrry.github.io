@@ -1,8 +1,9 @@
 ---
-title: "운영체제"
-layout: category
-permalink: /categories/cs/os/
-taxonomy: cs/os
+title: "AI"
+date: 2025-02-15
+layout: category-split
+permalink: /categories/cs/ai/
+taxonomy: cs/ai
 author_profile: true
 sidebar:
   nav: "categories"
@@ -11,14 +12,14 @@ sidebar:
 
 <div id="normal-content">
   <div class="category-tabs">
-    {% assign categories = "os" | split: "," %}
+    {% assign categories = "ai" | split: "," %}
     {% for cat in categories %}
 
     {% endfor %}
   </div>
 
   {% for cat in categories %}
-    {% assign cat_files = site.data.contents | where: "category2", cat | sort: "created" | reverse %}
+    {% assign cat_files = site.data.contents | where: "category", "cs" | where: "category2", cat | sort: "created" | reverse %}
     <div class="category-section {% if forloop.first %}active{% endif %}" data-category="{{ cat }}">
       <ul class="posts-list" style="list-style:none; padding:0;">
         {% for doc in cat_files %}
@@ -42,5 +43,6 @@ sidebar:
     </div>
   {% endfor %}
 </div>
+
 
 

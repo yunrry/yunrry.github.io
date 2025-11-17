@@ -13,99 +13,43 @@ sidebar:
   nav: "categories"
 ---
 
+#### <a href="#" data-content="/assets/contents/cs/database/practice.md"><span style="color: #9bd6bd;">♡</span> 자주 나오는 기출 유형 </a>
 
-## SQL & DataBase
+<br>
 
-### 목록
+<div id="normal-content">
+  <div class="category-tabs">
+    {% assign categories = "database" | split: "," %}
+    {% for cat in categories %}
 
-#### <a href="#" data-content="/assets/contents/cs/sql-grammer.md"><span style="color: #9bd6bd;">♡</span> SQL 기본 문법</a>
+    {% endfor %}
+  </div>
 
-#### <a href="#" data-content="/assets/contents/cs/join.md"><span style="color: #9bd6bd;">♡</span> JOIN 연산</a>
+  {% for cat in categories %}
+    {% assign cat_files = site.data.contents | where: "category2", cat | sort: "created" | reverse %}
+    <div class="category-section {% if forloop.first %}active{% endif %}" data-category="{{ cat }}">
+      <ul class="posts-list" style="list-style:none; padding:0;">
+        {% for doc in cat_files %}
+          <li style="margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid #dfe6e4;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="color:#999; font-size:0.85em;">
+                {% if doc.created %}📅 {{ doc.created }}{% endif %}
+                {% if doc.updated %} (updated: {{ doc.updated }}){% endif %}
+              </span>
+              <span style="color:#9bd6bd; font-size:0.75em; text-transform:uppercase;">{{ doc.category }}</span>
+            </div>
+            <h3 style="margin:1px 0;">
+              <a href="#" data-content="{{ doc.path | relative_url }}">{{ doc.title }}</a>
+            </h3>
+            {% if doc.excerpt %}
+              <p style="color:#666; font-size:0.9em;">{{ doc.excerpt | strip_html | truncatewords:30 }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>
 
-#### <a href="#" data-content="/assets/contents/cs/group-by.md"><span style="color: #9bd6bd;">♡</span> GROUP BY & 집계함수</a>
 
-#### <a href="#" data-content="/assets/contents/cs/sub-query.md"><span style="color: #9bd6bd;">♡</span> 서브쿼리</a>
-
-#### <a href="#" data-content="/assets/contents/cs/sql-ddl.md"><span style="color: #9bd6bd;">♡</span> DDL</a>
-
-#### <a href="#" data-content="/assets/contents/cs/sql-dml.md"><span style="color: #9bd6bd;">♡</span> DML</a>
-
-#### <a href="#" data-content="/assets/contents/cs/sql-dcl.md"><span style="color: #9bd6bd;">♡</span> DCL</a>
-
-#### <a href="#" data-content="/assets/contents/cs/constraints.md"><span style="color: #9bd6bd;">♡</span> 제약조건</a>
-
-#### <a href="#" data-content="/assets/contents/cs/index.md"><span style="color: #9bd6bd;">♡</span> 인덱스</a>
-
-#### <a href="#" data-content="/assets/contents/cs/view.md"><span style="color: #9bd6bd;">♡</span> 뷰(View)</a>
-
-#### <a href="#" data-content="/assets/contents/cs/transaction.md"><span style="color: #9bd6bd;">♡</span> 트랜잭션</a>
-
-#### <a href="#" data-content="/assets/contents/cs/normalize.md"><span style="color: #9bd6bd;">♡</span> 정규화</a>
-
-#### <a href="#" data-content="/assets/contents/cs/sql-interview.md"><span style="color: #9bd6bd;">♡</span> 면접필수개념</a>
-
-
----
-
-
-## 📝 자주 나오는 기출 유형
-
-### 1. 부서별 최고 급여자 찾기
-
-```sql
-SELECT e.*
-FROM employees e
-WHERE (department, salary) IN (
-    SELECT department, MAX(salary)
-    FROM employees
-    GROUP BY department
-);
-```
-
-### 2. 순위 매기기 (RANK)
-
-```sql
-SELECT 
-    name, 
-    salary,
-    RANK() OVER (ORDER BY salary DESC) AS rank
-FROM employees;
-```
-
-### 3. 누적 합계
-
-```sql
-SELECT 
-    name,
-    salary,
-    SUM(salary) OVER (ORDER BY hire_date) AS cumulative_sum
-FROM employees;
-```
-
-### 4. 날짜 함수
-
-```sql
-SELECT 
-    NOW(),                          -- 현재 날짜시간
-    CURDATE(),                      -- 현재 날짜
-    DATE_ADD(NOW(), INTERVAL 7 DAY), -- 7일 후
-    DATEDIFF(NOW(), hire_date)      -- 날짜 차이
-FROM employees;
-```
-
-### 5. 문자열 함수
-
-```sql
-SELECT 
-    CONCAT(first_name, ' ', last_name),  -- 문자열 결합
-    SUBSTRING(phone, 1, 3),              -- 부분 문자열
-    LENGTH(name),                        -- 길이
-    UPPER(email),                        -- 대문자
-    REPLACE(phone, '-', '')              -- 치환
-FROM employees;
-```
-
------
-
-**goal**: 각 개념을 반드시 직접 SQL로 실행해보기
 

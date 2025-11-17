@@ -1,14 +1,35 @@
+- path: assets/contents/cs/database/practice.md
+  title: 📝 자주 나오는 기출 유형
+  category: cs
+  category2: database
+  created: '2025-11-17'
+  updated: '2025-11-17'
+  keywords: []
+- path: assets/contents/cs/network/network-header.md
+  title: network-header.md
+  category: cs
+  category2: network
+  created: '2025-11-17'
+  updated: '2025-11-01'
+  keywords: []
+- path: assets/contents/cs/datastructure/structure-interview.md
+  title: Structure Interview
+  category: cs
+  category2: datastructure
+  created: '2025-11-17'
+  updated: '2025-11-16'
+  keywords: []
+- path: assets/contents/cs/ai/machineLearning.md
+  title: ML(MachineLearning) - 기계학습이란 무엇인가
+  category: cs
+  category2: ai
+  created: '2025-11-17'
+  updated: '2025-11-17'
+  keywords: []
 - path: assets/contents/algorithm/interview.md
   title: Algorithm Interview
   category: algorithm
   category2: interview.md
-  created: '2025-11-16'
-  updated: '2025-11-16'
-  keywords: []
-- path: assets/contents/cs/structure-interview.md
-  title: Structure Interview
-  category: cs
-  category2: structure-interview.md
   created: '2025-11-16'
   updated: '2025-11-16'
   keywords: []
@@ -317,40 +338,33 @@
   - BOJ9095
   - Java
   - 조합론
-- path: assets/contents/cs/sql-ddl.md
+- path: assets/contents/cs/database/sql-ddl.md
   title: DDL/DML/DCL
   category: cs
-  category2: sql-ddl.md
+  category2: database
   created: '2025-11-04'
   updated: '2025-11-04'
   keywords: []
-- path: assets/contents/cs/sql-dml.md
+- path: assets/contents/cs/database/sql-dml.md
   title: DML (Data Manipulation Language)
   category: cs
-  category2: sql-dml.md
+  category2: database
   created: '2025-11-04'
   updated: '2025-11-04'
   keywords: []
-- path: assets/contents/cs/sql-dcl.md
+- path: assets/contents/cs/database/sql-dcl.md
   title: DCL (Data Control Language)
   category: cs
-  category2: sql-dcl.md
+  category2: database
   created: '2025-11-04'
   updated: '2025-11-04'
   keywords: []
-- path: assets/contents/cs/sql-domain.md
+- path: assets/contents/cs/database/sql-domain.md
   title: SQL-DOMAIN
   category: cs
-  category2: sql-domain.md
+  category2: database
   created: '2025-11-03'
   updated: '2025-11-03'
-  keywords: []
-- path: assets/contents/cs/network-header.md
-  title: network-header.md
-  category: cs
-  category2: network-header.md
-  created: '2025-11-01'
-  updated: '2025-11-01'
   keywords: []
 - path: assets/contents/dev/backend/flik-05.md
   title: 'FLIK: 여행코스 추천 서비스 개발기 - (백엔드 5편)'
@@ -449,132 +463,132 @@
   created: '2025-10-22'
   updated: '2025-10-29'
   keywords: []
-- path: assets/contents/cs/network-websocket.md
+- path: assets/contents/cs/network/network-websocket.md
   title: 15. 웹소켓 (WebSocket)
   category: cs
   created: '2025-10-20'
   updated: '2025-10-24'
   keywords: []
-  category2: network-websocket.md
-- path: assets/contents/cs/network-get-post.md
+  category2: network
+- path: assets/contents/cs/network/network-get-post.md
   title: 6. GET vs POST
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-get-post.md
-- path: assets/contents/cs/network-proxy.md
+  category2: network
+- path: assets/contents/cs/network/network-proxy.md
   title: 11. 프록시 (Proxy)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-proxy.md
-- path: assets/contents/cs/network-dns.md
+  category2: network
+- path: assets/contents/cs/network/network-dns.md
   title: 8. DNS (Domain Name System)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-19'
   keywords: []
-  category2: network-dns.md
-- path: assets/contents/cs/network-cookie-session-token.md
+  category2: network
+- path: assets/contents/cs/network/network-cookie-session-token.md
   title: 7. 쿠키 vs 세션 vs 토큰
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-cookie-session-token.md
-- path: assets/contents/cs/network-handshake.md
+  category2: network
+- path: assets/contents/cs/network/network-handshake.md
   title: 4. 3-Way Handshake & 4-Way Handshake
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-handshake.md
-- path: assets/contents/cs/network-http-https.md
+  category2: network
+- path: assets/contents/cs/network/network-http-https.md
   title: 5. HTTP vs HTTPS
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-http-https.md
-- path: assets/contents/cs/network-tcp-ip.md
+  category2: network
+- path: assets/contents/cs/network/network-tcp-ip.md
   title: 2. TCP/IP 4계층
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-tcp-ip.md
-- path: assets/contents/cs/network-firewall.md
+  category2: network
+- path: assets/contents/cs/network/network-firewall.md
   title: 13. 방화벽 (Firewall)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-firewall.md
-- path: assets/contents/cs/network-cdn.md
+  category2: network
+- path: assets/contents/cs/network/network-cdn.md
   title: 12. CDN (Content Delivery Network)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-cdn.md
-- path: assets/contents/cs/network-udp.md
+  category2: network
+- path: assets/contents/cs/network/network-udp.md
   title: 3. TCP vs UDP
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-udp.md
-- path: assets/contents/cs/network-ip-address.md
+  category2: network
+- path: assets/contents/cs/network/network-ip-address.md
   title: 10. IP 주소 (IPv4 / IPv6 & 서브넷)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-ip-address.md
-- path: assets/contents/cs/network-loadbalancer.md
+  category2: network
+- path: assets/contents/cs/network/network-loadbalancer.md
   title: 네트워크 완벽 정리 - 로드밸런서 & IP 주소
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-loadbalancer.md
-- path: assets/contents/cs/network-vpn.md
+  category2: network
+- path: assets/contents/cs/network/network-vpn.md
   title: 14. VPN (Virtual Private Network)
   category: cs
   created: '2025-10-19'
   updated: '2025-10-24'
   keywords: []
-  category2: network-vpn.md
-- path: assets/contents/cs/algorithm-exam.md
+  category2: network
+- path: assets/contents/cs/algorithm/algorithm-exam.md
   title: Algorithm 실기 기출 유형
   category: cs
   created: '2025-10-18'
   updated: '2025-10-24'
   keywords: []
-  category2: algorithm-exam.md
-- path: assets/contents/cs/time-complexity.md
+  category2: algorithm
+- path: assets/contents/cs/algorithm/time-complexity.md
   title: 시간복잡도 기초
   category: cs
   created: '2025-10-18'
   updated: '2025-10-24'
   keywords: []
-  category2: time-complexity.md
-- path: assets/contents/cs/binary-search.md
+  category2: algorithm
+- path: assets/contents/cs/algorithm/binary-search.md
   title: 이진 탐색 (Binary Search)
   category: cs
   created: '2025-10-18'
   updated: '2025-10-24'
   keywords: []
-  category2: binary-search.md
-- path: assets/contents/cs/algorithm-sorting.md
+  category2: algorithm
+- path: assets/contents/cs/algorithm/algorithm-sorting.md
   title: 정렬 알고리즘
   category: cs
   created: '2025-10-18'
   updated: '2025-10-24'
   keywords: []
-  category2: algorithm-sorting.md
+  category2: algorithm
 - path: assets/contents/algorithm/floyd-warshall-problems.md
   title: 플로이드-워셜 유사 문제 모음
   category: algorithm
@@ -601,97 +615,97 @@
   - LeetCode
   - 백준
   category2: array-string.md
-- path: assets/contents/cs/array-linkedlist.md
+- path: assets/contents/cs/datastructure/array-linkedlist.md
   title: 📌 배열 Array
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
-  category2: array-linkedlist.md
-- path: assets/contents/cs/sql-grammer.md
+  category2: datastructure
+- path: assets/contents/cs/database/sql-grammer.md
   title: SQL 기본 문법
   category: cs
   created: '2025-10-16'
   updated: '2025-11-05'
   keywords: []
-  category2: sql-grammer.md
-- path: assets/contents/cs/data-structure-interview.md
+  category2: database
+- path: assets/contents/cs/datastructure/data-structure-interview.md
   title: 자료구조 면접/서술
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
-  category2: data-structure-interview.md
-- path: assets/contents/cs/view.md
+  category2: datastructure
+- path: assets/contents/cs/database/view.md
   title: 뷰(View)
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
-  category2: view.md
-- path: assets/contents/cs/sub-query.md
+  category2: database
+- path: assets/contents/cs/database/sub-query.md
   title: 서브쿼리
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
-  category2: sub-query.md
-- path: assets/contents/cs/stack-queue-tree.md
+  category2: database
+- path: assets/contents/cs/datastructure/stack-queue-tree.md
   title: 스택, 큐, 트리
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
-  category2: stack-queue-tree.md
-- path: assets/contents/cs/constraints.md
+  category2: datastructure
+- path: assets/contents/cs/database/constraints.md
   title: 제약조건 Constraints
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
-  category2: constraints.md
-- path: assets/contents/cs/group-by.md
+  category2: database
+- path: assets/contents/cs/database/group-by.md
   title: GROUP BY & 집계함수
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
-  category2: group-by.md
-- path: assets/contents/cs/index.md
+  category2: database
+- path: assets/contents/cs/database/index.md
   title: 인덱스 Index
   category: cs
   created: '2025-10-16'
   updated: '2025-10-24'
   keywords: []
-  category2: index.md
-- path: assets/contents/cs/sql-interview.md
+  category2: database
+- path: assets/contents/cs/database/sql-interview.md
   title: Sql & DB 면접 필수 개념
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
-  category2: sql-interview.md
-- path: assets/contents/cs/join.md
+  category2: database
+- path: assets/contents/cs/database/join.md
   title: JOIN 연산
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
-  category2: join.md
-- path: assets/contents/cs/transaction.md
+  category2: database
+- path: assets/contents/cs/database/transaction.md
   title: 트랜잭션
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
-  category2: transaction.md
-- path: assets/contents/cs/normalize.md
+  category2: database
+- path: assets/contents/cs/database/normalize.md
   title: 정규화
   category: cs
   created: '2025-10-16'
   updated: '2025-10-16'
   keywords: []
-  category2: normalize.md
+  category2: database
 - path: assets/contents/algorithm/dynamic.md
   title: 동적계획법 (Dynamic Programming)
   category: algorithm
@@ -728,13 +742,13 @@
   - 알고리즘
   - 코딩테스트
   category2: graph.md
-- path: assets/contents/cs/network-osi.md
+- path: assets/contents/cs/network/network-osi.md
   title: 1. OSI 7계층
   category: cs
   created: '2025-10-10'
   updated: '2025-10-24'
   keywords: []
-  category2: network-osi.md
+  category2: network
 - path: assets/contents/algorithm/programmers-64063.md
   title: '프로그래머스: 호텔 방 배정 (Level 4)'
   category: algorithm

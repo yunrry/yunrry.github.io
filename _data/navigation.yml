@@ -44,6 +44,8 @@ categories:
       
       - title: "📚 CS"
         url: /categories/cs/
+      - title: "  • AI"
+        url: /categories/cs/ai/
       - title: "  • 자료구조"
         url: /categories/cs/datastructure/
       - title: "  • 네트워크"
