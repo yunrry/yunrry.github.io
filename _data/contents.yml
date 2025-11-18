@@ -1,3 +1,24 @@
+- path: assets/contents/draft/portfolio.md
+  title: 김윤영
+  category: draft
+  category2: portfolio.md
+  created: '2025-11-18'
+  updated: '2025-11-18'
+  keywords: []
+- path: assets/contents/draft/interview-senario.md
+  title: interview-senario.md
+  category: draft
+  category2: interview-senario.md
+  created: '2025-11-18'
+  updated: '2025-11-18'
+  keywords: []
+- path: assets/contents/dev/backend/morintoring.md
+  title: Flik - Prometheus 설정
+  category: dev
+  category2: backend
+  created: '2025-11-18'
+  updated: '2025-11-18'
+  keywords: []
 - path: assets/contents/cs/database/practice.md
   title: 📝 자주 나오는 기출 유형
   category: cs
