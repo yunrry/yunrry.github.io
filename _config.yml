@@ -83,6 +83,7 @@ include:
   - _inclueds
   - _tools
   - _record
+  - _drafts
   - assets/contents
   
 # exclude:

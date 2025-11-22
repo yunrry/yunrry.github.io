@@ -118,8 +118,8 @@ classes: wide
 <div style="margin-bottom: 30px;"></div>
 
 <ul class="posts-list" style="list-style: none; padding: 0;">
-    {% assign all_files = site.data.contents | sort: 'created' | reverse %}
-    {% for doc in all_files limit:10 %}
+  {% assign all_files = site.data.contents | where_exp: "item", "item.category != 'drafts'" | sort: 'created' | reverse %}
+  {% for doc in all_files limit:10 %}
       {% assign category = doc.path | split: 'contents/' | last | split: '/' | first %}
       <li style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #dfe6e4;">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">

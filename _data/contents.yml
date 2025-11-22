@@ -1,9 +1,30 @@
-- path: assets/contents/draft/portfolio.md
-  title: 김윤영
-  category: draft
-  category2: portfolio.md
-  created: '2025-11-18'
-  updated: '2025-11-18'
+- path: assets/contents/drafts/flik-06.md
+  title: (6편) 코스 생성 추천정확도 고도화 여정
+  category: drafts
+  category2: flik-06.md
+  created: '2025-11-22'
+  updated: '2025-11-22'
+  keywords: []
+- path: assets/contents/drafts/infra-interview.md
+  title: Infra Interview
+  category: drafts
+  category2: infra-interview.md
+  created: '2025-11-22'
+  updated: '2025-11-16'
+  keywords: []
+- path: assets/contents/drafts/interview.md
+  title: Algorithm Interview
+  category: drafts
+  category2: interview.md
+  created: '2025-11-22'
+  updated: '2025-11-16'
+  keywords: []
+- path: assets/contents/drafts/structure-interview.md
+  title: Structure Interview
+  category: drafts
+  category2: structure-interview.md
+  created: '2025-11-22'
+  updated: '2025-11-16'
   keywords: []
 - path: assets/contents/dev/backend/morintoring.md
   title: Flik - Grafana + Prometheus 설정
@@ -11,6 +32,13 @@
   category2: backend
   created: '2025-11-18'
   updated: '2025-11-20'
+  keywords: []
+- path: assets/contents/drafts/portfolio.md
+  title: 김윤영
+  category: drafts
+  category2: portfolio.md
+  created: '2025-11-18'
+  updated: '2025-11-22'
   keywords: []
 - path: assets/contents/cs/database/practice.md
   title: 📝 자주 나오는 기출 유형
@@ -26,33 +54,12 @@
   created: '2025-11-17'
   updated: '2025-11-01'
   keywords: []
-- path: assets/contents/cs/datastructure/structure-interview.md
-  title: Structure Interview
-  category: cs
-  category2: datastructure
-  created: '2025-11-17'
-  updated: '2025-11-16'
-  keywords: []
 - path: assets/contents/cs/ai/machineLearning.md
   title: ML(MachineLearning) - 기계학습이란 무엇인가
   category: cs
   category2: ai
   created: '2025-11-17'
   updated: '2025-11-17'
-  keywords: []
-- path: assets/contents/algorithm/interview.md
-  title: Algorithm Interview
-  category: algorithm
-  category2: interview.md
-  created: '2025-11-16'
-  updated: '2025-11-16'
-  keywords: []
-- path: assets/contents/cs/infra-interview.md
-  title: Infra Interview
-  category: cs
-  category2: infra-interview.md
-  created: '2025-11-16'
-  updated: '2025-11-16'
   keywords: []
 - path: assets/contents/record/internship/kakao-2.md
   title: 카카오 현장실습 Day2~
@@ -67,13 +74,6 @@
   category2: backend
   created: '2025-11-13'
   updated: '2025-11-13'
-  keywords: []
-- path: assets/contents/draft/flik-06.md
-  title: (6편) 코스 생성 추천정확도 고도화 여정
-  category: draft
-  category2: flik-06.md
-  created: '2025-11-13'
-  updated: '2025-10-29'
   keywords: []
 - path: assets/contents/record/internship/kakao-1.md
   title: 카카오 현장실습 Day1
