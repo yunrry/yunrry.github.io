@@ -1,6 +1,6 @@
 ---
 title: "Tools"
-layout: category
+layout: category-split
 permalink: /categories/tools/
 taxonomy: tools
 author_profile: true

@@ -1,6 +1,6 @@
 ---
 title: "Language"
-layout: category
+layout: category-split
 permalink: /categories/language/
 taxonomy: language
 author_profile: true
